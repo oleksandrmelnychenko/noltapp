@@ -18,7 +18,7 @@ public:
     ~LoginForm();
 
 private slots:
-    void on_btnLogin_clicked();
+    void login();
 
 private:
     Ui::LoginForm *ui;
