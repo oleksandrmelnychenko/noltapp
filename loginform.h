@@ -2,6 +2,8 @@
 #define LOGINFORM_H
 
 #include <QWidget>
+#include <QMessageBox>
+#include "mainwindow.h"
 
 namespace Ui {
     class LoginForm;
@@ -15,8 +17,15 @@ public:
     explicit LoginForm(QWidget *parent = 0);
     ~LoginForm();
 
+private slots:
+    void on_btnLogin_clicked();
+
 private:
     Ui::LoginForm *ui;
+
+    QString mLogin = "a";
+    QString mPassword = "1";
+    MainWindow* mMainWindow;
 };
 
 #endif // LOGINFORM_H

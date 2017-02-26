@@ -89,7 +89,7 @@
     <number>-2</number>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="btnLogin">
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -109,7 +109,7 @@ color : #f2b1f6;</string>
     <string>LOGIN</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QLineEdit" name="lineEditLogin">
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -118,22 +118,17 @@ color : #f2b1f6;</string>
      <height>25</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <pointsize>8</pointsize>
-    </font>
-   </property>
    <property name="styleSheet">
     <string notr="true">border:none;
 border-bottom:1px solid #f2b1f6;
 color : #f2b1f6;
 padding:0 10px;</string>
    </property>
-   <property name="placeholderText">
+   <property name="text">
     <string>LOGIN</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit_2">
+  <widget class="QLineEdit" name="lineEditPassword">
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -142,14 +137,20 @@ padding:0 10px;</string>
      <height>25</height>
     </rect>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">border:none;
 border-bottom:1px solid #f2b1f6;
 color : #f2b1f6;
 padding:0 10px;</string>
    </property>
-   <property name="placeholderText">
+   <property name="text">
     <string>PASSWORD</string>
+   </property>
+   <property name="clearButtonEnabled">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>
