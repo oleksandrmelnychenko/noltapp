@@ -17,8 +17,10 @@ public:
     explicit LoginForm(QWidget *parent = 0);
     ~LoginForm();
 
+    bool eventFilter(QObject *object, QEvent *event);
+
 private slots:
-    void login();
+    void login();  
 
 private:
     Ui::LoginForm *ui;

@@ -7,6 +7,9 @@ LoginForm::LoginForm(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->btnLogin, SIGNAL(clicked()), this, SLOT(login()));
+
+    ui->lineEditLogin->installEventFilter(this);
+    ui->lineEditPassword->installEventFilter(this);
 }
 
 LoginForm::~LoginForm()
@@ -27,6 +30,35 @@ void LoginForm::login()
     }
     else
     {
-        QMessageBox::warning(this, "Login", "Username and password is not correct");
+        QMessageBox::warning(this, "Login", "Username and password is not correct");        
     }
 }
+
+bool LoginForm::eventFilter(QObject *object, QEvent *event)
+{
+    if(event->type() == QEvent::FocusIn)
+    {
+        if(object == ui->lineEditLogin)
+        {
+           ui->labelLogin->setGeometry(122,190,60,13);
+        }
+        if(object == ui->lineEditPassword)
+        {
+            ui->labelPassword->setGeometry(122, 230, 60, 13);
+        }
+    }
+    if(event->type() == QEvent::FocusOut)
+    {
+        if(object == ui->lineEditLogin && QString(ui->lineEditLogin->text()).isEmpty())
+        {
+            ui->labelLogin->setGeometry(122,208,60,13);
+        }
+        if(object == ui->lineEditPassword && QString(ui->lineEditPassword->text()).isEmpty())
+        {
+            ui->labelPassword->setGeometry(122, 248, 60, 13);
+        }
+    }
+    return false;
+}
+
+

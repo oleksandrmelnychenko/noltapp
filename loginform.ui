@@ -31,7 +31,7 @@
   <property name="styleSheet">
    <string notr="true">background-color :#3a3a3a;</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="labelPictureNolt">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -125,7 +125,7 @@ color : #f2b1f6;
 padding:0 10px;</string>
    </property>
    <property name="text">
-    <string>LOGIN</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEditPassword">
@@ -147,10 +147,45 @@ color : #f2b1f6;
 padding:0 10px;</string>
    </property>
    <property name="text">
-    <string>PASSWORD</string>
+    <string/>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
    </property>
    <property name="clearButtonEnabled">
     <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelLogin">
+   <property name="geometry">
+    <rect>
+     <x>122</x>
+     <y>208</y>
+     <width>60</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color : #f2b1f6;</string>
+   </property>
+   <property name="text">
+    <string>LOGIN</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelPassword">
+   <property name="geometry">
+    <rect>
+     <x>122</x>
+     <y>248</y>
+     <width>60</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color : #f2b1f6;</string>
+   </property>
+   <property name="text">
+    <string>PASSWORD</string>
    </property>
   </widget>
  </widget>
