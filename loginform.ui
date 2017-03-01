@@ -29,7 +29,8 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color :#3a3a3a;</string>
+   <string notr="true">background-color :#3a3a3a;
+color : #f2b1f6;</string>
   </property>
   <widget class="QLabel" name="labelPictureNolt">
    <property name="geometry">
@@ -100,9 +101,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">background: #a320ba;
-border-top: none;
-border-right: none;
-border-left: none;
+border : none;
 color : #f2b1f6;</string>
    </property>
    <property name="text">
@@ -165,8 +164,14 @@ padding:0 10px;</string>
      <height>13</height>
     </rect>
    </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">color : #f2b1f6;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
    </property>
    <property name="text">
     <string>LOGIN</string>
@@ -186,6 +191,22 @@ padding:0 10px;</string>
    </property>
    <property name="text">
     <string>PASSWORD</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelIncorrectLogin">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>320</y>
+     <width>241</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color : #f2b1f6;</string>
+   </property>
+   <property name="text">
+    <string>Login and password is not correct</string>
    </property>
   </widget>
  </widget>
