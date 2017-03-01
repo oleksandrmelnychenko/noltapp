@@ -2,6 +2,7 @@
 #define LOGINFORM_H
 
 #include <QWidget>
+#include <QPropertyAnimation>
 #include "mainwindow.h"
 
 namespace Ui {
@@ -20,6 +21,7 @@ public:
 
 private slots:
     void login();  
+    void labelAnimation(QObject *object, int animationDuration, int x, int y, int width, int height);
 
 private:
     Ui::LoginForm *ui;

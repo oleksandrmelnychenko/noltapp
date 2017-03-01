@@ -99,6 +99,9 @@ color : #f2b1f6;</string>
      <height>23</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">background: #a320ba;
 border : none;
@@ -165,7 +168,7 @@ padding:0 10px;</string>
     </rect>
    </property>
    <property name="mouseTracking">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">color : #f2b1f6;</string>

@@ -38,18 +38,27 @@ void LoginForm::login()
     }
 }
 
+void LoginForm::labelAnimation(QObject *object, int animationDuration, int x, int y, int width, int height)
+{
+    QPropertyAnimation* animation = new QPropertyAnimation(object,"geometry");
+    animation->setDuration(animationDuration);
+    animation->setEasingCurve(QEasingCurve::Linear);
+    animation->setEndValue(QRect(x, y, width, height));
+    animation->start(QAbstractAnimation::DeleteWhenStopped);
+}
+
 bool LoginForm::eventFilter(QObject *object, QEvent *event)
 {
     if(event->type() == QEvent::FocusIn)
     {
-        if(object == ui->lineEditLogin || qobject_cast<QLabel*>(object) == ui->labelLogin)
-        {            
-           ui->labelLogin->setGeometry(122,190,60,13);
-           ui->labelIncorrectLogin->hide();
+        if(object == ui->lineEditLogin || object == ui->labelLogin)
+        {
+            labelAnimation(ui->labelLogin, 400, 122, 190, 60, 13 );
+            ui->labelIncorrectLogin->hide();
         }
         if(object == ui->lineEditPassword || object == ui->labelPassword)
         {
-            ui->labelPassword->setGeometry(122, 230, 60, 13);
+            labelAnimation(ui->labelPassword, 400, 122, 230, 60, 13 );
             ui->labelIncorrectLogin->hide();
         }
     }
@@ -57,12 +66,14 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
     {
         if(object == ui->labelLogin)
         {
-           ui->labelLogin->setGeometry(122,190,60,13);
-           ui->lineEditLogin->setFocus();
+            labelAnimation(ui->labelLogin, 400, 122, 190, 60, 13 );
+            ui->labelIncorrectLogin->hide();
+            ui->lineEditLogin->setFocus();
         }
         if(object == ui->labelPassword)
         {
-            ui->labelPassword->setGeometry(122, 230, 60, 13);
+            labelAnimation(ui->labelPassword, 400, 122, 230, 60, 13);
+            ui->labelIncorrectLogin->hide();
             ui->lineEditPassword->setFocus();
         }
     }
@@ -70,11 +81,11 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
     {
         if(object == ui->lineEditLogin && QString(ui->lineEditLogin->text()).isEmpty())
         {
-            ui->labelLogin->setGeometry(122,208,60,13);
+            labelAnimation(ui->labelLogin, 400, 122, 208, 60, 13);
         }
         if(object == ui->lineEditPassword && QString(ui->lineEditPassword->text()).isEmpty())
         {
-            ui->labelPassword->setGeometry(122, 248, 60, 13);
+            labelAnimation(ui->labelPassword, 400, 122, 248, 60, 13 );
         }
     }
     return false;
