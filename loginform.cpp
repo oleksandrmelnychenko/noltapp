@@ -53,12 +53,12 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
     {
         if(object == ui->lineEditLogin || object == ui->labelLogin)
         {
-            labelAnimation(ui->labelLogin, 400, 122, 190, 60, 13 );
+            labelAnimation(ui->labelLogin, 250, 122, 190, 60, 13 );
             ui->labelIncorrectLogin->hide();
         }
         if(object == ui->lineEditPassword || object == ui->labelPassword)
         {
-            labelAnimation(ui->labelPassword, 400, 122, 230, 60, 13 );
+            labelAnimation(ui->labelPassword, 250, 122, 230, 60, 13 );
             ui->labelIncorrectLogin->hide();
         }
     }
@@ -66,13 +66,13 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
     {
         if(object == ui->labelLogin)
         {
-            labelAnimation(ui->labelLogin, 400, 122, 190, 60, 13 );
+            labelAnimation(ui->labelLogin, 250, 122, 190, 60, 13 );
             ui->labelIncorrectLogin->hide();
             ui->lineEditLogin->setFocus();
         }
         if(object == ui->labelPassword)
         {
-            labelAnimation(ui->labelPassword, 400, 122, 230, 60, 13);
+            labelAnimation(ui->labelPassword, 250, 122, 230, 60, 13);
             ui->labelIncorrectLogin->hide();
             ui->lineEditPassword->setFocus();
         }
@@ -81,11 +81,11 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
     {
         if(object == ui->lineEditLogin && QString(ui->lineEditLogin->text()).isEmpty())
         {
-            labelAnimation(ui->labelLogin, 400, 122, 208, 60, 13);
+            labelAnimation(ui->labelLogin, 250, 122, 208, 60, 13);
         }
         if(object == ui->lineEditPassword && QString(ui->lineEditPassword->text()).isEmpty())
         {
-            labelAnimation(ui->labelPassword, 400, 122, 248, 60, 13 );
+            labelAnimation(ui->labelPassword, 250, 122, 248, 60, 13 );
         }
     }
     return false;

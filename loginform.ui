@@ -167,6 +167,9 @@ padding:0 10px;</string>
      <height>13</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>IBeamCursor</cursorShape>
+   </property>
    <property name="mouseTracking">
     <bool>false</bool>
    </property>
@@ -188,6 +191,9 @@ padding:0 10px;</string>
      <width>60</width>
      <height>13</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>IBeamCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">color : #f2b1f6;</string>
