@@ -127,7 +127,7 @@ color : #f2b1f6;
 padding:0 10px;</string>
    </property>
    <property name="text">
-    <string/>
+    <string>a</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEditPassword">
@@ -149,7 +149,7 @@ color : #f2b1f6;
 padding:0 10px;</string>
    </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="echoMode">
     <enum>QLineEdit::Password</enum>

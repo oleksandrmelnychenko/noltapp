@@ -25,13 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    loginform.cpp
+    loginform.cpp \
+    colleaguesform.cpp \
+    salaryform.cpp \
+    officeform.cpp
 
 HEADERS  += mainwindow.h \
-    loginform.h
+    loginform.h \
+    colleaguesform.h \
+    salaryform.h \
+    officeform.h
 
 FORMS    += mainwindow.ui \
-    loginform.ui
+    loginform.ui \
+    colleaguesform.ui \
+    salaryform.ui \
+    officeform.ui
 
 RESOURCES += \
     images.qrc
