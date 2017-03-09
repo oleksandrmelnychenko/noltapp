@@ -43,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     createColleaguesForm();
-    //mCurrentMdiSubForm->setGeometry(0,0,640,440);
+    mCurrentMdiSubForm->setGeometry(0,0,640,440);
 
     connect(ui->btnColleagues, SIGNAL(clicked()), this, SLOT(createColleaguesForm()));
     connect(ui->btnSalary, SIGNAL(clicked()), this, SLOT(createSalaryForm()));

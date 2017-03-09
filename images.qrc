@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/new/login">
         <file>images/loginBackground.png</file>
+        <file>images/loginFormCat.png</file>
     </qresource>
 </RCC>

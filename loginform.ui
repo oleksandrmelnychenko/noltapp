@@ -6,21 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>475</width>
-    <height>400</height>
+    <width>524</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>475</width>
-    <height>400</height>
+    <width>524</width>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>475</width>
-    <height>400</height>
+    <width>524</width>
+    <height>600</height>
    </size>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::NoContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -30,15 +33,15 @@
   </property>
   <property name="styleSheet">
    <string notr="true">background-color :#3a3a3a;
-color : #f2b1f6;</string>
+color : #797979;</string>
   </property>
   <widget class="QLabel" name="labelPictureNolt">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>60</y>
-     <width>371</width>
-     <height>111</height>
+     <x>90</x>
+     <y>115</y>
+     <width>352</width>
+     <height>104</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -64,6 +67,13 @@ color : #f2b1f6;</string>
      <width>0</width>
      <height>0</height>
     </size>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::DefaultContextMenu</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;
+</string>
    </property>
    <property name="text">
     <string/>
@@ -93,38 +103,50 @@ color : #f2b1f6;</string>
   <widget class="QPushButton" name="btnLogin">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>280</y>
-     <width>91</width>
-     <height>23</height>
+     <x>307</x>
+     <y>419</y>
+     <width>125</width>
+     <height>35</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Proxima Nova Lt</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="focusPolicy">
     <enum>Qt::StrongFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">background: #a320ba;
-border : none;
-color : #f2b1f6;</string>
+    <string notr="true">border : 1px solid #d0d0d0;
+color : #d0d0d0;
+background-color:transparent;</string>
    </property>
    <property name="text">
-    <string>LOGIN</string>
+    <string>LOG IN</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEditLogin">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>200</y>
-     <width>250</width>
+     <x>92</x>
+     <y>327</y>
+     <width>340</width>
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Proxima Nova Th</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">border:none;
-border-bottom:1px solid #f2b1f6;
-color : #f2b1f6;
-padding:0 10px;</string>
+border-bottom:1px solid #797979;
+color : #797979;
+background-color:transparent;</string>
    </property>
    <property name="text">
     <string>a</string>
@@ -133,20 +155,27 @@ padding:0 10px;</string>
   <widget class="QLineEdit" name="lineEditPassword">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>240</y>
-     <width>250</width>
+     <x>92</x>
+     <y>373</y>
+     <width>340</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Proxima Nova Th</family>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">border:none;
-border-bottom:1px solid #f2b1f6;
-color : #f2b1f6;
-padding:0 10px;</string>
+border-bottom:1px solid #797979;
+color : #797979;
+background-color:transparent;
+</string>
    </property>
    <property name="text">
     <string>1</string>
@@ -161,11 +190,17 @@ padding:0 10px;</string>
   <widget class="QLabel" name="labelLogin">
    <property name="geometry">
     <rect>
-     <x>122</x>
-     <y>208</y>
-     <width>60</width>
-     <height>13</height>
+     <x>92</x>
+     <y>332</y>
+     <width>120</width>
+     <height>14</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Proxima Nova Th</family>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="cursor">
     <cursorShape>IBeamCursor</cursorShape>
@@ -174,29 +209,37 @@ padding:0 10px;</string>
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : #f2b1f6;</string>
+    <string notr="true">color : #797979;
+background-color:transparent;</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::NoFrame</enum>
    </property>
    <property name="text">
-    <string>LOGIN</string>
+    <string>USERNAME</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelPassword">
    <property name="geometry">
     <rect>
-     <x>122</x>
-     <y>248</y>
-     <width>60</width>
-     <height>13</height>
+     <x>92</x>
+     <y>378</y>
+     <width>120</width>
+     <height>14</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Proxima Nova Th</family>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="cursor">
     <cursorShape>IBeamCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : #f2b1f6;</string>
+    <string notr="true">color : #797979;
+background-color:transparent;</string>
    </property>
    <property name="text">
     <string>PASSWORD</string>
@@ -205,19 +248,95 @@ padding:0 10px;</string>
   <widget class="QLabel" name="labelIncorrectLogin">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>320</y>
-     <width>241</width>
+     <x>92</x>
+     <y>465</y>
+     <width>340</width>
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Proxima Nova Th</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">color : #f2b1f6;</string>
+    <string notr="true">color : #797979;
+background-color:transparent;</string>
    </property>
    <property name="text">
     <string>Login and password is not correct</string>
    </property>
   </widget>
+  <widget class="QLabel" name="labelPictureCat">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>524</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>524</width>
+     <height>600</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>524</width>
+     <height>600</height>
+    </size>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">position:relative;
+
+z-index:-1;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/new/login/images/loginFormCat.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditSimpleLine">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>233</x>
+     <y>437</y>
+     <width>59</width>
+     <height>1</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none;
+border-top: 1px solid #0992b1;
+background:transparent;</string>
+   </property>
+  </widget>
+  <zorder>labelPictureCat</zorder>
+  <zorder>labelPictureNolt</zorder>
+  <zorder>btnLogin</zorder>
+  <zorder>lineEditLogin</zorder>
+  <zorder>lineEditPassword</zorder>
+  <zorder>labelLogin</zorder>
+  <zorder>labelPassword</zorder>
+  <zorder>labelIncorrectLogin</zorder>
+  <zorder>lineEditSimpleLine</zorder>
  </widget>
  <resources>
   <include location="images.qrc"/>
