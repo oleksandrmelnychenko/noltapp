@@ -112,7 +112,9 @@ color : #797979;</string>
    <property name="font">
     <font>
      <family>Proxima Nova Lt</family>
-     <pointsize>14</pointsize>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="focusPolicy">
@@ -139,13 +141,13 @@ background-color:transparent;</string>
    <property name="font">
     <font>
      <family>Proxima Nova Th</family>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">border:none;
 border-bottom:1px solid #797979;
-color : #797979;
+color : #d0d0d0;
 background-color:transparent;</string>
    </property>
    <property name="text">
@@ -164,7 +166,7 @@ background-color:transparent;</string>
    <property name="font">
     <font>
      <family>Proxima Nova Th</family>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="autoFillBackground">
@@ -173,7 +175,7 @@ background-color:transparent;</string>
    <property name="styleSheet">
     <string notr="true">border:none;
 border-bottom:1px solid #797979;
-color : #797979;
+color : #d0d0d0;
 background-color:transparent;
 </string>
    </property>
@@ -193,13 +195,13 @@ background-color:transparent;
      <x>92</x>
      <y>332</y>
      <width>120</width>
-     <height>14</height>
+     <height>13</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Proxima Nova Th</family>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="cursor">
@@ -216,7 +218,7 @@ background-color:transparent;</string>
     <enum>QFrame::NoFrame</enum>
    </property>
    <property name="text">
-    <string>USERNAME</string>
+    <string>NAME</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelPassword">
@@ -225,13 +227,13 @@ background-color:transparent;</string>
      <x>92</x>
      <y>378</y>
      <width>120</width>
-     <height>14</height>
+     <height>13</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Proxima Nova Th</family>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="cursor">
@@ -328,6 +330,28 @@ border-top: 1px solid #0992b1;
 background:transparent;</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnQuit">
+   <property name="geometry">
+    <rect>
+     <x>498</x>
+     <y>10</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;
+border:none;
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/new/login/images/closeIcon.png</normaloff>:/new/login/images/closeIcon.png</iconset>
+   </property>
+  </widget>
   <zorder>labelPictureCat</zorder>
   <zorder>labelPictureNolt</zorder>
   <zorder>btnLogin</zorder>
@@ -337,6 +361,7 @@ background:transparent;</string>
   <zorder>labelPassword</zorder>
   <zorder>labelIncorrectLogin</zorder>
   <zorder>lineEditSimpleLine</zorder>
+  <zorder>btnQuit</zorder>
  </widget>
  <resources>
   <include location="images.qrc"/>

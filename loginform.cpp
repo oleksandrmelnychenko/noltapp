@@ -7,6 +7,7 @@ LoginForm::LoginForm(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->btnLogin, SIGNAL(clicked()), this, SLOT(login()));
+    connect(ui->btnQuit, SIGNAL(clicked()), this, SLOT(close()));
 
     ui->lineEditLogin->installEventFilter(this);
     ui->lineEditPassword->installEventFilter(this);
@@ -14,6 +15,15 @@ LoginForm::LoginForm(QWidget *parent) :
     ui->labelPassword->installEventFilter(this);
 
     ui->labelIncorrectLogin->hide();
+
+    if(!QString(ui->lineEditLogin->text()).isEmpty())
+    {
+       ui->labelLogin->setGeometry(92, 314, 120, 14);
+    }
+    if(!QString(ui->lineEditPassword->text()).isEmpty())
+    {
+       ui->labelPassword->setGeometry(92, 360, 120, 13);
+    }
 }
 
 LoginForm::~LoginForm()
@@ -58,7 +68,7 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
         }
         if(object == ui->lineEditPassword || object == ui->labelPassword)
         {
-            labelAnimation(ui->labelPassword, 250, 92, 360, 120, 14 );
+            labelAnimation(ui->labelPassword, 250, 92, 360, 120, 13);
             ui->labelIncorrectLogin->hide();
         }
     }
@@ -66,13 +76,13 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
     {
         if(object == ui->labelLogin)
         {
-            labelAnimation(ui->labelLogin, 250, 92, 314, 120, 14 );
+            labelAnimation(ui->labelLogin, 250, 92, 314, 120, 13);
             ui->labelIncorrectLogin->hide();
             ui->lineEditLogin->setFocus();
         }
         if(object == ui->labelPassword)
         {
-            labelAnimation(ui->labelPassword, 250, 92, 360, 120, 14);
+            labelAnimation(ui->labelPassword, 250, 92, 360, 120, 13);
             ui->labelIncorrectLogin->hide();
             ui->lineEditPassword->setFocus();
         }
@@ -81,11 +91,11 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
     {
         if(object == ui->lineEditLogin && QString(ui->lineEditLogin->text()).isEmpty())
         {
-            labelAnimation(ui->labelLogin, 250, 92, 332, 120, 14);
+            labelAnimation(ui->labelLogin, 250, 92, 332, 120, 13);
         }
         if(object == ui->lineEditPassword && QString(ui->lineEditPassword->text()).isEmpty())
         {
-            labelAnimation(ui->labelPassword, 250, 92, 378, 120, 14 );
+            labelAnimation(ui->labelPassword, 250, 92, 378, 120, 13);
         }
     }
     return false;
