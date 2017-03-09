@@ -4,52 +4,35 @@
 void MainWindow::createColleaguesForm()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mColleaguesForm = new ColleaguesForm(ui->mdiArea);
-    mColleaguesForm->setGeometry(10,40,640,440);
-    mColleaguesForm->show();
-    mCurrentMdiSubForm = mColleaguesForm;
+    mCurrentMdiSubForm = new ColleaguesForm(ui->mdiArea);
+    mCurrentMdiSubForm->setGeometry(10,40,640,440);
+    mCurrentMdiSubForm->show();
+
 }
 
 void MainWindow::createOfficeForm()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mOfficeForm = new OfficeForm(ui->mdiArea);
-    mOfficeForm->setGeometry(10,40,640,440);
-    mOfficeForm->show();
-    mCurrentMdiSubForm = mOfficeForm;
+    mCurrentMdiSubForm = new OfficeForm(ui->mdiArea);
+    mCurrentMdiSubForm->setGeometry(10,40,640,440);
+    mCurrentMdiSubForm->show();
 }
 
 void MainWindow::createSalaryForm()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mSalaryForm = new SalaryForm(ui->mdiArea);
-    mSalaryForm->setGeometry(10,40,640,440);
-    mSalaryForm->show();
-    mCurrentMdiSubForm = mSalaryForm;
+    mCurrentMdiSubForm = new SalaryForm(ui->mdiArea);
+    mCurrentMdiSubForm->setGeometry(10,40,640,440);
+    mCurrentMdiSubForm->show();
 }
 
 void MainWindow::deleteMdiSubForm(QMdiSubWindow *form)
 {
     if(form != nullptr)
     {
-        if(form == mColleaguesForm)
-        {
-            delete mColleaguesForm;
-            mColleaguesForm = nullptr;
-            qDebug() << "Delete Collegues";
-        }
-        else if(form == mSalaryForm)
-        {
-            delete mSalaryForm;
-            mSalaryForm = nullptr;
-            qDebug() << "Delete Salary";
-        }
-        else if(form == mOfficeForm)
-        {
-            delete mOfficeForm;
-            mOfficeForm = nullptr;
-            qDebug() << "Delete Office";
-        }
+            delete mCurrentMdiSubForm;
+            mCurrentMdiSubForm = nullptr;
+            qDebug() << "Delete CurrentMdiSubForm";
     }
 }
 

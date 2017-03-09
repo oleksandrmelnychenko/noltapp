@@ -7,6 +7,7 @@
 #include "salaryform.h"
 #include <QDebug>
 #include <QMetaObject>
+#include <typeinfo>
 
 
 namespace Ui {
@@ -31,10 +32,6 @@ private:
     Ui::MainWindow *ui;    
 
     QMdiSubWindow* mCurrentMdiSubForm = 0;
-    ColleaguesForm* mColleaguesForm = 0 ;
-    OfficeForm* mOfficeForm = 0;
-    SalaryForm* mSalaryForm = 0;
-
 };
 
 #endif // MAINWINDOW_H
