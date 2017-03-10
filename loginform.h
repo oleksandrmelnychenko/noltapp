@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPropertyAnimation>
 #include <QMouseEvent>
+#include <QGraphicsDropShadowEffect>
 #include "mainwindow.h"
 
 namespace Ui {

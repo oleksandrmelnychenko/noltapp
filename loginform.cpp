@@ -27,6 +27,14 @@ LoginForm::LoginForm(QWidget *parent) :
     {
        ui->labelPassword->setGeometry(92, 360, 120, 13);
     }
+
+    setAttribute(Qt::WA_TranslucentBackground);
+
+    QGraphicsDropShadowEffect *bodyShadow = new QGraphicsDropShadowEffect;
+    bodyShadow->setBlurRadius(9.0);
+    bodyShadow->setColor(QColor(9,146,177));
+    bodyShadow->setOffset(4.0);
+    ui->labelPictureCat->setGraphicsEffect(bodyShadow);
 }
 
 LoginForm::~LoginForm()

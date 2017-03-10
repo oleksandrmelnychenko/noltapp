@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>524</width>
-    <height>600</height>
+    <width>534</width>
+    <height>610</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>524</width>
-    <height>600</height>
+    <width>534</width>
+    <height>610</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>524</width>
-    <height>600</height>
+    <width>534</width>
+    <height>610</height>
    </size>
   </property>
   <property name="contextMenuPolicy">
@@ -32,8 +32,7 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color :#3a3a3a;
-color : #797979;</string>
+   <string notr="true"/>
   </property>
   <widget class="QLabel" name="labelPictureNolt">
    <property name="geometry">
@@ -121,9 +120,21 @@ color : #797979;</string>
     <enum>Qt::StrongFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">border : 1px solid #d0d0d0;
-color : #d0d0d0;
-background-color:transparent;</string>
+    <string notr="true">QPushButton#btnLogin{
+	border : 1px solid #d0d0d0;
+	color : #d0d0d0;
+	background-color:transparent;
+}
+
+QPushButton#btnLogin:hover{
+	color:#0992b1;
+}
+
+QPushButton#btnLogin:pressed{
+	color:#0992b1;
+	border: 1px solid #0992b1;
+}
+</string>
    </property>
    <property name="text">
     <string>LOG IN</string>
@@ -276,8 +287,8 @@ background-color:transparent;</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
+     <x>5</x>
+     <y>5</y>
      <width>524</width>
      <height>600</height>
     </rect>
@@ -337,17 +348,39 @@ background:transparent;</string>
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Proxima Nova Th</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color:transparent;
-border:none;
+    <string notr="true">QPushButton#btnQuit{
+	background-color:transparent;
+	border:none;
+	color : #d0d0d0;
+
+	qproperty-icon: url(&quot; &quot;); 
+    qproperty-iconSize: 16px 16px; 
+    background-image: url(&quot;images/closeIcon.png&quot;);
+    background-repeat: no-repeat;
+
+}
+
+QPushButton#btnQuit:hover{
+	color:#0992b1;
+}
+
+QPushButton#btnQuit:pressed{
+	color:#0992b1;
+}
+
 </string>
    </property>
    <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/new/login/images/closeIcon.png</normaloff>:/new/login/images/closeIcon.png</iconset>
+    <string>X</string>
    </property>
   </widget>
   <zorder>labelPictureCat</zorder>
