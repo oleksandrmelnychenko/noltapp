@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPropertyAnimation>
+#include <QMouseEvent>
 #include "mainwindow.h"
 
 namespace Ui {
@@ -19,6 +20,11 @@ public:
 
     bool eventFilter(QObject *object, QEvent *event);
 
+protected:
+    void mousePressEvent(QMouseEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
+
+
 private slots:
     void login();  
     void labelAnimation(QObject *object, int animationDuration, int x, int y, int width, int height);
@@ -29,6 +35,9 @@ private:
     QString mLogin = "a";
     QString mPassword = "1";
     MainWindow* mMainWindow;
+
+    int m_nMouseClick_X_Coordinate;
+    int m_nMouseClick_Y_Coordinate;
 };
 
 #endif // LOGINFORM_H

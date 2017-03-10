@@ -2,7 +2,7 @@
 #include "ui_loginform.h"
 
 LoginForm::LoginForm(QWidget *parent) :
-    QWidget(parent, Qt::FramelessWindowHint | Qt::Window),
+    QWidget(parent, Qt::FramelessWindowHint | Qt::Window | Qt::CustomizeWindowHint),
     ui(new Ui::LoginForm)
 {
     ui->setupUi(this);
@@ -13,6 +13,9 @@ LoginForm::LoginForm(QWidget *parent) :
     ui->lineEditPassword->installEventFilter(this);
     ui->labelLogin->installEventFilter(this);
     ui->labelPassword->installEventFilter(this);
+    ui->labelPictureCat->installEventFilter(this);
+    ui->labelPictureNolt->installEventFilter(this);
+
 
     ui->labelIncorrectLogin->hide();
 
@@ -86,6 +89,21 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
             ui->labelIncorrectLogin->hide();
             ui->lineEditPassword->setFocus();
         }
+        if(object == ui->labelPictureCat || object == ui->labelPictureNolt)
+        {
+           if(QString(ui->lineEditLogin->text()).isEmpty())
+           {
+              labelAnimation(ui->labelLogin, 250, 92, 332, 120, 13);
+
+           }
+           if(QString(ui->lineEditPassword->text()).isEmpty())
+           {
+              labelAnimation(ui->labelPassword, 250, 92, 378, 120, 13);
+
+           }
+           ui->lineEditPassword->clearFocus();
+           ui->lineEditLogin->clearFocus();
+        }
     }
     if(event->type() == QEvent::FocusOut)
     {
@@ -99,6 +117,21 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
         }
     }
     return false;
+}
+
+void LoginForm::mousePressEvent(QMouseEvent *event)
+{
+    m_nMouseClick_X_Coordinate = event->x();
+    m_nMouseClick_Y_Coordinate = event->y();    
+}
+
+void LoginForm::mouseMoveEvent(QMouseEvent *event)
+{
+    if(m_nMouseClick_X_Coordinate >= 0 && m_nMouseClick_X_Coordinate <= 497 &&
+            m_nMouseClick_Y_Coordinate >=0 && m_nMouseClick_Y_Coordinate <= 30)
+    {
+        move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
+    }
 }
 
 

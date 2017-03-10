@@ -151,7 +151,7 @@ color : #d0d0d0;
 background-color:transparent;</string>
    </property>
    <property name="text">
-    <string>a</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEditPassword">
@@ -180,7 +180,7 @@ background-color:transparent;
 </string>
    </property>
    <property name="text">
-    <string>1</string>
+    <string/>
    </property>
    <property name="echoMode">
     <enum>QLineEdit::Password</enum>
@@ -298,9 +298,7 @@ background-color:transparent;</string>
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">position:relative;
-
-z-index:-1;</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
