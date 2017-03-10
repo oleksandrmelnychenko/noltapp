@@ -3,5 +3,6 @@
         <file>images/loginBackground.png</file>
         <file>images/loginFormCat.png</file>
         <file>images/closeIcon.png</file>
+        <file>images/closeIconPressed.png</file>
     </qresource>
 </RCC>
