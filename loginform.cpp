@@ -7,7 +7,7 @@ LoginForm::LoginForm(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->btnLogin, SIGNAL(clicked()), this, SLOT(login()));
-    connect(ui->btnQuit, SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui->btnQuit, SIGNAL(clicked()), this, SLOT(close()));   
 
     ui->lineEditLogin->installEventFilter(this);
     ui->lineEditPassword->installEventFilter(this);
@@ -30,10 +30,10 @@ LoginForm::LoginForm(QWidget *parent) :
 
     setAttribute(Qt::WA_TranslucentBackground);
 
-    QGraphicsDropShadowEffect *bodyShadow = new QGraphicsDropShadowEffect;
-    bodyShadow->setBlurRadius(9.0);
-    bodyShadow->setColor(QColor(9,146,177));
-    bodyShadow->setOffset(4.0);
+    CustomShadowEffect  *bodyShadow = new CustomShadowEffect();
+    bodyShadow->setBlurRadius(35.0);
+    bodyShadow->setDistance(5.0);
+    bodyShadow->setColor(QColor(9,146,177));    
     ui->labelPictureCat->setGraphicsEffect(bodyShadow);
 }
 

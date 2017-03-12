@@ -28,13 +28,15 @@ SOURCES += main.cpp\
     loginform.cpp \
     colleaguesform.cpp \
     salaryform.cpp \
-    officeform.cpp
+    officeform.cpp \
+    customshadoweffect.cpp
 
 HEADERS  += mainwindow.h \
     loginform.h \
     colleaguesform.h \
     salaryform.h \
-    officeform.h
+    officeform.h \
+    customshadoweffect.h
 
 FORMS    += mainwindow.ui \
     loginform.ui \
