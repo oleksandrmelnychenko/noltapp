@@ -1,5 +1,7 @@
 #include "loginform.h"
 #include "ui_loginform.h"
+#include <QIcon>
+#include <QPushButton>
 
 LoginForm::LoginForm(QWidget *parent) :
     QWidget(parent, Qt::FramelessWindowHint | Qt::Window | Qt::CustomizeWindowHint),
@@ -14,8 +16,7 @@ LoginForm::LoginForm(QWidget *parent) :
     ui->labelLogin->installEventFilter(this);
     ui->labelPassword->installEventFilter(this);
     ui->labelPictureCat->installEventFilter(this);
-    ui->labelPictureNolt->installEventFilter(this);
-
+    ui->labelPictureNolt->installEventFilter(this);    
 
     ui->labelIncorrectLogin->hide();
 

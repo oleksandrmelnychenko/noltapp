@@ -342,7 +342,7 @@ background:transparent;</string>
   <widget class="QPushButton" name="btnQuit">
    <property name="geometry">
     <rect>
-     <x>498</x>
+     <x>504</x>
      <y>10</y>
      <width>16</width>
      <height>16</height>
@@ -357,30 +357,37 @@ background:transparent;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#btnQuit{
-	background-color:transparent;
-	border:none;
-	color : #d0d0d0;
+    <string notr="true">QPushButton#btnQuit{ 
+background-color:transparent; 
+border:none; 
+color : #d0d0d0; 
 
-	qproperty-icon: url(&quot; &quot;); 
-    qproperty-iconSize: 16px 16px; 
-    background-image: url(&quot;images/closeIcon.png&quot;);
-    background-repeat: no-repeat;
+qproperty-icon: url(&quot; &quot;); 
+qproperty-iconSize: 16px ; 
+background-image: url(&quot;:/new/login/images/closeIcon.png&quot;); 
+background-repeat: no-repeat; 
+background-position:top left;
 
-}
+} 
 
-QPushButton#btnQuit:hover{
-	color:#0992b1;
-}
+QPushButton#btnQuit:hover{ 
+qproperty-icon: url(&quot; &quot;); 
+qproperty-iconSize: 16px 16px; 
+background-image: url(&quot;:/new/login/images/closeIcon.png&quot;); 
+background-repeat: no-repeat; 
+background-position:top right;
+} 
 
-QPushButton#btnQuit:pressed{
-	color:#0992b1;
-}
-
-</string>
+QPushButton#btnQuit:pressed{ 
+qproperty-icon: url(&quot; &quot;); 
+qproperty-iconSize: 16px 16px; 
+background-image: url(&quot;:/new/login/images/closeIcon.png&quot;); 
+background-repeat: no-repeat; 
+background-position:top right;
+}</string>
    </property>
    <property name="text">
-    <string>X</string>
+    <string/>
    </property>
   </widget>
   <zorder>labelPictureCat</zorder>
