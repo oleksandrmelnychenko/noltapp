@@ -24,25 +24,27 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    loginform.cpp \
-    colleaguesform.cpp \
-    salaryform.cpp \
-    officeform.cpp \
-    customshadoweffect.cpp
+    Views\Colleagues\ColleaguesView.cpp \
+    Windows\CustomShadoweffect.cpp \
+    Windows\Login\LoginWindow.cpp \
+    Windows\Main\MainWindow.cpp \
+    Views\Office\OfficeView.cpp \
+    Views\Salary\SalaryView.cpp
 
-HEADERS  += mainwindow.h \
-    loginform.h \
-    colleaguesform.h \
-    salaryform.h \
-    officeform.h \
-    customshadoweffect.h
+HEADERS  += \
+    Views\Colleagues\ColleaguesView.h \
+    Windows\CustomShadoweffect.h \
+    Windows\Login\LoginWindow.h \
+    Windows\Main\MainWindow.h \
+    Views\Office\OfficeView.h \
+    Views\Salary\SalaryView.h
 
-FORMS    += mainwindow.ui \
-    loginform.ui \
-    colleaguesform.ui \
-    salaryform.ui \
-    officeform.ui
+FORMS    += \
+    Views\Colleagues\ColleaguesView.ui \
+    Views\Salary\SalaryView.ui \
+    Views\Office\OfficeView.ui \
+    Windows\Login\LoginWindow.ui \
+    Windows\Main\MainWindow.ui
 
 RESOURCES += \
     images.qrc

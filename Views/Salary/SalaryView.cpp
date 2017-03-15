@@ -1,4 +1,4 @@
-#include "salaryform.h"
+#include "SalaryView.h"
 #include "ui_salaryform.h"
 
 SalaryForm::SalaryForm(QWidget *parent) :

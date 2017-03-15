@@ -1,4 +1,4 @@
-#include "officeform.h"
+#include "OfficeView.h"
 #include "ui_officeform.h"
 
 OfficeForm::OfficeForm(QWidget *parent) :

@@ -2,9 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "colleaguesform.h"
-#include "officeform.h"
-#include "salaryform.h"
+#include "ColleaguesView.h"
+#include "OfficeView.h"
+#include "SalaryView.h"
 #include <QDebug>
 #include <QMetaObject>
 #include <typeinfo>

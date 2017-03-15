@@ -1,4 +1,4 @@
-#include "loginform.h"
+#include "LoginWindow.h"
 #include "ui_loginform.h"
 #include <QIcon>
 #include <QPushButton>

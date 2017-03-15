@@ -1,4 +1,4 @@
-#include "colleaguesform.h"
+#include "ColleaguesView.h"
 #include "ui_colleaguesform.h"
 
 ColleaguesForm::ColleaguesForm(QWidget *parent) :
