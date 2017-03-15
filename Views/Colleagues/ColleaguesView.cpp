@@ -1,5 +1,5 @@
 #include "ColleaguesView.h"
-#include "ui_colleaguesform.h"
+#include "ui_ColleaguesView.h"
 
 ColleaguesForm::ColleaguesForm(QWidget *parent) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),

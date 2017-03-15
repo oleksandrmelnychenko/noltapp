@@ -1,5 +1,5 @@
 #include "LoginWindow.h"
-#include "ui_loginform.h"
+#include "ui_LoginWindow.h"
 #include <QIcon>
 #include <QPushButton>
 
@@ -11,22 +11,22 @@ LoginForm::LoginForm(QWidget *parent) :
     connect(ui->btnLogin, SIGNAL(clicked()), this, SLOT(login()));
     connect(ui->btnQuit, SIGNAL(clicked()), this, SLOT(close()));   
 
-    ui->lineEditLogin->installEventFilter(this);
-    ui->lineEditPassword->installEventFilter(this);
-    ui->labelLogin->installEventFilter(this);
-    ui->labelPassword->installEventFilter(this);
-    ui->labelPictureCat->installEventFilter(this);
-    ui->labelPictureNolt->installEventFilter(this);    
+    ui->txtLogin->installEventFilter(this);
+    ui->txtPassword->installEventFilter(this);
+    ui->lblLogin->installEventFilter(this);
+    ui->lblPassword->installEventFilter(this);
+    ui->lblPictureCat->installEventFilter(this);
+    ui->lblPictureNolt->installEventFilter(this);
 
-    ui->labelIncorrectLogin->hide();
+    ui->lblIncorrectLogin->hide();
 
-    if(!QString(ui->lineEditLogin->text()).isEmpty())
+    if(!QString(ui->txtLogin->text()).isEmpty())
     {
-       ui->labelLogin->setGeometry(92, 314, 120, 14);
+       ui->lblLogin->setGeometry(92, 314, 120, 14);
     }
-    if(!QString(ui->lineEditPassword->text()).isEmpty())
+    if(!QString(ui->txtPassword->text()).isEmpty())
     {
-       ui->labelPassword->setGeometry(92, 360, 120, 13);
+       ui->lblPassword->setGeometry(92, 360, 120, 13);
     }
 
     setAttribute(Qt::WA_TranslucentBackground);
@@ -35,7 +35,7 @@ LoginForm::LoginForm(QWidget *parent) :
     bodyShadow->setBlurRadius(35.0);
     bodyShadow->setDistance(5.0);
     bodyShadow->setColor(QColor(9,146,177));    
-    ui->labelPictureCat->setGraphicsEffect(bodyShadow);
+    ui->lblPictureCat->setGraphicsEffect(bodyShadow);
 }
 
 LoginForm::~LoginForm()
@@ -45,8 +45,8 @@ LoginForm::~LoginForm()
 
 void LoginForm::login()
 {
-    QString inputLogin = ui->lineEditLogin->text();
-    QString inputPassword = ui->lineEditPassword->text();
+    QString inputLogin = ui->txtLogin->text();
+    QString inputPassword = ui->txtPassword->text();
 
     if(inputLogin == mLogin && inputPassword == mPassword)
     {
@@ -56,7 +56,7 @@ void LoginForm::login()
     }
     else
     {
-       ui->labelIncorrectLogin->show();
+       ui->lblIncorrectLogin->show();
     }
 }
 
@@ -73,56 +73,56 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
 {
     if(event->type() == QEvent::FocusIn)
     {
-        if(object == ui->lineEditLogin || object == ui->labelLogin)
+        if(object == ui->txtLogin || object == ui->lblLogin)
         {
-            labelAnimation(ui->labelLogin, 250, 92, 314, 120, 14 );
-            ui->labelIncorrectLogin->hide();
+            labelAnimation(ui->lblLogin, 250, 92, 314, 120, 14 );
+            ui->lblIncorrectLogin->hide();
         }
-        if(object == ui->lineEditPassword || object == ui->labelPassword)
+        if(object == ui->txtPassword || object == ui->lblPassword)
         {
-            labelAnimation(ui->labelPassword, 250, 92, 360, 120, 13);
-            ui->labelIncorrectLogin->hide();
+            labelAnimation(ui->lblPassword, 250, 92, 360, 120, 13);
+            ui->lblIncorrectLogin->hide();
         }
     }
     if(event->type() == QEvent::MouseButtonPress)
     {
-        if(object == ui->labelLogin)
+        if(object == ui->lblLogin)
         {
-            labelAnimation(ui->labelLogin, 250, 92, 314, 120, 13);
-            ui->labelIncorrectLogin->hide();
-            ui->lineEditLogin->setFocus();
+            labelAnimation(ui->lblLogin, 250, 92, 314, 120, 13);
+            ui->lblIncorrectLogin->hide();
+            ui->txtLogin->setFocus();
         }
-        if(object == ui->labelPassword)
+        if(object == ui->lblPassword)
         {
-            labelAnimation(ui->labelPassword, 250, 92, 360, 120, 13);
-            ui->labelIncorrectLogin->hide();
-            ui->lineEditPassword->setFocus();
+            labelAnimation(ui->lblPassword, 250, 92, 360, 120, 13);
+            ui->lblIncorrectLogin->hide();
+            ui->txtPassword->setFocus();
         }
-        if(object == ui->labelPictureCat || object == ui->labelPictureNolt)
+        if(object == ui->lblPictureCat || object == ui->lblPictureNolt)
         {
-           if(QString(ui->lineEditLogin->text()).isEmpty())
+           if(QString(ui->txtLogin->text()).isEmpty())
            {
-              labelAnimation(ui->labelLogin, 250, 92, 332, 120, 13);
+              labelAnimation(ui->lblLogin, 250, 92, 332, 120, 13);
 
            }
-           if(QString(ui->lineEditPassword->text()).isEmpty())
+           if(QString(ui->txtPassword->text()).isEmpty())
            {
-              labelAnimation(ui->labelPassword, 250, 92, 378, 120, 13);
+              labelAnimation(ui->lblPassword, 250, 92, 378, 120, 13);
 
            }
-           ui->lineEditPassword->clearFocus();
-           ui->lineEditLogin->clearFocus();
+           ui->txtPassword->clearFocus();
+           ui->txtLogin->clearFocus();
         }
     }
     if(event->type() == QEvent::FocusOut)
     {
-        if(object == ui->lineEditLogin && QString(ui->lineEditLogin->text()).isEmpty())
+        if(object == ui->txtLogin && QString(ui->txtLogin->text()).isEmpty())
         {
-            labelAnimation(ui->labelLogin, 250, 92, 332, 120, 13);
+            labelAnimation(ui->lblLogin, 250, 92, 332, 120, 13);
         }
-        if(object == ui->lineEditPassword && QString(ui->lineEditPassword->text()).isEmpty())
+        if(object == ui->txtPassword && QString(ui->txtPassword->text()).isEmpty())
         {
-            labelAnimation(ui->labelPassword, 250, 92, 378, 120, 13);
+            labelAnimation(ui->lblPassword, 250, 92, 378, 120, 13);
         }
     }
     return false;

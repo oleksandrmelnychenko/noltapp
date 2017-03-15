@@ -34,7 +34,7 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QLabel" name="labelPictureNolt">
+  <widget class="QLabel" name="lblPictureNolt">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -81,7 +81,7 @@
     <enum>Qt::AutoText</enum>
    </property>
    <property name="pixmap">
-    <pixmap resource="images.qrc">:/new/login/images/loginBackground.png</pixmap>
+    <pixmap resource="../../images.qrc">:/Windows/Login/Images/loginBackground.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -140,7 +140,7 @@ QPushButton#btnLogin:pressed{
     <string>LOG IN</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditLogin">
+  <widget class="QLineEdit" name="txtLogin">
    <property name="geometry">
     <rect>
      <x>92</x>
@@ -165,7 +165,7 @@ background-color:transparent;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditPassword">
+  <widget class="QLineEdit" name="txtPassword">
    <property name="geometry">
     <rect>
      <x>92</x>
@@ -200,7 +200,7 @@ background-color:transparent;
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="labelLogin">
+  <widget class="QLabel" name="lblLogin">
    <property name="geometry">
     <rect>
      <x>92</x>
@@ -232,7 +232,7 @@ background-color:transparent;</string>
     <string>NAME</string>
    </property>
   </widget>
-  <widget class="QLabel" name="labelPassword">
+  <widget class="QLabel" name="lblPassword">
    <property name="geometry">
     <rect>
      <x>92</x>
@@ -258,7 +258,7 @@ background-color:transparent;</string>
     <string>PASSWORD</string>
    </property>
   </widget>
-  <widget class="QLabel" name="labelIncorrectLogin">
+  <widget class="QLabel" name="lblIncorrectLogin">
    <property name="geometry">
     <rect>
      <x>92</x>
@@ -281,7 +281,7 @@ background-color:transparent;</string>
     <string>Login and password is not correct</string>
    </property>
   </widget>
-  <widget class="QLabel" name="labelPictureCat">
+  <widget class="QLabel" name="lblPictureCat">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -311,17 +311,14 @@ background-color:transparent;</string>
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <property name="text">
-    <string/>
-   </property>
    <property name="pixmap">
-    <pixmap resource="images.qrc">:/new/login/images/loginFormCat.png</pixmap>
+    <pixmap resource="../../images.qrc">:/Windows/Login/Images/loginFormCat.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditSimpleLine">
+  <widget class="QLineEdit" name="txtSimpleLine">
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -364,7 +361,7 @@ color : #d0d0d0;
 
 qproperty-icon: url(&quot; &quot;); 
 qproperty-iconSize: 16px ; 
-background-image: url(&quot;:/new/login/images/closeIcon.png&quot;); 
+background-image: url(&quot;:/Windows/Login/Images/closeIcon.png&quot;); 
 background-repeat: no-repeat; 
 background-position:top left;
 
@@ -373,7 +370,7 @@ background-position:top left;
 QPushButton#btnQuit:hover{ 
 qproperty-icon: url(&quot; &quot;); 
 qproperty-iconSize: 16px 16px; 
-background-image: url(&quot;:/new/login/images/closeIcon.png&quot;); 
+background-image: url(&quot;:/Windows/Login/Images/closeIcon.png&quot;); 
 background-repeat: no-repeat; 
 background-position:top right;
 } 
@@ -381,7 +378,7 @@ background-position:top right;
 QPushButton#btnQuit:pressed{ 
 qproperty-icon: url(&quot; &quot;); 
 qproperty-iconSize: 16px 16px; 
-background-image: url(&quot;:/new/login/images/closeIcon.png&quot;); 
+background-image: url(&quot;:/Windows/Login/Images/closeIcon.png&quot;); 
 background-repeat: no-repeat; 
 background-position:top right;
 }</string>
@@ -390,19 +387,19 @@ background-position:top right;
     <string/>
    </property>
   </widget>
-  <zorder>labelPictureCat</zorder>
-  <zorder>labelPictureNolt</zorder>
+  <zorder>lblPictureCat</zorder>
+  <zorder>lblPictureNolt</zorder>
   <zorder>btnLogin</zorder>
-  <zorder>lineEditLogin</zorder>
-  <zorder>lineEditPassword</zorder>
-  <zorder>labelLogin</zorder>
-  <zorder>labelPassword</zorder>
-  <zorder>labelIncorrectLogin</zorder>
-  <zorder>lineEditSimpleLine</zorder>
+  <zorder>txtLogin</zorder>
+  <zorder>txtPassword</zorder>
+  <zorder>lblLogin</zorder>
+  <zorder>lblPassword</zorder>
+  <zorder>lblIncorrectLogin</zorder>
+  <zorder>txtSimpleLine</zorder>
   <zorder>btnQuit</zorder>
  </widget>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../../images.qrc"/>
  </resources>
  <connections/>
 </ui>

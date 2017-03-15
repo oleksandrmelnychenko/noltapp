@@ -1,7 +1,7 @@
 <RCC>
-    <qresource prefix="/new/login">
-        <file>images/loginBackground.png</file>
-        <file>images/loginFormCat.png</file>
-        <file>images/closeIcon.png</file>
+    <qresource prefix="/Windows/Login">
+        <file>Images/closeIcon.png</file>
+        <file>Images/loginBackground.png</file>
+        <file>Images/loginFormCat.png</file>
     </qresource>
 </RCC>

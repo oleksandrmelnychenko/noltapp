@@ -5,8 +5,8 @@
 #include <QPropertyAnimation>
 #include <QMouseEvent>
 #include <QGraphicsDropShadowEffect>
-#include "MainWindow.h"
-#include "CustomShadoweffect.h"
+#include "Windows/Main/MainWindow.h"
+#include "Windows/CustomShadoweffect.h"
 
 namespace Ui {
     class LoginForm;
