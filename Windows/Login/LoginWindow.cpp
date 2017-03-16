@@ -22,7 +22,7 @@ LoginForm::LoginForm(QWidget *parent) :
 
     if(!QString(ui->txtLogin->text()).isEmpty())
     {
-       ui->lblLogin->setGeometry(92, 314, 120, 14);
+       ui->lblLogin->setGeometry(92, 314, 120, 13);
     }
     if(!QString(ui->txtPassword->text()).isEmpty())
     {
@@ -75,7 +75,7 @@ bool LoginForm::eventFilter(QObject *object, QEvent *event)
     {
         if(object == ui->txtLogin || object == ui->lblLogin)
         {
-            labelAnimation(ui->lblLogin, 250, 92, 314, 120, 14 );
+            labelAnimation(ui->lblLogin, 250, 92, 314, 120, 13 );
             ui->lblIncorrectLogin->hide();
         }
         if(object == ui->txtPassword || object == ui->lblPassword)

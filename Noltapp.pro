@@ -29,7 +29,10 @@ SOURCES += main.cpp\
     Windows\Login\LoginWindow.cpp \
     Windows\Main\MainWindow.cpp \
     Views\Office\OfficeView.cpp \
-    Views\Salary\SalaryView.cpp
+    Views\Salary\SalaryView.cpp \
+    CommonUiControllers/Login/LoginController.cpp \
+    CommonUiControllers/Login/EventFilters/LabelsEventFilters.cpp \
+    CommonUiControllers/Login/EventFilters/LineEditsEventFilters.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -37,7 +40,10 @@ HEADERS  += \
     Windows\Login\LoginWindow.h \
     Windows\Main\MainWindow.h \
     Views\Office\OfficeView.h \
-    Views\Salary\SalaryView.h
+    Views\Salary\SalaryView.h \
+    CommonUiControllers/Login/LoginController.h \
+    CommonUiControllers/Login/EventFilters/LabelsEventFilters.h \
+    CommonUiControllers/Login/EventFilters/LineEditsEventFilters.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \
