@@ -31,8 +31,8 @@ SOURCES += main.cpp\
     Views\Office\OfficeView.cpp \
     Views\Salary\SalaryView.cpp \
     CommonUiControllers/Login/LoginController.cpp \
-    CommonUiControllers/Login/EventFilters/LabelsEventFilters.cpp \
-    CommonUiControllers/Login/EventFilters/LineEditsEventFilters.cpp
+    CommonUiControllers/Login/LoginLabels.cpp \
+    CommonUiControllers/Login/LoginLineEdits.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -42,8 +42,8 @@ HEADERS  += \
     Views\Office\OfficeView.h \
     Views\Salary\SalaryView.h \
     CommonUiControllers/Login/LoginController.h \
-    CommonUiControllers/Login/EventFilters/LabelsEventFilters.h \
-    CommonUiControllers/Login/EventFilters/LineEditsEventFilters.h
+    CommonUiControllers/Login/LoginLabels.h \
+    CommonUiControllers/Login/LoginLineEdits.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \

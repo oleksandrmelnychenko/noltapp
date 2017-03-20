@@ -34,7 +34,7 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QLabel" name="lblPictureNolt">
+  <widget class="LoginLabels" name="lblPictureNolt">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -116,9 +116,6 @@
      <bold>true</bold>
     </font>
    </property>
-   <property name="focusPolicy">
-    <enum>Qt::StrongFocus</enum>
-   </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#btnLogin{
 	border : 1px solid #d0d0d0;
@@ -140,7 +137,7 @@ QPushButton#btnLogin:pressed{
     <string>LOG IN</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtLogin">
+  <widget class="LoginLineEdits" name="txtLogin">
    <property name="geometry">
     <rect>
      <x>92</x>
@@ -155,6 +152,9 @@ QPushButton#btnLogin:pressed{
      <pointsize>10</pointsize>
     </font>
    </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">border:none;
 border-bottom:1px solid #797979;
@@ -165,7 +165,7 @@ background-color:transparent;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtPassword">
+  <widget class="LoginLineEdits" name="txtPassword">
    <property name="geometry">
     <rect>
      <x>92</x>
@@ -179,6 +179,9 @@ background-color:transparent;</string>
      <family>Proxima Nova Th</family>
      <pointsize>10</pointsize>
     </font>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
    </property>
    <property name="autoFillBackground">
     <bool>false</bool>
@@ -200,7 +203,7 @@ background-color:transparent;
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="lblLogin">
+  <widget class="LoginLabels" name="lblLogin">
    <property name="geometry">
     <rect>
      <x>92</x>
@@ -221,6 +224,9 @@ background-color:transparent;
    <property name="mouseTracking">
     <bool>false</bool>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">color : #797979;
 background-color:transparent;</string>
@@ -232,7 +238,7 @@ background-color:transparent;</string>
     <string>NAME</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblPassword">
+  <widget class="LoginLabels" name="lblPassword">
    <property name="geometry">
     <rect>
      <x>92</x>
@@ -281,7 +287,7 @@ background-color:transparent;</string>
     <string>Login and password is not correct</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblPictureCat">
+  <widget class="LoginLabels" name="lblPictureCat">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -330,6 +336,12 @@ background-color:transparent;</string>
      <height>1</height>
     </rect>
    </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">border:none;
 border-top: 1px solid #0992b1;
@@ -352,6 +364,9 @@ background:transparent;</string>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#btnQuit{ 
@@ -387,6 +402,16 @@ background-position:top right;
     <string/>
    </property>
   </widget>
+  <widget class="QWidget" name="frame" native="true">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>5</y>
+     <width>498</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
   <zorder>lblPictureCat</zorder>
   <zorder>lblPictureNolt</zorder>
   <zorder>btnLogin</zorder>
@@ -397,7 +422,26 @@ background-position:top right;
   <zorder>lblIncorrectLogin</zorder>
   <zorder>txtSimpleLine</zorder>
   <zorder>btnQuit</zorder>
+  <zorder>frame</zorder>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LoginLabels</class>
+   <extends>QLabel</extends>
+   <header location="global">CommonUiControllers\Login\LoginLabels.h</header>
+  </customwidget>
+  <customwidget>
+   <class>LoginLineEdits</class>
+   <extends>QLineEdit</extends>
+   <header location="global">CommonUiControllers\Login\LoginLineEdits.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>btnLogin</tabstop>
+  <tabstop>txtLogin</tabstop>
+  <tabstop>txtPassword</tabstop>
+  <tabstop>btnQuit</tabstop>
+ </tabstops>
  <resources>
   <include location="../../images.qrc"/>
  </resources>

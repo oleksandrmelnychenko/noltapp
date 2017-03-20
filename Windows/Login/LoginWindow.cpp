@@ -3,20 +3,26 @@
 #include <QIcon>
 #include <QPushButton>
 
-LoginForm::LoginForm(QWidget *parent) :
+LoginWindow::LoginWindow(QWidget *parent) :
     QWidget(parent, Qt::FramelessWindowHint | Qt::Window | Qt::CustomizeWindowHint),
     ui(new Ui::LoginForm)
 {
     ui->setupUi(this);
-    connect(ui->btnLogin, SIGNAL(clicked()), this, SLOT(login()));
-    connect(ui->btnQuit, SIGNAL(clicked()), this, SLOT(close()));   
 
-    ui->txtLogin->installEventFilter(this);
-    ui->txtPassword->installEventFilter(this);
-    ui->lblLogin->installEventFilter(this);
-    ui->lblPassword->installEventFilter(this);
-    ui->lblPictureCat->installEventFilter(this);
-    ui->lblPictureNolt->installEventFilter(this);
+    mAnimationController = new LoginController();
+
+    connect(ui->btnLogin, SIGNAL(clicked()), this, SLOT(login()));
+    connect(ui->btnQuit, SIGNAL(clicked()), this, SLOT(close()));
+
+    connect(ui->lblLogin, SIGNAL(inFocus()), this, SLOT(doLabelLoginAnimation()));
+    connect(ui->lblPassword, SIGNAL(inFocus()), this, SLOT(doLabelPasswordAnimation()));
+    connect(ui->lblPictureCat, SIGNAL(inFocus()), this, SLOT(lostFocusOnLineEditsByClickOnPictures()));
+    connect(ui->lblPictureNolt, SIGNAL(inFocus()), this, SLOT(lostFocusOnLineEditsByClickOnPictures()));
+
+    connect(ui->txtLogin, SIGNAL(inFocus()), this, SLOT(doLabelLoginAnimation()));
+    connect(ui->txtLogin, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEdits()));
+    connect(ui->txtPassword, SIGNAL(inFocus()), this, SLOT(doLabelPasswordAnimation()));
+    connect(ui->txtPassword, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEdits()));
 
     ui->lblIncorrectLogin->hide();
 
@@ -35,15 +41,15 @@ LoginForm::LoginForm(QWidget *parent) :
     bodyShadow->setBlurRadius(35.0);
     bodyShadow->setDistance(5.0);
     bodyShadow->setColor(QColor(9,146,177));    
-    ui->lblPictureCat->setGraphicsEffect(bodyShadow);
+    ui->lblPictureCat->setGraphicsEffect(bodyShadow);    
 }
 
-LoginForm::~LoginForm()
+LoginWindow::~LoginWindow()
 {
     delete ui;
 }
 
-void LoginForm::login()
+void LoginWindow::login()
 {
     QString inputLogin = ui->txtLogin->text();
     QString inputPassword = ui->txtPassword->text();
@@ -60,84 +66,56 @@ void LoginForm::login()
     }
 }
 
-void LoginForm::labelAnimation(QObject *object, int animationDuration, int x, int y, int width, int height)
+void LoginWindow::doLabelLoginAnimation()
 {
-    QPropertyAnimation* animation = new QPropertyAnimation(object,"geometry");
-    animation->setDuration(animationDuration);
-    animation->setEasingCurve(QEasingCurve::Linear);
-    animation->setEndValue(QRect(x, y, width, height));
-    animation->start(QAbstractAnimation::DeleteWhenStopped);
+    mAnimationController->labelAnimation(ui->lblLogin, 250, 92, 314, 120, 13 );
+    ui->lblIncorrectLogin->hide();
+    ui->txtLogin->setFocus();
 }
 
-bool LoginForm::eventFilter(QObject *object, QEvent *event)
+void LoginWindow::doLabelPasswordAnimation()
 {
-    if(event->type() == QEvent::FocusIn)
-    {
-        if(object == ui->txtLogin || object == ui->lblLogin)
-        {
-            labelAnimation(ui->lblLogin, 250, 92, 314, 120, 13 );
-            ui->lblIncorrectLogin->hide();
-        }
-        if(object == ui->txtPassword || object == ui->lblPassword)
-        {
-            labelAnimation(ui->lblPassword, 250, 92, 360, 120, 13);
-            ui->lblIncorrectLogin->hide();
-        }
-    }
-    if(event->type() == QEvent::MouseButtonPress)
-    {
-        if(object == ui->lblLogin)
-        {
-            labelAnimation(ui->lblLogin, 250, 92, 314, 120, 13);
-            ui->lblIncorrectLogin->hide();
-            ui->txtLogin->setFocus();
-        }
-        if(object == ui->lblPassword)
-        {
-            labelAnimation(ui->lblPassword, 250, 92, 360, 120, 13);
-            ui->lblIncorrectLogin->hide();
-            ui->txtPassword->setFocus();
-        }
-        if(object == ui->lblPictureCat || object == ui->lblPictureNolt)
-        {
-           if(QString(ui->txtLogin->text()).isEmpty())
-           {
-              labelAnimation(ui->lblLogin, 250, 92, 332, 120, 13);
-
-           }
-           if(QString(ui->txtPassword->text()).isEmpty())
-           {
-              labelAnimation(ui->lblPassword, 250, 92, 378, 120, 13);
-
-           }
-           ui->txtPassword->clearFocus();
-           ui->txtLogin->clearFocus();
-        }
-    }
-    if(event->type() == QEvent::FocusOut)
-    {
-        if(object == ui->txtLogin && QString(ui->txtLogin->text()).isEmpty())
-        {
-            labelAnimation(ui->lblLogin, 250, 92, 332, 120, 13);
-        }
-        if(object == ui->txtPassword && QString(ui->txtPassword->text()).isEmpty())
-        {
-            labelAnimation(ui->lblPassword, 250, 92, 378, 120, 13);
-        }
-    }
-    return false;
+    mAnimationController->labelAnimation(ui->lblPassword, 250, 92, 360, 120, 13 );
+    ui->lblIncorrectLogin->hide();
+    ui->txtPassword->setFocus();
 }
 
-void LoginForm::mousePressEvent(QMouseEvent *event)
+void LoginWindow::lostFocusOnLineEdits()
+{
+    if(QString(ui->txtLogin->text()).isEmpty())
+    {
+       mAnimationController->labelAnimation(ui->lblLogin, 250, 92, 332, 120, 13);
+    }
+    if(QString(ui->txtPassword->text()).isEmpty())
+    {
+       mAnimationController->labelAnimation(ui->lblPassword, 250, 92, 378, 120, 13);
+    }
+}
+
+void LoginWindow::lostFocusOnLineEditsByClickOnPictures()
+{
+    if(QString(ui->txtLogin->text()).isEmpty())
+    {
+       mAnimationController->labelAnimation(ui->lblLogin, 250, 92, 332, 120, 13);
+    }
+    if(QString(ui->txtPassword->text()).isEmpty())
+    {
+       mAnimationController->labelAnimation(ui->lblPassword, 250, 92, 378, 120, 13);
+    }
+    ui->txtLogin->clearFocus();
+    ui->txtPassword->clearFocus();
+}
+
+void LoginWindow::mousePressEvent(QMouseEvent *event)
 {
     m_nMouseClick_X_Coordinate = event->x();
     m_nMouseClick_Y_Coordinate = event->y();    
 }
 
-void LoginForm::mouseMoveEvent(QMouseEvent *event)
+void LoginWindow::mouseMoveEvent(QMouseEvent *event)
 {
-    if(m_nMouseClick_X_Coordinate >= 0 && m_nMouseClick_X_Coordinate <= 497 &&
-            m_nMouseClick_Y_Coordinate >=0 && m_nMouseClick_Y_Coordinate <= 30)
+    if(m_nMouseClick_X_Coordinate >= 5 && m_nMouseClick_X_Coordinate <= 498 &&
+            m_nMouseClick_Y_Coordinate >= 5 && m_nMouseClick_Y_Coordinate <= 21)
     {
         move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
     }
