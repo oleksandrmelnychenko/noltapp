@@ -3,10 +3,12 @@
 
 #include <QWidget>
 #include <QMouseEvent>
+#include <QLabel>
+#include <QLineEdit>
 #include <QGraphicsDropShadowEffect>
 #include "Windows/Main/MainWindow.h"
 #include "Windows/CustomShadoweffect.h"
-#include "CommonUiControllers/Login/LoginController.h"
+#include "CommonUiControllers/AnimationController.h"
 
 namespace Ui {
     class LoginForm;
@@ -26,8 +28,9 @@ protected:
 
 private slots:
     void login();
-    void doLabelLoginAnimation();
-    void doLabelPasswordAnimation();
+    //void doLabelLoginAnimation();
+    //void doLabelPasswordAnimation();
+    void doLabelAnimation(QLabel *label, QLineEdit *lineEdit, int y);
     void lostFocusOnLineEdits();
     void lostFocusOnLineEditsByClickOnPictures();
 
@@ -37,7 +40,9 @@ private:
     QString mLogin = "a";
     QString mPassword = "1";
     MainWindow* mMainWindow;
-    LoginController* mAnimationController;
+    AnimationController* mAnimationController;
+
+    int mAnimationDuration = 250;
 
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;

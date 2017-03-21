@@ -7,22 +7,25 @@ LoginWindow::LoginWindow(QWidget *parent) :
     QWidget(parent, Qt::FramelessWindowHint | Qt::Window | Qt::CustomizeWindowHint),
     ui(new Ui::LoginForm)
 {
-    ui->setupUi(this);
+    ui->setupUi(this);   
+    mAnimationController = new AnimationController();
 
-    mAnimationController = new LoginController();
-
+    connect(ui->lblPictureCat, SIGNAL(inFocus()), this,SLOT(lostFocusOnLineEditsByClickOnPictures()));
+    connect(ui->lblPictureNolt, SIGNAL(inFocus()), this,SLOT(lostFocusOnLineEditsByClickOnPictures()));
+    connect(ui->txtLogin, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEdits()));
+    connect(ui->txtPassword, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEdits()));
     connect(ui->btnLogin, SIGNAL(clicked()), this, SLOT(login()));
     connect(ui->btnQuit, SIGNAL(clicked()), this, SLOT(close()));
 
-    connect(ui->lblLogin, SIGNAL(inFocus()), this, SLOT(doLabelLoginAnimation()));
-    connect(ui->lblPassword, SIGNAL(inFocus()), this, SLOT(doLabelPasswordAnimation()));
-    connect(ui->lblPictureCat, SIGNAL(inFocus()), this, SLOT(lostFocusOnLineEditsByClickOnPictures()));
-    connect(ui->lblPictureNolt, SIGNAL(inFocus()), this, SLOT(lostFocusOnLineEditsByClickOnPictures()));
+    connect(ui->lblLogin, &LoginLabels::inFocus, this,
+            [this]{doLabelAnimation(ui->lblLogin,ui->txtLogin, 314);});
+    connect(ui->txtLogin, &LoginLineEdits::inFocus, this,
+            [this]{doLabelAnimation(ui->lblLogin,ui->txtLogin, 314);});
 
-    connect(ui->txtLogin, SIGNAL(inFocus()), this, SLOT(doLabelLoginAnimation()));
-    connect(ui->txtLogin, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEdits()));
-    connect(ui->txtPassword, SIGNAL(inFocus()), this, SLOT(doLabelPasswordAnimation()));
-    connect(ui->txtPassword, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEdits()));
+    connect(ui->lblPassword, &LoginLabels::inFocus, this,
+            [this]{doLabelAnimation(ui->lblPassword,ui->txtPassword, 360);});
+    connect(ui->txtPassword, &LoginLineEdits::inFocus, this,
+            [this]{doLabelAnimation(ui->lblPassword,ui->txtPassword, 360);});
 
     ui->lblIncorrectLogin->hide();
 
@@ -66,29 +69,22 @@ void LoginWindow::login()
     }
 }
 
-void LoginWindow::doLabelLoginAnimation()
+void LoginWindow::doLabelAnimation(QLabel *label, QLineEdit *lineEdit, int y)
 {
-    mAnimationController->labelAnimation(ui->lblLogin, 250, 92, 314, 120, 13 );
+    mAnimationController->labelAnimationByY(label, mAnimationDuration, y);
     ui->lblIncorrectLogin->hide();
-    ui->txtLogin->setFocus();
-}
-
-void LoginWindow::doLabelPasswordAnimation()
-{
-    mAnimationController->labelAnimation(ui->lblPassword, 250, 92, 360, 120, 13 );
-    ui->lblIncorrectLogin->hide();
-    ui->txtPassword->setFocus();
+    lineEdit->setFocus();
 }
 
 void LoginWindow::lostFocusOnLineEdits()
 {
     if(QString(ui->txtLogin->text()).isEmpty())
     {
-       mAnimationController->labelAnimation(ui->lblLogin, 250, 92, 332, 120, 13);
+       mAnimationController->labelAnimationByY(ui->lblLogin, mAnimationDuration, 332);
     }
     if(QString(ui->txtPassword->text()).isEmpty())
     {
-       mAnimationController->labelAnimation(ui->lblPassword, 250, 92, 378, 120, 13);
+       mAnimationController->labelAnimationByY(ui->lblPassword, mAnimationDuration, 378);
     }
 }
 
@@ -96,11 +92,11 @@ void LoginWindow::lostFocusOnLineEditsByClickOnPictures()
 {
     if(QString(ui->txtLogin->text()).isEmpty())
     {
-       mAnimationController->labelAnimation(ui->lblLogin, 250, 92, 332, 120, 13);
+       mAnimationController->labelAnimationByY(ui->lblLogin, mAnimationDuration, 332);
     }
     if(QString(ui->txtPassword->text()).isEmpty())
     {
-       mAnimationController->labelAnimation(ui->lblPassword, 250, 92, 378, 120, 13);
+       mAnimationController->labelAnimationByY(ui->lblPassword, mAnimationDuration, 378);
     }
     ui->txtLogin->clearFocus();
     ui->txtPassword->clearFocus();
