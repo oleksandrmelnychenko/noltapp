@@ -109,7 +109,8 @@ void LoginWindow::lostFocusOnLineEditsByClickOnPictures()
 void LoginWindow::mousePressEvent(QMouseEvent *event)
 {
     m_nMouseClick_X_Coordinate = event->x();
-    m_nMouseClick_Y_Coordinate = event->y();    
+    m_nMouseClick_Y_Coordinate = event->y();
+
 }
 
 void LoginWindow::mouseMoveEvent(QMouseEvent *event)
@@ -119,6 +120,13 @@ void LoginWindow::mouseMoveEvent(QMouseEvent *event)
     {
         move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
     }
+
+}
+
+void LoginWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+   m_nMouseClick_X_Coordinate = 0;
+   m_nMouseClick_Y_Coordinate = 0;
 }
 
 

@@ -9,6 +9,7 @@
 #include "Windows/Main/MainWindow.h"
 #include "Windows/CustomShadoweffect.h"
 #include "CommonUiControllers/AnimationController.h"
+#include <QPoint>
 
 namespace Ui {
     class LoginForm;
@@ -25,6 +26,7 @@ public:
 protected:
     void mousePressEvent(QMouseEvent* event);
     void mouseMoveEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent *event);
 
 private slots:
     void login();    
@@ -40,6 +42,8 @@ private:
     QString mPassword = "1";
     MainWindow* mMainWindow;
     AnimationController* mAnimationController;
+
+    QPoint mpos;
 
     int mAnimationDuration = 250;
 
