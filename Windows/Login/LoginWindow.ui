@@ -256,6 +256,9 @@ background-color:transparent;</string>
    <property name="cursor">
     <cursorShape>IBeamCursor</cursorShape>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">color : #797979;
 background-color:transparent;</string>

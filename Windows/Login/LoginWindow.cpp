@@ -10,8 +10,10 @@ LoginWindow::LoginWindow(QWidget *parent) :
     ui->setupUi(this);   
     mAnimationController = new AnimationController();
 
-    connect(ui->lblPictureCat, SIGNAL(inFocus()), this,SLOT(lostFocusOnLineEditsByClickOnPictures()));
-    connect(ui->lblPictureNolt, SIGNAL(inFocus()), this,SLOT(lostFocusOnLineEditsByClickOnPictures()));
+    connect(ui->lblPictureCat, SIGNAL(inFocus()), this,
+            SLOT(lostFocusOnLineEditsByClickOnPictures()));
+    connect(ui->lblPictureNolt, SIGNAL(inFocus()), this,
+            SLOT(lostFocusOnLineEditsByClickOnPictures()));
     connect(ui->txtLogin, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEdits()));
     connect(ui->txtPassword, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEdits()));
     connect(ui->btnLogin, SIGNAL(clicked()), this, SLOT(login()));
@@ -31,7 +33,7 @@ LoginWindow::LoginWindow(QWidget *parent) :
 
     if(!QString(ui->txtLogin->text()).isEmpty())
     {
-       ui->lblLogin->setGeometry(92, 314, 120, 13);
+       ui->lblLogin->setGeometry(92, 314, 120, 13);       
     }
     if(!QString(ui->txtPassword->text()).isEmpty())
     {
@@ -77,40 +79,33 @@ void LoginWindow::setFocusOnLineEdit(QLineEdit *lineEdint)
 void LoginWindow::doLabelAnimation(QLabel *label, int y)
 {
     mAnimationController->labelAnimationByY(label, mAnimationDuration, y);
-    ui->lblIncorrectLogin->hide();
+    ui->lblIncorrectLogin->hide();    
 }
 
 void LoginWindow::lostFocusOnLineEdits() // or two methods to txlLogin and txtPassword
 {
     if(QString(ui->txtLogin->text()).isEmpty())
     {
-       mAnimationController->labelAnimationByY(ui->lblLogin, mAnimationDuration, 332);
+       mAnimationController->labelAnimationByY(ui->lblLogin, mAnimationDuration, 332);       
     }
     if(QString(ui->txtPassword->text()).isEmpty())
     {
-       mAnimationController->labelAnimationByY(ui->lblPassword, mAnimationDuration, 378);
+       mAnimationController->labelAnimationByY(ui->lblPassword, mAnimationDuration, 378);       
     }
 }
 
 void LoginWindow::lostFocusOnLineEditsByClickOnPictures()
 {
-    if(QString(ui->txtLogin->text()).isEmpty())
-    {
-       mAnimationController->labelAnimationByY(ui->lblLogin, mAnimationDuration, 332);
-    }
-    if(QString(ui->txtPassword->text()).isEmpty())
-    {
-       mAnimationController->labelAnimationByY(ui->lblPassword, mAnimationDuration, 378);
-    }
     ui->txtLogin->clearFocus();
     ui->txtPassword->clearFocus();
 }
 
 void LoginWindow::mousePressEvent(QMouseEvent *event)
 {
+    //ui->txtLogin->clearFocus();
+    //ui->txtPassword->clearFocus();
     m_nMouseClick_X_Coordinate = event->x();
     m_nMouseClick_Y_Coordinate = event->y();
-
 }
 
 void LoginWindow::mouseMoveEvent(QMouseEvent *event)
@@ -118,9 +113,10 @@ void LoginWindow::mouseMoveEvent(QMouseEvent *event)
     if(m_nMouseClick_X_Coordinate >= 5 && m_nMouseClick_X_Coordinate <= 498 &&
             m_nMouseClick_Y_Coordinate >= 5 && m_nMouseClick_Y_Coordinate <= 21)
     {
+        ui->txtLogin->clearFocus();
+        ui->txtPassword->clearFocus();
         move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
     }
-
 }
 
 void LoginWindow::mouseReleaseEvent(QMouseEvent *event)
