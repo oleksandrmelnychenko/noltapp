@@ -18,14 +18,14 @@ LoginWindow::LoginWindow(QWidget *parent) :
     connect(ui->btnQuit, SIGNAL(clicked()), this, SLOT(close()));
 
     connect(ui->lblLogin, &LoginLabels::inFocus, this,
-            [this]{doLabelAnimation(ui->lblLogin,ui->txtLogin, 314);});
-    connect(ui->txtLogin, &LoginLineEdits::inFocus, this,
-            [this]{doLabelAnimation(ui->lblLogin,ui->txtLogin, 314);});
-
+            [this]{setFocusOnLineEdit(ui->txtLogin);});
     connect(ui->lblPassword, &LoginLabels::inFocus, this,
-            [this]{doLabelAnimation(ui->lblPassword,ui->txtPassword, 360);});
+            [this]{setFocusOnLineEdit(ui->txtPassword);});
+
+    connect(ui->txtLogin, &LoginLineEdits::inFocus, this,
+            [this]{doLabelAnimation(ui->lblLogin, 314);});
     connect(ui->txtPassword, &LoginLineEdits::inFocus, this,
-            [this]{doLabelAnimation(ui->lblPassword,ui->txtPassword, 360);});
+            [this]{doLabelAnimation(ui->lblPassword, 360);});
 
     ui->lblIncorrectLogin->hide();
 
@@ -69,14 +69,18 @@ void LoginWindow::login()
     }
 }
 
-void LoginWindow::doLabelAnimation(QLabel *label, QLineEdit *lineEdit, int y)
+void LoginWindow::setFocusOnLineEdit(QLineEdit *lineEdint)
+{
+    lineEdint->setFocus();
+}
+
+void LoginWindow::doLabelAnimation(QLabel *label, int y)
 {
     mAnimationController->labelAnimationByY(label, mAnimationDuration, y);
     ui->lblIncorrectLogin->hide();
-    lineEdit->setFocus();
 }
 
-void LoginWindow::lostFocusOnLineEdits()
+void LoginWindow::lostFocusOnLineEdits() // or two methods to txlLogin and txtPassword
 {
     if(QString(ui->txtLogin->text()).isEmpty())
     {

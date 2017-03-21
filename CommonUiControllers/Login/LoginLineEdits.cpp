@@ -15,8 +15,7 @@ void LoginLineEdits::focusOutEvent(QFocusEvent *e)
 void LoginLineEdits::mousePressEvent(QMouseEvent *e)
 {
     if(e->button() == Qt::LeftButton)
-    {
-        //QLineEdit::setFocus();
+    {        
         emit inFocus();
     }
 }

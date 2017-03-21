@@ -27,10 +27,9 @@ protected:
     void mouseMoveEvent(QMouseEvent* event);
 
 private slots:
-    void login();
-    //void doLabelLoginAnimation();
-    //void doLabelPasswordAnimation();
-    void doLabelAnimation(QLabel *label, QLineEdit *lineEdit, int y);
+    void login();    
+    void setFocusOnLineEdit(QLineEdit* lineEdint);
+    void doLabelAnimation(QLabel *label, int y);
     void lostFocusOnLineEdits();
     void lostFocusOnLineEditsByClickOnPictures();
 
