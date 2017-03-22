@@ -32,7 +32,8 @@ private slots:
     void login();    
     void setFocusOnLineEdit(QLineEdit* lineEdint);
     void doLabelAnimation(QLabel *label, int y);
-    void lostFocusOnLineEdits();
+    void lostFocusOnLineEditLogin();
+    void lostFocusOnLineEditPassword();
     void lostFocusOnLineEditsByClickOnPictures();
 
 private:

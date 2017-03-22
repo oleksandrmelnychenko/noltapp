@@ -14,8 +14,8 @@ LoginWindow::LoginWindow(QWidget *parent) :
             SLOT(lostFocusOnLineEditsByClickOnPictures()));
     connect(ui->lblPictureNolt, SIGNAL(inFocus()), this,
             SLOT(lostFocusOnLineEditsByClickOnPictures()));
-    connect(ui->txtLogin, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEdits()));
-    connect(ui->txtPassword, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEdits()));
+    connect(ui->txtLogin, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditLogin()));
+    connect(ui->txtPassword, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditPassword()));
     connect(ui->btnLogin, SIGNAL(clicked()), this, SLOT(login()));
     connect(ui->btnQuit, SIGNAL(clicked()), this, SLOT(close()));
 
@@ -82,15 +82,19 @@ void LoginWindow::doLabelAnimation(QLabel *label, int y)
     ui->lblIncorrectLogin->hide();    
 }
 
-void LoginWindow::lostFocusOnLineEdits() // or two methods to txlLogin and txtPassword
+void LoginWindow::lostFocusOnLineEditLogin()
 {
     if(QString(ui->txtLogin->text()).isEmpty())
     {
-       mAnimationController->labelAnimationByY(ui->lblLogin, mAnimationDuration, 332);       
+       mAnimationController->labelAnimationByY(ui->lblLogin, mAnimationDuration, 332);
     }
+}
+
+void LoginWindow::lostFocusOnLineEditPassword()
+{
     if(QString(ui->txtPassword->text()).isEmpty())
     {
-       mAnimationController->labelAnimationByY(ui->lblPassword, mAnimationDuration, 378);       
+       mAnimationController->labelAnimationByY(ui->lblPassword, mAnimationDuration, 378);
     }
 }
 
@@ -102,8 +106,6 @@ void LoginWindow::lostFocusOnLineEditsByClickOnPictures()
 
 void LoginWindow::mousePressEvent(QMouseEvent *event)
 {
-    //ui->txtLogin->clearFocus();
-    //ui->txtPassword->clearFocus();
     m_nMouseClick_X_Coordinate = event->x();
     m_nMouseClick_Y_Coordinate = event->y();
 }
