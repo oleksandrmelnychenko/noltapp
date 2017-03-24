@@ -45,14 +45,19 @@ private:
     QString mLogin = "a";
     QString mPassword = "1";
     MainWindow* mMainWindow;
-    AnimationController* mAnimationController;
 
-    int mFrameStartPoinX = 5;
-    int mFrameStartPoinY = 5;
+    AnimationController* mAnimationController;
+    int mAnimationDuration = 250;
+
+    int mlblLoginStartPointY = 332;
+    int mlblLoginEndPointY = 314;
+    int mlblPasswordStartPointY = 378;
+    int mlblPasswordEndPointY = 360;
+
+    int mFrameStartPointX = 5;
+    int mFrameStartPointY = 5;
     int mFrameWidth = 498;
     int mFrameHeight = 21;
-
-    int mAnimationDuration = 250;
 
     int mMouseClickXCoordinate;
     int mMouseClickYCoordinate;

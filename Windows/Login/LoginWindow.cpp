@@ -13,12 +13,14 @@ LoginWindow::LoginWindow(QWidget *parent) :
 
     mAnimationController = new AnimationController();
 
-    connect(ui->lblPictureCat, SIGNAL(inFocus()), this, SLOT(lostFocusOnLineEditsByClickOnPictures()));
-    connect(ui->lblPictureNolt, SIGNAL(inFocus()), this,SLOT(lostFocusOnLineEditsByClickOnPictures()));
-    connect(ui->txtLogin, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditLogin()));
-    connect(ui->txtPassword, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditPassword()));
     connect(ui->btnLogin, SIGNAL(clicked()), this, SLOT(login()));
     connect(ui->btnQuit, SIGNAL(clicked()), this, SLOT(close()));
+
+    connect(ui->lblPictureCat, SIGNAL(inFocus()), this, SLOT(lostFocusOnLineEditsByClickOnPictures()));
+    connect(ui->lblPictureNolt, SIGNAL(inFocus()), this,SLOT(lostFocusOnLineEditsByClickOnPictures()));
+
+    connect(ui->txtLogin, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditLogin()));
+    connect(ui->txtPassword, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditPassword()));    
 
     connect(ui->lblLogin, &LoginLabels::inFocus, this,[this]{setFocusOnLineEdit(ui->txtLogin);});
     connect(ui->lblPassword, &LoginLabels::inFocus, this,[this]{setFocusOnLineEdit(ui->txtPassword);});
@@ -43,8 +45,8 @@ LoginWindow::~LoginWindow()
 
 bool LoginWindow::isMousePointerInFrame()
 {
-    return (mMouseClickXCoordinate >= mFrameStartPoinX && mMouseClickXCoordinate <= mFrameWidth &&
-            mMouseClickYCoordinate >= mFrameStartPoinY && mMouseClickYCoordinate <= mFrameHeight);
+    return (mMouseClickXCoordinate >= mFrameStartPointX && mMouseClickXCoordinate <= mFrameWidth &&
+            mMouseClickYCoordinate >= mFrameStartPointY && mMouseClickYCoordinate <= mFrameHeight);
 }
 
 void LoginWindow::clearFocusOfLineEdits()
@@ -58,8 +60,8 @@ void LoginWindow::setUpShadow()
     setAttribute(Qt::WA_TranslucentBackground);
 
     CustomShadowEffect  *bodyShadow = new CustomShadowEffect();
-    bodyShadow->setBlurRadius(35.0);
-    bodyShadow->setDistance(5.0);
+    bodyShadow->setBlurRadius(5.0);
+    bodyShadow->setDistance(1.0);
     bodyShadow->setColor(QColor(9,146,177));
 
     ui->lblPictureCat->setGraphicsEffect(bodyShadow);
