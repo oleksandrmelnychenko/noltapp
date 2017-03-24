@@ -9,7 +9,6 @@
 #include "Windows/Main/MainWindow.h"
 #include "Windows/CustomShadoweffect.h"
 #include "CommonUiControllers/AnimationController.h"
-#include <QPoint>
 
 namespace Ui {
     class LoginForm;
@@ -22,6 +21,10 @@ class LoginWindow : public QWidget
 public:
     explicit LoginWindow(QWidget *parent = 0);
     ~LoginWindow();
+private:
+    bool isMousePointerInFrame();
+    void clearFocusOfLineEdits();
+    void setUpShadow();
 
 protected:
     void mousePressEvent(QMouseEvent* event);
@@ -44,7 +47,10 @@ private:
     MainWindow* mMainWindow;
     AnimationController* mAnimationController;
 
-    QPoint mpos;
+    int mFrameStartPoinX = 5;
+    int mFrameStartPoinY = 5;
+    int mFrameWidth = 498;
+    int mFrameHeight = 21;
 
     int mAnimationDuration = 250;
 

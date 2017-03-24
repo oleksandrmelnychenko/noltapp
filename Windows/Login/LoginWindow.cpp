@@ -8,28 +8,23 @@ LoginWindow::LoginWindow(QWidget *parent) :
     ui(new Ui::LoginForm)
 {
     ui->setupUi(this);   
+    setUpShadow();
+    ui->lblIncorrectLogin->hide();
+
     mAnimationController = new AnimationController();
 
-    connect(ui->lblPictureCat, SIGNAL(inFocus()), this,
-            SLOT(lostFocusOnLineEditsByClickOnPictures()));
-    connect(ui->lblPictureNolt, SIGNAL(inFocus()), this,
-            SLOT(lostFocusOnLineEditsByClickOnPictures()));
+    connect(ui->lblPictureCat, SIGNAL(inFocus()), this, SLOT(lostFocusOnLineEditsByClickOnPictures()));
+    connect(ui->lblPictureNolt, SIGNAL(inFocus()), this,SLOT(lostFocusOnLineEditsByClickOnPictures()));
     connect(ui->txtLogin, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditLogin()));
     connect(ui->txtPassword, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditPassword()));
     connect(ui->btnLogin, SIGNAL(clicked()), this, SLOT(login()));
     connect(ui->btnQuit, SIGNAL(clicked()), this, SLOT(close()));
 
-    connect(ui->lblLogin, &LoginLabels::inFocus, this,
-            [this]{setFocusOnLineEdit(ui->txtLogin);});
-    connect(ui->lblPassword, &LoginLabels::inFocus, this,
-            [this]{setFocusOnLineEdit(ui->txtPassword);});
+    connect(ui->lblLogin, &LoginLabels::inFocus, this,[this]{setFocusOnLineEdit(ui->txtLogin);});
+    connect(ui->lblPassword, &LoginLabels::inFocus, this,[this]{setFocusOnLineEdit(ui->txtPassword);});
 
-    connect(ui->txtLogin, &LoginLineEdits::inFocus, this,
-            [this]{doLabelAnimation(ui->lblLogin, 314);});
-    connect(ui->txtPassword, &LoginLineEdits::inFocus, this,
-            [this]{doLabelAnimation(ui->lblPassword, 360);});
-
-    ui->lblIncorrectLogin->hide();
+    connect(ui->txtLogin, &LoginLineEdits::inFocus, this,[this]{doLabelAnimation(ui->lblLogin, 314);});
+    connect(ui->txtPassword, &LoginLineEdits::inFocus, this,[this]{doLabelAnimation(ui->lblPassword, 360);});
 
     if(!QString(ui->txtLogin->text()).isEmpty())
     {
@@ -38,20 +33,36 @@ LoginWindow::LoginWindow(QWidget *parent) :
     if(!QString(ui->txtPassword->text()).isEmpty())
     {
        ui->lblPassword->setGeometry(92, 360, 120, 13);
-    }
+    }    
+}
 
+LoginWindow::~LoginWindow()
+{
+    delete ui;
+}
+
+bool LoginWindow::isMousePointerInFrame()
+{
+    return (mMouseClickXCoordinate >= mFrameStartPoinX && mMouseClickXCoordinate <= mFrameWidth &&
+            mMouseClickYCoordinate >= mFrameStartPoinY && mMouseClickYCoordinate <= mFrameHeight);
+}
+
+void LoginWindow::clearFocusOfLineEdits()
+{
+    ui->txtLogin->clearFocus();
+    ui->txtPassword->clearFocus();
+}
+
+void LoginWindow::setUpShadow()
+{
     setAttribute(Qt::WA_TranslucentBackground);
 
     CustomShadowEffect  *bodyShadow = new CustomShadowEffect();
     bodyShadow->setBlurRadius(35.0);
     bodyShadow->setDistance(5.0);
     bodyShadow->setColor(QColor(9,146,177));
-    ui->lblPictureCat->setGraphicsEffect(bodyShadow);
-}
 
-LoginWindow::~LoginWindow()
-{
-    delete ui;
+    ui->lblPictureCat->setGraphicsEffect(bodyShadow);
 }
 
 void LoginWindow::login()
@@ -100,8 +111,7 @@ void LoginWindow::lostFocusOnLineEditPassword()
 
 void LoginWindow::lostFocusOnLineEditsByClickOnPictures()
 {
-    ui->txtLogin->clearFocus();
-    ui->txtPassword->clearFocus();
+    clearFocusOfLineEdits();
 }
 
 void LoginWindow::mousePressEvent(QMouseEvent *event)
@@ -112,11 +122,9 @@ void LoginWindow::mousePressEvent(QMouseEvent *event)
 
 void LoginWindow::mouseMoveEvent(QMouseEvent *event)
 {
-    if(mMouseClickXCoordinate >= 5 && mMouseClickXCoordinate <= 498 &&
-            mMouseClickYCoordinate >= 5 && mMouseClickYCoordinate <= 21)
+    if(isMousePointerInFrame())
     {
-        ui->txtLogin->clearFocus();
-        ui->txtPassword->clearFocus();
+        clearFocusOfLineEdits();
         move(event->globalX()-mMouseClickXCoordinate,event->globalY()-mMouseClickYCoordinate);
     }
 }
