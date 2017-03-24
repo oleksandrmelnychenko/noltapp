@@ -11,14 +11,19 @@ class LoginLabels : public QLabel
     Q_OBJECT
 
 protected:    
-    void mousePressEvent(QMouseEvent *e);
-    // add focusout event
+    void mousePressEvent(QMouseEvent *e)
+    {
+        if(e->button() == Qt::LeftButton)
+        {
+            emit inFocus();
+        }
+    }
 
 signals:
     void inFocus();
 
 public:
-    LoginLabels(QWidget *parent =0);
+    LoginLabels(QWidget *parent =0) : QLabel(parent){}
 };
 
 #endif // LOGINLABELS_H

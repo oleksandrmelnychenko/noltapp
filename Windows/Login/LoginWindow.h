@@ -48,8 +48,8 @@ private:
 
     int mAnimationDuration = 250;
 
-    int m_nMouseClick_X_Coordinate;
-    int m_nMouseClick_Y_Coordinate;
+    int mMouseClickXCoordinate;
+    int mMouseClickYCoordinate;
 };
 
 #endif // LOGINFORM_H

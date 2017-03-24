@@ -14,14 +14,14 @@ class CustomShadowEffect : public QGraphicsEffect
         void draw(QPainter* painter);
         QRectF boundingRectFor(const QRectF& rect) const;
 
-        inline void setDistance(qreal distance) { mDistance = distance; updateBoundingRect(); }
-        inline qreal distance() const { return mDistance; }
+        void setDistance(qreal distance) { mDistance = distance; updateBoundingRect(); }
+        qreal distance() const { return mDistance; }
 
-        inline void setBlurRadius(qreal blurRadius) { mBlurRadius = blurRadius; updateBoundingRect(); }
-        inline qreal blurRadius() const { return mBlurRadius; }
+        void setBlurRadius(qreal blurRadius) { mBlurRadius = blurRadius; updateBoundingRect(); }
+        qreal blurRadius() const { return mBlurRadius; }
 
-        inline void setColor(const QColor& color) { mColor = color; }
-        inline QColor color() const { return mColor; }
+        void setColor(const QColor& color) { mColor = color; }
+        QColor color() const { return mColor; }
 
     private:
         qreal  mDistance;

@@ -45,8 +45,8 @@ LoginWindow::LoginWindow(QWidget *parent) :
     CustomShadowEffect  *bodyShadow = new CustomShadowEffect();
     bodyShadow->setBlurRadius(35.0);
     bodyShadow->setDistance(5.0);
-    bodyShadow->setColor(QColor(9,146,177));    
-    ui->lblPictureCat->setGraphicsEffect(bodyShadow);    
+    bodyShadow->setColor(QColor(9,146,177));
+    ui->lblPictureCat->setGraphicsEffect(bodyShadow);
 }
 
 LoginWindow::~LoginWindow()
@@ -106,25 +106,25 @@ void LoginWindow::lostFocusOnLineEditsByClickOnPictures()
 
 void LoginWindow::mousePressEvent(QMouseEvent *event)
 {
-    m_nMouseClick_X_Coordinate = event->x();
-    m_nMouseClick_Y_Coordinate = event->y();
+    mMouseClickXCoordinate = event->x();
+    mMouseClickYCoordinate = event->y();
 }
 
 void LoginWindow::mouseMoveEvent(QMouseEvent *event)
 {
-    if(m_nMouseClick_X_Coordinate >= 5 && m_nMouseClick_X_Coordinate <= 498 &&
-            m_nMouseClick_Y_Coordinate >= 5 && m_nMouseClick_Y_Coordinate <= 21)
+    if(mMouseClickXCoordinate >= 5 && mMouseClickXCoordinate <= 498 &&
+            mMouseClickYCoordinate >= 5 && mMouseClickYCoordinate <= 21)
     {
         ui->txtLogin->clearFocus();
         ui->txtPassword->clearFocus();
-        move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
+        move(event->globalX()-mMouseClickXCoordinate,event->globalY()-mMouseClickYCoordinate);
     }
 }
 
 void LoginWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-   m_nMouseClick_X_Coordinate = 0;
-   m_nMouseClick_Y_Coordinate = 0;
+   mMouseClickXCoordinate = 0;
+   mMouseClickYCoordinate = 0;
 }
 
 

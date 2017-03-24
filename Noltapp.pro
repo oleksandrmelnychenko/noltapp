@@ -30,10 +30,7 @@ SOURCES += main.cpp\
     Windows\Main\MainWindow.cpp \
     Views\Office\OfficeView.cpp \
     Views\Salary\SalaryView.cpp \
-    CommonUiControllers/Login/LoginController.cpp \
-    CommonUiControllers/Login/LoginLabels.cpp \
-    CommonUiControllers/Login/LoginLineEdits.cpp \
-    CommonUiControllers/AnimationController.cpp
+    CommonUiControllers/Login/LoginController.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
