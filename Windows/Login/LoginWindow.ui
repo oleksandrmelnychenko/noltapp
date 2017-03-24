@@ -354,10 +354,10 @@ background:transparent;</string>
   <widget class="QPushButton" name="btnQuit">
    <property name="geometry">
     <rect>
-     <x>504</x>
+     <x>509</x>
      <y>10</y>
-     <width>16</width>
-     <height>16</height>
+     <width>14</width>
+     <height>14</height>
     </rect>
    </property>
    <property name="font">
@@ -378,7 +378,7 @@ border:none;
 color : #d0d0d0; 
 
 qproperty-icon: url(&quot; &quot;); 
-qproperty-iconSize: 16px ; 
+qproperty-iconSize: 14px ; 
 background-image: url(&quot;:/Windows/Login/Images/closeIcon.png&quot;); 
 background-repeat: no-repeat; 
 background-position:top left;
@@ -387,7 +387,7 @@ background-position:top left;
 
 QPushButton#btnQuit:hover{ 
 qproperty-icon: url(&quot; &quot;); 
-qproperty-iconSize: 16px 16px; 
+qproperty-iconSize: 14px 14px; 
 background-image: url(&quot;:/Windows/Login/Images/closeIcon.png&quot;); 
 background-repeat: no-repeat; 
 background-position:top right;
@@ -395,7 +395,7 @@ background-position:top right;
 
 QPushButton#btnQuit:pressed{ 
 qproperty-icon: url(&quot; &quot;); 
-qproperty-iconSize: 16px 16px; 
+qproperty-iconSize: 14px 14px; 
 background-image: url(&quot;:/Windows/Login/Images/closeIcon.png&quot;); 
 background-repeat: no-repeat; 
 background-position:top right;
@@ -404,13 +404,19 @@ background-position:top right;
    <property name="text">
     <string/>
    </property>
+   <property name="iconSize">
+    <size>
+     <width>14</width>
+     <height>14</height>
+    </size>
+   </property>
   </widget>
   <widget class="QWidget" name="frame" native="true">
    <property name="geometry">
     <rect>
      <x>5</x>
      <y>5</y>
-     <width>498</width>
+     <width>500</width>
      <height>21</height>
     </rect>
    </property>

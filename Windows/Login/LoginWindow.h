@@ -59,7 +59,7 @@ private:
 
     const int mFrameStartPointX = 5;
     const int mFrameStartPointY = 5;
-    const int mFrameWidth = 498;
+    const int mFrameWidth = 500;
     const int mFrameHeight = 21;
 
     int mMouseClickXCoordinate;
