@@ -25,6 +25,9 @@ private:
     bool isMousePointerInFrame();
     void clearFocusOfLineEdits();
     void setUpShadow();
+    bool isLineEditEmpty(QLineEdit *lineEdit);
+    void setLabelsPosition(QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
+    void subscribeToFormEvents();
 
 protected:
     void mousePressEvent(QMouseEvent* event);
