@@ -25,8 +25,8 @@ private:
     bool isMousePointerInFrame();
     void clearFocusOfLineEdits();
     void setUpShadow();
-    bool isLineEditEmpty(QLineEdit *lineEdit);
-    void setLabelsPosition(QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
+    bool isLineEditEmpty(const QLineEdit *lineEdit);
+    void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
     void subscribeToFormEvents();
 
 protected:
@@ -36,8 +36,8 @@ protected:
 
 private slots:
     void login();    
-    void setFocusOnLineEdit(QLineEdit* lineEdint);
-    void doLabelAnimation(QLabel *label, int y);
+    void setFocusOnLineEdit(QLineEdit *lineEdint);
+    void doLabelAnimation(QLabel *label, int labelsYCoordinate);
     void lostFocusOnLineEditLogin();
     void lostFocusOnLineEditPassword();
     void lostFocusOnLineEditsByClickOnPictures();
@@ -45,22 +45,22 @@ private slots:
 private:
     Ui::LoginForm *ui;
 
-    QString mLogin = "a";
-    QString mPassword = "1";
+    const QString mLogin = "a";
+    const QString mPassword = "1";
     MainWindow* mMainWindow;
 
     AnimationController* mAnimationController;
     int mAnimationDuration = 250;
 
-    int mlblLoginStartPointY = 332;
-    int mlblLoginEndPointY = 314;
-    int mlblPasswordStartPointY = 378;
-    int mlblPasswordEndPointY = 360;
+    const int mlblLoginStartPointY = 332;
+    const int mlblLoginEndPointY = 314;
+    const int mlblPasswordStartPointY = 378;
+    const int mlblPasswordEndPointY = 360;
 
-    int mFrameStartPointX = 5;
-    int mFrameStartPointY = 5;
-    int mFrameWidth = 498;
-    int mFrameHeight = 21;
+    const int mFrameStartPointX = 5;
+    const int mFrameStartPointY = 5;
+    const int mFrameWidth = 498;
+    const int mFrameHeight = 21;
 
     int mMouseClickXCoordinate;
     int mMouseClickYCoordinate;

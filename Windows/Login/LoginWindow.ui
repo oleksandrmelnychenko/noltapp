@@ -148,7 +148,7 @@ QPushButton#btnLogin:pressed{
    </property>
    <property name="font">
     <font>
-     <family>Proxima Nova Th</family>
+     <family>Arial</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -176,7 +176,7 @@ background-color:transparent;</string>
    </property>
    <property name="font">
     <font>
-     <family>Proxima Nova Th</family>
+     <family>Arial</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -278,16 +278,16 @@ background-color:transparent;</string>
    </property>
    <property name="font">
     <font>
-     <family>Proxima Nova Th</family>
-     <pointsize>12</pointsize>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : #797979;
-background-color:transparent;</string>
+    <string notr="true">background-color:transparent;
+color:rgb(199, 0, 0);</string>
    </property>
    <property name="text">
-    <string>Login and password is not correct</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;WRONG CREDENTIALS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="LoginLabels" name="lblPictureCat">

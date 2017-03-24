@@ -46,12 +46,12 @@ void LoginWindow::setUpShadow()
     ui->lblPictureCat->setGraphicsEffect(bodyShadow);
 }
 
-bool LoginWindow::isLineEditEmpty(QLineEdit *lineEdit)
+bool LoginWindow::isLineEditEmpty(const QLineEdit *lineEdit)
 {
     return (QString(lineEdit->text()).isEmpty());
 }
 
-void LoginWindow::setLabelsPosition(QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)
+void LoginWindow::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)
 {
     if(isLineEditEmpty(lineEdit))
     {
@@ -80,8 +80,8 @@ void LoginWindow::subscribeToFormEvents()
     connect(ui->lblLogin, &LoginLabels::inFocus, this,[this]{setFocusOnLineEdit(ui->txtLogin);});
     connect(ui->lblPassword, &LoginLabels::inFocus, this,[this]{setFocusOnLineEdit(ui->txtPassword);});
 
-    connect(ui->txtLogin, &LoginLineEdits::inFocus, this,[this]{doLabelAnimation(ui->lblLogin, 314);});
-    connect(ui->txtPassword, &LoginLineEdits::inFocus, this,[this]{doLabelAnimation(ui->lblPassword, 360);});
+    connect(ui->txtLogin, &LoginLineEdits::inFocus, this,[this]{doLabelAnimation(ui->lblLogin, mlblLoginEndPointY);});
+    connect(ui->txtPassword, &LoginLineEdits::inFocus, this,[this]{doLabelAnimation(ui->lblPassword, mlblPasswordEndPointY);});
 }
 
 void LoginWindow::login()
@@ -109,7 +109,7 @@ void LoginWindow::setFocusOnLineEdit(QLineEdit *lineEdint)
 void LoginWindow::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 {
     mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
-    ui->lblIncorrectLogin->hide();    
+    ui->lblIncorrectLogin->hide();
 }
 
 void LoginWindow::lostFocusOnLineEditLogin()
