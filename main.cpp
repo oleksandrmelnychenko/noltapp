@@ -1,11 +1,11 @@
-#include "Windows/Login/LoginWindow.h"
 #include <QApplication>
+#include <QObject>
+#include <CommonUiControllers/WindowController.h>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    LoginWindow w;
-    w.show();
+    WindowController wc;
 
     return a.exec();
 }

@@ -6,7 +6,6 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QGraphicsDropShadowEffect>
-#include "Windows/Main/MainWindow.h"
 #include "Windows/CustomShadoweffect.h"
 #include "CommonUiControllers/AnimationController.h"
 
@@ -21,6 +20,9 @@ class LoginWindow : public QWidget
 public:
     explicit LoginWindow(QWidget *parent = 0);
     ~LoginWindow();
+
+    bool IsAutorised();
+
 private:
     bool isMousePointerInFrame();
     void clearFocusOfLineEdits();
@@ -34,8 +36,13 @@ protected:
     void mouseMoveEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent *event);
 
+public slots:
+    void login();
+
+signals:
+    void buttonLoginClicked();
+
 private slots:
-    void login();    
     void setFocusOnLineEdit(QLineEdit *lineEdint);
     void doLabelAnimation(QLabel *label, int labelsYCoordinate);
     void lostFocusOnLineEditLogin();
@@ -47,7 +54,6 @@ private:
 
     const QString mLogin = "a";
     const QString mPassword = "1";
-    MainWindow* mMainWindow;
 
     AnimationController* mAnimationController;
     int mAnimationDuration = 250;
@@ -64,6 +70,8 @@ private:
 
     int mMouseClickXCoordinate;
     int mMouseClickYCoordinate;
+
+    bool mIsAutorised = false;
 };
 
 #endif // LOGINFORM_H

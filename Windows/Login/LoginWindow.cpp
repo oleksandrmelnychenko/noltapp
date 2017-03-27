@@ -84,20 +84,24 @@ void LoginWindow::subscribeToFormEvents()
     connect(ui->txtPassword, &LoginLineEdits::inFocus, this,[this]{doLabelAnimation(ui->lblPassword, mlblPasswordEndPointY);});
 }
 
+bool LoginWindow::IsAutorised()
+{
+    return mIsAutorised;
+}
+
 void LoginWindow::login()
 {
     QString inputLogin = ui->txtLogin->text();
     QString inputPassword = ui->txtPassword->text();
 
     if(inputLogin == mLogin && inputPassword == mPassword)
-    {
-        hide();
-        mMainWindow = new MainWindow(this);
-        mMainWindow->show();
+    {        
+        mIsAutorised = true;
+        emit buttonLoginClicked();
     }
     else
     {
-       ui->lblIncorrectLogin->show();
+       ui->lblIncorrectLogin->show();       
     }
 }
 
