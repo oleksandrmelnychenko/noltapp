@@ -110,31 +110,33 @@
    </property>
    <property name="font">
     <font>
-     <family>Proxima Nova Lt</family>
-     <pointsize>12</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#btnLogin{
-	border : 1px solid #d0d0d0;
+    <string notr="true">QPushButton#btnLogin
+{	
+ 	border : 1px solid #d0d0d0; 
 	color : #d0d0d0;
-	background-color:transparent;
-}
+	background-color:transparent;	
+ }
 
-QPushButton#btnLogin:hover{
-	color:#0992b1;
-}
+QPushButton#btnLogin:hover
+{
+ 	color:#0992b1;
+ } 
 
-QPushButton#btnLogin:pressed{
-	color:#0992b1;
-	border: 1px solid #0992b1;
-}
-</string>
+QPushButton#btnLogin:pressed
+{
+ 	color:#0992b1;
+	border: 1px solid #0992b1; 
+} </string>
    </property>
    <property name="text">
-    <string>LOG IN</string>
+    <string>Sign in</string>
    </property>
   </widget>
   <widget class="LoginLineEdits" name="txtLogin">
@@ -159,7 +161,8 @@ QPushButton#btnLogin:pressed{
     <string notr="true">border:none;
 border-bottom:1px solid #797979;
 color : #d0d0d0;
-background-color:transparent;</string>
+background-color:transparent;
+padding-left:7px;</string>
    </property>
    <property name="text">
     <string/>
@@ -191,6 +194,7 @@ background-color:transparent;</string>
 border-bottom:1px solid #797979;
 color : #d0d0d0;
 background-color:transparent;
+padding-left:7px;
 </string>
    </property>
    <property name="text">
@@ -206,7 +210,7 @@ background-color:transparent;
   <widget class="LoginLabels" name="lblLogin">
    <property name="geometry">
     <rect>
-     <x>92</x>
+     <x>91</x>
      <y>332</y>
      <width>120</width>
      <height>13</height>
@@ -214,8 +218,8 @@ background-color:transparent;
    </property>
    <property name="font">
     <font>
-     <family>Proxima Nova Th</family>
-     <pointsize>10</pointsize>
+     <family>Arial</family>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="cursor">
@@ -228,7 +232,8 @@ background-color:transparent;
     <enum>Qt::ClickFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : #797979;
+    <string notr="true">padding-left:7px;
+color : #797979;
 background-color:transparent;</string>
    </property>
    <property name="frameShape">
@@ -241,7 +246,7 @@ background-color:transparent;</string>
   <widget class="LoginLabels" name="lblPassword">
    <property name="geometry">
     <rect>
-     <x>92</x>
+     <x>91</x>
      <y>378</y>
      <width>120</width>
      <height>13</height>
@@ -249,8 +254,8 @@ background-color:transparent;</string>
    </property>
    <property name="font">
     <font>
-     <family>Proxima Nova Th</family>
-     <pointsize>10</pointsize>
+     <family>Arial</family>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="cursor">
@@ -260,7 +265,8 @@ background-color:transparent;</string>
     <enum>Qt::ClickFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : #797979;
+    <string notr="true">padding-left:7px;
+color : #797979;
 background-color:transparent;</string>
    </property>
    <property name="text">
@@ -270,7 +276,7 @@ background-color:transparent;</string>
   <widget class="QLabel" name="lblIncorrectLogin">
    <property name="geometry">
     <rect>
-     <x>92</x>
+     <x>99</x>
      <y>465</y>
      <width>340</width>
      <height>22</height>
@@ -284,10 +290,10 @@ background-color:transparent;</string>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color:transparent;
-color:rgb(199, 0, 0);</string>
+color:rgb(255,35,6);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;WRONG CREDENTIALS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>Invalid credentials</string>
    </property>
   </widget>
   <widget class="LoginLabels" name="lblPictureCat">
@@ -354,10 +360,10 @@ background:transparent;</string>
   <widget class="QPushButton" name="btnQuit">
    <property name="geometry">
     <rect>
-     <x>509</x>
+     <x>512</x>
      <y>10</y>
-     <width>14</width>
-     <height>14</height>
+     <width>12</width>
+     <height>12</height>
     </rect>
    </property>
    <property name="font">

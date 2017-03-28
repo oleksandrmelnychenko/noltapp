@@ -2,6 +2,7 @@
 #include "ui_LoginWindow.h"
 #include <QIcon>
 #include <QPushButton>
+#include <QFont>
 
 LoginWindow::LoginWindow(QWidget *parent) :
     QWidget(parent, Qt::FramelessWindowHint | Qt::Window | Qt::CustomizeWindowHint),
