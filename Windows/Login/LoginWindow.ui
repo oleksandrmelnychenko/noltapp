@@ -165,7 +165,7 @@ background-color:transparent;
 padding-left:7px;</string>
    </property>
    <property name="text">
-    <string/>
+    <string>a</string>
    </property>
   </widget>
   <widget class="LoginLineEdits" name="txtPassword">
@@ -198,7 +198,7 @@ padding-left:7px;
 </string>
    </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="echoMode">
     <enum>QLineEdit::Password</enum>
