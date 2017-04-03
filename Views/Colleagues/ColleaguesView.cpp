@@ -11,19 +11,21 @@ ColleaguesForm::ColleaguesForm(QWidget *parent) :
     ui->setupUi(this);
 
     QStringList title;
-    title << "Names:";
-    ui->tableWidget->setColumnCount(1);
-    ui->tableWidget->setHorizontalHeaderLabels(title);
+    title << "Id:";
+    ui->tblWidgetId->setColumnCount(1);
+    ui->tblWidgetId->setHorizontalHeaderLabels(title);
 
-    connect(ui->btnChangeLabel, SIGNAL(clicked(bool)), SLOT(ChangeLabel()));
     connect(ui->btnLoadData, SIGNAL(clicked(bool)), SLOT(LoadData()));
-    connect(ui->tableWidget,  SIGNAL(cellClicked(int,int)), this, SLOT(DoSmthWithObject(int, int)));
+    connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(DoSmthWithObject(int, int)));
 
-    Colleagues bob1("Bob");
-    Colleagues jack1("Jack");
-    Colleagues rachel1("Rachel");
+    QDate d(2017,3,4);
+    PersonEntities bob(1,"bob123", d, "Bob", "Arum", "bob@gmail.com", "097554822");
+    PersonEntities jack(2,"jack123", d, "Jack", "Partak", "partak@gmail.com", "0967324234");
+    PersonEntities rachel(3,"rachel123", d, "Rachel", "Valera", "rv@gmail.com", "0775464523");
+    PersonEntities korky(4,"korky123", d, "Korky", "Melloun", "korky@gmail.com", "097544962");
+    PersonEntities jose(5,"jose123", d, "Jose", "Mour", "jm@gmail.com", "097678912");
 
-    mColleguesVector << bob1 << jack1 << rachel1;
+    mColleguesVector << bob << jack << rachel << korky << jose;
 }
 
 ColleaguesForm::~ColleaguesForm()
@@ -31,40 +33,21 @@ ColleaguesForm::~ColleaguesForm()
     delete ui;
 }
 
-void ColleaguesForm::ChangeLabel()
-{
-    if(mCounter >= mColleguesVector.size())
-        mCounter = 0;
-
-    Colleagues b1 = mColleguesVector.at(mCounter);
-    QString s1 = b1.getName();
-    ui->label->setText(s1);
-
-    mCounter++;
-}
-
 void ColleaguesForm::LoadData()
 {
-    QStandardItemModel *model = new QStandardItemModel(3,0,this);
-    model->setHorizontalHeaderItem(0, new QStandardItem(QString("Names:")));
-
     for(int i = 0; i != mColleguesVector.size(); i++)
     {
-        Colleagues b1 = mColleguesVector.at(i);
-        QString s1 =  b1.getName();
+        PersonEntities b1 = mColleguesVector.at(i);
+        QString s1 =  b1.getFirstName();
 
-        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-        ui->tableWidget->setItem(ui->tableWidget->rowCount()- 1, 0, new QTableWidgetItem(s1));
-
-        QModelIndex index = model->index(i,0,QModelIndex());
-        model->setData(index,s1);
-        ui->tableView->setModel(model);
+        ui->tblWidgetId->insertRow(ui->tblWidgetId->rowCount());
+        ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 0, new QTableWidgetItem(s1));
     }
 }
 
 void ColleaguesForm::DoSmthWithObject(int row, int column)
 {
-    ui->tableWidget->setItem(row, column, new QTableWidgetItem("AZAZAZA"));
+    ui->tblWidgetId->setItem(row, column, new QTableWidgetItem("AZAZAZA"));
 }
 
 

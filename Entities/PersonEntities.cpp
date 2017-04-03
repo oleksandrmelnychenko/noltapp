@@ -1,8 +1,8 @@
 #include "PersonEntities.h"
 
-PersonEntities::PersonEntities(long id, QUuid netUiId, Qdate createDate,
+PersonEntities::PersonEntities(long id, QUuid netUiId, QDate createDate,
                                QString firstName, QString lastName, QString email, QString phone)
-    : BaseEntities(id,netUiID,createDate),
+    : BaseEntities(id,netUiId,createDate),
       mFirstName(firstName),
       mLastName(lastName),
       mEmail(email),
@@ -11,7 +11,12 @@ PersonEntities::PersonEntities(long id, QUuid netUiId, Qdate createDate,
 
 }
 
-void PersonEntities::setFirstName(const QString *firstName)
+PersonEntities::PersonEntities()
+{
+
+}
+
+void PersonEntities::setFirstName(QString firstName)
 {
     mFirstName = firstName;
 }
@@ -21,7 +26,7 @@ QString PersonEntities::getFirstName() const
     return mFirstName;
 }
 
-void PersonEntities::setLastName(const QString *lastName)
+void PersonEntities::setLastName(QString lastName)
 {
     mLastName = lastName;
 }
@@ -31,9 +36,9 @@ QString PersonEntities::getLastName() const
     return mLastName;
 }
 
-void PersonEntities::setEmail(const QString *email)
+void PersonEntities::setEmail(QString email)
 {
-    if() // check email
+    //if() // check email
     mEmail = email;
 }
 
@@ -42,9 +47,9 @@ QString PersonEntities::getEmail() const
     return mEmail;
 }
 
-void PersonEntities::setPhone(const QString *phone)
+void PersonEntities::setPhone(QString phone)
 {
-    if() // check telephone
+    //if() // check telephone
     mPhone = phone;
 }
 

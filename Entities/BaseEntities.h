@@ -8,8 +8,8 @@ class BaseEntities
 {
 public:
     BaseEntities(long id, QUuid netUiId, QDate createDate);
+    BaseEntities();
 
-protected:
     long Id() const;
     QUuid NetUiID() const;
     QDate CreateDate() const;

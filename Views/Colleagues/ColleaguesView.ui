@@ -6,41 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>324</width>
+    <width>616</width>
     <height>347</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>47</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Colleagues</string>
-   </property>
-  </widget>
-  <widget class="QTableView" name="tableView">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>80</y>
-     <width>131</width>
-     <height>191</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btnLoadData">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>310</y>
+     <x>10</x>
+     <y>220</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -49,25 +26,12 @@
     <string>Load Data</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnChangeLabel">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>50</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Change label</string>
-   </property>
-  </widget>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QTableWidget" name="tblWidgetId">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
-     <width>141</width>
+     <y>10</y>
+     <width>111</width>
      <height>192</height>
     </rect>
    </property>

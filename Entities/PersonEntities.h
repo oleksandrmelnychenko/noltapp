@@ -7,19 +7,20 @@
 class PersonEntities : public BaseEntities
 {
 public:
-    PersonEntities(long id, QUuid netUiId, Qdate createDate,
+    PersonEntities(long id, QUuid netUiId, QDate createDate,
                    QString firstName, QString lastName, QString email, QString phone);
+    PersonEntities();
 
-    void setFirstName(const QString *firstName);
+    void setFirstName(QString firstName);
     QString getFirstName()const;
 
-    void setLastName(const QString *lastName);
+    void setLastName(QString lastName);
     QString getLastName()const;
 
-    void setEmail(const QString *email);
+    void setEmail(QString email);
     QString getEmail()const;
 
-    void setPhone(const QStrinf *email);
+    void setPhone(QString phone);
     QString getPhone()const;
 
 private:

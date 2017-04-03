@@ -9,6 +9,11 @@ BaseEntities::BaseEntities(long id, QUuid netUiId, QDate createDate)
 
 }
 
+BaseEntities::BaseEntities()
+{
+
+}
+
 long BaseEntities::Id() const
 {
     return mId;
