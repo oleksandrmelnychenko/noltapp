@@ -8,13 +8,13 @@ namespace Ui {
     class OfficeForm;
 }
 
-class OfficeForm : public QMdiSubWindow
+class OfficeView : public QMdiSubWindow
 {
     Q_OBJECT
 
 public:
-    explicit OfficeForm(QWidget *parent = 0);
-    ~OfficeForm();
+    explicit OfficeView(QWidget *parent = 0);
+    ~OfficeView();
 
 private:
     Ui::OfficeForm *ui;

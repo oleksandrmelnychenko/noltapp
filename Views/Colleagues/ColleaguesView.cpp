@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <QStandardItemModel>
 
-ColleaguesForm::ColleaguesForm(QWidget *parent) :
+ColleaguesView::ColleaguesView(QWidget *parent) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),
     ui(new Ui::ColleaguesForm)
 {
@@ -15,15 +15,9 @@ ColleaguesForm::ColleaguesForm(QWidget *parent) :
     ui->tblWidgetId->setColumnCount(1);
     ui->tblWidgetId->setHorizontalHeaderLabels(titleId);
 
-    QStringList titleCurrentCollegue;
-    titleCurrentCollegue << "NetUI Id" << "Create date" << "Name" << "Surname" << "Email" << "Phone";
-    ui->tblWidgetCurrentColleague->setColumnCount(6);
-    ui->tblWidgetCurrentColleague->setHorizontalHeaderLabels(titleCurrentCollegue);
-
-
-
     connect(ui->btnLoadData, SIGNAL(clicked(bool)), SLOT(LoadData()));
     connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(DoSmthWithObject(int, int)));
+    connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(CreateAddCollegueView()));
 
     QDate d(2017,3,4);
     PersonEntity bob(1,"bob123", d, "Bob", "Arum", "bob@gmail.com", "097554822");
@@ -35,12 +29,12 @@ ColleaguesForm::ColleaguesForm(QWidget *parent) :
     mColleguesVector << bob << jack << rachel << korky << jose;
 }
 
-ColleaguesForm::~ColleaguesForm()
+ColleaguesView::~ColleaguesView()
 {
     delete ui;
 }
 
-void ColleaguesForm::LoadData()
+void ColleaguesView::LoadData()
 {
     for(int i = 0; i != mColleguesVector.size(); i++)
     {
@@ -52,23 +46,23 @@ void ColleaguesForm::LoadData()
     }
 }
 
-void ColleaguesForm::DoSmthWithObject(int row, int column)
+void ColleaguesView::DoSmthWithObject(int row, int column)
 {
     mCurrentCollegue = mColleguesVector.at(row);
 
-    ui->tblWidgetCurrentColleague->removeRow(0);
-
-    ui->tblWidgetCurrentColleague->insertRow(ui->tblWidgetCurrentColleague->rowCount()); // or 0
-    ui->tblWidgetCurrentColleague->setItem(0, 0, new QTableWidgetItem(mCurrentCollegue.NetUiID().toString()));
-    ui->tblWidgetCurrentColleague->setItem(0, 1, new QTableWidgetItem(mCurrentCollegue.CreateDate().toString()));
-    ui->tblWidgetCurrentColleague->setItem(0, 2, new QTableWidgetItem(mCurrentCollegue.getFirstName()));
-    ui->tblWidgetCurrentColleague->setItem(0, 3, new QTableWidgetItem(mCurrentCollegue.getLastName()));
-    ui->tblWidgetCurrentColleague->setItem(0, 4, new QTableWidgetItem(mCurrentCollegue.getEmail()));
-    ui->tblWidgetCurrentColleague->setItem(0, 5, new QTableWidgetItem(mCurrentCollegue.getPhone()));
-
-
-    //ui->tblWidgetCurrentColleague->insertRow(ui->tblWidgetCurrentColleague->rowCount());
-    //ui->tblWidgetId->setItem(row, column, new QTableWidgetItem("AZAZAZA"));
+    ui->txtEditNetUiId->setText(mCurrentCollegue.NetUiID().toString());
+    ui->txtEditCreateDate->setText(mCurrentCollegue.CreateDate().toString());
+    ui->txtEditFirstName->setText(mCurrentCollegue.getFirstName());
+    ui->txtEditLastName->setText(mCurrentCollegue.getLastName());
+    ui->txtEditEmail->setText(mCurrentCollegue.getEmail());
+    ui->txtEditPhone->setText(mCurrentCollegue.getPhone());
 }
+
+void ColleaguesView::CreateAddCollegueView()
+{
+    emit clickedAddCollegueButton();    
+}
+
+
 
 

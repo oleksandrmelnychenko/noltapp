@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "Views/Colleagues/ColleaguesView.h"
+#include "Views/Colleagues/AddCollegueView.h"
 #include "Views/Office/OfficeView.h"
 #include "Views/Salary/SalaryView.h"
 #include <QDebug>
@@ -19,9 +20,11 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 protected slots:
-    void createColleaguesForm();
-    void createOfficeForm();
-    void createSalaryForm();
+    void createColleaguesView();
+    void createAddColegueView();
+
+    void createOfficeView();
+    void createSalaryView();
     void deleteMdiSubForm(QMdiSubWindow *form);
 
 public:

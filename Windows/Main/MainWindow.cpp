@@ -1,27 +1,35 @@
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
 
-void MainWindow::createColleaguesForm()
+void MainWindow::createColleaguesView()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new ColleaguesForm(ui->mdiArea);
+    mCurrentMdiSubForm = new ColleaguesView(ui->mdiArea);
     mCurrentMdiSubForm->setGeometry(10,40,1330,600);
     mCurrentMdiSubForm->show();
-
+    connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedAddCollegueButton()), this, SLOT(createAddColegueView()));
 }
 
-void MainWindow::createOfficeForm()
+void MainWindow::createAddColegueView()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new OfficeForm(ui->mdiArea);
+    mCurrentMdiSubForm = new AddCollegueView(ui->mdiArea);
     mCurrentMdiSubForm->setGeometry(10,40,1330,600);
     mCurrentMdiSubForm->show();
 }
 
-void MainWindow::createSalaryForm()
+void MainWindow::createOfficeView()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new SalaryForm(ui->mdiArea);
+    mCurrentMdiSubForm = new OfficeView(ui->mdiArea);
+    mCurrentMdiSubForm->setGeometry(10,40,1330,600);
+    mCurrentMdiSubForm->show();
+}
+
+void MainWindow::createSalaryView()
+{
+    deleteMdiSubForm(mCurrentMdiSubForm);
+    mCurrentMdiSubForm = new SalaryView(ui->mdiArea);
     mCurrentMdiSubForm->setGeometry(10,40,1330,600);
     mCurrentMdiSubForm->show();
 }
@@ -42,12 +50,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    createColleaguesForm();
+    createColleaguesView();
     mCurrentMdiSubForm->setGeometry(0,0,640,440);
 
-    connect(ui->btnColleagues, SIGNAL(clicked()), this, SLOT(createColleaguesForm()));
-    connect(ui->btnSalary, SIGNAL(clicked()), this, SLOT(createSalaryForm()));
-    connect(ui->btnOffice, SIGNAL(clicked()), this, SLOT(createOfficeForm()));
+    connect(ui->btnColleagues, SIGNAL(clicked()), this, SLOT(createColleaguesView()));
+    connect(ui->btnSalary, SIGNAL(clicked()), this, SLOT(createSalaryView()));
+    connect(ui->btnOffice, SIGNAL(clicked()), this, SLOT(createOfficeView()));
+
 }
 
 MainWindow::~MainWindow()

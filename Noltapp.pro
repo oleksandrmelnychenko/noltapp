@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     CommonUiControllers/Login/LoginController.cpp \
     CommonUiControllers/WindowController.cpp \
     Entities/BaseEntity.cpp \
-    Entities/PersonEntity.cpp
+    Entities/PersonEntity.cpp \
+    Views/Colleagues/AddCollegueView.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -48,14 +49,16 @@ HEADERS  += \
     CommonUiControllers/AnimationController.h \
     CommonUiControllers/WindowController.h \
     Entities/BaseEntity.h \
-    Entities/PersonEntity.h
+    Entities/PersonEntity.h \
+    Views/Colleagues/AddCollegueView.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \
     Views\Salary\SalaryView.ui \
     Views\Office\OfficeView.ui \
     Windows\Login\LoginWindow.ui \
-    Windows\Main\MainWindow.ui
+    Windows\Main\MainWindow.ui \
+    Views/Colleagues/AddCollegueView.ui
 
 RESOURCES += \
     images.qrc

@@ -8,13 +8,13 @@ namespace Ui {
     class SalaryForm;
 }
 
-class SalaryForm : public QMdiSubWindow
+class SalaryView : public QMdiSubWindow
 {
     Q_OBJECT
 
 public:
-    explicit SalaryForm(QWidget *parent = 0);
-    ~SalaryForm();
+    explicit SalaryView(QWidget *parent = 0);
+    ~SalaryView();
 
 private:
     Ui::SalaryForm *ui;

@@ -12,17 +12,21 @@ namespace Ui {
     class ColleaguesForm;
 }
 
-class ColleaguesForm : public QMdiSubWindow
+class ColleaguesView : public QMdiSubWindow
 {
     Q_OBJECT
 
 public:
-    explicit ColleaguesForm(QWidget *parent = 0);
-    ~ColleaguesForm();
+    explicit ColleaguesView(QWidget *parent = 0);
+    ~ColleaguesView();
 
 public slots:   
     void LoadData();
     void DoSmthWithObject(int row, int column);
+    void CreateAddCollegueView();
+
+signals:
+    void clickedAddCollegueButton();
 
 private:
     Ui::ColleaguesForm *ui;

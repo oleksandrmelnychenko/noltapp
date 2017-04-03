@@ -1,14 +1,14 @@
 #include "SalaryView.h"
 #include "ui_SalaryView.h"
 
-SalaryForm::SalaryForm(QWidget *parent) :
+SalaryView::SalaryView(QWidget *parent) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),
     ui(new Ui::SalaryForm)
 {
     ui->setupUi(this);
 }
 
-SalaryForm::~SalaryForm()
+SalaryView::~SalaryView()
 {
     delete ui;
 }
