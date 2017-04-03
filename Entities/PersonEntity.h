@@ -2,14 +2,14 @@
 #define PERSONENTITIES_H
 
 #include <QString>
-#include "Entities/BaseEntities.h"
+#include "Entities/BaseEntity.h"
 
-class PersonEntities : public BaseEntities
+class PersonEntity : public BaseEntity
 {
 public:
-    PersonEntities(long id, QUuid netUiId, QDate createDate,
+    PersonEntity(long id, QUuid netUiId, QDate createDate,
                    QString firstName, QString lastName, QString email, QString phone);
-    PersonEntities();
+    PersonEntity();
 
     void setFirstName(QString firstName);
     QString getFirstName()const;

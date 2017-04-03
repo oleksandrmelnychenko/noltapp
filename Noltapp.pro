@@ -32,8 +32,8 @@ SOURCES += main.cpp\
     Views\Salary\SalaryView.cpp \
     CommonUiControllers/Login/LoginController.cpp \
     CommonUiControllers/WindowController.cpp \
-    Entities/BaseEntities.cpp \
-    Entities/PersonEntities.cpp
+    Entities/BaseEntity.cpp \
+    Entities/PersonEntity.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -47,8 +47,8 @@ HEADERS  += \
     CommonUiControllers/Login/LoginLineEdits.h \
     CommonUiControllers/AnimationController.h \
     CommonUiControllers/WindowController.h \
-    Entities/BaseEntities.h \
-    Entities/PersonEntities.h
+    Entities/BaseEntity.h \
+    Entities/PersonEntity.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \

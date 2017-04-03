@@ -26,11 +26,11 @@ ColleaguesForm::ColleaguesForm(QWidget *parent) :
     connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(DoSmthWithObject(int, int)));
 
     QDate d(2017,3,4);
-    PersonEntities bob(1,"bob123", d, "Bob", "Arum", "bob@gmail.com", "097554822");
-    PersonEntities jack(2,"jack123", d, "Jack", "Partak", "partak@gmail.com", "0967324234");
-    PersonEntities rachel(3,"rachel123", d, "Rachel", "Valera", "rv@gmail.com", "0775464523");
-    PersonEntities korky(4,"korky123", d, "Korky", "Melloun", "korky@gmail.com", "097544962");
-    PersonEntities jose(5,"jose123", d, "Jose", "Mour", "jm@gmail.com", "097678912");
+    PersonEntity bob(1,"bob123", d, "Bob", "Arum", "bob@gmail.com", "097554822");
+    PersonEntity jack(2,"jack123", d, "Jack", "Partak", "partak@gmail.com", "0967324234");
+    PersonEntity rachel(3,"rachel123", d, "Rachel", "Valera", "rv@gmail.com", "0775464523");
+    PersonEntity korky(4,"korky123", d, "Korky", "Melloun", "korky@gmail.com", "097544962");
+    PersonEntity jose(5,"jose123", d, "Jose", "Mour", "jm@gmail.com", "097678912");
 
     mColleguesVector << bob << jack << rachel << korky << jose;
 }
@@ -44,7 +44,7 @@ void ColleaguesForm::LoadData()
 {
     for(int i = 0; i != mColleguesVector.size(); i++)
     {
-        PersonEntities currentCollegue = mColleguesVector.at(i);
+        PersonEntity currentCollegue = mColleguesVector.at(i);
         QString currentCollegueId = QString::number(currentCollegue.Id());
 
         ui->tblWidgetId->insertRow(ui->tblWidgetId->rowCount());

@@ -6,7 +6,7 @@
 #include <QVector>
 #include <QLabel>
 
-#include "Entities/PersonEntities.h"
+#include "Entities/PersonEntity.h"
 
 namespace Ui {
     class ColleaguesForm;
@@ -27,8 +27,8 @@ public slots:
 private:
     Ui::ColleaguesForm *ui;
 
-    QVector<PersonEntities> mColleguesVector;
-    PersonEntities mCurrentCollegue;
+    QVector<PersonEntity> mColleguesVector;
+    PersonEntity mCurrentCollegue;
     int mCounter = 0;
 };
 

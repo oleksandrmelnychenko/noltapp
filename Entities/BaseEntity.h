@@ -4,11 +4,11 @@
 #include <QDate>
 #include <QUuid>
 
-class BaseEntities
+class BaseEntity
 {
 public:
-    BaseEntities(long id, QUuid netUiId, QDate createDate);
-    BaseEntities();
+    BaseEntity(long id, QUuid netUiId, QDate createDate);
+    BaseEntity();
 
     long Id() const;
     QUuid NetUiID() const;
