@@ -28,6 +28,7 @@ private:
     Ui::ColleaguesForm *ui;
 
     QVector<PersonEntities> mColleguesVector;
+    PersonEntities mCurrentCollegue;
     int mCounter = 0;
 };
 

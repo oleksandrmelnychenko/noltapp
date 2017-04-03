@@ -5,7 +5,7 @@ void MainWindow::createColleaguesForm()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new ColleaguesForm(ui->mdiArea);
-    mCurrentMdiSubForm->setGeometry(10,40,640,440);
+    mCurrentMdiSubForm->setGeometry(10,40,1330,600);
     mCurrentMdiSubForm->show();
 
 }
@@ -14,7 +14,7 @@ void MainWindow::createOfficeForm()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new OfficeForm(ui->mdiArea);
-    mCurrentMdiSubForm->setGeometry(10,40,640,440);
+    mCurrentMdiSubForm->setGeometry(10,40,1330,600);
     mCurrentMdiSubForm->show();
 }
 
@@ -22,7 +22,7 @@ void MainWindow::createSalaryForm()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new SalaryForm(ui->mdiArea);
-    mCurrentMdiSubForm->setGeometry(10,40,640,440);
+    mCurrentMdiSubForm->setGeometry(10,40,1330,600);
     mCurrentMdiSubForm->show();
 }
 

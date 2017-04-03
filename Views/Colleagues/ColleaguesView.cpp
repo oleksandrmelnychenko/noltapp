@@ -10,10 +10,17 @@ ColleaguesForm::ColleaguesForm(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QStringList title;
-    title << "Id:";
+    QStringList titleId;
+    titleId << "Id:";
     ui->tblWidgetId->setColumnCount(1);
-    ui->tblWidgetId->setHorizontalHeaderLabels(title);
+    ui->tblWidgetId->setHorizontalHeaderLabels(titleId);
+
+    QStringList titleCurrentCollegue;
+    titleCurrentCollegue << "NetUI Id" << "Create date" << "Name" << "Surname" << "Email" << "Phone";
+    ui->tblWidgetCurrentColleague->setColumnCount(6);
+    ui->tblWidgetCurrentColleague->setHorizontalHeaderLabels(titleCurrentCollegue);
+
+
 
     connect(ui->btnLoadData, SIGNAL(clicked(bool)), SLOT(LoadData()));
     connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(DoSmthWithObject(int, int)));
@@ -37,17 +44,31 @@ void ColleaguesForm::LoadData()
 {
     for(int i = 0; i != mColleguesVector.size(); i++)
     {
-        PersonEntities b1 = mColleguesVector.at(i);
-        QString s1 =  b1.getFirstName();
+        PersonEntities currentCollegue = mColleguesVector.at(i);
+        QString currentCollegueId = QString::number(currentCollegue.Id());
 
         ui->tblWidgetId->insertRow(ui->tblWidgetId->rowCount());
-        ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 0, new QTableWidgetItem(s1));
+        ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 0, new QTableWidgetItem(currentCollegueId));
     }
 }
 
 void ColleaguesForm::DoSmthWithObject(int row, int column)
 {
-    ui->tblWidgetId->setItem(row, column, new QTableWidgetItem("AZAZAZA"));
+    mCurrentCollegue = mColleguesVector.at(row);
+
+    ui->tblWidgetCurrentColleague->removeRow(0);
+
+    ui->tblWidgetCurrentColleague->insertRow(ui->tblWidgetCurrentColleague->rowCount()); // or 0
+    ui->tblWidgetCurrentColleague->setItem(0, 0, new QTableWidgetItem(mCurrentCollegue.NetUiID().toString()));
+    ui->tblWidgetCurrentColleague->setItem(0, 1, new QTableWidgetItem(mCurrentCollegue.CreateDate().toString()));
+    ui->tblWidgetCurrentColleague->setItem(0, 2, new QTableWidgetItem(mCurrentCollegue.getFirstName()));
+    ui->tblWidgetCurrentColleague->setItem(0, 3, new QTableWidgetItem(mCurrentCollegue.getLastName()));
+    ui->tblWidgetCurrentColleague->setItem(0, 4, new QTableWidgetItem(mCurrentCollegue.getEmail()));
+    ui->tblWidgetCurrentColleague->setItem(0, 5, new QTableWidgetItem(mCurrentCollegue.getPhone()));
+
+
+    //ui->tblWidgetCurrentColleague->insertRow(ui->tblWidgetCurrentColleague->rowCount());
+    //ui->tblWidgetId->setItem(row, column, new QTableWidgetItem("AZAZAZA"));
 }
 
 
