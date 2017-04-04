@@ -32,7 +32,7 @@
     <string>Add Collegue</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtNetUiId">
+  <widget class="ColleaguesLineEditd" name="txtNetUiId">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -42,7 +42,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtFirstName">
+  <widget class="ColleaguesLineEditd" name="txtFirstName">
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -52,7 +52,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtLastName">
+  <widget class="ColleaguesLineEditd" name="txtLastName">
    <property name="geometry">
     <rect>
      <x>380</x>
@@ -62,7 +62,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtEmail">
+  <widget class="ColleaguesLineEditd" name="txtEmail">
    <property name="geometry">
     <rect>
      <x>500</x>
@@ -72,7 +72,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtPhone">
+  <widget class="ColleaguesLineEditd" name="txtPhone">
    <property name="geometry">
     <rect>
      <x>620</x>
@@ -148,6 +148,13 @@
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ColleaguesLineEditd</class>
+   <extends>QLineEdit</extends>
+   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLineEditd.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

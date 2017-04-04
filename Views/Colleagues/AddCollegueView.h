@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QUuid>
 #include <QDate>
+#include <QLineEdit>
 
 #include "Entities/PersonEntity.h"
 
@@ -20,16 +21,16 @@ class AddCollegueView : public QMdiSubWindow
 
 public:
     explicit AddCollegueView(QWidget *parent = 0);
-    ~AddCollegueView();
-    QUuid getNetUiId();
-    QString getFirstName();
-    QString getLastName();
-    QString getEmail();
-    QString getPhone();
+    ~AddCollegueView();    
 
+    QString getInformationFromLineEdit(QLineEdit *lineEdit);
 
 public slots:
     void AddCollegue();
+    bool validateFirstName();
+    bool validateLastName();
+    bool validateEmail();
+    bool validatePhone();
 
 private:
     Ui::AddCollegueView *ui;

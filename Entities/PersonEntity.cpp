@@ -37,10 +37,8 @@ QString PersonEntity::getLastName() const
 }
 
 void PersonEntity::setEmail(QString email)
-{
-    QRegExp regEmail ("([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_.-])+\\.([a-zA-Z]{2,4}|[0-9]{1,3})");
-    if(regEmail.exactMatch(email))
-        mEmail = email;
+{   
+    mEmail = email;
 }
 
 QString PersonEntity::getEmail() const
@@ -49,9 +47,8 @@ QString PersonEntity::getEmail() const
 }
 
 void PersonEntity::setPhone(QString phone)
-{
-    //if() // check telephone
-        mPhone = phone;
+{   
+    mPhone = phone;
 }
 
 QString PersonEntity::getPhone() const
