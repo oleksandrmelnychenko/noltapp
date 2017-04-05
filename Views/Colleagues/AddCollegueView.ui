@@ -147,6 +147,22 @@
     <string>Phone</string>
    </property>
   </widget>
+  <widget class="QLabel" name="lblIncorrectInput">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>120</y>
+     <width>151</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:red;</string>
+   </property>
+   <property name="text">
+    <string>Input correct all filesds</string>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>

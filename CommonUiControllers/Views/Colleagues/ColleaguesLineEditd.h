@@ -10,7 +10,13 @@ class ColleaguesLineEditd : public QLineEdit
 {
     Q_OBJECT
 
-protected:
+protected:    
+    void focusInEvent(QFocusEvent* e)
+    {
+        QLineEdit::focusInEvent(e);
+        emit inFocus();
+    }
+
     void focusOutEvent(QFocusEvent *e)
     {
         QLineEdit::focusOutEvent(e);
@@ -19,6 +25,7 @@ protected:
 
 signals:
     void outFocus();
+    void inFocus();
 
 public:
     ColleaguesLineEditd(QWidget *parent = 0) : QLineEdit(parent){}

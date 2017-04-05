@@ -7,13 +7,10 @@ AddCollegueView::AddCollegueView(QWidget *parent) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),
     ui(new Ui::AddCollegueView)
 {
-    ui->setupUi(this);
+    ui->setupUi(this);    
+    ui->lblIncorrectInput->hide();
 
-    connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(AddCollegue()));
-    connect(ui->txtFirstName, SIGNAL(outFocus()),this, SLOT(validateFirstName()));
-    connect(ui->txtLastName, SIGNAL(outFocus()), this, SLOT(validateLastName()));
-    connect(ui->txtEmail, SIGNAL(outFocus()), this, SLOT(validateEmail()));
-    connect(ui->txtPhone, SIGNAL(outFocus()), this, SLOT(validatePhone()));
+    SubscribeToFormEvents();
 }
 
 AddCollegueView::~AddCollegueView()
@@ -26,59 +23,83 @@ QString AddCollegueView::getInformationFromLineEdit(QLineEdit *lineEdit)
     return lineEdit->text();
 }
 
-void AddCollegueView::AddCollegue()
-{
-    QDate mCurrentDate = QDate::currentDate();
-    PersonEntity currentCollegue(mCounter++, getInformationFromLineEdit(ui->txtNetUiId), mCurrentDate,
-                                 getInformationFromLineEdit(ui->txtFirstName), getInformationFromLineEdit(ui->txtLastName),
-                                 getInformationFromLineEdit(ui->txtEmail), getInformationFromLineEdit(ui->txtPhone));
-    mColleguesVector << currentCollegue;
-}
+void AddCollegueView::addCollegue()
+{    
+    QDate currentDate = QDate::currentDate();    
 
-bool AddCollegueView::validateFirstName()
-{
-    QRegExp regName ("[a-zA-Z0-9_\\-\\.]{1,30}");
-    bool validate = regName.exactMatch(ui->txtFirstName->text());
-
-    if(validate)
+    if(!IsLineEditsEmpty() && IsLineEditsValid())
     {
-
+        PersonEntity currentCollegue(mCounter++, getInformationFromLineEdit(ui->txtNetUiId), currentDate,
+                                     getInformationFromLineEdit(ui->txtFirstName),
+                                     getInformationFromLineEdit(ui->txtLastName),
+                                     getInformationFromLineEdit(ui->txtEmail),
+                                     getInformationFromLineEdit(ui->txtPhone));
+        mColleguesVector << currentCollegue;
     }
-    return validate;
-}
-
-bool AddCollegueView::validateLastName()
-{
-    QRegExp regName ("[a-zA-Z0-9_\\-\\.]{1,30}");
-    bool validate = regName.exactMatch(ui->txtLastName->text());
-
-    if(validate)
+    else
     {
-
+        ui->lblIncorrectInput->show();
     }
-    return validate;
 }
 
-bool AddCollegueView::validateEmail()
+void AddCollegueView::validateLineEditInput(QLineEdit *lineEdit, QString regPatern, bool *isValid)
 {
-    QRegExp regEmail ("([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_.-])+\\.([a-zA-Z]{2,4}|[0-9]{1,3})");
-    bool validate = regEmail.exactMatch(ui->txtEmail->text());
+    QRegExp reg(regPatern);
+    bool validate = reg.exactMatch(lineEdit->text());
 
-    if(validate)
+    if(!validate)
     {
-
+        *isValid = false;
+        lineEdit->setStyleSheet(mNotValidateColor);
     }
-    return validate;
+    else
+    {
+        *isValid = true;
+        lineEdit->setStyleSheet(mValidateColor);
+    }
 }
 
-bool AddCollegueView::validatePhone()
+void AddCollegueView::focusIn(QLineEdit *lineEdit)
 {
-    QRegExp regPhone ("\\([0-9]{3}\\)\\s[0-9]{3}-[0-9]{2}-[0-9]{2}");  // (097) 231-23-52
-    bool validate = regPhone.exactMatch(ui->txtPhone->text());
+    lineEdit->setStyleSheet(mValidateColor);
+    ui->lblIncorrectInput->hide();
+}
 
-    if(validate)
+void AddCollegueView::SubscribeToFormEvents()
+{
+    connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(addCollegue()));
+
+    connect(ui->txtFirstName, &ColleaguesLineEditd::outFocus, this,
+            [this]{validateLineEditInput(ui->txtFirstName, mRegName, &isFirstNameValid);});
+    connect(ui->txtLastName, &ColleaguesLineEditd::outFocus, this,
+            [this]{validateLineEditInput(ui->txtLastName, mRegName, &isLastNameValid);});
+    connect(ui->txtEmail, &ColleaguesLineEditd::outFocus, this,
+            [this]{validateLineEditInput(ui->txtEmail, mRegEmail, &isEmailValid);});
+    connect(ui->txtPhone, &ColleaguesLineEditd::outFocus, this,
+            [this]{validateLineEditInput(ui->txtPhone, mRegPhone, &isPhoneValid);});
+
+    connect(ui->txtFirstName, &ColleaguesLineEditd::inFocus, this, [this]{focusIn(ui->txtFirstName);});
+    connect(ui->txtLastName, &ColleaguesLineEditd::inFocus, this, [this]{focusIn(ui->txtLastName);});
+    connect(ui->txtEmail, &ColleaguesLineEditd::inFocus, this, [this]{focusIn(ui->txtEmail);});
+    connect(ui->txtPhone, &ColleaguesLineEditd::inFocus, this, [this]{focusIn(ui->txtPhone);});
+}
+
+bool AddCollegueView::IsLineEditsEmpty()
+{
+    if(!getInformationFromLineEdit(ui->txtFirstName).isEmpty() && !getInformationFromLineEdit(ui->txtLastName).isEmpty() &&
+            !getInformationFromLineEdit(ui->txtEmail).isEmpty() && !getInformationFromLineEdit(ui->txtPhone).isEmpty())
     {
+        return false;
+    }
+    return true;
+}
 
+bool AddCollegueView::IsLineEditsValid()
+{
+    if(isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid)
+    {
+        return true;
     }
     return false;
 }
+
