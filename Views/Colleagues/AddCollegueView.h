@@ -33,7 +33,7 @@ protected slots:
 protected:    
     void SubscribeToFormEvents();
     bool IsLineEditsEmpty();
-    bool IsLineEditsValid();
+    bool IsLineEditsValid();   
 
 private:
     Ui::AddCollegueView *ui;

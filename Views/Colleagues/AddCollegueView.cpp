@@ -50,7 +50,7 @@ void AddCollegueView::validateLineEditInput(QLineEdit *lineEdit, QString regPate
     if(!validate)
     {
         *isValid = false;
-        lineEdit->setStyleSheet(mNotValidateColor);
+        lineEdit->text().isEmpty()?lineEdit->setStyleSheet(mValidateColor) : lineEdit->setStyleSheet(mNotValidateColor);
     }
     else
     {
@@ -94,12 +94,12 @@ bool AddCollegueView::IsLineEditsEmpty()
     return true;
 }
 
-bool AddCollegueView::IsLineEditsValid()
-{
+bool AddCollegueView::IsLineEditsValid(){
     if(isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid)
     {
         return true;
     }
     return false;
 }
+
 

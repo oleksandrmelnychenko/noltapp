@@ -157,7 +157,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:red;</string>
+    <string notr="true">color:red;
+ opacity: 0;</string>
    </property>
    <property name="text">
     <string>Input correct all filesds</string>
