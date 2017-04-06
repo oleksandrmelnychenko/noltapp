@@ -49,15 +49,78 @@
      <height>413</height>
     </size>
    </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
    <property name="autoFillBackground">
     <bool>true</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:#18181a;</string>
+    <string notr="true">QTableWidget#tblWidgetId
+{
+	background-color: #18181a;	
+	color: #909090;	
+	border:none;
+	gridline-color: #18181a;	
+}
+
+QTableWidget#tblWidgetId QHeaderView::section:horizontal
+{
+	padding:7px 5px 0px 5px;	
+    height:24px;
+	font: 15px arial, sans-serif;
+	color: #ffffff;
+    border-style: none;
+    border-left: 1px solid #909090;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid #909090;
+    background-color: transparent;	
+ }
+
+QTableWidget#tblWidgetId::item
+{
+	border-left:1px solid #909090
+}
+
+QTableWidget#tblWidgetId QHeaderView::section:horizontal:first
+{
+    border-left: none;	
+}</string>
+   </property>
+   <property name="midLineWidth">
+    <number>0</number>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::ExtendedSelection</enum>
+   </property>
+   <property name="selectionBehavior">
+    <enum>QAbstractItemView::SelectRows</enum>
    </property>
    <property name="showGrid">
     <bool>true</bool>
    </property>
+   <property name="sortingEnabled">
+    <bool>false</bool>
+   </property>
+   <property name="cornerButtonEnabled">
+    <bool>true</bool>
+   </property>
+   <property name="rowCount">
+    <number>0</number>
+   </property>
+   <property name="columnCount">
+    <number>0</number>
+   </property>
+   <attribute name="verticalHeaderDefaultSectionSize">
+    <number>30</number>
+   </attribute>
   </widget>
   <widget class="ColleaguesLabel" name="lblCollegues">
    <property name="geometry">

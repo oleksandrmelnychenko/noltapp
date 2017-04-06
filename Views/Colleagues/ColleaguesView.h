@@ -21,6 +21,7 @@ public:
     ~ColleaguesView();
 private:
     void LoadData();
+    void SetTableColumnsWidth();
 
 public slots:
     void DoSmthWithObject(int row, int column);
