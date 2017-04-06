@@ -23,7 +23,7 @@ signals:
     void inFocus();
 
 public:
-    LoginLabels(QWidget *parent =0) : QLabel(parent){}
+    LoginLabels(QWidget *parent = 0) : QLabel(parent){}
 };
 
 #endif // LOGINLABELS_H

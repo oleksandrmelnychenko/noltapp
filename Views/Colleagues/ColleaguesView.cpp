@@ -11,13 +11,12 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
     ui->setupUi(this);
 
     QStringList titleId;
-    titleId << "ID:" << "NET UI ID" << "DATA CREATE" ;
-    ui->tblWidgetId->setColumnCount(1);
+    titleId << "ID" << "NET UI ID" << "DATA CREATE" << "DATA UPDATE" << "FIRST NAME" << "LAST NAME" << "EMAIL" << "PHONE";
+    ui->tblWidgetId->setColumnCount(8);
     ui->tblWidgetId->setHorizontalHeaderLabels(titleId);
 
-    //connect(ui->btnLoadData, SIGNAL(clicked(bool)), SLOT(LoadData()));
     connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(DoSmthWithObject(int, int)));
-   // connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(CreateAddCollegueView()));
+    connect(ui->lblAddNew, SIGNAL(pressIn()), this, SLOT(CreateAddCollegueView()));
 
     QDate d(2017,3,4);
     PersonEntity bob(1,"bob123", d, "Bob", "Arum", "bob@gmail.com", "097554822");
@@ -27,6 +26,8 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
     PersonEntity jose(5,"jose123", d, "Jose", "Mour", "jm@gmail.com", "097678912");
 
     mColleguesVector << bob << jack << rachel << korky << jose;
+
+    LoadData();
 }
 
 ColleaguesView::~ColleaguesView()
@@ -54,7 +55,7 @@ void ColleaguesView::DoSmthWithObject(int row, int column)
 
 void ColleaguesView::CreateAddCollegueView()
 {
-    emit clickedAddCollegueButton();    
+    emit clickedNewLabel();
 }
 
 

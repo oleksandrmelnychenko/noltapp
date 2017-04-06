@@ -39,7 +39,7 @@ void MainWindow::createColleaguesView()
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new ColleaguesView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
-    connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedAddCollegueButton()), this, SLOT(createAddColegueView()));
+    connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedNewLabel()), this, SLOT(createAddColegueView()));
     SetPressButtonStyleSheet(ui->btnColleagues,ui->btnOffice,ui->btnSalary);
 }
 

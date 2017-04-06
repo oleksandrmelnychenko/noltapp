@@ -19,14 +19,15 @@ class ColleaguesView : public QMdiSubWindow
 public:
     explicit ColleaguesView(QWidget *parent = 0);
     ~ColleaguesView();
-
-public slots:   
+private:
     void LoadData();
+
+public slots:
     void DoSmthWithObject(int row, int column);
     void CreateAddCollegueView();
 
 signals:
-    void clickedAddCollegueButton();
+    void clickedNewLabel();
 
 private:
     Ui::ColleaguesForm *ui;

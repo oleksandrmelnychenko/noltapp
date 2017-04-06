@@ -59,7 +59,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="lblCollegues">
+  <widget class="ColleaguesLabel" name="lblCollegues">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -84,7 +84,7 @@ background-color:transparent;</string>
     <string>Collegues</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblAddNew">
+  <widget class="ColleaguesLabel" name="lblAddNew">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -109,6 +109,13 @@ color:#ffffff;
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ColleaguesLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLabel.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

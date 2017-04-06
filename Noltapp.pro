@@ -51,7 +51,8 @@ HEADERS  += \
     Entities/BaseEntity.h \
     Entities/PersonEntity.h \
     Views/Colleagues/AddCollegueView.h \
-    CommonUiControllers/Views/Colleagues/ColleaguesLineEditd.h
+    CommonUiControllers/Views/Colleagues/ColleaguesLineEditd.h \
+    CommonUiControllers/Views/Colleagues/ColleaguesLabel.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \
