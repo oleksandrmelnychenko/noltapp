@@ -1,6 +1,13 @@
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::SetPressButtonStyleSheet(QPushButton *pressedButton, QPushButton *secondButton, QPushButton *thirdButton)
+{
+    pressedButton->setStyleSheet("color:#ffffff; background-color:transparent; border : none;");
+    secondButton->setStyleSheet("color:#909090; background-color:transparent; border : none;");
+    thirdButton->setStyleSheet("color:#909090; background-color:transparent; border : none;");
+}
+
 void MainWindow::createColleaguesView()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
@@ -8,6 +15,7 @@ void MainWindow::createColleaguesView()
     mCurrentMdiSubForm->setGeometry(10,40,1330,600);
     mCurrentMdiSubForm->show();
     connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedAddCollegueButton()), this, SLOT(createAddColegueView()));
+    SetPressButtonStyleSheet(ui->btnColleagues,ui->btnOffice,ui->btnSalary);
 }
 
 void MainWindow::createAddColegueView()
@@ -24,6 +32,7 @@ void MainWindow::createOfficeView()
     mCurrentMdiSubForm = new OfficeView(ui->mdiArea);
     mCurrentMdiSubForm->setGeometry(10,40,1330,600);
     mCurrentMdiSubForm->show();
+    SetPressButtonStyleSheet(ui->btnOffice,ui->btnColleagues,ui->btnSalary);
 }
 
 void MainWindow::createSalaryView()
@@ -32,6 +41,7 @@ void MainWindow::createSalaryView()
     mCurrentMdiSubForm = new SalaryView(ui->mdiArea);
     mCurrentMdiSubForm->setGeometry(10,40,1330,600);
     mCurrentMdiSubForm->show();
+    SetPressButtonStyleSheet(ui->btnSalary,ui->btnOffice,ui->btnColleagues);
 }
 
 void MainWindow::deleteMdiSubForm(QMdiSubWindow *form)
@@ -45,7 +55,7 @@ void MainWindow::deleteMdiSubForm(QMdiSubWindow *form)
 }
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+    QMainWindow(parent, Qt::FramelessWindowHint | Qt::Window | Qt::CustomizeWindowHint),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);

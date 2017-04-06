@@ -11,13 +11,13 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
     ui->setupUi(this);
 
     QStringList titleId;
-    titleId << "Id:";
+    titleId << "ID:" << "NET UI ID" << "DATA CREATE" ;
     ui->tblWidgetId->setColumnCount(1);
     ui->tblWidgetId->setHorizontalHeaderLabels(titleId);
 
-    connect(ui->btnLoadData, SIGNAL(clicked(bool)), SLOT(LoadData()));
+    //connect(ui->btnLoadData, SIGNAL(clicked(bool)), SLOT(LoadData()));
     connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(DoSmthWithObject(int, int)));
-    connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(CreateAddCollegueView()));
+   // connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(CreateAddCollegueView()));
 
     QDate d(2017,3,4);
     PersonEntity bob(1,"bob123", d, "Bob", "Arum", "bob@gmail.com", "097554822");
@@ -50,12 +50,6 @@ void ColleaguesView::DoSmthWithObject(int row, int column)
 {
     mCurrentCollegue = mColleguesVector.at(row);
 
-    ui->txtEditNetUiId->setText(mCurrentCollegue.NetUiID().toString());
-    ui->txtEditCreateDate->setText(mCurrentCollegue.CreateDate().toString());
-    ui->txtEditFirstName->setText(mCurrentCollegue.getFirstName());
-    ui->txtEditLastName->setText(mCurrentCollegue.getLastName());
-    ui->txtEditEmail->setText(mCurrentCollegue.getEmail());
-    ui->txtEditPhone->setText(mCurrentCollegue.getPhone());
 }
 
 void ColleaguesView::CreateAddCollegueView()

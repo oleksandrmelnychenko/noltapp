@@ -35,15 +35,15 @@ color: black;</string>
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>70</width>
-      <height>20</height>
+      <width>148</width>
+      <height>45</height>
      </rect>
     </property>
-    <property name="text">
-     <string/>
+    <property name="styleSheet">
+     <string notr="true">background-color:transparent;</string>
     </property>
     <property name="pixmap">
-     <pixmap>:/new/login/images/loginBackground.png</pixmap>
+     <pixmap resource="../../images.qrc">:/Windows/Login/Images/loginBackground.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -52,14 +52,20 @@ color: black;</string>
    <widget class="QPushButton" name="btnColleagues">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>10</y>
-      <width>75</width>
-      <height>20</height>
+      <x>902</x>
+      <y>68</y>
+      <width>171</width>
+      <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>26</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border:none;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Colleagues</string>
@@ -68,14 +74,20 @@ color: black;</string>
    <widget class="QPushButton" name="btnOffice">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>10</y>
-      <width>75</width>
-      <height>20</height>
+      <x>1216</x>
+      <y>68</y>
+      <width>91</width>
+      <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>26</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border:none;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Office</string>
@@ -84,15 +96,20 @@ color: black;</string>
    <widget class="QPushButton" name="btnSalary">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>10</y>
-      <width>75</width>
-      <height>20</height>
+      <x>1094</x>
+      <y>68</y>
+      <width>101</width>
+      <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>26</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border:none;
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Salary</string>
@@ -102,7 +119,7 @@ color: black;</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
+      <y>110</y>
       <width>1330</width>
       <height>600</height>
      </rect>
@@ -110,14 +127,56 @@ color: black;</string>
     <property name="minimumSize">
      <size>
       <width>1300</width>
-      <height>600</height>
+      <height>492</height>
      </size>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:transparent;</string>
+    </property>
+    <property name="background">
+     <brush brushstyle="NoBrush">
+      <color alpha="255">
+       <red>160</red>
+       <green>160</green>
+       <blue>160</blue>
+      </color>
+     </brush>
+    </property>
    </widget>
+   <widget class="QLabel" name="lblBackGroundPicture">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1350</width>
+      <height>680</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>1350</width>
+      <height>680</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Windows/Login/Images/appBackGround.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <zorder>lblBackGroundPicture</zorder>
+   <zorder>labelLogo</zorder>
+   <zorder>btnColleagues</zorder>
+   <zorder>btnOffice</zorder>
+   <zorder>btnSalary</zorder>
+   <zorder>mdiArea</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../../images.qrc"/>
+ </resources>
  <connections/>
 </ui>

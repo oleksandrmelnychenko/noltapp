@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QMetaObject>
 #include <typeinfo>
+#include <QPushButton>
 
 
 namespace Ui {
@@ -18,6 +19,9 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
+protected:
+    void SetPressButtonStyleSheet(QPushButton *pressedButton, QPushButton *secondButton, QPushButton *thirdButton);
 
 protected slots:
     void createColleaguesView();
