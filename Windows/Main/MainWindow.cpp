@@ -8,11 +8,36 @@ void MainWindow::SetPressButtonStyleSheet(QPushButton *pressedButton, QPushButto
     thirdButton->setStyleSheet("color:#909090; background-color:transparent; border : none;");
 }
 
+bool MainWindow::isMousePointerInFrame()
+{
+    return (mMouseClickXCoordinate >= mFrameStartPointX && mMouseClickXCoordinate <= mFrameWidth &&
+            mMouseClickYCoordinate >= mFrameStartPointY && mMouseClickYCoordinate <= mFrameHeight);
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    mMouseClickXCoordinate = event->x();
+    mMouseClickYCoordinate = event->y();
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    if(isMousePointerInFrame())
+    {
+        move(event->globalX()-mMouseClickXCoordinate,event->globalY()-mMouseClickYCoordinate);
+    }
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+    mMouseClickXCoordinate = 0;
+    mMouseClickYCoordinate = 0;
+}
+
 void MainWindow::createColleaguesView()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new ColleaguesView(ui->mdiArea);
-    mCurrentMdiSubForm->setGeometry(10,40,1330,600);
+    mCurrentMdiSubForm = new ColleaguesView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
     connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedAddCollegueButton()), this, SLOT(createAddColegueView()));
     SetPressButtonStyleSheet(ui->btnColleagues,ui->btnOffice,ui->btnSalary);
@@ -21,16 +46,14 @@ void MainWindow::createColleaguesView()
 void MainWindow::createAddColegueView()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new AddCollegueView(ui->mdiArea);
-    mCurrentMdiSubForm->setGeometry(10,40,1330,600);
+    mCurrentMdiSubForm = new AddCollegueView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
 }
 
 void MainWindow::createOfficeView()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new OfficeView(ui->mdiArea);
-    mCurrentMdiSubForm->setGeometry(10,40,1330,600);
+    mCurrentMdiSubForm = new OfficeView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
     SetPressButtonStyleSheet(ui->btnOffice,ui->btnColleagues,ui->btnSalary);
 }
@@ -38,8 +61,7 @@ void MainWindow::createOfficeView()
 void MainWindow::createSalaryView()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new SalaryView(ui->mdiArea);
-    mCurrentMdiSubForm->setGeometry(10,40,1330,600);
+    mCurrentMdiSubForm = new SalaryView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
     SetPressButtonStyleSheet(ui->btnSalary,ui->btnOffice,ui->btnColleagues);
 }
@@ -61,11 +83,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     createColleaguesView();
-    mCurrentMdiSubForm->setGeometry(0,0,640,440);
 
     connect(ui->btnColleagues, SIGNAL(clicked()), this, SLOT(createColleaguesView()));
     connect(ui->btnSalary, SIGNAL(clicked()), this, SLOT(createSalaryView()));
     connect(ui->btnOffice, SIGNAL(clicked()), this, SLOT(createOfficeView()));
+    connect(ui->btnQuit, SIGNAL(clicked(bool)), this, SLOT(close()));
 
 }
 

@@ -10,6 +10,7 @@
 #include <QMetaObject>
 #include <typeinfo>
 #include <QPushButton>
+#include <QMouseEvent>
 
 
 namespace Ui {
@@ -22,6 +23,11 @@ class MainWindow : public QMainWindow
 
 protected:
     void SetPressButtonStyleSheet(QPushButton *pressedButton, QPushButton *secondButton, QPushButton *thirdButton);
+    bool isMousePointerInFrame();
+
+    void mousePressEvent(QMouseEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent *event);
 
 protected slots:
     void createColleaguesView();
@@ -36,7 +42,15 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;    
+    Ui::MainWindow *ui;
+
+    const int mFrameStartPointX = 170;
+    const int mFrameStartPointY = 0;
+    const int mFrameWidth = 1111;
+    const int mFrameHeight = 21;
+
+    int mMouseClickXCoordinate;
+    int mMouseClickYCoordinate;
 
     QMdiSubWindow* mCurrentMdiSubForm = 0;
 };
