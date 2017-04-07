@@ -16,10 +16,11 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
     ui->tblWidgetId->setHorizontalHeaderLabels(titleId);    
     ui->tblWidgetId->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
     ui->tblWidgetId->verticalHeader()->setVisible(false);
-    //ui->tblWidgetId->setAlternatingRowColors(true); //one row one color second another    
+    //ui->tblWidgetId->setAlternatingRowColors(true); //one row one color second another
 
     connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(DoSmthWithObject(int, int)));
     connect(ui->lblAddNew, SIGNAL(pressIn()), this, SLOT(CreateAddCollegueView()));
+    //connect(ui->tblWidgetId, SIGNAL(doubleClicked(QModelIndex))
 
     QDate d = QDate::currentDate();
     PersonEntity bob(1,"bob123", d, "Bob", "Arum", "bob@gmail.com", "097554822");
@@ -73,7 +74,6 @@ void ColleaguesView::SetTableColumnsWidth()
 void ColleaguesView::DoSmthWithObject(int row, int column)
 {
     mCurrentCollegue = mColleguesVector.at(row);
-
 }
 
 void ColleaguesView::CreateAddCollegueView()
