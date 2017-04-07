@@ -68,6 +68,19 @@
 	color: #909090;	
 	border:none;
 	gridline-color: #18181a;	
+outline:none;
+}
+
+QTableWidget#tblWidgetId::item:focus
+{
+outline:none;
+	/*border:1px solid red;	*/	
+}
+
+QTableWidget#tblWidgetId::item:selected
+{
+	color:#ffffff;
+outline:none;
 }
 
 QTableWidget#tblWidgetId QHeaderView::section:horizontal
@@ -140,7 +153,7 @@ QTableWidget#tblWidgetId QHeaderView::section:horizontal:first
     <number>30</number>
    </attribute>
    <attribute name="verticalHeaderHighlightSections">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
   </widget>
   <widget class="ColleaguesLabel" name="lblCollegues">
