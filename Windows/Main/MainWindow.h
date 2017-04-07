@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "Views/Colleagues/ColleaguesView.h"
 #include "Views/Colleagues/AddCollegueView.h"
+#include "Views/Colleagues/UpdateCollegueView.h"
 #include "Views/Office/OfficeView.h"
 #include "Views/Salary/SalaryView.h"
 #include <QDebug>
@@ -31,8 +32,8 @@ protected:
 
 protected slots:
     void createColleaguesView();
-    void createAddColegueView();
-    void updateData(long id);
+    void createAddColeagueView();
+    void createUpdateColleagueView(long id);
 
     void createOfficeView();
     void createSalaryView();

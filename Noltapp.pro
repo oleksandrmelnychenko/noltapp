@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     CommonUiControllers/WindowController.cpp \
     Entities/BaseEntity.cpp \
     Entities/PersonEntity.cpp \
-    Views/Colleagues/AddCollegueView.cpp
+    Views/Colleagues/AddCollegueView.cpp \
+    Views/Colleagues/UpdateCollegueView.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -52,7 +53,8 @@ HEADERS  += \
     Entities/PersonEntity.h \
     Views/Colleagues/AddCollegueView.h \
     CommonUiControllers/Views/Colleagues/ColleaguesLineEditd.h \
-    CommonUiControllers/Views/Colleagues/ColleaguesLabel.h
+    CommonUiControllers/Views/Colleagues/ColleaguesLabel.h \
+    Views/Colleagues/UpdateCollegueView.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \
@@ -60,7 +62,8 @@ FORMS    += \
     Views\Office\OfficeView.ui \
     Windows\Login\LoginWindow.ui \
     Windows\Main\MainWindow.ui \
-    Views/Colleagues/AddCollegueView.ui
+    Views/Colleagues/AddCollegueView.ui \
+    Views/Colleagues/UpdateCollegueView.ui
 
 RESOURCES += \
     images.qrc

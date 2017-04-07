@@ -75,6 +75,6 @@ void ColleaguesView::CreateAddCollegueView()
 
 void ColleaguesView::UpdateCurrentCollegues(int row, int column)
 {
-    mIdToUpdateCollegue = ui->tblWidgetId->item(row,0)->text().toLong();
-    emit updateCurrentCollegues(mIdToUpdateCollegue);
+    long id = ui->tblWidgetId->item(row,0)->text().toLong();
+    emit updateCurrentCollegues(id);
 }

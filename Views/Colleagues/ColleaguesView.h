@@ -39,8 +39,7 @@ private:
 
     QVector<PersonEntity> mColleguesVector;
     PersonEntity mCurrentCollegue;
-    int mCounter = 0;
-    long mIdToUpdateCollegue;
+    int mCounter = 0;    
 };
 
 #endif // COLLEAGUESFORM_H
