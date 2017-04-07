@@ -227,6 +227,23 @@ background-position:top right;
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="btbReqtangle">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>107</y>
+      <width>12</width>
+      <height>52</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:#00b7df;
+border:1px solid #00b7df;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>lblBackGroundPicture</zorder>
    <zorder>labelLogo</zorder>
    <zorder>btnColleagues</zorder>
@@ -235,6 +252,7 @@ background-position:top right;
    <zorder>mdiArea</zorder>
    <zorder>widgetFrame</zorder>
    <zorder>btnQuit</zorder>
+   <zorder>btbReqtangle</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

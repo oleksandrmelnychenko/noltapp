@@ -14,20 +14,17 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
     titleId << "ID" << "NET UI ID" << "CREATE DATE" << "UPDATE DATE" << "FIRST NAME" << "LAST NAME" << "EMAIL" << "PHONE";
     ui->tblWidgetId->setColumnCount(8);
     ui->tblWidgetId->setHorizontalHeaderLabels(titleId);    
-    ui->tblWidgetId->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-    ui->tblWidgetId->verticalHeader()->setVisible(false);
-    //ui->tblWidgetId->setAlternatingRowColors(true); //one row one color second another
+    ui->tblWidgetId->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);    
 
-    connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(DoSmthWithObject(int, int)));
-    connect(ui->lblAddNew, SIGNAL(pressIn()), this, SLOT(CreateAddCollegueView()));
-    //connect(ui->tblWidgetId, SIGNAL(doubleClicked(QModelIndex))
+    connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(UpdateCurrentCollegues(int, int)));
+    connect(ui->lblAddNew, SIGNAL(pressIn()), this, SLOT(CreateAddCollegueView()));    
 
     QDate d = QDate::currentDate();
-    PersonEntity bob(1,"bob123", d, "Bob", "Arum", "bob@gmail.com", "097554822");
-    PersonEntity jack(2,"jack123", d, "Jack", "Partak", "partak@gmail.com", "0967324234");
-    PersonEntity rachel(3,"rachel123", d, "Rachel", "Valera", "rv@gmail.com", "0775464523");
-    PersonEntity korky(4,"korky123", d, "Korky", "Melloun", "korky@gmail.com", "097544962");
-    PersonEntity jose(5,"jose123", d, "Jose", "Mour", "jm@gmail.com", "097678912");
+    PersonEntity bob(11,"bob123", d, "Bob", "Arum", "bob@gmail.com", "097554822");
+    PersonEntity jack(42,"jack123", d, "Jack", "Partak", "partak@gmail.com", "0967324234");
+    PersonEntity rachel(53,"rachel123", d, "Rachel", "Valera", "rv@gmail.com", "0775464523");
+    PersonEntity korky(47,"korky123", d, "Korky", "Melloun", "korky@gmail.com", "097544962");
+    PersonEntity jose(85,"jose123", d, "Jose", "Mour", "jm@gmail.com", "097678912");
 
     mColleguesVector << bob << jack << rachel << korky << jose;
 
@@ -71,16 +68,13 @@ void ColleaguesView::SetTableColumnsWidth()
    ui->tblWidgetId->setColumnWidth(7,134);
 }
 
-void ColleaguesView::DoSmthWithObject(int row, int column)
-{
-    mCurrentCollegue = mColleguesVector.at(row);
-}
-
 void ColleaguesView::CreateAddCollegueView()
 {
     emit clickedNewLabel();
 }
 
-
-
-
+void ColleaguesView::UpdateCurrentCollegues(int row, int column)
+{
+    mIdToUpdateCollegue = ui->tblWidgetId->item(row,0)->text().toLong();
+    emit updateCurrentCollegues(mIdToUpdateCollegue);
+}

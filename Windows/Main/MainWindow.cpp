@@ -40,6 +40,7 @@ void MainWindow::createColleaguesView()
     mCurrentMdiSubForm = new ColleaguesView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
     connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedNewLabel()), this, SLOT(createAddColegueView()));
+    connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(updateCurrentCollegues(long)), this, SLOT(updateData(long)));
     SetPressButtonStyleSheet(ui->btnColleagues,ui->btnOffice,ui->btnSalary);
 }
 
@@ -48,6 +49,11 @@ void MainWindow::createAddColegueView()
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new AddCollegueView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
+}
+
+void MainWindow::updateData(long id)
+{
+    qDebug() << id;
 }
 
 void MainWindow::createOfficeView()
@@ -81,6 +87,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->btbReqtangle->setEnabled(false);
 
     createColleaguesView();
 

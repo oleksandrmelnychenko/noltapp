@@ -32,6 +32,7 @@ protected:
 protected slots:
     void createColleaguesView();
     void createAddColegueView();
+    void updateData(long id);
 
     void createOfficeView();
     void createSalaryView();

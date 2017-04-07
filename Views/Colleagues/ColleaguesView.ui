@@ -149,6 +149,9 @@ QTableWidget#tblWidgetId QHeaderView::section:horizontal:first
    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
     <bool>false</bool>
    </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
    <attribute name="verticalHeaderDefaultSectionSize">
     <number>30</number>
    </attribute>
@@ -185,7 +188,7 @@ background-color:transparent;</string>
    <property name="geometry">
     <rect>
      <x>180</x>
-     <y>0</y>
+     <y>1</y>
      <width>91</width>
      <height>50</height>
     </rect>

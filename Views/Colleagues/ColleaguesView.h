@@ -5,6 +5,7 @@
 #include <QMdiSubWindow>
 #include <QVector>
 #include <QLabel>
+#include <QTableWidgetItem>
 
 #include "Entities/PersonEntity.h"
 
@@ -21,14 +22,17 @@ public:
     ~ColleaguesView();
 private:
     void LoadData();
-    void SetTableColumnsWidth();
+    void SetTableColumnsWidth();    
 
-public slots:
-    void DoSmthWithObject(int row, int column);
-    void CreateAddCollegueView();
+public slots:    
+    void CreateAddCollegueView();   
+
+protected slots:
+    void UpdateCurrentCollegues(int row, int column);
 
 signals:
     void clickedNewLabel();
+    void updateCurrentCollegues(long);
 
 private:
     Ui::ColleaguesForm *ui;
@@ -36,6 +40,7 @@ private:
     QVector<PersonEntity> mColleguesVector;
     PersonEntity mCurrentCollegue;
     int mCounter = 0;
+    long mIdToUpdateCollegue;
 };
 
 #endif // COLLEAGUESFORM_H
