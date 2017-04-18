@@ -38,6 +38,7 @@ protected slots:
     void createOfficeView();
     void createSalaryView();
     void deleteMdiSubForm(QMdiSubWindow *form);
+    void collapseMainWindow();
 
 public:
     explicit MainWindow(QWidget *parent = 0);

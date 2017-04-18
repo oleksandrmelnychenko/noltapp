@@ -62,7 +62,8 @@ void AddCollegueView::validateLineEditInput(QLineEdit *lineEdit, QString regPate
 void AddCollegueView::focusIn(QLineEdit *lineEdit)
 {
     lineEdit->setStyleSheet(mValidateColor);
-    ui->lblIncorrectInput->hide();
+    ui->lblIncorrectInput->hide();    
+    QMdiSubWindow::update();
 }
 
 void AddCollegueView::SubscribeToFormEvents()

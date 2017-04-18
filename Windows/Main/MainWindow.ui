@@ -130,6 +130,11 @@ color: black;</string>
       <height>498</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color:transparent;</string>
     </property>
@@ -244,6 +249,54 @@ border:1px solid #00b7df;</string>
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnCollapse">
+    <property name="geometry">
+     <rect>
+      <x>1306</x>
+      <y>10</y>
+      <width>12</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>6</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btnCollapse{ 
+background-color:transparent; 
+border:none; 
+color : #909090; 
+
+qproperty-icon: url(&quot; &quot;); 
+qproperty-iconSize: 14px ; 
+background-image: url(&quot;:/Windows/Login/Images/collapseIcon.png&quot;); 
+background-repeat: no-repeat; 
+background-position:top left;
+
+} 
+
+QPushButton#btnCollapse:hover{ 
+qproperty-icon: url(&quot; &quot;); 
+qproperty-iconSize: 14px 14px; 
+background-image: url(&quot;:/Windows/Login/Images/collapseIcon.png&quot;); 
+background-repeat: no-repeat; 
+background-position:top right;
+} 
+
+QPushButton#btnCollapse:pressed{ 
+qproperty-icon: url(&quot; &quot;); 
+qproperty-iconSize: 14px 14px; 
+background-image: url(&quot;:/Windows/Login/Images/collapseIcon.png&quot;); 
+background-repeat: no-repeat; 
+background-position:top right;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>lblBackGroundPicture</zorder>
    <zorder>labelLogo</zorder>
    <zorder>btnColleagues</zorder>
@@ -253,6 +306,7 @@ border:1px solid #00b7df;</string>
    <zorder>widgetFrame</zorder>
    <zorder>btnQuit</zorder>
    <zorder>btbReqtangle</zorder>
+   <zorder>btnCollapse</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

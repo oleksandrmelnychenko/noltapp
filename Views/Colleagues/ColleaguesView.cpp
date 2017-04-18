@@ -9,6 +9,7 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
     ui(new Ui::ColleaguesForm)
 {
     ui->setupUi(this);
+    setAttribute(Qt::WA_DeleteOnClose);
 
     QStringList titleId;
     titleId << "ID" << "NET UI ID" << "CREATE DATE" << "UPDATE DATE" << "FIRST NAME" << "LAST NAME" << "EMAIL" << "PHONE";
@@ -76,5 +77,5 @@ void ColleaguesView::CreateAddCollegueView()
 void ColleaguesView::UpdateCurrentCollegues(int row, int column)
 {
     long id = ui->tblWidgetId->item(row,0)->text().toLong();
-    emit updateCurrentCollegues(id);
+    emit updateCurrentCollegues(id);    
 }

@@ -42,7 +42,7 @@ void MainWindow::createColleaguesView()
     connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedNewLabel()),
             this, SLOT(createAddColeagueView()));
     connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(updateCurrentCollegues(long)),
-            this, SLOT(createUpdateColleagueView(long)));
+            this, SLOT(createUpdateColleagueView(long)));    
     SetPressButtonStyleSheet(ui->btnColleagues,ui->btnOffice,ui->btnSalary);
 }
 
@@ -56,8 +56,10 @@ void MainWindow::createAddColeagueView()
 void MainWindow::createUpdateColleagueView(long id)
 {
     mCurrentMdiSubForm->close();
+    //deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new UpdateCollegueView(ui->mdiArea,id);
     mCurrentMdiSubForm->show();
+
     qDebug() << id;
 }
 
@@ -82,9 +84,14 @@ void MainWindow::deleteMdiSubForm(QMdiSubWindow *form)
     if(form != nullptr)
     {
         delete mCurrentMdiSubForm;
-        mCurrentMdiSubForm = nullptr;
+        mCurrentMdiSubForm = nullptr;       
         qDebug() << "Delete CurrentMdiSubForm";
     }
+}
+
+void MainWindow::collapseMainWindow()
+{
+    QWidget::setWindowState(Qt::WindowMinimized);
 }
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -100,6 +107,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btnSalary, SIGNAL(clicked()), this, SLOT(createSalaryView()));
     connect(ui->btnOffice, SIGNAL(clicked()), this, SLOT(createOfficeView()));
     connect(ui->btnQuit, SIGNAL(clicked(bool)), this, SLOT(close()));
+    connect(ui->btnCollapse, SIGNAL(clicked(bool)), this, SLOT(collapseMainWindow()));
 
 }
 

@@ -4,7 +4,8 @@
 BaseEntity::BaseEntity(long id, QUuid netUiId, QDate createDate)
     : mId(id),
       mNetUiId(netUiId),
-      mCreateDate(createDate)
+      mCreateDate(createDate),
+      mUpdateDate(createDate)
 {
 
 }

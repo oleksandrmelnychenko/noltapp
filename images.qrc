@@ -4,5 +4,6 @@
         <file>Images/loginBackground.png</file>
         <file>Images/loginFormCat.png</file>
         <file>Images/appBackGround.png</file>
+        <file>Images/collapseIcon.png</file>
     </qresource>
 </RCC>
