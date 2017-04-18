@@ -51,8 +51,11 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
     </font>
    </property>
    <property name="layoutDirection">
@@ -87,7 +90,7 @@ QTableWidget#tblWidgetId QHeaderView::section:horizontal
 {
 	padding:7px 5px 0px 5px;	
     height:24px;
-	font: 15px arial, sans-serif;
+	font: 14px Leelawadee UI Semilight, sans-serif;
 	color: #ffffff;
     border-style: none;
     border-left: 1px solid #909090;
@@ -164,14 +167,14 @@ QTableWidget#tblWidgetId QHeaderView::section:horizontal:first
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>150</width>
+     <width>100</width>
      <height>50</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>26</pointsize>
+     <family>Leelawadee UI Semilight</family>
+     <pointsize>17</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
@@ -187,16 +190,18 @@ background-color:transparent;</string>
   <widget class="ColleaguesLabel" name="lblAddNew">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>120</x>
      <y>1</y>
-     <width>91</width>
+     <width>70</width>
      <height>50</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>24</pointsize>
+     <family>Leelawadee UI Semilight</family>
+     <pointsize>15</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="styleSheet">
