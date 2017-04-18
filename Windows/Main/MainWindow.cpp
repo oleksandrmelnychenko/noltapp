@@ -55,8 +55,7 @@ void MainWindow::createAddColeagueView()
 
 void MainWindow::createUpdateColleagueView(long id)
 {
-    mCurrentMdiSubForm->close();
-    //deleteMdiSubForm(mCurrentMdiSubForm);
+    mCurrentMdiSubForm->close();    
     mCurrentMdiSubForm = new UpdateCollegueView(ui->mdiArea,id);
     mCurrentMdiSubForm->show();
 
