@@ -29,7 +29,7 @@ void AddCollegueView::addCollegue()
 
     if(!IsLineEditsEmpty() && IsLineEditsValid())
     {
-        PersonEntity currentCollegue(mCounter++, getInformationFromLineEdit(ui->txtNetUiId), currentDate,
+        PersonEntity currentCollegue(mCounter++, "netUiId", currentDate,
                                      getInformationFromLineEdit(ui->txtFirstName),
                                      getInformationFromLineEdit(ui->txtLastName),
                                      getInformationFromLineEdit(ui->txtEmail),
@@ -50,7 +50,9 @@ void AddCollegueView::validateLineEditInput(QLineEdit *lineEdit, QString regPate
     if(!validate)
     {
         *isValid = false;
-        lineEdit->text().isEmpty()?lineEdit->setStyleSheet(mValidateColor) : lineEdit->setStyleSheet(mNotValidateColor);
+        lineEdit->text().isEmpty()?lineEdit->setStyleSheet(mValidateColor)
+                                 : lineEdit->setStyleSheet(mNotValidateColor);
+        // output invalid input message
     }
     else
     {

@@ -110,7 +110,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>Leelawadee UI Semilight</family>
      <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -150,7 +150,7 @@ QPushButton#btnLogin:pressed
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>Calibri</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -179,7 +179,7 @@ padding-left:7px;</string>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>Calibri</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -218,7 +218,7 @@ padding-left:7px;
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>Leelawadee UI Semilight</family>
      <pointsize>9</pointsize>
     </font>
    </property>
@@ -254,7 +254,7 @@ background-color:transparent;</string>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>Leelawadee UI Semilight</family>
      <pointsize>9</pointsize>
     </font>
    </property>
