@@ -168,7 +168,7 @@ padding-left:7px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="lblFirstName">
+  <widget class="ColleaguesLabel" name="lblFirstName">
    <property name="geometry">
     <rect>
      <x>512</x>
@@ -190,7 +190,7 @@ padding-left:7px;</string>
     <string>First Name</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblLastName">
+  <widget class="ColleaguesLabel" name="lblLastName">
    <property name="geometry">
     <rect>
      <x>512</x>
@@ -212,7 +212,7 @@ padding-left:7px;</string>
     <string>Last Name</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblEmail">
+  <widget class="ColleaguesLabel" name="lblEmail">
    <property name="geometry">
     <rect>
      <x>512</x>
@@ -234,7 +234,7 @@ padding-left:7px;</string>
     <string>Email</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblPhone">
+  <widget class="ColleaguesLabel" name="lblPhone">
    <property name="geometry">
     <rect>
      <x>512</x>
@@ -296,12 +296,48 @@ background-color:transparent;</string>
     <string>Collegues</string>
    </property>
   </widget>
+  <widget class="ColleaguesLabel" name="lblBackGround">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1294</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>1294</width>
+     <height>600</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>lblBackGround</zorder>
+  <zorder>btnAddCollegue</zorder>
+  <zorder>txtFirstName</zorder>
+  <zorder>txtLastName</zorder>
+  <zorder>txtEmail</zorder>
+  <zorder>txtPhone</zorder>
+  <zorder>lblFirstName</zorder>
+  <zorder>lblLastName</zorder>
+  <zorder>lblEmail</zorder>
+  <zorder>lblPhone</zorder>
+  <zorder>lblIncorrectInput</zorder>
+  <zorder>lblCollegues</zorder>
  </widget>
  <customwidgets>
   <customwidget>
    <class>ColleaguesLineEditd</class>
    <extends>QLineEdit</extends>
    <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLineEditd.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ColleaguesLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLabel.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

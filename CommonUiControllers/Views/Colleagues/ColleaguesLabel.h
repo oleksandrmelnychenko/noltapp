@@ -11,7 +11,6 @@ class ColleaguesLabel : public QLabel
     Q_OBJECT
 
 protected:
-protected:
     void mousePressEvent(QMouseEvent *e)
     {
         if(e->button() == Qt::LeftButton)

@@ -10,6 +10,8 @@ AddCollegueView::AddCollegueView(QWidget *parent) :
     ui->setupUi(this);    
     ui->lblIncorrectInput->hide();
 
+    mAnimationController = new AnimationController();
+
     SubscribeToFormEvents();
 }
 
@@ -21,6 +23,31 @@ AddCollegueView::~AddCollegueView()
 QString AddCollegueView::getInformationFromLineEdit(QLineEdit *lineEdit)
 {
     return lineEdit->text();
+}
+
+void AddCollegueView::clearFocusOfLineEdits()
+{
+    ui->txtFirstName->clearFocus();
+    ui->txtLastName->clearFocus();
+    ui->txtEmail->clearFocus();
+    ui->txtPhone->clearFocus();
+}
+
+bool AddCollegueView::isLineEditEmpty(const QLineEdit *lineEdit)
+{
+    return (QString(lineEdit->text()).isEmpty());
+}
+
+void AddCollegueView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)
+{
+    if(isLineEditEmpty(lineEdit))
+    {
+        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsStartPointY);
+    }
+    else
+    {
+        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
+    }
 }
 
 void AddCollegueView::addCollegue()
@@ -85,6 +112,23 @@ void AddCollegueView::SubscribeToFormEvents()
     connect(ui->txtLastName, &ColleaguesLineEditd::inFocus, this, [this]{focusIn(ui->txtLastName);});
     connect(ui->txtEmail, &ColleaguesLineEditd::inFocus, this, [this]{focusIn(ui->txtEmail);});
     connect(ui->txtPhone, &ColleaguesLineEditd::inFocus, this, [this]{focusIn(ui->txtPhone);});
+
+    connect(ui->lblBackGround, SIGNAL(pressIn()), this, SLOT(lostFocusOnLineEditsByClickOnBackGround()));
+
+    connect(ui->txtFirstName, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditFirstName()));
+    connect(ui->txtLastName, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditLastName()));
+    connect(ui->txtEmail, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditEmail()));
+    connect(ui->txtPhone, SIGNAL(outFocus()), this, SLOT(lostFocusOnLineEditPhone()));
+
+    connect(ui->lblFirstName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtFirstName);});
+    connect(ui->lblLastName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtLastName);});
+    connect(ui->lblEmail, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEmail);});
+    connect(ui->lblPhone, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtPhone);});
+
+    connect(ui->txtFirstName, &ColleaguesLineEditd::inFocus, this, [this]{doLabelAnimation(ui->lblFirstName, mlblFirstNameEndPointY);});
+    connect(ui->txtLastName, &ColleaguesLineEditd::inFocus, this, [this]{doLabelAnimation(ui->lblLastName, mlblLastNameEndPointY);});
+    connect(ui->txtEmail, &ColleaguesLineEditd::inFocus, this, [this]{doLabelAnimation(ui->lblEmail, mlblEmailEndPointY);});
+    connect(ui->txtPhone, &ColleaguesLineEditd::inFocus, this, [this]{doLabelAnimation(ui->lblPhone, mlblPhoneEndPointY);});
 }
 
 bool AddCollegueView::IsLineEditsEmpty()
@@ -103,6 +147,41 @@ bool AddCollegueView::IsLineEditsValid(){
         return true;
     }
     return false;
+}
+
+void AddCollegueView::setFocusOnLineEdit(QLineEdit *lineEdint)
+{
+    lineEdint->setFocus();
+}
+
+void AddCollegueView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
+{
+    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
+}
+
+void AddCollegueView::lostFocusOnLineEditFirstName()
+{
+    setLabelsPosition(ui->txtFirstName, ui->lblFirstName, mlblFirstNameStartPointY, mlblFirstNameEndPointY);
+}
+
+void AddCollegueView::lostFocusOnLineEditLastName()
+{
+    setLabelsPosition(ui->txtLastName, ui->lblLastName, mlblLastNameStartPointY, mlblLastNameEndPointY);
+}
+
+void AddCollegueView::lostFocusOnLineEditEmail()
+{
+    setLabelsPosition(ui->txtEmail, ui->lblEmail, mlblEmailStartPointY, mlblEmailEndPointY);
+}
+
+void AddCollegueView::lostFocusOnLineEditPhone()
+{
+    setLabelsPosition(ui->txtPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY);
+}
+
+void AddCollegueView::lostFocusOnLineEditsByClickOnBackGround()
+{
+    clearFocusOfLineEdits();
 }
 
 

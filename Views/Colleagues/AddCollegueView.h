@@ -10,6 +10,8 @@
 #include <QLineEdit>
 
 #include "Entities/PersonEntity.h"
+#include "CommonUiControllers/AnimationController.h"
+//#include "CommonUiControllers/Views/Colleagues/ColleaguesLabel.h"
 
 namespace Ui {
     class AddCollegueView;
@@ -25,6 +27,11 @@ public:
 
     QString getInformationFromLineEdit(QLineEdit *lineEdit);
 
+private:
+    void clearFocusOfLineEdits();
+    bool isLineEditEmpty(const QLineEdit *lineEdit);
+    void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
+
 protected slots:
     void addCollegue();
     void validateLineEditInput(QLineEdit *lineEdit, QString regPatern, bool *isValid);
@@ -33,7 +40,16 @@ protected slots:
 protected:    
     void SubscribeToFormEvents();
     bool IsLineEditsEmpty();
-    bool IsLineEditsValid();   
+    bool IsLineEditsValid();
+
+private slots:
+    void setFocusOnLineEdit(QLineEdit *lineEdint);
+    void doLabelAnimation(QLabel *label, int labelsYCoordinate);
+    void lostFocusOnLineEditFirstName();
+    void lostFocusOnLineEditLastName();
+    void lostFocusOnLineEditEmail();
+    void lostFocusOnLineEditPhone();
+    void lostFocusOnLineEditsByClickOnBackGround();
 
 private:
     Ui::AddCollegueView *ui;
@@ -52,6 +68,18 @@ private:
     bool isLastNameValid = false;
     bool isEmailValid = false;
     bool isPhoneValid = false;
+
+    AnimationController* mAnimationController;
+    int mAnimationDuration = 250;
+
+    const int mlblFirstNameStartPointY = 113;
+    const int mlblFirstNameEndPointY = 92;
+    const int mlblLastNameStartPointY = 170;
+    const int mlblLastNameEndPointY = 149;
+    const int mlblEmailStartPointY = 227;
+    const int mlblEmailEndPointY = 206;
+    const int mlblPhoneStartPointY = 284;
+    const int mlblPhoneEndPointY = 263;
 
 };
 
