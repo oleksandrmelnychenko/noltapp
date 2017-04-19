@@ -6,13 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1330</width>
+    <width>1294</width>
     <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1330</width>
+    <width>1294</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1294</width>
     <height>600</height>
    </size>
   </property>
@@ -22,17 +28,39 @@
   <property name="styleSheet">
    <string notr="true">color:white;</string>
   </property>
-  <widget class="QPushButton" name="btbUpdate">
+  <widget class="QPushButton" name="btnUpdate">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>340</y>
-     <width>321</width>
+     <x>505</x>
+     <y>323</y>
+     <width>340</width>
      <height>41</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Leelawadee UI Semilight</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">border:1px solid white;</string>
+    <string notr="true">QPushButton#btnUpdate
+{	
+ 	border:1px solid #ffffff;
+	color:white;
+	background-color:transparent;
+ }
+
+QPushButton#btnUpdate:hover
+{
+ 	color:#0992b1;
+ } 
+
+QPushButton#btnUpdate:pressed
+{
+ 	color:#0992b1;
+	border: 1px solid #0992b1; 
+} </string>
    </property>
    <property name="text">
     <string>Update</string>
@@ -41,51 +69,116 @@
   <widget class="QLineEdit" name="txtEditFirstName">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>60</y>
-     <width>321</width>
-     <height>41</height>
+     <x>505</x>
+     <y>105</y>
+     <width>340</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;
+padding-bottom:0px;</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="txtEditLastName">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>140</y>
-     <width>321</width>
-     <height>41</height>
+     <x>505</x>
+     <y>162</y>
+     <width>340</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;
+padding-bottom:0px;</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="txtEditEmail">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>210</y>
-     <width>321</width>
-     <height>41</height>
+     <x>505</x>
+     <y>219</y>
+     <width>340</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;
+padding-bottom:0px;</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="txtEditPhone">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>290</y>
-     <width>321</width>
-     <height>41</height>
+     <x>505</x>
+     <y>276</y>
+     <width>340</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;
+padding-bottom:0px;</string>
    </property>
   </widget>
   <widget class="QLabel" name="lblFirstName">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>30</y>
+     <x>512</x>
+     <y>113</y>
      <width>60</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Leelawadee UI Semilight</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:#909090;</string>
    </property>
    <property name="text">
     <string>First Name</string>
@@ -94,11 +187,20 @@
   <widget class="QLabel" name="lblLastName">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>110</y>
+     <x>512</x>
+     <y>170</y>
      <width>60</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Leelawadee UI Semilight</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:#909090;</string>
    </property>
    <property name="text">
     <string>Last Name</string>
@@ -107,11 +209,20 @@
   <widget class="QLabel" name="lblEmail">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>190</y>
+     <x>512</x>
+     <y>227</y>
      <width>60</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Leelawadee UI Semilight</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:#909090;</string>
    </property>
    <property name="text">
     <string>Email</string>
@@ -120,14 +231,46 @@
   <widget class="QLabel" name="lblPhone">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>260</y>
+     <x>512</x>
+     <y>284</y>
      <width>60</width>
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Leelawadee UI Semilight</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:#909090;</string>
+   </property>
    <property name="text">
     <string>Phone</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>100</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Leelawadee UI Semilight</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+   </property>
+   <property name="text">
+    <string>Collegues</string>
    </property>
   </widget>
  </widget>
