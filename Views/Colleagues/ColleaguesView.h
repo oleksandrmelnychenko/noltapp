@@ -6,8 +6,12 @@
 #include <QVector>
 #include <QLabel>
 #include <QTableWidgetItem>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QJsonArray>
 
 #include "Entities/PersonEntity.h"
+#include "Repositories/ColleagueOperationRepository.h"
 
 namespace Ui {
     class ColleaguesForm;
@@ -20,15 +24,19 @@ class ColleaguesView : public QMdiSubWindow
 public:
     explicit ColleaguesView(QWidget *parent = 0);
     ~ColleaguesView();
-private:
-    void LoadData();
-    void SetTableColumnsWidth();    
+
+private:    
+    void SetTableColumnsWidth();
+    void SetTableColumnOptions();
 
 public slots:    
-    void CreateAddCollegueView();   
+    void CreateAddCollegueView();
+
 
 protected slots:
     void UpdateCurrentCollegues(int row, int column);
+
+    void ResultFromRequest(QJsonObject *result);
 
 signals:
     void clickedNewLabel();
@@ -37,8 +45,7 @@ signals:
 private:
     Ui::ColleaguesForm *ui;
 
-    QVector<PersonEntity> mColleguesVector;
-    PersonEntity mCurrentCollegue;
+    ColleagueOperationRepository *mRepository;    
     int mCounter = 0;    
 };
 

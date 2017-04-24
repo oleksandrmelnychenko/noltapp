@@ -1,11 +1,11 @@
 #include "BaseEntity.h"
 
 
-BaseEntity::BaseEntity(long id, QUuid netUiId, QDate createDate)
+BaseEntity::BaseEntity(long id, QUuid netUiId, QDate createDate, QDate updateDate)
     : mId(id),
       mNetUiId(netUiId),
       mCreateDate(createDate),
-      mUpdateDate(createDate)
+      mUpdateDate(updateDate)
 {
 
 }

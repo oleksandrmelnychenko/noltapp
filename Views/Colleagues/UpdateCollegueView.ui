@@ -66,13 +66,13 @@ QPushButton#btnUpdate:pressed
     <string>Update</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtEditFirstName">
+  <widget class="ColleaguesLineEditd" name="txtEditFirstName">
    <property name="geometry">
     <rect>
      <x>505</x>
-     <y>105</y>
+     <y>111</y>
      <width>340</width>
-     <height>31</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="font">
@@ -90,13 +90,13 @@ padding-left:7px;
 padding-bottom:0px;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtEditLastName">
+  <widget class="ColleaguesLineEditd" name="txtEditLastName">
    <property name="geometry">
     <rect>
      <x>505</x>
-     <y>162</y>
+     <y>168</y>
      <width>340</width>
-     <height>31</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="font">
@@ -114,13 +114,13 @@ padding-left:7px;
 padding-bottom:0px;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtEditEmail">
+  <widget class="ColleaguesLineEditd" name="txtEditEmail">
    <property name="geometry">
     <rect>
      <x>505</x>
-     <y>219</y>
+     <y>225</y>
      <width>340</width>
-     <height>31</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="font">
@@ -138,13 +138,13 @@ padding-left:7px;
 padding-bottom:0px;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtEditPhone">
+  <widget class="ColleaguesLineEditd" name="txtEditPhone">
    <property name="geometry">
     <rect>
      <x>505</x>
-     <y>276</y>
+     <y>281</y>
      <width>340</width>
-     <height>31</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="font">
@@ -162,7 +162,7 @@ padding-left:7px;
 padding-bottom:0px;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblFirstName">
+  <widget class="ColleaguesLabel" name="lblFirstName">
    <property name="geometry">
     <rect>
      <x>512</x>
@@ -184,7 +184,7 @@ padding-bottom:0px;</string>
     <string>First Name</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblLastName">
+  <widget class="ColleaguesLabel" name="lblLastName">
    <property name="geometry">
     <rect>
      <x>512</x>
@@ -206,7 +206,7 @@ padding-bottom:0px;</string>
     <string>Last Name</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblEmail">
+  <widget class="ColleaguesLabel" name="lblEmail">
    <property name="geometry">
     <rect>
      <x>512</x>
@@ -228,7 +228,7 @@ padding-bottom:0px;</string>
     <string>Email</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblPhone">
+  <widget class="ColleaguesLabel" name="lblPhone">
    <property name="geometry">
     <rect>
      <x>512</x>
@@ -274,6 +274,18 @@ background-color:transparent;</string>
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ColleaguesLineEditd</class>
+   <extends>QLineEdit</extends>
+   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLineEditd.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ColleaguesLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLabel.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

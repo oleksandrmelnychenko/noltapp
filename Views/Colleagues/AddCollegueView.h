@@ -61,8 +61,8 @@ private:
     QString mRegEmail = ("([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_.-])+\\.([a-zA-Z]{2,4}|[0-9]{1,3})");
     QString mRegPhone = ("\\([0-9]{3}\\)\\s[0-9]{3}-[0-9]{2}-[0-9]{2}");  // (097) 231-23-52;
 
-    QString mValidateColor = ("border:none; border-bottom:1px solid #909090; color:#ffffff;");
-    QString mNotValidateColor = ("border:none;border-bottom:1px solid #ff2306; color:#ffffff;");
+    QString mValidateColor = ("border:none; border-bottom:1px solid #909090; color:#ffffff; padding-left:7px;");
+    QString mNotValidateColor = ("border:none;border-bottom:1px solid #ff2306; color:#ffffff; padding-left:7px;");
 
     bool isFirstNameValid = false;
     bool isLastNameValid = false;

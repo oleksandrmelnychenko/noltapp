@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+QT += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Noltapp
@@ -35,7 +35,9 @@ SOURCES += main.cpp\
     Entities/BaseEntity.cpp \
     Entities/PersonEntity.cpp \
     Views/Colleagues/AddCollegueView.cpp \
-    Views/Colleagues/UpdateCollegueView.cpp
+    Views/Colleagues/UpdateCollegueView.cpp \
+    WebServices/ColleagueServices.cpp \
+    Repositories/ColleagueOperationRepository.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -54,7 +56,9 @@ HEADERS  += \
     Views/Colleagues/AddCollegueView.h \
     CommonUiControllers/Views/Colleagues/ColleaguesLineEditd.h \
     CommonUiControllers/Views/Colleagues/ColleaguesLabel.h \
-    Views/Colleagues/UpdateCollegueView.h
+    Views/Colleagues/UpdateCollegueView.h \
+    WebServices/ColleagueServices.h \
+    Repositories/ColleagueOperationRepository.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \

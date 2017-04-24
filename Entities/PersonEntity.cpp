@@ -1,8 +1,8 @@
 #include "PersonEntity.h"
 
-PersonEntity::PersonEntity(long id, QUuid netUiId, QDate createDate,
+PersonEntity::PersonEntity(long id, QUuid netUiId, QDate createDate, QDate updateDate,
                                QString firstName, QString lastName, QString email, QString phone)
-    : BaseEntity(id,netUiId,createDate),
+    : BaseEntity(id, netUiId, createDate, updateDate),
       mFirstName(firstName),
       mLastName(lastName),
       mEmail(email),

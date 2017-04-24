@@ -7,7 +7,7 @@
 class PersonEntity : public BaseEntity
 {
 public:
-    PersonEntity(long id, QUuid netUiId, QDate createDate,
+    PersonEntity(long id, QUuid netUiId, QDate createDate, QDate updateDate,
                    QString firstName, QString lastName, QString email, QString phone);
     PersonEntity();
 

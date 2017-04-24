@@ -22,6 +22,13 @@ protected:
         QLineEdit::focusOutEvent(e);
         emit outFocus();
     }
+    void mousePressEvent(QMouseEvent *e)
+    {
+        if(e->button() == Qt::LeftButton)
+        {
+            emit inFocus();
+        }
+    }
 
 signals:
     void outFocus();

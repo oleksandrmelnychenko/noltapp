@@ -198,6 +198,9 @@ color: black;</string>
       <height>12</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton#btnQuit{ 
 background-color:transparent; 
@@ -262,6 +265,9 @@ border:1px solid #00b7df;</string>
      <font>
       <pointsize>6</pointsize>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton#btnCollapse{ 
