@@ -9,7 +9,7 @@ AddCollegueView::AddCollegueView(QWidget *parent) :
 {
     ui->setupUi(this);    
     ui->lblIncorrectInput->hide();
-
+    mRepository = new ColleagueOperationRepository(this);
     mAnimationController = new AnimationController();
 
     SubscribeToFormEvents();
@@ -53,17 +53,16 @@ void AddCollegueView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label
 }
 
 void AddCollegueView::addCollegue()
-{    
-    QDate currentDate = QDate::currentDate();    
-
+{
     if(!IsLineEditsEmpty() && IsLineEditsValid())
     {
-//        PersonEntity currentCollegue(mCounter++, "netUiId", currentDate,
-//                                     getInformationFromLineEdit(ui->txtFirstName),
-//                                     getInformationFromLineEdit(ui->txtLastName),
-//                                     getInformationFromLineEdit(ui->txtEmail),
-//                                     getInformationFromLineEdit(ui->txtPhone));
-//        mColleguesVector << currentCollegue;
+        QJsonObject json;
+        json.insert("mFirstName", ui->txtFirstName->text());
+        json.insert("mLastName", ui->txtLastName->text());
+        json.insert("mEmail", ui->txtEmail->text());
+        json.insert("mPhone", ui->txtPhone->text());
+
+        mRepository->CreateNewColleague(json);
     }
     else
     {
@@ -93,8 +92,7 @@ void AddCollegueView::validateLineEditInput(QLineEdit *lineEdit, QString regPate
 void AddCollegueView::focusIn(QLineEdit *lineEdit)
 {
     lineEdit->setStyleSheet(mValidateColor);
-    ui->lblIncorrectInput->hide();    
-    //QMdiSubWindow::update();
+    ui->lblIncorrectInput->hide();
 }
 
 void AddCollegueView::SubscribeToFormEvents()
@@ -103,6 +101,8 @@ void AddCollegueView::SubscribeToFormEvents()
     setLabelsPosition(ui->txtLastName, ui->lblFirstName, mlblLastNameStartPointY, mlblLastNameEndPointY);
     setLabelsPosition(ui->txtEmail, ui->lblEmail, mlblEmailStartPointY, mlblEmailEndPointY);
     setLabelsPosition(ui->txtPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY);
+
+    connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(addCollegue()));
 
     connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(addCollegue()));
 
@@ -165,8 +165,7 @@ void AddCollegueView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 
 void AddCollegueView::lostFocusOnLineEditFirstName()
 {
-    setLabelsPosition(ui->txtFirstName, ui->lblFirstName, mlblFirstNameStartPointY, mlblFirstNameEndPointY);
-    QMdiSubWindow::update();
+    setLabelsPosition(ui->txtFirstName, ui->lblFirstName, mlblFirstNameStartPointY, mlblFirstNameEndPointY);    
 }
 
 void AddCollegueView::lostFocusOnLineEditLastName()
@@ -181,7 +180,7 @@ void AddCollegueView::lostFocusOnLineEditEmail()
 
 void AddCollegueView::lostFocusOnLineEditPhone()
 {
-    setLabelsPosition(ui->txtPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY);
+    setLabelsPosition(ui->txtPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY); // визивати напряму в конекті
 }
 
 void AddCollegueView::lostFocusOnLineEditsByClickOnBackGround()

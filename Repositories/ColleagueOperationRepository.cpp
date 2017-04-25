@@ -29,9 +29,19 @@ void ColleagueOperationRepository::GetColleagueById(long id)
     mNetworkManager->get(request);
 }
 
-void ColleagueOperationRepository::CreateNewColleague(PersonEntity *person)
+void ColleagueOperationRepository::CreateNewColleague(QJsonObject person)
 {
+    QUrl url("http://noltwebapi.azurewebsites.net/api/v1/colleagues/new");
+    QNetworkRequest request;
+    request.setUrl(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json; charset=utf-8");
 
+    QJsonDocument doc;
+    doc.setObject(person);
+
+    QByteArray request_body = doc.toJson();
+
+    mNetworkManager->post(request,request_body);
 }
 
 void ColleagueOperationRepository::UpdateColleague(QJsonObject person)

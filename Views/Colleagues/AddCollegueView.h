@@ -8,10 +8,11 @@
 #include <QUuid>
 #include <QDate>
 #include <QLineEdit>
+#include <QJsonObject>
 
 #include "Entities/PersonEntity.h"
 #include "CommonUiControllers/AnimationController.h"
-//#include "CommonUiControllers/Views/Colleagues/ColleaguesLabel.h"
+#include "Repositories/ColleagueOperationRepository.h"
 
 namespace Ui {
     class AddCollegueView;
@@ -35,7 +36,7 @@ private:
 protected slots:
     void addCollegue();
     void validateLineEditInput(QLineEdit *lineEdit, QString regPatern, bool *isValid);
-    void focusIn(QLineEdit *lineEdit);
+    void focusIn(QLineEdit *lineEdit);   
 
 protected:    
     void SubscribeToFormEvents();
@@ -54,7 +55,8 @@ private slots:
 private:
     Ui::AddCollegueView *ui;
 
-    QVector<PersonEntity> mColleguesVector;
+    ColleagueOperationRepository *mRepository;
+    //QVector<PersonEntity> mColleguesVector;
     int mCounter = 0;    
 
     QString mRegName = ("[a-zA-Z0-9_\\-\\.]{1,30}");

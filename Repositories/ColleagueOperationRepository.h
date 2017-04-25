@@ -25,7 +25,7 @@ signals:
 public slots:
     void GetAllColleagues();
     void GetColleagueById(long id);
-    void CreateNewColleague(PersonEntity *person);
+    void CreateNewColleague(QJsonObject person);
     void UpdateColleague(QJsonObject person);
     void DeleteColleague(long id);
 
