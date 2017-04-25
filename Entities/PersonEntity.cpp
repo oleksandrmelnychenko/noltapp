@@ -1,12 +1,21 @@
 #include "PersonEntity.h"
 
-PersonEntity::PersonEntity(long id, QUuid netUiId, QDate createDate, QDate updateDate,
+PersonEntity::PersonEntity(long id, QUuid netUiId, QDate createDate,
                                QString firstName, QString lastName, QString email, QString phone)
-    : BaseEntity(id, netUiId, createDate, updateDate),
+    : BaseEntity(id, netUiId, createDate),
       mFirstName(firstName),
       mLastName(lastName),
       mEmail(email),
       mPhone(phone)
+{
+
+}
+
+PersonEntity::PersonEntity(QString firstName, QString lastName, QString email, QString phone) :
+    mFirstName(firstName),
+    mLastName(lastName),
+    mEmail(email),
+    mPhone(phone)
 {
 
 }

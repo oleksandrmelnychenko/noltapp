@@ -7,8 +7,11 @@
 class PersonEntity : public BaseEntity
 {
 public:
-    PersonEntity(long id, QUuid netUiId, QDate createDate, QDate updateDate,
+    PersonEntity(long id, QUuid netUiId, QDate createDate,
                    QString firstName, QString lastName, QString email, QString phone);
+
+    PersonEntity(QString firstName, QString lastName, QString email, QString phone);
+
     PersonEntity();
 
     void setFirstName(QString firstName);

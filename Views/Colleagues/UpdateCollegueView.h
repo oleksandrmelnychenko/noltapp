@@ -3,6 +3,12 @@
 
 #include <QWidget>
 #include <QMdiSubWindow>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QJsonArray>
+
+#include "Repositories/ColleagueOperationRepository.h"
+#include "Entities/PersonEntity.h"
 
 namespace Ui {
     class UpdateCollegueView;
@@ -16,9 +22,13 @@ public:
     explicit UpdateCollegueView(QWidget *parent = 0, long id = 0);
     ~UpdateCollegueView();
 
+protected slots:
+    void ResultFromRequest(QJsonObject *result);
+
 private:
     Ui::UpdateCollegueView *ui;
 
+    ColleagueOperationRepository *mRepository;
     long mIdUpdatedCollegue;
 };
 

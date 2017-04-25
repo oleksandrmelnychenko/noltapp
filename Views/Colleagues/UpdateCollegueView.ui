@@ -82,12 +82,11 @@ QPushButton#btnUpdate:pressed
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:ffffff;
+    <string notr="true">color:#ffffff;
 border:none;
 border-bottom:1px solid #909090;
 background-color:transparent;
-padding-left:7px;
-padding-bottom:0px;</string>
+padding-left:7px;</string>
    </property>
   </widget>
   <widget class="ColleaguesLineEditd" name="txtEditLastName">
@@ -106,12 +105,11 @@ padding-bottom:0px;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:ffffff;
+    <string notr="true">color:#ffffff;
 border:none;
 border-bottom:1px solid #909090;
 background-color:transparent;
-padding-left:7px;
-padding-bottom:0px;</string>
+padding-left:7px;</string>
    </property>
   </widget>
   <widget class="ColleaguesLineEditd" name="txtEditEmail">
@@ -130,12 +128,11 @@ padding-bottom:0px;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:ffffff;
+    <string notr="true">color:#ffffff;
 border:none;
 border-bottom:1px solid #909090;
 background-color:transparent;
-padding-left:7px;
-padding-bottom:0px;</string>
+padding-left:7px;</string>
    </property>
   </widget>
   <widget class="ColleaguesLineEditd" name="txtEditPhone">
@@ -154,21 +151,20 @@ padding-bottom:0px;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:ffffff;
+    <string notr="true">color:#ffffff;
 border:none;
 border-bottom:1px solid #909090;
 background-color:transparent;
-padding-left:7px;
-padding-bottom:0px;</string>
+padding-left:7px;</string>
    </property>
   </widget>
   <widget class="ColleaguesLabel" name="lblFirstName">
    <property name="geometry">
     <rect>
      <x>512</x>
-     <y>113</y>
+     <y>92</y>
      <width>60</width>
-     <height>20</height>
+     <height>16</height>
     </rect>
    </property>
    <property name="font">
@@ -188,9 +184,9 @@ padding-bottom:0px;</string>
    <property name="geometry">
     <rect>
      <x>512</x>
-     <y>170</y>
+     <y>149</y>
      <width>60</width>
-     <height>20</height>
+     <height>16</height>
     </rect>
    </property>
    <property name="font">
@@ -210,9 +206,9 @@ padding-bottom:0px;</string>
    <property name="geometry">
     <rect>
      <x>512</x>
-     <y>227</y>
+     <y>206</y>
      <width>60</width>
-     <height>20</height>
+     <height>16</height>
     </rect>
    </property>
    <property name="font">
@@ -232,9 +228,9 @@ padding-bottom:0px;</string>
    <property name="geometry">
     <rect>
      <x>512</x>
-     <y>284</y>
+     <y>263</y>
      <width>60</width>
-     <height>20</height>
+     <height>16</height>
     </rect>
    </property>
    <property name="font">
@@ -276,14 +272,14 @@ background-color:transparent;</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ColleaguesLineEditd</class>
-   <extends>QLineEdit</extends>
-   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLineEditd.h</header>
-  </customwidget>
-  <customwidget>
    <class>ColleaguesLabel</class>
    <extends>QLabel</extends>
    <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ColleaguesLineEditd</class>
+   <extends>QLineEdit</extends>
+   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLineEditd.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -18,7 +18,12 @@ void ColleagueOperationRepository::GetAllColleagues()
 
 void ColleagueOperationRepository::GetColleagueById(long id)
 {
-    QUrl url("http://noltwebapi.azurewebsites.net/api/v1/colleagues/get?id=2");
+    std::string hostAndApi = "http://noltwebapi.azurewebsites.net/api/v1/colleagues/get?id=";
+    hostAndApi += std::to_string(id);;
+
+    QString qRequest = QString::fromStdString(hostAndApi);
+
+    QUrl url(qRequest);
     QNetworkRequest request;
     request.setUrl(url);
     mNetworkManager->get(request);
@@ -26,7 +31,7 @@ void ColleagueOperationRepository::GetColleagueById(long id)
 
 void ColleagueOperationRepository::CreateNewColleague(PersonEntity *person)
 {
-    //std::string
+
 }
 
 void ColleagueOperationRepository::UpdateColleague(long id, PersonEntity *person)
@@ -46,7 +51,6 @@ void ColleagueOperationRepository::replyFinished(QNetworkReply *reply)
         QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
         QJsonObject *root = &document.object();
 
-        qDebug() << root;
         emit getResultsFromRequest(root);
     }
 }

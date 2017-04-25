@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QMdiSubWindow>
-#include <QVector>
 #include <QLabel>
 #include <QTableWidgetItem>
 #include <QJsonValue>

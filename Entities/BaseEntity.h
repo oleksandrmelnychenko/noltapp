@@ -7,7 +7,7 @@
 class BaseEntity
 {
 public:
-    BaseEntity(long id, QUuid netUiId, QDate createDate, QDate updateDate);
+    BaseEntity(long id, QUuid netUiId, QDate createDate);
     BaseEntity();
 
     long Id() const;

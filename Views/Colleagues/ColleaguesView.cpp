@@ -11,7 +11,7 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
-    mRepository = new ColleagueOperationRepository(this);
+    mRepository = new ColleagueOperationRepository(this);  
     mRepository->GetAllColleagues();
 
     SetTableColumnOptions();
