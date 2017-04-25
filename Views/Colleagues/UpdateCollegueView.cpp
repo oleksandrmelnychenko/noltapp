@@ -3,15 +3,15 @@
 
 UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),
-    ui(new Ui::UpdateCollegueView),
-    mIdUpdatedCollegue(id)
+    ui(new Ui::UpdateCollegueView)
 {
     ui->setupUi(this);
-
     mRepository = new ColleagueOperationRepository(this);
+
     mRepository->GetColleagueById(id);
 
     connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
+    connect(ui->btnUpdate, SIGNAL(clicked(bool)), this, SLOT(UpdateCollegue()));
 }
 
 UpdateCollegueView::~UpdateCollegueView()
@@ -24,8 +24,20 @@ void UpdateCollegueView::ResultFromRequest(QJsonObject *result)
     QJsonValue jv = result->value("Body");
     QJsonObject subtree = jv.toObject();
 
+    mJsonObject = subtree;
+
     ui->txtEditFirstName->setText( subtree.value("mFirstName").toString());
     ui->txtEditLastName->setText(subtree.value("mLastName").toString());
     ui->txtEditEmail->setText(subtree.value("mEmail").toString());
     ui->txtEditPhone->setText(subtree.value("mPhone").toString());
+}
+
+void UpdateCollegueView::UpdateCollegue()
+{
+    mJsonObject.insert("mFirstName",ui->txtEditFirstName->text());
+    mJsonObject.insert("mLastName",ui->txtEditLastName->text());
+    mJsonObject.insert("mEmail",ui->txtEditEmail->text());
+    mJsonObject.insert("mPhone",ui->txtEditPhone->text());
+
+    mRepository->UpdateColleague(mJsonObject);
 }

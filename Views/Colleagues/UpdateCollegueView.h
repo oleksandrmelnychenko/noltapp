@@ -24,12 +24,13 @@ public:
 
 protected slots:
     void ResultFromRequest(QJsonObject *result);
+    void UpdateCollegue();
 
 private:
     Ui::UpdateCollegueView *ui;
 
     ColleagueOperationRepository *mRepository;
-    long mIdUpdatedCollegue;
+    QJsonObject mJsonObject;    
 };
 
 #endif // UPDATECOLLEGUEVIEW_H

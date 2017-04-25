@@ -8,6 +8,8 @@
 #include <QNetworkReply>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonDocument>
+#include <QNetworkReply>
 
 #include <Entities/PersonEntity.h>
 
@@ -24,7 +26,7 @@ public slots:
     void GetAllColleagues();
     void GetColleagueById(long id);
     void CreateNewColleague(PersonEntity *person);
-    void UpdateColleague(long id, PersonEntity *person);
+    void UpdateColleague(QJsonObject person);
     void DeleteColleague(long id);
 
     void replyFinished(QNetworkReply* reply);
