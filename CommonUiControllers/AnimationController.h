@@ -18,7 +18,7 @@ public:
         animation->setEasingCurve(QEasingCurve::Linear);
         animation->setEndValue(QRect(label->x(), labelsYCoordinate, label->width(), label->height()));
         animation->start(QAbstractAnimation::DeleteWhenStopped);
-        //qDebug() << label << " do animation to" << labelsYCoordinate;
+        qDebug() << label << " do animation to" << labelsYCoordinate;
     }
 };
 

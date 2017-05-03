@@ -84,6 +84,9 @@ QPushButton#btnAddCollegue:pressed
    <property name="mouseTracking">
     <bool>false</bool>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">color:#ffffff;
 border:none;
@@ -93,7 +96,7 @@ padding-left:7px;
 padding-bottom:0px;</string>
    </property>
    <property name="text">
-    <string>Bob</string>
+    <string/>
    </property>
   </widget>
   <widget class="ColleaguesLineEditd" name="txtLastName">
@@ -114,6 +117,9 @@ padding-bottom:0px;</string>
    <property name="mouseTracking">
     <bool>false</bool>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">color:#ffffff;
 border:none;
@@ -122,7 +128,7 @@ background-color:transparent;
 padding-left:7px;</string>
    </property>
    <property name="text">
-    <string>Arum</string>
+    <string/>
    </property>
   </widget>
   <widget class="ColleaguesLineEditd" name="txtEmail">
@@ -143,6 +149,9 @@ padding-left:7px;</string>
    <property name="mouseTracking">
     <bool>false</bool>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">color:#ffffff;
 border:none;
@@ -151,7 +160,7 @@ background-color:transparent;
 padding-left:7px;</string>
    </property>
    <property name="text">
-    <string>BobArum@gmail.com</string>
+    <string/>
    </property>
   </widget>
   <widget class="ColleaguesLineEditd" name="txtPhone">
@@ -172,6 +181,9 @@ padding-left:7px;</string>
    <property name="mouseTracking">
     <bool>false</bool>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">color:#ffffff;
 border:none;
@@ -180,7 +192,7 @@ background-color:transparent;
 padding-left:7px;</string>
    </property>
    <property name="text">
-    <string>(097) 225-48-82</string>
+    <string/>
    </property>
   </widget>
   <widget class="ColleaguesLabel" name="lblFirstName">
@@ -361,6 +373,13 @@ background-color:transparent;</string>
    <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLabel.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>txtFirstName</tabstop>
+  <tabstop>txtLastName</tabstop>
+  <tabstop>txtEmail</tabstop>
+  <tabstop>txtPhone</tabstop>
+  <tabstop>btnAddCollegue</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

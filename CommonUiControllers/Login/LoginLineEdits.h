@@ -23,14 +23,6 @@ protected:
         emit outFocus();
     }
 
-    void mousePressEvent(QMouseEvent *e)
-    {
-        if(e->button() == Qt::LeftButton)
-        {
-            emit inFocus();
-        }
-    }
-
 signals:
     void inFocus();
     void outFocus();

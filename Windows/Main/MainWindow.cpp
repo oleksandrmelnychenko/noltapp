@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
 
+
 void MainWindow::SetPressButtonStyleSheet(QPushButton *pressedButton, QPushButton *secondButton, QPushButton *thirdButton)
 {
     pressedButton->setStyleSheet("color:#ffffff; background-color:transparent; border : none;");
@@ -54,10 +55,10 @@ void MainWindow::createAddColeagueView()
 }
 
 void MainWindow::createUpdateColleagueView(long id)
-{
+{    
     mCurrentMdiSubForm->close();    
-    mCurrentMdiSubForm = new UpdateCollegueView(ui->mdiArea,id);
-    mCurrentMdiSubForm->show();
+    mCurrentMdiSubForm = new UpdateCollegueView(ui->mdiArea,id);   
+    mCurrentMdiSubForm->show();    
 
     qDebug() << id;
 }

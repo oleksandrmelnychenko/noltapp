@@ -37,7 +37,8 @@ SOURCES += main.cpp\
     Views/Colleagues/AddCollegueView.cpp \
     Views/Colleagues/UpdateCollegueView.cpp \
     WebServices/ColleagueServices.cpp \
-    Repositories/ColleagueOperationRepository.cpp
+    Repositories/ColleagueOperationRepository.cpp \
+    CommonUiControllers/RegexController.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -58,7 +59,8 @@ HEADERS  += \
     CommonUiControllers/Views/Colleagues/ColleaguesLabel.h \
     Views/Colleagues/UpdateCollegueView.h \
     WebServices/ColleagueServices.h \
-    Repositories/ColleagueOperationRepository.h
+    Repositories/ColleagueOperationRepository.h \
+    CommonUiControllers/RegexController.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \

@@ -7,8 +7,11 @@ UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
 {
     ui->setupUi(this);
     mRepository = new ColleagueOperationRepository(this);
+    mAnimationController = new AnimationController();
 
     mRepository->GetColleagueById(id);
+
+    SubscribeToFormEvents();
 
     connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
     connect(ui->btnUpdate, SIGNAL(clicked(bool)), this, SLOT(UpdateCollegue()));
@@ -41,3 +44,23 @@ void UpdateCollegueView::UpdateCollegue()
 
     mRepository->UpdateColleague(mJsonObject);
 }
+
+void UpdateCollegueView::SubscribeToFormEvents()
+{
+    connect(ui->txtEditFirstName,&ColleaguesLineEditd::inFocus, this,
+            [this]{doLabelAniamtion(ui->lblFirstName, mlblFirstNameEndPointY);});
+
+
+}
+
+void UpdateCollegueView::doLabelAniamtion(QLabel *label, int labelsYCoordinate)
+{
+    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
+    QMdiSubWindow::updateGeometry();
+//    QMdiSubWindow::update();
+//    this->update();
+//    this->updateGeometry();
+//    this->hide();
+//    this->show();
+}
+

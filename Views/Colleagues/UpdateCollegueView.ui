@@ -22,6 +22,9 @@
     <height>600</height>
    </size>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -80,6 +83,9 @@ QPushButton#btnUpdate:pressed
      <family>Calibri</family>
      <pointsize>10</pointsize>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">color:#ffffff;
@@ -162,7 +168,7 @@ padding-left:7px;</string>
    <property name="geometry">
     <rect>
      <x>512</x>
-     <y>92</y>
+     <y>113</y>
      <width>60</width>
      <height>16</height>
     </rect>
@@ -184,7 +190,7 @@ padding-left:7px;</string>
    <property name="geometry">
     <rect>
      <x>512</x>
-     <y>149</y>
+     <y>170</y>
      <width>60</width>
      <height>16</height>
     </rect>
@@ -206,7 +212,7 @@ padding-left:7px;</string>
    <property name="geometry">
     <rect>
      <x>512</x>
-     <y>206</y>
+     <y>227</y>
      <width>60</width>
      <height>16</height>
     </rect>
@@ -228,7 +234,7 @@ padding-left:7px;</string>
    <property name="geometry">
     <rect>
      <x>512</x>
-     <y>263</y>
+     <y>284</y>
      <width>60</width>
      <height>16</height>
     </rect>
@@ -272,16 +278,23 @@ background-color:transparent;</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ColleaguesLabel</class>
-   <extends>QLabel</extends>
-   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLabel.h</header>
-  </customwidget>
-  <customwidget>
    <class>ColleaguesLineEditd</class>
    <extends>QLineEdit</extends>
    <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLineEditd.h</header>
   </customwidget>
+  <customwidget>
+   <class>ColleaguesLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLabel.h</header>
+  </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>txtEditFirstName</tabstop>
+  <tabstop>txtEditLastName</tabstop>
+  <tabstop>txtEditEmail</tabstop>
+  <tabstop>txtEditPhone</tabstop>
+  <tabstop>btnUpdate</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

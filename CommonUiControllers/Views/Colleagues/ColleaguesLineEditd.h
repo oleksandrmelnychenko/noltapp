@@ -22,21 +22,13 @@ protected:
         QLineEdit::focusOutEvent(e);
         emit outFocus();
     }
-    void mousePressEvent(QMouseEvent *e)
-    {
-        if(e->button() == Qt::LeftButton)
-        {
-            emit inFocus();
-        }
-    }
 
 signals:
     void outFocus();
     void inFocus();
 
 public:
-    ColleaguesLineEditd(QWidget *parent = 0) : QLineEdit(parent){}
-
+    ColleaguesLineEditd(QWidget *parent = 0) : QLineEdit(parent){}    
 };
 
 #endif // COLLEAGUESLINEEDITD_H

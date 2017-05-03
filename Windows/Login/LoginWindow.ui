@@ -157,6 +157,9 @@ QPushButton#btnLogin:pressed
    <property name="mouseTracking">
     <bool>false</bool>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">border:none;
 border-bottom:1px solid #797979;
@@ -185,6 +188,9 @@ padding-left:7px;</string>
    </property>
    <property name="mouseTracking">
     <bool>false</bool>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="autoFillBackground">
     <bool>false</bool>
