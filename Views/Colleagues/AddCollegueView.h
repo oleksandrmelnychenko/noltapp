@@ -9,6 +9,7 @@
 #include <QDate>
 #include <QLineEdit>
 #include <QJsonObject>
+#include <QMdiArea>
 
 #include "Entities/PersonEntity.h"
 #include "CommonUiControllers/AnimationController.h"
@@ -80,8 +81,8 @@ private:
     const int mlblLastNameEndPointY = 149;
     const int mlblEmailStartPointY = 227;
     const int mlblEmailEndPointY = 206;
-    const int mlblPhoneStartPointY = 284;
-    const int mlblPhoneEndPointY = 263;
+    const int mlblPhoneStartPointY = 283;
+    const int mlblPhoneEndPointY = 262;
 
 };
 

@@ -12,7 +12,7 @@ AddCollegueView::AddCollegueView(QWidget *parent) :
     mRepository = new ColleagueOperationRepository(this);
     mAnimationController = new AnimationController();
 
-    SubscribeToFormEvents();    
+    SubscribeToFormEvents();
 }
 
 AddCollegueView::~AddCollegueView()
@@ -42,14 +42,12 @@ void AddCollegueView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label
 {
     if(isLineEditEmpty(lineEdit))
     {
-        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsStartPointY);
-        QMdiSubWindow::update();
+        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsStartPointY);       
     }
     else
     {
-        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
-        QMdiSubWindow::update();
-    }
+        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);       
+    }    
 }
 
 void AddCollegueView::addCollegue()
@@ -98,10 +96,10 @@ void AddCollegueView::focusIn(QLineEdit *lineEdit)
 
 void AddCollegueView::SubscribeToFormEvents()
 {
-    setLabelsPosition(ui->txtFirstName, ui->lblFirstName, mlblFirstNameStartPointY, mlblFirstNameEndPointY);
     setLabelsPosition(ui->txtLastName, ui->lblFirstName, mlblLastNameStartPointY, mlblLastNameEndPointY);
     setLabelsPosition(ui->txtEmail, ui->lblEmail, mlblEmailStartPointY, mlblEmailEndPointY);
     setLabelsPosition(ui->txtPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY);
+    setLabelsPosition(ui->txtFirstName, ui->lblFirstName, mlblFirstNameStartPointY, mlblFirstNameEndPointY);
 
     connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(addCollegue()));
 
@@ -158,6 +156,8 @@ void AddCollegueView::setFocusOnLineEdit(QLineEdit *lineEdint)
 void AddCollegueView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 {
     mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
+    ui->widgetAddColleague->hide();
+    ui->widgetAddColleague->show();
 }
 
 void AddCollegueView::lostFocusOnLineEditFirstName()

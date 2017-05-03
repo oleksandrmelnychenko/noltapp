@@ -50,7 +50,7 @@ void MainWindow::createColleaguesView()
 void MainWindow::createAddColeagueView()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new AddCollegueView(ui->mdiArea);    
+    mCurrentMdiSubForm = new AddCollegueView(ui->mdiArea);
     mCurrentMdiSubForm->show();
 }
 

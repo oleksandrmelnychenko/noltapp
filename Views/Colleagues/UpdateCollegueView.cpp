@@ -56,7 +56,10 @@ void UpdateCollegueView::SubscribeToFormEvents()
 void UpdateCollegueView::doLabelAniamtion(QLabel *label, int labelsYCoordinate)
 {
     mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
-    QMdiSubWindow::updateGeometry();
+    //ui->widgetUpdateColleague->update();
+    ui->widgetUpdateColleague->hide();
+    ui->widgetUpdateColleague->show();
+    //QMdiSubWindow::updateGeometry();
 //    QMdiSubWindow::update();
 //    this->update();
 //    this->updateGeometry();

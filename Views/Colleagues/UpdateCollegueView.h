@@ -46,8 +46,8 @@ private:
     const int mlblLastNameEndPointY = 149;
     const int mlblEmailStartPointY = 227;
     const int mlblEmailEndPointY = 206;
-    const int mlblPhoneStartPointY = 284;
-    const int mlblPhoneEndPointY = 263;
+    const int mlblPhoneStartPointY = 283;
+    const int mlblPhoneEndPointY = 262;
 };
 
 #endif // UPDATECOLLEGUEVIEW_H

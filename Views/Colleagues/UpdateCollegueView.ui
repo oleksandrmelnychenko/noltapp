@@ -31,227 +31,6 @@
   <property name="styleSheet">
    <string notr="true">color:white;</string>
   </property>
-  <widget class="QPushButton" name="btnUpdate">
-   <property name="geometry">
-    <rect>
-     <x>505</x>
-     <y>323</y>
-     <width>340</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Leelawadee UI Semilight</family>
-     <pointsize>11</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#btnUpdate
-{	
- 	border:1px solid #ffffff;
-	color:white;
-	background-color:transparent;
- }
-
-QPushButton#btnUpdate:hover
-{
- 	color:#0992b1;
- } 
-
-QPushButton#btnUpdate:pressed
-{
- 	color:#0992b1;
-	border: 1px solid #0992b1; 
-} </string>
-   </property>
-   <property name="text">
-    <string>Update</string>
-   </property>
-  </widget>
-  <widget class="ColleaguesLineEditd" name="txtEditFirstName">
-   <property name="geometry">
-    <rect>
-     <x>505</x>
-     <y>111</y>
-     <width>340</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Calibri</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::StrongFocus</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:#ffffff;
-border:none;
-border-bottom:1px solid #909090;
-background-color:transparent;
-padding-left:7px;</string>
-   </property>
-  </widget>
-  <widget class="ColleaguesLineEditd" name="txtEditLastName">
-   <property name="geometry">
-    <rect>
-     <x>505</x>
-     <y>168</y>
-     <width>340</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Calibri</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:#ffffff;
-border:none;
-border-bottom:1px solid #909090;
-background-color:transparent;
-padding-left:7px;</string>
-   </property>
-  </widget>
-  <widget class="ColleaguesLineEditd" name="txtEditEmail">
-   <property name="geometry">
-    <rect>
-     <x>505</x>
-     <y>225</y>
-     <width>340</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Calibri</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:#ffffff;
-border:none;
-border-bottom:1px solid #909090;
-background-color:transparent;
-padding-left:7px;</string>
-   </property>
-  </widget>
-  <widget class="ColleaguesLineEditd" name="txtEditPhone">
-   <property name="geometry">
-    <rect>
-     <x>505</x>
-     <y>281</y>
-     <width>340</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Calibri</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:#ffffff;
-border:none;
-border-bottom:1px solid #909090;
-background-color:transparent;
-padding-left:7px;</string>
-   </property>
-  </widget>
-  <widget class="ColleaguesLabel" name="lblFirstName">
-   <property name="geometry">
-    <rect>
-     <x>512</x>
-     <y>113</y>
-     <width>60</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Leelawadee UI Semilight</family>
-     <pointsize>9</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:#909090;</string>
-   </property>
-   <property name="text">
-    <string>First Name</string>
-   </property>
-  </widget>
-  <widget class="ColleaguesLabel" name="lblLastName">
-   <property name="geometry">
-    <rect>
-     <x>512</x>
-     <y>170</y>
-     <width>60</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Leelawadee UI Semilight</family>
-     <pointsize>9</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:#909090;</string>
-   </property>
-   <property name="text">
-    <string>Last Name</string>
-   </property>
-  </widget>
-  <widget class="ColleaguesLabel" name="lblEmail">
-   <property name="geometry">
-    <rect>
-     <x>512</x>
-     <y>227</y>
-     <width>60</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Leelawadee UI Semilight</family>
-     <pointsize>9</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:#909090;</string>
-   </property>
-   <property name="text">
-    <string>Email</string>
-   </property>
-  </widget>
-  <widget class="ColleaguesLabel" name="lblPhone">
-   <property name="geometry">
-    <rect>
-     <x>512</x>
-     <y>284</y>
-     <width>60</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Leelawadee UI Semilight</family>
-     <pointsize>9</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:#909090;</string>
-   </property>
-   <property name="text">
-    <string>Phone</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -275,6 +54,248 @@ background-color:transparent;</string>
     <string>Collegues</string>
    </property>
   </widget>
+  <widget class="QWidget" name="widgetUpdateColleague" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1294</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <widget class="ColleaguesLabel" name="lblFirstName">
+    <property name="geometry">
+     <rect>
+      <x>512</x>
+      <y>92</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#909090;</string>
+    </property>
+    <property name="text">
+     <string>First Name</string>
+    </property>
+   </widget>
+   <widget class="ColleaguesLineEditd" name="txtEditFirstName">
+    <property name="geometry">
+     <rect>
+      <x>505</x>
+      <y>111</y>
+      <width>340</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;</string>
+    </property>
+   </widget>
+   <widget class="ColleaguesLabel" name="lblLastName">
+    <property name="geometry">
+     <rect>
+      <x>512</x>
+      <y>149</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#909090;</string>
+    </property>
+    <property name="text">
+     <string>Last Name</string>
+    </property>
+   </widget>
+   <widget class="ColleaguesLineEditd" name="txtEditLastName">
+    <property name="geometry">
+     <rect>
+      <x>505</x>
+      <y>168</y>
+      <width>340</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;</string>
+    </property>
+   </widget>
+   <widget class="ColleaguesLabel" name="lblEmail">
+    <property name="geometry">
+     <rect>
+      <x>512</x>
+      <y>206</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#909090;</string>
+    </property>
+    <property name="text">
+     <string>Email</string>
+    </property>
+   </widget>
+   <widget class="ColleaguesLineEditd" name="txtEditEmail">
+    <property name="geometry">
+     <rect>
+      <x>505</x>
+      <y>225</y>
+      <width>340</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;</string>
+    </property>
+   </widget>
+   <widget class="ColleaguesLabel" name="lblPhone">
+    <property name="geometry">
+     <rect>
+      <x>512</x>
+      <y>262</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#909090;</string>
+    </property>
+    <property name="text">
+     <string>Phone</string>
+    </property>
+   </widget>
+   <widget class="ColleaguesLineEditd" name="txtEditPhone">
+    <property name="geometry">
+     <rect>
+      <x>505</x>
+      <y>281</y>
+      <width>340</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnUpdate">
+    <property name="geometry">
+     <rect>
+      <x>505</x>
+      <y>323</y>
+      <width>340</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btnUpdate
+{	
+ 	border:1px solid #ffffff;
+	color:white;
+	background-color:transparent;
+ }
+
+QPushButton#btnUpdate:hover
+{
+ 	color:#0992b1;
+ } 
+
+QPushButton#btnUpdate:pressed
+{
+ 	color:#0992b1;
+	border: 1px solid #0992b1; 
+} </string>
+    </property>
+    <property name="text">
+     <string>Update</string>
+    </property>
+   </widget>
+   <zorder>txtEditFirstName</zorder>
+   <zorder>txtEditLastName</zorder>
+   <zorder>txtEditEmail</zorder>
+   <zorder>txtEditPhone</zorder>
+   <zorder>btnUpdate</zorder>
+   <zorder>lblPhone</zorder>
+   <zorder>lblEmail</zorder>
+   <zorder>lblFirstName</zorder>
+   <zorder>lblLastName</zorder>
+  </widget>
+  <zorder>widgetUpdateColleague</zorder>
+  <zorder>label</zorder>
  </widget>
  <customwidgets>
   <customwidget>
