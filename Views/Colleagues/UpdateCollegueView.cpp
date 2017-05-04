@@ -59,6 +59,19 @@ void UpdateCollegueView::SubscribeToFormEvents()
             [this]{doLabelAniamtion(ui->lblFirstName, mlblFirstNameEndPointY);});
     connect(ui->txtEditLastName,&ColleaguesLineEditd::inFocus, this,
             [this]{doLabelAniamtion(ui->lblLastName,mlblLastNameEndPointY);});
+    connect(ui->txtEditEmail,&ColleaguesLineEditd::inFocus,this,
+            [this]{doLabelAniamtion(ui->lblEmail,mlblEmailEndPointY);});
+    connect(ui->txtEditPhone,&ColleaguesLineEditd::inFocus, this,
+            [this]{doLabelAniamtion(ui->lblPhone,mlblPhoneEndPointY);});
+
+    connect(ui->txtEditFirstName, &ColleaguesLineEditd::outFocus, this,
+            [this]{lostFocusOnLineEditFirstName();});
+    connect(ui->txtEditLastName, &ColleaguesLineEditd::outFocus, this,
+            [this]{lostFocusOnLineEditLastName();});
+    connect(ui->txtEditEmail, &ColleaguesLineEditd::outFocus, this,
+            [this]{lostFocusOnLineEditEmail();});
+    connect(ui->txtEditPhone, &ColleaguesLineEditd::outFocus, this,
+            [this]{lostFocusOnLineEditPhone();});
 
 
 }
@@ -69,5 +82,42 @@ void UpdateCollegueView::doLabelAniamtion(QLabel *label, int labelsYCoordinate)
 
     ui->widgetUpdateColleague->hide();
     ui->widgetUpdateColleague->show();
+}
+
+void UpdateCollegueView::lostFocusOnLineEditFirstName()
+{
+    setLabelsPosition(ui->txtEditFirstName, ui->lblFirstName, mlblFirstNameStartPointY, mlblFirstNameEndPointY);
+}
+
+void UpdateCollegueView::lostFocusOnLineEditLastName()
+{
+    setLabelsPosition(ui->txtEditLastName, ui->lblLastName, mlblLastNameStartPointY, mlblLastNameEndPointY);
+}
+
+void UpdateCollegueView::lostFocusOnLineEditEmail()
+{
+    setLabelsPosition(ui->txtEditEmail, ui->lblEmail, mlblEmailStartPointY, mlblEmailEndPointY);
+}
+
+void UpdateCollegueView::lostFocusOnLineEditPhone()
+{
+    setLabelsPosition(ui->txtEditPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY);
+}
+
+bool UpdateCollegueView::isLineEditEmpty(const QLineEdit *lineEdit)
+{
+    return (QString(lineEdit->text()).isEmpty());
+}
+
+void UpdateCollegueView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)
+{
+    if(isLineEditEmpty(lineEdit))
+    {
+        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsStartPointY);
+    }
+    else
+    {
+        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
+    }
 }
 

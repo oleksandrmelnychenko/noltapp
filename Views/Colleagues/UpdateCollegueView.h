@@ -6,6 +6,7 @@
 #include <QJsonValue>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QLineEdit>
 
 #include "Repositories/ColleagueOperationRepository.h"
 #include "Entities/PersonEntity.h"
@@ -22,6 +23,7 @@ class UpdateCollegueView : public QMdiSubWindow
 public:
     explicit UpdateCollegueView(QWidget *parent = 0, long id = 0);
     ~UpdateCollegueView();
+
 signals:
     void requestStatus(const QString&);
 
@@ -33,6 +35,15 @@ protected slots:
 private slots:
     void SubscribeToFormEvents();
     void doLabelAniamtion(QLabel *label, int labelsYCoordinate);
+
+    void lostFocusOnLineEditFirstName();
+    void lostFocusOnLineEditLastName();
+    void lostFocusOnLineEditEmail();
+    void lostFocusOnLineEditPhone();
+
+private:
+    bool isLineEditEmpty(const QLineEdit *lineEdit);
+    void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
 
 private:
     Ui::UpdateCollegueView *ui;
