@@ -64,7 +64,15 @@ void ColleagueOperationRepository::UpdateColleague(QJsonObject person)
 
 void ColleagueOperationRepository::DeleteColleague(long id)
 {
+    std::string hostAndApi = "http://noltwebapi.azurewebsites.net/api/v1/colleagues/delete?id=";
+    hostAndApi += std::to_string(id);;
 
+    QString qRequest = QString::fromStdString(hostAndApi);
+
+    QUrl url(qRequest);
+    QNetworkRequest request;
+    request.setUrl(url);
+    mNetworkManager->get(request);
 }
 
 void ColleagueOperationRepository::replyFinished(QNetworkReply *reply)
