@@ -42,6 +42,7 @@ private slots:
     void lostFocusOnLineEditPhone();
 
 private:
+    void setFocusOnLineEdit(QLineEdit *lineEdint);
     bool isLineEditEmpty(const QLineEdit *lineEdit);
     void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
 

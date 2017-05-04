@@ -55,6 +55,11 @@ void UpdateCollegueView::RequestStatus(QJsonObject *status)
 
 void UpdateCollegueView::SubscribeToFormEvents()
 {
+    connect(ui->lblFirstName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditFirstName);});
+    connect(ui->lblLastName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditLastName);});
+    connect(ui->lblEmail, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditEmail);});
+    connect(ui->lblPhone, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditPhone);});
+
     connect(ui->txtEditFirstName,&ColleaguesLineEditd::inFocus, this,
             [this]{doLabelAniamtion(ui->lblFirstName, mlblFirstNameEndPointY);});
     connect(ui->txtEditLastName,&ColleaguesLineEditd::inFocus, this,
@@ -102,6 +107,11 @@ void UpdateCollegueView::lostFocusOnLineEditEmail()
 void UpdateCollegueView::lostFocusOnLineEditPhone()
 {
     setLabelsPosition(ui->txtEditPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY);
+}
+
+void UpdateCollegueView::setFocusOnLineEdit(QLineEdit *lineEdint)
+{
+    lineEdint->setFocus();
 }
 
 bool UpdateCollegueView::isLineEditEmpty(const QLineEdit *lineEdit)
