@@ -49,6 +49,8 @@ void UpdateCollegueView::SubscribeToFormEvents()
 {
     connect(ui->txtEditFirstName,&ColleaguesLineEditd::inFocus, this,
             [this]{doLabelAniamtion(ui->lblFirstName, mlblFirstNameEndPointY);});
+    connect(ui->txtEditLastName,&ColleaguesLineEditd::inFocus, this,
+            [this]{doLabelAniamtion(ui->lblLastName,mlblLastNameEndPointY);});
 
 
 }
@@ -56,14 +58,8 @@ void UpdateCollegueView::SubscribeToFormEvents()
 void UpdateCollegueView::doLabelAniamtion(QLabel *label, int labelsYCoordinate)
 {
     mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
-    //ui->widgetUpdateColleague->update();
+
     ui->widgetUpdateColleague->hide();
     ui->widgetUpdateColleague->show();
-    //QMdiSubWindow::updateGeometry();
-//    QMdiSubWindow::update();
-//    this->update();
-//    this->updateGeometry();
-//    this->hide();
-//    this->show();
 }
 
