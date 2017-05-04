@@ -12,6 +12,7 @@
 #include <typeinfo>
 #include <QPushButton>
 #include <QMouseEvent>
+#include <QTimer>
 
 
 namespace Ui {
@@ -40,6 +41,9 @@ protected slots:
     void deleteMdiSubForm(QMdiSubWindow *form);
     void collapseMainWindow();
 
+    void updateColleagueRequestStatus(const QString& status);
+    void setlblRequestStatusVisibleToFalse();
+
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -56,6 +60,11 @@ private:
     int mMouseClickYCoordinate;
 
     QMdiSubWindow* mCurrentMdiSubForm = 0;
+
+    int mlbRequestStatusForlUpdateColleagueXPosition = 1061;
+    int mlbRequestStatusForlUpdateColleagueYPosition = 630;
+    int mlbRequestStatusForlUpdateColleagueWidth = 240;
+    int mlbRequestStatusForlUpdateColleagueHeight = 31;
 };
 
 #endif // MAINWINDOW_H

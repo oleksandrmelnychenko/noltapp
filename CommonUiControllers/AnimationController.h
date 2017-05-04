@@ -13,7 +13,7 @@ public:
 
     void labelAnimationByY(QLabel *label, int animationDuration, int labelsYCoordinate)
     {
-        QPropertyAnimation* animation = new QPropertyAnimation(label,"geometry");
+        QPropertyAnimation* animation = new QPropertyAnimation(label,"geometry");        
         animation->setDuration(animationDuration);
         animation->setEasingCurve(QEasingCurve::Linear);
         animation->setEndValue(QRect(label->x(), labelsYCoordinate, label->width(), label->height()));

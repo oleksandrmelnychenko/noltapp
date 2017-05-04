@@ -58,7 +58,10 @@ void MainWindow::createUpdateColleagueView(long id)
 {    
     mCurrentMdiSubForm->close();    
     mCurrentMdiSubForm = new UpdateCollegueView(ui->mdiArea,id);   
-    mCurrentMdiSubForm->show();    
+    mCurrentMdiSubForm->show();
+
+    connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(requestStatus(QString)),
+            this, SLOT(updateColleagueRequestStatus(QString)));
 
     qDebug() << id;
 }
@@ -94,12 +97,29 @@ void MainWindow::collapseMainWindow()
     QWidget::setWindowState(Qt::WindowMinimized);
 }
 
+void MainWindow::updateColleagueRequestStatus(const QString &status)
+{
+    ui->lblRequestStatus->setText(status);
+    ui->lblRequestStatus->setGeometry(mlbRequestStatusForlUpdateColleagueXPosition,
+                                      mlbRequestStatusForlUpdateColleagueYPosition,
+                                      mlbRequestStatusForlUpdateColleagueWidth,
+                                      mlbRequestStatusForlUpdateColleagueHeight);
+    ui->lblRequestStatus->setVisible(true);
+    QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
+}
+
+void MainWindow::setlblRequestStatusVisibleToFalse()
+{
+    ui->lblRequestStatus->setVisible(false);
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent, Qt::FramelessWindowHint | Qt::Window | Qt::CustomizeWindowHint),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     ui->btbReqtangle->setEnabled(false);
+    ui->lblRequestStatus->setVisible(false);
 
     createColleaguesView();
 
@@ -108,7 +128,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btnOffice, SIGNAL(clicked()), this, SLOT(createOfficeView()));
     connect(ui->btnQuit, SIGNAL(clicked(bool)), this, SLOT(close()));
     connect(ui->btnCollapse, SIGNAL(clicked(bool)), this, SLOT(collapseMainWindow()));
-
 }
 
 MainWindow::~MainWindow()

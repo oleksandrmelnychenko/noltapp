@@ -303,6 +303,30 @@ background-position:top right;
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="lblRequestStatus">
+    <property name="geometry">
+     <rect>
+      <x>1030</x>
+      <y>630</y>
+      <width>300</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: #ffffff;
+background-color: transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>lblBackGroundPicture</zorder>
    <zorder>labelLogo</zorder>
    <zorder>btnColleagues</zorder>
@@ -313,6 +337,7 @@ background-position:top right;
    <zorder>btnQuit</zorder>
    <zorder>btbReqtangle</zorder>
    <zorder>btnCollapse</zorder>
+   <zorder>lblRequestStatus</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

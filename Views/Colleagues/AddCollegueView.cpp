@@ -184,7 +184,3 @@ void AddCollegueView::lostFocusOnLineEditsByClickOnBackGround()
 {
     clearFocusOfLineEdits();
 }
-
-
-
-

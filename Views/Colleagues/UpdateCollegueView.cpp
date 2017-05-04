@@ -1,5 +1,6 @@
 #include "UpdateCollegueView.h"
 #include "ui_UpdateCollegueView.h"
+#include <QMessageBox>
 
 UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),
@@ -29,7 +30,7 @@ void UpdateCollegueView::ResultFromRequest(QJsonObject *result)
 
     mJsonObject = subtree;
 
-    ui->txtEditFirstName->setText( subtree.value("mFirstName").toString());
+    ui->txtEditFirstName->setText(subtree.value("mFirstName").toString());
     ui->txtEditLastName->setText(subtree.value("mLastName").toString());
     ui->txtEditEmail->setText(subtree.value("mEmail").toString());
     ui->txtEditPhone->setText(subtree.value("mPhone").toString());
@@ -43,6 +44,13 @@ void UpdateCollegueView::UpdateCollegue()
     mJsonObject.insert("mPhone",ui->txtEditPhone->text());
 
     mRepository->UpdateColleague(mJsonObject);
+
+    connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(RequestStatus(QJsonObject*)));
+}
+
+void UpdateCollegueView::RequestStatus(QJsonObject *status)
+{
+    emit requestStatus(status->value("Message").toString());
 }
 
 void UpdateCollegueView::SubscribeToFormEvents()

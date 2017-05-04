@@ -21,11 +21,14 @@ class UpdateCollegueView : public QMdiSubWindow
 
 public:
     explicit UpdateCollegueView(QWidget *parent = 0, long id = 0);
-    ~UpdateCollegueView();    
+    ~UpdateCollegueView();
+signals:
+    void requestStatus(const QString&);
 
 protected slots:
     void ResultFromRequest(QJsonObject *result);
     void UpdateCollegue();
+    void RequestStatus(QJsonObject* status);
 
 private slots:
     void SubscribeToFormEvents();

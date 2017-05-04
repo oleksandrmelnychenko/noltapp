@@ -137,7 +137,7 @@ padding-left:7px;
 padding-bottom:0px;</string>
     </property>
     <property name="text">
-     <string>Bob</string>
+     <string/>
     </property>
    </widget>
    <widget class="ColleaguesLabel" name="lblLastName">
@@ -348,6 +348,12 @@ QPushButton#btnAddCollegue:pressed
       <width>151</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">color:red;
