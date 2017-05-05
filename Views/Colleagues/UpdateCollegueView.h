@@ -25,14 +25,16 @@ public:
     ~UpdateCollegueView();
 
 signals:
-    void requestStatus(const QString&);
+    void updateColleagueRequestStatus(const QString&);
+    void deleteColleagueRequestStatus(const QString&);
     void clickColleaguelbl();
     void clickDeletelbl();
 
 protected slots:
     void ResultFromRequest(QJsonObject *result);
     void UpdateCollegue();
-    void RequestStatus(QJsonObject* status);
+    void UpdateColleagueRequestStatus(QJsonObject* status);
+    void DeleteColleagueRequestStatus(QJsonObject* status);
     void clickColleague();
     void clickDelete();
 

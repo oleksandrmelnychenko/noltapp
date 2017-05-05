@@ -41,8 +41,9 @@ protected slots:
     void deleteMdiSubForm(QMdiSubWindow *form);
     void collapseMainWindow();
 
-    void updateColleagueRequestStatus(const QString& status);
-    void addColleagueRequestStatus(const QString& status);
+    void UpdateColleagueRequestStatus(const QString& status);
+    void UpdateColleagueDeleteRequestStatus(const QString& status);
+    void AddColleagueRequestStatus(const QString& status);
     void setlblRequestStatusVisibleToFalse();
 
 public:
@@ -71,6 +72,11 @@ private:
     int mlblRequestStatusForAddColleagueYPosition = 630;
     int mlblRequestStatusForAddColleagueWidth = 265;
     int mlblRequestStatusForAddColleagueHeight = 31;
+
+    int mlblRequestStatusForDeleteColleagueXPosition = 1065;
+    int mlblRequestStatusForDeleteColleagueYPosition = 630;
+    int mlblRequestStatusForDeleteColleagueWidth = 240;
+    int mlblRequestStatusForDeleteColleagueHeight = 31;
 };
 
 #endif // MAINWINDOW_H

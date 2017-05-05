@@ -54,7 +54,7 @@ void MainWindow::createAddColeagueView()
     mCurrentMdiSubForm->show();
 
     connect(dynamic_cast<AddCollegueView*>(mCurrentMdiSubForm), SIGNAL(requestStatus(QString)),
-            this, SLOT(addColleagueRequestStatus(QString)));
+            this, SLOT(AddColleagueRequestStatus(QString)));
     connect(dynamic_cast<AddCollegueView*>(mCurrentMdiSubForm), SIGNAL(clickColleaguelbl()),
             this, SLOT(createColleaguesView()));
 }
@@ -65,10 +65,14 @@ void MainWindow::createUpdateColleagueView(long id)
     mCurrentMdiSubForm = new UpdateCollegueView(ui->mdiArea,id);   
     mCurrentMdiSubForm->show();
 
-    connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(requestStatus(QString)),
-            this, SLOT(updateColleagueRequestStatus(QString)));
+    connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(updateColleagueRequestStatus(QString)),
+            this, SLOT(UpdateColleagueRequestStatus(QString)));
+
     connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(clickColleaguelbl()),
             this, SLOT(createColleaguesView()));
+
+    connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(deleteColleagueRequestStatus(QString)),
+            this, SLOT(UpdateColleagueDeleteRequestStatus(QString)));
     connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(clickDeletelbl()),
             this, SLOT(createColleaguesView()));
 
@@ -106,7 +110,7 @@ void MainWindow::collapseMainWindow()
     QWidget::setWindowState(Qt::WindowMinimized);
 }
 
-void MainWindow::updateColleagueRequestStatus(const QString &status)
+void MainWindow::UpdateColleagueRequestStatus(const QString &status)
 {
     ui->lblRequestStatus->setText(status);
     ui->lblRequestStatus->setGeometry(mlbRequestStatusForlUpdateColleagueXPosition,
@@ -117,7 +121,18 @@ void MainWindow::updateColleagueRequestStatus(const QString &status)
     QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
 }
 
-void MainWindow::addColleagueRequestStatus(const QString &status)
+void MainWindow::UpdateColleagueDeleteRequestStatus(const QString &status)
+{
+    ui->lblRequestStatus->setText(status);
+    ui->lblRequestStatus->setGeometry(mlblRequestStatusForDeleteColleagueXPosition,
+                                      mlblRequestStatusForDeleteColleagueYPosition,
+                                      mlblRequestStatusForDeleteColleagueWidth,
+                                      mlblRequestStatusForDeleteColleagueHeight);
+    ui->lblRequestStatus->setVisible(true);
+    QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
+}
+
+void MainWindow::AddColleagueRequestStatus(const QString &status)
 {
     ui->lblRequestStatus->setText(status);
     ui->lblRequestStatus->setGeometry(mlblRequestStatusForAddColleagueXPosition,

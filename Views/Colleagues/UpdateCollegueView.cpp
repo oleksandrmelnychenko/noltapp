@@ -15,8 +15,7 @@ UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
 
     SubscribeToFormEvents();
 
-    connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
-    connect(ui->btnUpdate, SIGNAL(clicked(bool)), this, SLOT(UpdateCollegue()));
+
 }
 
 UpdateCollegueView::~UpdateCollegueView()
@@ -46,12 +45,18 @@ void UpdateCollegueView::UpdateCollegue()
 
     mRepository->UpdateColleague(mJsonObject);
 
-    connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(RequestStatus(QJsonObject*)));
+    connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(UpdateColleagueRequestStatus(QJsonObject*)));
 }
 
-void UpdateCollegueView::RequestStatus(QJsonObject *status)
+void UpdateCollegueView::UpdateColleagueRequestStatus(QJsonObject *status)
 {
-    emit requestStatus(status->value("Message").toString());
+    emit updateColleagueRequestStatus(status->value("Message").toString());
+}
+
+void UpdateCollegueView::DeleteColleagueRequestStatus(QJsonObject *status)
+{    
+    emit deleteColleagueRequestStatus(status->value("Message").toString());
+    emit clickDeletelbl();
 }
 
 void UpdateCollegueView::clickColleague()
@@ -62,11 +67,15 @@ void UpdateCollegueView::clickColleague()
 void UpdateCollegueView::clickDelete()
 {
     mRepository->DeleteColleague(mId);
-    emit clickDeletelbl();
+    connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(DeleteColleagueRequestStatus(QJsonObject*)));    
 }
 
 void UpdateCollegueView::SubscribeToFormEvents()
 {
+    connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
+    connect(ui->btnUpdate, SIGNAL(clicked(bool)), this, SLOT(UpdateCollegue()));
+    connect(ui->lblDelete, &ColleaguesLabel::pressIn, this, [this]{clickDelete();});
+
     connect(ui->lblFirstName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditFirstName);});
     connect(ui->lblLastName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditLastName);});
     connect(ui->lblEmail, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditEmail);});
@@ -90,8 +99,7 @@ void UpdateCollegueView::SubscribeToFormEvents()
     connect(ui->txtEditPhone, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnLineEditPhone();});
 
-    connect(ui->lblColleague, &ColleaguesLabel::pressIn, this, [this]{clickColleague();});
-    connect(ui->lblDelete, &ColleaguesLabel::pressIn, this, [this]{clickDelete();});
+    connect(ui->lblColleague, &ColleaguesLabel::pressIn, this, [this]{clickColleague();});    
 }
 
 void UpdateCollegueView::doLabelAniamtion(QLabel *label, int labelsYCoordinate)
