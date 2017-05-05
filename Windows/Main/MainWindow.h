@@ -42,6 +42,7 @@ protected slots:
     void collapseMainWindow();
 
     void updateColleagueRequestStatus(const QString& status);
+    void addColleagueRequestStatus(const QString& status);
     void setlblRequestStatusVisibleToFalse();
 
 public:
@@ -65,6 +66,11 @@ private:
     int mlbRequestStatusForlUpdateColleagueYPosition = 630;
     int mlbRequestStatusForlUpdateColleagueWidth = 240;
     int mlbRequestStatusForlUpdateColleagueHeight = 31;
+
+    int mlblRequestStatusForAddColleagueXPosition = 1037;
+    int mlblRequestStatusForAddColleagueYPosition = 630;
+    int mlblRequestStatusForAddColleagueWidth = 265;
+    int mlblRequestStatusForAddColleagueHeight = 31;
 };
 
 #endif // MAINWINDOW_H

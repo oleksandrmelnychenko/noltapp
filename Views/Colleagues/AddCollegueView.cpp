@@ -61,6 +61,8 @@ void AddCollegueView::addCollegue()
         json.insert("mPhone", ui->txtPhone->text());
 
         mRepository->CreateNewColleague(json);
+
+        connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(RequestStatus(QJsonObject*)));
     }
     else
     {
@@ -94,39 +96,37 @@ void AddCollegueView::focusIn(QLineEdit *lineEdit)
     QMdiSubWindow::update();
 }
 
+void AddCollegueView::RequestStatus(QJsonObject *status)
+{
+    emit requestStatus(status->value("Message").toString());
+}
+
 void AddCollegueView::SubscribeToFormEvents()
 {
-    setLabelsPosition(ui->txtLastName, ui->lblFirstName, mlblLastNameStartPointY, mlblLastNameEndPointY);
-    setLabelsPosition(ui->txtEmail, ui->lblEmail, mlblEmailStartPointY, mlblEmailEndPointY);
-    setLabelsPosition(ui->txtPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY);
-    setLabelsPosition(ui->txtFirstName, ui->lblFirstName, mlblFirstNameStartPointY, mlblFirstNameEndPointY);
-
     connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(addCollegue()));
 
-    connect(ui->lblFirstName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtFirstName);},Qt::UniqueConnection);
-    connect(ui->lblLastName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtLastName);}, Qt::UniqueConnection);
-    connect(ui->lblEmail, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEmail);},Qt::UniqueConnection);
-    connect(ui->lblPhone, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtPhone);},Qt::UniqueConnection);
+    connect(ui->lblFirstName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtFirstName);});
+    connect(ui->lblLastName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtLastName);});
+    connect(ui->lblEmail, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEmail);});
+    connect(ui->lblPhone, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtPhone);});
 
     connect(ui->txtFirstName, &ColleaguesLineEditd::inFocus, this,
-            [this]{doLabelAnimation(ui->lblFirstName, mlblFirstNameEndPointY); focusIn(ui->txtFirstName);},Qt::UniqueConnection);
+            [this]{doLabelAnimation(ui->lblFirstName, mlblFirstNameEndPointY); focusIn(ui->txtFirstName);});
     connect(ui->txtLastName, &ColleaguesLineEditd::inFocus, this,
-            [this]{doLabelAnimation(ui->lblLastName, mlblLastNameEndPointY); focusIn(ui->txtLastName);},Qt::UniqueConnection);
+            [this]{doLabelAnimation(ui->lblLastName, mlblLastNameEndPointY); focusIn(ui->txtLastName);});
     connect(ui->txtEmail, &ColleaguesLineEditd::inFocus, this,
-            [this]{doLabelAnimation(ui->lblEmail, mlblEmailEndPointY); focusIn(ui->txtEmail);},Qt::UniqueConnection);
+            [this]{doLabelAnimation(ui->lblEmail, mlblEmailEndPointY); focusIn(ui->txtEmail);});
     connect(ui->txtPhone, &ColleaguesLineEditd::inFocus, this,
-            [this]{doLabelAnimation(ui->lblPhone, mlblPhoneEndPointY); focusIn(ui->txtPhone);},Qt::UniqueConnection);
+            [this]{doLabelAnimation(ui->lblPhone, mlblPhoneEndPointY); focusIn(ui->txtPhone);});
 
     connect(ui->txtFirstName, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditFirstName(); validateLineEditInput(ui->txtFirstName, mRegName, &isFirstNameValid);},Qt::UniqueConnection);
+            [this]{lostFocusOnLineEditFirstName(); validateLineEditInput(ui->txtFirstName, mRegName, &isFirstNameValid);});
     connect(ui->txtLastName, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditLastName(); validateLineEditInput(ui->txtLastName, mRegName, &isLastNameValid);},Qt::UniqueConnection);
+            [this]{lostFocusOnLineEditLastName(); validateLineEditInput(ui->txtLastName, mRegName, &isLastNameValid);});
     connect(ui->txtEmail, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditEmail(); validateLineEditInput(ui->txtEmail, mRegEmail, &isEmailValid);},Qt::UniqueConnection);
+            [this]{lostFocusOnLineEditEmail(); validateLineEditInput(ui->txtEmail, mRegEmail, &isEmailValid);});
     connect(ui->txtPhone, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditPhone(); validateLineEditInput(ui->txtPhone, mRegPhone, &isPhoneValid);},Qt::UniqueConnection);
-
-    connect(ui->lblBackGround, SIGNAL(pressIn()), this, SLOT(lostFocusOnLineEditsByClickOnBackGround()),Qt::UniqueConnection);
+            [this]{lostFocusOnLineEditPhone(); validateLineEditInput(ui->txtPhone, mRegPhone, &isPhoneValid);});
 }
 
 bool AddCollegueView::IsLineEditsEmpty()
@@ -180,7 +180,4 @@ void AddCollegueView::lostFocusOnLineEditPhone()
     setLabelsPosition(ui->txtPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY); // визивати напряму в конекті
 }
 
-void AddCollegueView::lostFocusOnLineEditsByClickOnBackGround()
-{
-    clearFocusOfLineEdits();
-}
+

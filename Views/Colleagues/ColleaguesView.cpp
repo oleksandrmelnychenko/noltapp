@@ -45,6 +45,8 @@ void ColleaguesView::SetTableColumnOptions()
     ui->tblWidgetId->setColumnCount(7);
     ui->tblWidgetId->setHorizontalHeaderLabels(titleId);
     ui->tblWidgetId->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
+    ui->tblWidgetId->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     SetTableColumnsWidth();
 }
 

@@ -52,6 +52,9 @@ void MainWindow::createAddColeagueView()
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new AddCollegueView(ui->mdiArea);
     mCurrentMdiSubForm->show();
+
+    connect(dynamic_cast<AddCollegueView*>(mCurrentMdiSubForm), SIGNAL(requestStatus(QString)),
+            this, SLOT(addColleagueRequestStatus(QString)));
 }
 
 void MainWindow::createUpdateColleagueView(long id)
@@ -104,6 +107,18 @@ void MainWindow::updateColleagueRequestStatus(const QString &status)
                                       mlbRequestStatusForlUpdateColleagueYPosition,
                                       mlbRequestStatusForlUpdateColleagueWidth,
                                       mlbRequestStatusForlUpdateColleagueHeight);
+    ui->lblRequestStatus->setVisible(true);
+    QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
+}
+
+void MainWindow::addColleagueRequestStatus(const QString &status)
+{
+    ui->lblRequestStatus->setText(status);
+    ui->lblRequestStatus->setGeometry(mlblRequestStatusForAddColleagueXPosition,
+                                      mlblRequestStatusForAddColleagueYPosition,
+                                      mlblRequestStatusForAddColleagueWidth,
+                                      mlblRequestStatusForAddColleagueHeight);
+
     ui->lblRequestStatus->setVisible(true);
     QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
 }

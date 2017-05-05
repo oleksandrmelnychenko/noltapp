@@ -29,6 +29,9 @@ public:
 
     QString getInformationFromLineEdit(QLineEdit *lineEdit);
 
+signals:
+    void requestStatus(const QString&);
+
 private:
     void clearFocusOfLineEdits();
     bool isLineEditEmpty(const QLineEdit *lineEdit);
@@ -37,7 +40,8 @@ private:
 protected slots:
     void addCollegue();
     void validateLineEditInput(QLineEdit *lineEdit, QString regPatern, bool *isValid);
-    void focusIn(QLineEdit *lineEdit);   
+    void focusIn(QLineEdit *lineEdit);
+    void RequestStatus(QJsonObject *status);
 
 protected:    
     void SubscribeToFormEvents();
@@ -50,8 +54,7 @@ private slots:
     void lostFocusOnLineEditFirstName();
     void lostFocusOnLineEditLastName();
     void lostFocusOnLineEditEmail();
-    void lostFocusOnLineEditPhone();
-    void lostFocusOnLineEditsByClickOnBackGround();
+    void lostFocusOnLineEditPhone();   
 
 private:
     Ui::AddCollegueView *ui;

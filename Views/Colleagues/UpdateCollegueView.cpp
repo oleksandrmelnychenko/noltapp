@@ -77,8 +77,6 @@ void UpdateCollegueView::SubscribeToFormEvents()
             [this]{lostFocusOnLineEditEmail();});
     connect(ui->txtEditPhone, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnLineEditPhone();});
-
-
 }
 
 void UpdateCollegueView::doLabelAniamtion(QLabel *label, int labelsYCoordinate)
