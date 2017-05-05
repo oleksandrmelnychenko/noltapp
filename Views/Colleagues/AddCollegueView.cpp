@@ -101,6 +101,11 @@ void AddCollegueView::RequestStatus(QJsonObject *status)
     emit requestStatus(status->value("Message").toString());
 }
 
+void AddCollegueView::clickColleague()
+{
+    emit clickColleaguelbl();
+}
+
 void AddCollegueView::SubscribeToFormEvents()
 {
     connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(addCollegue()));
@@ -127,6 +132,8 @@ void AddCollegueView::SubscribeToFormEvents()
             [this]{lostFocusOnLineEditEmail(); validateLineEditInput(ui->txtEmail, mRegEmail, &isEmailValid);});
     connect(ui->txtPhone, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnLineEditPhone(); validateLineEditInput(ui->txtPhone, mRegPhone, &isPhoneValid);});
+
+    connect(ui->lblCollegues, &ColleaguesLabel::pressIn, this, [this]{clickColleague();});
 }
 
 bool AddCollegueView::IsLineEditsEmpty()

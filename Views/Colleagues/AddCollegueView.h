@@ -31,6 +31,7 @@ public:
 
 signals:
     void requestStatus(const QString&);
+    void clickColleaguelbl();
 
 private:
     void clearFocusOfLineEdits();
@@ -42,6 +43,7 @@ protected slots:
     void validateLineEditInput(QLineEdit *lineEdit, QString regPatern, bool *isValid);
     void focusIn(QLineEdit *lineEdit);
     void RequestStatus(QJsonObject *status);
+    void clickColleague();
 
 protected:    
     void SubscribeToFormEvents();

@@ -31,7 +31,7 @@
   <property name="styleSheet">
    <string notr="true">color:white;</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="ColleaguesLabel" name="lblColleague">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -278,10 +278,30 @@ QPushButton#btnUpdate:pressed
 {
  	color:#0992b1;
 	border: 1px solid #0992b1; 
+	outline:none;
 } </string>
     </property>
     <property name="text">
      <string>Update</string>
+    </property>
+   </widget>
+   <widget class="ColleaguesLabel" name="lblDelete">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>310</y>
+      <width>81</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Delete</string>
     </property>
    </widget>
    <zorder>txtEditFirstName</zorder>
@@ -293,20 +313,21 @@ QPushButton#btnUpdate:pressed
    <zorder>lblEmail</zorder>
    <zorder>lblFirstName</zorder>
    <zorder>lblLastName</zorder>
+   <zorder>lblDelete</zorder>
   </widget>
   <zorder>widgetUpdateColleague</zorder>
-  <zorder>label</zorder>
+  <zorder>lblColleague</zorder>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>ColleaguesLineEditd</class>
-   <extends>QLineEdit</extends>
-   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLineEditd.h</header>
-  </customwidget>
   <customwidget>
    <class>ColleaguesLabel</class>
    <extends>QLabel</extends>
    <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ColleaguesLineEditd</class>
+   <extends>QLineEdit</extends>
+   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLineEditd.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

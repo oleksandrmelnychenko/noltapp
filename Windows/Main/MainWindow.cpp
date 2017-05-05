@@ -43,7 +43,7 @@ void MainWindow::createColleaguesView()
     connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedNewLabel()),
             this, SLOT(createAddColeagueView()));
     connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(updateCurrentCollegues(long)),
-            this, SLOT(createUpdateColleagueView(long)));    
+            this, SLOT(createUpdateColleagueView(long)));
     SetPressButtonStyleSheet(ui->btnColleagues,ui->btnOffice,ui->btnSalary);
 }
 
@@ -55,6 +55,8 @@ void MainWindow::createAddColeagueView()
 
     connect(dynamic_cast<AddCollegueView*>(mCurrentMdiSubForm), SIGNAL(requestStatus(QString)),
             this, SLOT(addColleagueRequestStatus(QString)));
+    connect(dynamic_cast<AddCollegueView*>(mCurrentMdiSubForm), SIGNAL(clickColleaguelbl()),
+            this, SLOT(createColleaguesView()));
 }
 
 void MainWindow::createUpdateColleagueView(long id)
@@ -65,6 +67,10 @@ void MainWindow::createUpdateColleagueView(long id)
 
     connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(requestStatus(QString)),
             this, SLOT(updateColleagueRequestStatus(QString)));
+    connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(clickColleaguelbl()),
+            this, SLOT(createColleaguesView()));
+    connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(clickDeletelbl()),
+            this, SLOT(createColleaguesView()));
 
     qDebug() << id;
 }

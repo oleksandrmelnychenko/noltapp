@@ -72,7 +72,7 @@ void ColleagueOperationRepository::DeleteColleague(long id)
     QUrl url(qRequest);
     QNetworkRequest request;
     request.setUrl(url);
-    mNetworkManager->get(request);
+    mNetworkManager->deleteResource(request);
 }
 
 void ColleagueOperationRepository::replyFinished(QNetworkReply *reply)

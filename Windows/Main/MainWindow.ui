@@ -64,8 +64,11 @@ color: black;</string>
       <pointsize>17</pointsize>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">outline:none;</string>
     </property>
     <property name="text">
      <string>colleagues</string>
@@ -86,8 +89,11 @@ color: black;</string>
       <pointsize>17</pointsize>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">outline:none;</string>
     </property>
     <property name="text">
      <string>office</string>
@@ -108,8 +114,11 @@ color: black;</string>
       <pointsize>17</pointsize>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">outline:none;</string>
     </property>
     <property name="text">
      <string>salary</string>
@@ -206,6 +215,7 @@ color: black;</string>
 background-color:transparent; 
 border:none; 
 color : #d0d0d0; 
+outline:none;
 
 qproperty-icon: url(&quot; &quot;); 
 qproperty-iconSize: 14px ; 
@@ -274,6 +284,7 @@ border:1px solid #00b7df;</string>
 background-color:transparent; 
 border:none; 
 color : #909090; 
+outline:none;
 
 qproperty-icon: url(&quot; &quot;); 
 qproperty-iconSize: 14px ; 

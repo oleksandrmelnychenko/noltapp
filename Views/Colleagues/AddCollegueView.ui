@@ -28,7 +28,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="lblCollegues">
+  <widget class="ColleaguesLabel" name="lblCollegues">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -309,6 +309,7 @@ QPushButton#btnAddCollegue:pressed
 {
  	color:#0992b1;
 	border: 1px solid #0992b1; 
+	outline:none;
 } </string>
     </property>
     <property name="text">
@@ -354,14 +355,14 @@ QPushButton#btnAddCollegue:pressed
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ColleaguesLineEditd</class>
-   <extends>QLineEdit</extends>
-   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLineEditd.h</header>
-  </customwidget>
-  <customwidget>
    <class>ColleaguesLabel</class>
    <extends>QLabel</extends>
    <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ColleaguesLineEditd</class>
+   <extends>QLineEdit</extends>
+   <header location="global">CommonUiControllers\Views\Colleagues\ColleaguesLineEditd.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

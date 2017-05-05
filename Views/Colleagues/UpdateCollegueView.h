@@ -26,11 +26,15 @@ public:
 
 signals:
     void requestStatus(const QString&);
+    void clickColleaguelbl();
+    void clickDeletelbl();
 
 protected slots:
     void ResultFromRequest(QJsonObject *result);
     void UpdateCollegue();
     void RequestStatus(QJsonObject* status);
+    void clickColleague();
+    void clickDelete();
 
 private slots:
     void SubscribeToFormEvents();
@@ -51,6 +55,8 @@ private:
 
     ColleagueOperationRepository *mRepository;
     QJsonObject mJsonObject;
+
+    long mId;
 
     AnimationController* mAnimationController;
     int mAnimationDuration = 250;

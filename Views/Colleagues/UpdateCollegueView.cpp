@@ -4,6 +4,7 @@
 
 UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),
+    mId(id),
     ui(new Ui::UpdateCollegueView)
 {
     ui->setupUi(this);
@@ -53,6 +54,17 @@ void UpdateCollegueView::RequestStatus(QJsonObject *status)
     emit requestStatus(status->value("Message").toString());
 }
 
+void UpdateCollegueView::clickColleague()
+{
+    emit clickColleaguelbl();
+}
+
+void UpdateCollegueView::clickDelete()
+{
+    mRepository->DeleteColleague(mId);
+    emit clickDeletelbl();
+}
+
 void UpdateCollegueView::SubscribeToFormEvents()
 {
     connect(ui->lblFirstName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditFirstName);});
@@ -77,6 +89,9 @@ void UpdateCollegueView::SubscribeToFormEvents()
             [this]{lostFocusOnLineEditEmail();});
     connect(ui->txtEditPhone, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnLineEditPhone();});
+
+    connect(ui->lblColleague, &ColleaguesLabel::pressIn, this, [this]{clickColleague();});
+    connect(ui->lblDelete, &ColleaguesLabel::pressIn, this, [this]{clickDelete();});
 }
 
 void UpdateCollegueView::doLabelAniamtion(QLabel *label, int labelsYCoordinate)
