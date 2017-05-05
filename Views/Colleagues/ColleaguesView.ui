@@ -108,15 +108,7 @@ QTableWidget#tblWidgetId::item
 QTableWidget#tblWidgetId QHeaderView::section:horizontal:first
 {
     border-left: none;	
-}
-
-
-
-
-
-
-
-</string>
+}</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>

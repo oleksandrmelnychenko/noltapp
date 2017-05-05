@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QStandardItemModel>
+#include <QScrollBar>
 
 
 ColleaguesView::ColleaguesView(QWidget *parent) :
@@ -46,6 +47,22 @@ void ColleaguesView::SetTableColumnOptions()
     ui->tblWidgetId->setHorizontalHeaderLabels(titleId);
     ui->tblWidgetId->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
     ui->tblWidgetId->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tblWidgetId->verticalScrollBar()->setStyleSheet("QScrollBar:vertical {"
+                                                        "    border: 1px solid #797979;"
+                                                        "    background:#ffffff;;"
+                                                        "    width:3px;    "
+                                                        "    margin: 0px 0px 0px 0px;"
+                                                        "}"
+                                                        "QScrollBar::handle:vertical {"
+                                                        "    background: #797979;"   // #18181a; #797979; #909090
+                                                        "    min-height: 0px;"
+                                                        "}"
+                                                        "QScrollBar::add-line:vertical {"
+                                                        "    height: 0px;"
+                                                        "}"
+                                                        "QScrollBar::sub-line:vertical {"
+                                                        "    height: 0 px;"
+                                                        "}");
 
     SetTableColumnsWidth();
 }
