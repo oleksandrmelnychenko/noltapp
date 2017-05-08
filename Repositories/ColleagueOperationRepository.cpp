@@ -80,8 +80,8 @@ void ColleagueOperationRepository::replyFinished(QNetworkReply *reply)
     if(!reply->error())
     {
         QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
-        QJsonObject *root = &document.object();
+        QJsonObject root = document.object();
 
-        emit getResultsFromRequest(root);
+        emit getResultsFromRequest(&root);
     }
 }

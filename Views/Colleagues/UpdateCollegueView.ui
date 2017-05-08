@@ -288,8 +288,8 @@ QPushButton#btnUpdate:pressed
    <widget class="ColleaguesLabel" name="lblDelete">
     <property name="geometry">
      <rect>
-      <x>890</x>
-      <y>310</y>
+      <x>780</x>
+      <y>380</y>
       <width>81</width>
       <height>50</height>
      </rect>
@@ -304,6 +304,29 @@ QPushButton#btnUpdate:pressed
      <string>Delete</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblIncorrectInput">
+    <property name="geometry">
+     <rect>
+      <x>505</x>
+      <y>380</y>
+      <width>151</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:red;
+ opacity: 0;</string>
+    </property>
+    <property name="text">
+     <string>Input correct all filesds</string>
+    </property>
+   </widget>
    <zorder>txtEditFirstName</zorder>
    <zorder>txtEditLastName</zorder>
    <zorder>txtEditEmail</zorder>
@@ -314,6 +337,7 @@ QPushButton#btnUpdate:pressed
    <zorder>lblFirstName</zorder>
    <zorder>lblLastName</zorder>
    <zorder>lblDelete</zorder>
+   <zorder>lblIncorrectInput</zorder>
   </widget>
   <zorder>widgetUpdateColleague</zorder>
   <zorder>lblColleague</zorder>

@@ -8,7 +8,7 @@ AddCollegueView::AddCollegueView(QWidget *parent) :
     ui(new Ui::AddCollegueView)
 {
     ui->setupUi(this);    
-    ui->lblIncorrectInput->hide();
+    ui->lblIncorrectInput->setVisible(false);
     mRepository = new ColleagueOperationRepository(this);
     mAnimationController = new AnimationController();
 
@@ -66,7 +66,7 @@ void AddCollegueView::addCollegue()
     }
     else
     {
-        ui->lblIncorrectInput->show();
+        ui->lblIncorrectInput->setVisible(true);
     }
 }
 
@@ -92,8 +92,7 @@ void AddCollegueView::validateLineEditInput(QLineEdit *lineEdit, QString regPate
 void AddCollegueView::focusIn(QLineEdit *lineEdit)
 {
     lineEdit->setStyleSheet(mValidateColor);
-    ui->lblIncorrectInput->hide();
-    QMdiSubWindow::update();
+    ui->lblIncorrectInput->setVisible(false);
 }
 
 void AddCollegueView::RequestStatus(QJsonObject *status)
@@ -109,6 +108,7 @@ void AddCollegueView::clickColleague()
 void AddCollegueView::SubscribeToFormEvents()
 {
     connect(ui->btnAddCollegue, SIGNAL(clicked(bool)), this, SLOT(addCollegue()));
+    connect(ui->lblCollegues, &ColleaguesLabel::pressIn, this, [this]{clickColleague();});
 
     connect(ui->lblFirstName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtFirstName);});
     connect(ui->lblLastName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtLastName);});
@@ -133,7 +133,6 @@ void AddCollegueView::SubscribeToFormEvents()
     connect(ui->txtPhone, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnLineEditPhone(); validateLineEditInput(ui->txtPhone, mRegPhone, &isPhoneValid);});
 
-    connect(ui->lblCollegues, &ColleaguesLabel::pressIn, this, [this]{clickColleague();});
 }
 
 bool AddCollegueView::IsLineEditsEmpty()

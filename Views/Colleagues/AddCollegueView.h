@@ -27,7 +27,7 @@ public:
     explicit AddCollegueView(QWidget *parent = 0);
     ~AddCollegueView();    
 
-    QString getInformationFromLineEdit(QLineEdit *lineEdit);
+
 
 signals:
     void requestStatus(const QString&);
@@ -40,17 +40,21 @@ private:
 
 protected slots:
     void addCollegue();
-    void validateLineEditInput(QLineEdit *lineEdit, QString regPatern, bool *isValid);
-    void focusIn(QLineEdit *lineEdit);
+
+
     void RequestStatus(QJsonObject *status);
     void clickColleague();
 
-protected:    
+private:
     void SubscribeToFormEvents();
+
+    QString getInformationFromLineEdit(QLineEdit *lineEdit);
     bool IsLineEditsEmpty();
     bool IsLineEditsValid();
 
 private slots:
+    void focusIn(QLineEdit *lineEdit);
+    void validateLineEditInput(QLineEdit *lineEdit, QString regPatern, bool *isValid);
     void setFocusOnLineEdit(QLineEdit *lineEdint);
     void doLabelAnimation(QLabel *label, int labelsYCoordinate);
     void lostFocusOnLineEditFirstName();
@@ -61,8 +65,7 @@ private slots:
 private:
     Ui::AddCollegueView *ui;
 
-    ColleagueOperationRepository *mRepository;
-    //QVector<PersonEntity> mColleguesVector;
+    ColleagueOperationRepository *mRepository;    
     int mCounter = 0;    
 
     QString mRegName = ("[a-zA-Z0-9_\\-\\.]{1,30}");

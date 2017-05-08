@@ -26,8 +26,8 @@ private:
     LoginWindow *mLoginWindow;
     MainWindow *mMainWindow;
 
-    int mHeight;
     int mWidth;
+    int mHeight;
 };
 
 #endif // WINDOWCONTROLLER_H
