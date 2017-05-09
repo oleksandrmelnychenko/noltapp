@@ -53,8 +53,8 @@ private:
     bool IsLineEditsValid();
 
 private slots:
-    void focusIn(QLineEdit *lineEdit);
-    void validateLineEditInput(QLineEdit *lineEdit, QString regPatern, bool *isValid);
+    void focusIn(QLineEdit *lineEdit, QLabel *label);
+    void validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid);
     void setFocusOnLineEdit(QLineEdit *lineEdint);
     void doLabelAnimation(QLabel *label, int labelsYCoordinate);
     void lostFocusOnLineEditFirstName();

@@ -281,7 +281,7 @@ padding-left:7px;</string>
     <property name="geometry">
      <rect>
       <x>505</x>
-      <y>323</y>
+      <y>339</y>
       <width>340</width>
       <height>41</height>
      </rect>
@@ -320,7 +320,7 @@ QPushButton#btnAddCollegue:pressed
     <property name="geometry">
      <rect>
       <x>505</x>
-      <y>380</y>
+      <y>385</y>
       <width>151</width>
       <height>16</height>
      </rect>
@@ -332,11 +332,115 @@ QPushButton#btnAddCollegue:pressed
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:red;
- opacity: 0;</string>
+     <string notr="true">color:rgb(255,35,6);
+opacity: 0;</string>
     </property>
     <property name="text">
      <string>Input correct all filesds</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblIncorrectFirstName">
+    <property name="geometry">
+     <rect>
+      <x>737</x>
+      <y>140</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255,35,6);
+opacity: 0;</string>
+    </property>
+    <property name="text">
+     <string>First name is incorrect</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblIncorrectLastName">
+    <property name="geometry">
+     <rect>
+      <x>733</x>
+      <y>197</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255,35,6);
+opacity: 0;</string>
+    </property>
+    <property name="text">
+     <string>Last name os incorrect</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblIncorrectEmail">
+    <property name="geometry">
+     <rect>
+      <x>763</x>
+      <y>254</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255,35,6);
+opacity: 0;</string>
+    </property>
+    <property name="text">
+     <string>Email is incorrect</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblIncorrectPhone">
+    <property name="geometry">
+     <rect>
+      <x>692</x>
+      <y>310</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255,35,6);
+opacity: 0;</string>
+    </property>
+    <property name="text">
+     <string>Phone must be (000) 000-00-00</string>
     </property>
    </widget>
    <zorder>txtFirstName</zorder>
@@ -349,6 +453,10 @@ QPushButton#btnAddCollegue:pressed
    <zorder>lblLastName</zorder>
    <zorder>lblEmail</zorder>
    <zorder>lblPhone</zorder>
+   <zorder>lblIncorrectFirstName</zorder>
+   <zorder>lblIncorrectLastName</zorder>
+   <zorder>lblIncorrectEmail</zorder>
+   <zorder>lblIncorrectPhone</zorder>
   </widget>
   <zorder>widgetAddColleague</zorder>
   <zorder>lblCollegues</zorder>
