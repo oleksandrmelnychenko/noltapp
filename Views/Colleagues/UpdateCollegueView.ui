@@ -289,7 +289,7 @@ QPushButton#btnUpdate:pressed
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>380</y>
+      <y>400</y>
       <width>81</width>
       <height>50</height>
      </rect>
@@ -415,6 +415,29 @@ opacity: 0;</string>
      <string>Phone must be (000) 000-00-00</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblUpdateColleagueTitle">
+    <property name="geometry">
+     <rect>
+      <x>691</x>
+      <y>25</y>
+      <width>150</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+    </property>
+    <property name="text">
+     <string>Update Colleague</string>
+    </property>
+   </widget>
    <zorder>txtEditFirstName</zorder>
    <zorder>txtEditLastName</zorder>
    <zorder>txtEditEmail</zorder>
@@ -430,6 +453,7 @@ opacity: 0;</string>
    <zorder>lblIncorrectLastName</zorder>
    <zorder>lblIncorrectEmail</zorder>
    <zorder>lblIncorrectPhone</zorder>
+   <zorder>lblUpdateColleagueTitle</zorder>
   </widget>
   <zorder>widgetUpdateColleague</zorder>
   <zorder>lblColleague</zorder>
