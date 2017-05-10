@@ -418,9 +418,9 @@ opacity: 0;</string>
    <widget class="QLabel" name="lblUpdateColleagueTitle">
     <property name="geometry">
      <rect>
-      <x>691</x>
+      <x>668</x>
       <y>25</y>
-      <width>150</width>
+      <width>181</width>
       <height>50</height>
      </rect>
     </property>
