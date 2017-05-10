@@ -39,9 +39,9 @@ protected slots:
     void clickDelete();
 
 private slots:    
-    void validateLineEditInput(QLineEdit *lineEdit, QString regPatern, bool *isValid);
+    void validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid);
 
-    void focusIn(QLineEdit *lineEdit);
+    void focusIn(QLineEdit *lineEdit, QLabel *label);
 
     void doLabelAniamtion(QLabel *label, int labelsYCoordinate);
 

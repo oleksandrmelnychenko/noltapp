@@ -9,6 +9,11 @@ UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
 {
     ui->setupUi(this);
     ui->lblIncorrectInput->setVisible(false);
+    ui->lblIncorrectFirstName->setVisible(false);
+    ui->lblIncorrectLastName->setVisible(false);
+    ui->lblIncorrectEmail->setVisible(false);
+    ui->lblIncorrectPhone->setVisible(false);
+
     mRepository = new ColleagueOperationRepository(this);
     mAnimationController = new AnimationController();
 
@@ -76,7 +81,7 @@ void UpdateCollegueView::clickDelete()
     connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(DeleteColleagueRequestStatus(QJsonObject*)));
 }
 
-void UpdateCollegueView::validateLineEditInput(QLineEdit *lineEdit, QString regPatern, bool *isValid)
+void UpdateCollegueView::validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid)
 {
     QRegExp reg(regPatern);
     bool validate = reg.exactMatch(lineEdit->text());
@@ -84,9 +89,15 @@ void UpdateCollegueView::validateLineEditInput(QLineEdit *lineEdit, QString regP
     if(!validate)
     {
         *isValid = false;
-        lineEdit->text().isEmpty()?lineEdit->setStyleSheet(mValidateColor)
-                                 : lineEdit->setStyleSheet(mNotValidateColor);
-        // output invalid input message
+        if(lineEdit->text().isEmpty())
+        {
+            lineEdit->setStyleSheet(mValidateColor);
+        }
+        else
+        {
+            lineEdit->setStyleSheet(mNotValidateColor);
+            label->setVisible(true);
+        }
     }
     else
     {
@@ -95,9 +106,10 @@ void UpdateCollegueView::validateLineEditInput(QLineEdit *lineEdit, QString regP
     }
 }
 
-void UpdateCollegueView::focusIn(QLineEdit *lineEdit)
+void UpdateCollegueView::focusIn(QLineEdit *lineEdit, QLabel *label)
 {
     lineEdit->setStyleSheet(mValidateColor);
+    label->setVisible(false);
     ui->lblIncorrectInput->setVisible(false);
 }
 
@@ -115,22 +127,30 @@ void UpdateCollegueView::SubscribeToFormEvents()
     connect(ui->lblPhone, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditPhone);});
 
     connect(ui->txtEditFirstName,&ColleaguesLineEditd::inFocus, this,
-            [this]{doLabelAniamtion(ui->lblFirstName, mlblFirstNameEndPointY); focusIn(ui->txtEditFirstName);});
+            [this]{doLabelAniamtion(ui->lblFirstName, mlblFirstNameEndPointY);
+            focusIn(ui->txtEditFirstName, ui->lblIncorrectFirstName);});
     connect(ui->txtEditLastName,&ColleaguesLineEditd::inFocus, this,
-            [this]{doLabelAniamtion(ui->lblLastName,mlblLastNameEndPointY); focusIn(ui->txtEditLastName);});
+            [this]{doLabelAniamtion(ui->lblLastName,mlblLastNameEndPointY);
+            focusIn(ui->txtEditLastName, ui->lblIncorrectLastName);});
     connect(ui->txtEditEmail,&ColleaguesLineEditd::inFocus,this,
-            [this]{doLabelAniamtion(ui->lblEmail,mlblEmailEndPointY); focusIn(ui->txtEditEmail);});
+            [this]{doLabelAniamtion(ui->lblEmail,mlblEmailEndPointY);
+            focusIn(ui->txtEditEmail, ui->lblIncorrectEmail);});
     connect(ui->txtEditPhone,&ColleaguesLineEditd::inFocus, this,
-            [this]{doLabelAniamtion(ui->lblPhone,mlblPhoneEndPointY); focusIn(ui->txtEditPhone);});
+            [this]{doLabelAniamtion(ui->lblPhone,mlblPhoneEndPointY);
+            focusIn(ui->txtEditPhone, ui->lblIncorrectPhone);});
 
     connect(ui->txtEditFirstName, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditFirstName(); validateLineEditInput(ui->txtEditFirstName, mRegName, &isFirstNameValid);});
+            [this]{lostFocusOnLineEditFirstName();
+            validateLineEditInput(ui->txtEditFirstName, ui->lblIncorrectFirstName, mRegName, &isFirstNameValid);});
     connect(ui->txtEditLastName, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditLastName(); validateLineEditInput(ui->txtEditLastName, mRegName, &isLastNameValid);});
+            [this]{lostFocusOnLineEditLastName();
+            validateLineEditInput(ui->txtEditLastName, ui->lblIncorrectLastName, mRegName, &isLastNameValid);});
     connect(ui->txtEditEmail, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditEmail(); validateLineEditInput(ui->txtEditEmail, mRegEmail, &isEmailValid);});
+            [this]{lostFocusOnLineEditEmail();
+            validateLineEditInput(ui->txtEditEmail, ui->lblIncorrectEmail, mRegEmail, &isEmailValid);});
     connect(ui->txtEditPhone, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditPhone(); validateLineEditInput(ui->txtEditPhone, mRegPhone, &isPhoneValid);});
+            [this]{lostFocusOnLineEditPhone();
+            validateLineEditInput(ui->txtEditPhone, ui->lblIncorrectPhone, mRegPhone, &isPhoneValid);});
 }
 
 QString UpdateCollegueView::getInformationFromLineEdit(QLineEdit *lineEdit)
