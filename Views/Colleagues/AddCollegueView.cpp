@@ -160,7 +160,8 @@ void AddCollegueView::SubscribeToFormEvents()
 bool AddCollegueView::IsLineEditsEmpty()
 {
     if(!getInformationFromLineEdit(ui->txtFirstName).isEmpty() && !getInformationFromLineEdit(ui->txtLastName).isEmpty() &&
-            !getInformationFromLineEdit(ui->txtEmail).isEmpty() && !getInformationFromLineEdit(ui->txtPhone).isEmpty())
+            !getInformationFromLineEdit(ui->txtEmail).isEmpty() && !getInformationFromLineEdit(ui->txtPhone).isEmpty() &&
+            !getInformationFromLineEdit(ui->txtBirtday).isEmpty())
     {
         return false;
     }
@@ -168,7 +169,7 @@ bool AddCollegueView::IsLineEditsEmpty()
 }
 
 bool AddCollegueView::IsLineEditsValid(){
-    if(isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid)
+    if(isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid && isBirthdayValid)
     {
         return true;
     }

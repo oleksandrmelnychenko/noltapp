@@ -438,7 +438,7 @@ background-color:transparent;</string>
      <string>Update Colleague</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblBirthday">
+   <widget class="ColleaguesLabel" name="lblBirthday">
     <property name="geometry">
      <rect>
       <x>512</x>
@@ -460,7 +460,7 @@ background-color:transparent;</string>
      <string>Birhday</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="txtEditBirthday">
+   <widget class="ColleaguesLineEditd" name="txtEditBirthday">
     <property name="geometry">
      <rect>
       <x>505</x>

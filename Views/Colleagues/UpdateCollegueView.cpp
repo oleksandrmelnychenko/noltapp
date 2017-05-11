@@ -13,6 +13,7 @@ UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
     ui->lblIncorrectLastName->setVisible(false);
     ui->lblIncorrectEmail->setVisible(false);
     ui->lblIncorrectPhone->setVisible(false);
+    ui->lblIncorrectBirthday->setVisible(false);
 
     mRepository = new ColleagueOperationRepository(this);
     mAnimationController = new AnimationController();
@@ -38,6 +39,7 @@ void UpdateCollegueView::ResultFromRequest(QJsonObject *result)
     ui->txtEditLastName->setText(subtree.value("mLastName").toString());
     ui->txtEditEmail->setText(subtree.value("mEmail").toString());
     ui->txtEditPhone->setText(subtree.value("mPhone").toString());
+    ui->txtEditBirthday->setText(subtree.value("mDateOfBirth").toString());
 }
 
 void UpdateCollegueView::UpdateCollegue()
@@ -48,6 +50,7 @@ void UpdateCollegueView::UpdateCollegue()
         mJsonObject.insert("mLastName",ui->txtEditLastName->text());
         mJsonObject.insert("mEmail",ui->txtEditEmail->text());
         mJsonObject.insert("mPhone",ui->txtEditPhone->text());
+        mJsonObject.insert("mDateOfBirth",ui->txtEditBirthday->text());
 
         mRepository->UpdateColleague(mJsonObject);
 
@@ -125,19 +128,23 @@ void UpdateCollegueView::SubscribeToFormEvents()
     connect(ui->lblLastName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditLastName);});
     connect(ui->lblEmail, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditEmail);});
     connect(ui->lblPhone, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditPhone);});
+    connect(ui->lblBirthday, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEditBirthday);});
 
-    connect(ui->txtEditFirstName,&ColleaguesLineEditd::inFocus, this,
+    connect(ui->txtEditFirstName, &ColleaguesLineEditd::inFocus, this,
             [this]{doLabelAniamtion(ui->lblFirstName, mlblFirstNameEndPointY);
             focusIn(ui->txtEditFirstName, ui->lblIncorrectFirstName);});
-    connect(ui->txtEditLastName,&ColleaguesLineEditd::inFocus, this,
-            [this]{doLabelAniamtion(ui->lblLastName,mlblLastNameEndPointY);
+    connect(ui->txtEditLastName, &ColleaguesLineEditd::inFocus, this,
+            [this]{doLabelAniamtion(ui->lblLastName ,mlblLastNameEndPointY);
             focusIn(ui->txtEditLastName, ui->lblIncorrectLastName);});
-    connect(ui->txtEditEmail,&ColleaguesLineEditd::inFocus,this,
-            [this]{doLabelAniamtion(ui->lblEmail,mlblEmailEndPointY);
+    connect(ui->txtEditEmail, &ColleaguesLineEditd::inFocus,this,
+            [this]{doLabelAniamtion(ui->lblEmail, mlblEmailEndPointY);
             focusIn(ui->txtEditEmail, ui->lblIncorrectEmail);});
-    connect(ui->txtEditPhone,&ColleaguesLineEditd::inFocus, this,
-            [this]{doLabelAniamtion(ui->lblPhone,mlblPhoneEndPointY);
+    connect(ui->txtEditPhone, &ColleaguesLineEditd::inFocus, this,
+            [this]{doLabelAniamtion(ui->lblPhone, mlblPhoneEndPointY);
             focusIn(ui->txtEditPhone, ui->lblIncorrectPhone);});
+    connect(ui->txtEditBirthday, &ColleaguesLineEditd::inFocus, this,
+            [this]{doLabelAniamtion(ui->lblBirthday, mlblBirthdatEndPointY);
+            focusIn(ui->txtEditBirthday, ui->lblIncorrectBirthday);});
 
     connect(ui->txtEditFirstName, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnLineEditFirstName();
@@ -151,6 +158,9 @@ void UpdateCollegueView::SubscribeToFormEvents()
     connect(ui->txtEditPhone, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnLineEditPhone();
             validateLineEditInput(ui->txtEditPhone, ui->lblIncorrectPhone, mRegPhone, &isPhoneValid);});
+    connect(ui->txtEditBirthday, &ColleaguesLineEditd::outFocus, this,
+            [this]{lostFocusOnLineEditBirthday();
+            validateLineEditInput(ui->txtEditBirthday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
 }
 
 QString UpdateCollegueView::getInformationFromLineEdit(QLineEdit *lineEdit)
@@ -161,7 +171,8 @@ QString UpdateCollegueView::getInformationFromLineEdit(QLineEdit *lineEdit)
 bool UpdateCollegueView::IsLineEditsEmpty()
 {
     if(!getInformationFromLineEdit(ui->txtEditFirstName).isEmpty() && !getInformationFromLineEdit(ui->txtEditLastName).isEmpty() &&
-            !getInformationFromLineEdit(ui->txtEditEmail).isEmpty() && !getInformationFromLineEdit(ui->txtEditPhone).isEmpty())
+            !getInformationFromLineEdit(ui->txtEditEmail).isEmpty() && !getInformationFromLineEdit(ui->txtEditPhone).isEmpty() &&
+            !getInformationFromLineEdit(ui->txtEditBirthday).isEmpty())
     {
         return false;
     }
@@ -170,7 +181,7 @@ bool UpdateCollegueView::IsLineEditsEmpty()
 
 bool UpdateCollegueView::IsLineEditsValid()
 {
-    if(isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid)
+    if(isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid && isBirthdayValid)
     {
         return true;
     }
@@ -205,6 +216,11 @@ void UpdateCollegueView::lostFocusOnLineEditPhone()
     setLabelsPosition(ui->txtEditPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY);
 }
 
+void UpdateCollegueView::lostFocusOnLineEditBirthday()
+{
+    setLabelsPosition(ui->txtEditBirthday, ui->lblBirthday, mlblBirthdayStartPointY, mlblBirthdatEndPointY);
+}
+
 void UpdateCollegueView::setFocusOnLineEdit(QLineEdit *lineEdint)
 {
     lineEdint->setFocus();
@@ -219,13 +235,5 @@ void UpdateCollegueView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *la
 {
     isLineEditEmpty(lineEdit) ? mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsStartPointY)
                             : mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
-//    if(isLineEditEmpty(lineEdit))
-//    {
-//        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsStartPointY);
-//    }
-//    else
-//    {
-//        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
-//    }
 }
 
