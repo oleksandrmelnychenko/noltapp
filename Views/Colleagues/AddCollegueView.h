@@ -61,6 +61,7 @@ private slots:
     void lostFocusOnLineEditLastName();
     void lostFocusOnLineEditEmail();
     void lostFocusOnLineEditPhone();   
+    void lostFocusOnlineEditBirthday();
 
 private:
     Ui::AddCollegueView *ui;
@@ -71,6 +72,7 @@ private:
     QString mRegName = ("[a-zA-Z0-9_\\-\\.]{1,30}");
     QString mRegEmail = ("([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_.-])+\\.([a-zA-Z]{2,4}|[0-9]{1,3})");
     QString mRegPhone = ("\\([0-9]{3}\\)\\s[0-9]{3}-[0-9]{2}-[0-9]{2}");  // (097) 231-23-52;
+    QString mRegBirthday = ("[0-3]?[0-9].[0-3]?[0-9].([0-9]{2})?[0-9]{2}");
 
     QString mValidateColor = ("border:none; border-bottom:1px solid #909090; color:#ffffff; padding-left:7px;");
     QString mNotValidateColor = ("border:none;border-bottom:1px solid #ff2306; color:#ffffff; padding-left:7px;");
@@ -79,6 +81,7 @@ private:
     bool isLastNameValid = false;
     bool isEmailValid = false;
     bool isPhoneValid = false;
+    bool isBirthdayValid = false;
 
     AnimationController* mAnimationController;
     int mAnimationDuration = 250;
@@ -91,6 +94,9 @@ private:
     const int mlblEmailEndPointY = 206;
     const int mlblPhoneStartPointY = 283;
     const int mlblPhoneEndPointY = 262;
+    const int mlblBirthdayStartPointY = 339;
+    const int mlblBirthdayEndPointY = 318;
+
 
 };
 

@@ -98,7 +98,7 @@ void ColleaguesView::ResultFromRequest(QJsonObject *result)
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 2, new QTableWidgetItem(subtree.value("mLastName").toString()));
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 3, new QTableWidgetItem(subtree.value("mEmail").toString()));
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 4, new QTableWidgetItem(subtree.value("mPhone").toString()));
-            ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 5, new QTableWidgetItem(subtree.value("mCreateDate").toString())); // change to birthday
+            ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 5, new QTableWidgetItem(subtree.value("mDateOfBirth").toString())); // change to birthday
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 6, new QTableWidgetItem(subtree.value("mCreateDate").toString()));
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 7, new QTableWidgetItem(subtree.value("mUpdateDate").toString()));
         }

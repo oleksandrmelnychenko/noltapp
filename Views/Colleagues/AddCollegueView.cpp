@@ -13,6 +13,7 @@ AddCollegueView::AddCollegueView(QWidget *parent) :
     ui->lblIncorrectLastName->setVisible(false);
     ui->lblIncorrectEmail->setVisible(false);
     ui->lblIncorrectPhone->setVisible(false);
+    ui->lblIncorrectBirthday->setVisible(false);
 
     mRepository = new ColleagueOperationRepository(this);
     mAnimationController = new AnimationController();
@@ -45,14 +46,8 @@ bool AddCollegueView::isLineEditEmpty(const QLineEdit *lineEdit)
 
 void AddCollegueView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)
 {
-    if(isLineEditEmpty(lineEdit))
-    {
-        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsStartPointY);       
-    }
-    else
-    {
-        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);       
-    }    
+    isLineEditEmpty(lineEdit) ? mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsStartPointY)
+                            : mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
 }
 
 void AddCollegueView::addCollegue()
@@ -64,6 +59,7 @@ void AddCollegueView::addCollegue()
         json.insert("mLastName", ui->txtLastName->text());
         json.insert("mEmail", ui->txtEmail->text());
         json.insert("mPhone", ui->txtPhone->text());
+        json.insert("mDateOfBirth", ui->txtBirtday->text());
 
         mRepository->CreateNewColleague(json);
 
@@ -126,6 +122,7 @@ void AddCollegueView::SubscribeToFormEvents()
     connect(ui->lblLastName, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtLastName);});
     connect(ui->lblEmail, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtEmail);});
     connect(ui->lblPhone, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtPhone);});
+    connect(ui->lblBirthday, &ColleaguesLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtBirtday);});
 
     connect(ui->txtFirstName, &ColleaguesLineEditd::inFocus, this,
             [this]{doLabelAnimation(ui->lblFirstName, mlblFirstNameEndPointY);
@@ -139,6 +136,9 @@ void AddCollegueView::SubscribeToFormEvents()
     connect(ui->txtPhone, &ColleaguesLineEditd::inFocus, this,
             [this]{doLabelAnimation(ui->lblPhone, mlblPhoneEndPointY);
             focusIn(ui->txtPhone, ui->lblIncorrectPhone);});
+    connect(ui->txtBirtday, &ColleaguesLineEditd::inFocus, this,
+            [this]{doLabelAnimation(ui->lblBirthday, mlblBirthdayEndPointY);
+            focusIn(ui->txtPhone, ui->lblIncorrectBirthday);});
 
     connect(ui->txtFirstName, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnLineEditFirstName();
@@ -152,7 +152,9 @@ void AddCollegueView::SubscribeToFormEvents()
     connect(ui->txtPhone, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnLineEditPhone();
             validateLineEditInput(ui->txtPhone, ui->lblIncorrectPhone, mRegPhone, &isPhoneValid);});
-
+    connect(ui->txtBirtday, &ColleaguesLineEditd::outFocus, this,
+            [this]{lostFocusOnlineEditBirthday();
+            validateLineEditInput(ui->txtBirtday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
 }
 
 bool AddCollegueView::IsLineEditsEmpty()
@@ -181,6 +183,7 @@ void AddCollegueView::setFocusOnLineEdit(QLineEdit *lineEdint)
 
 void AddCollegueView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 {
+
     mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
     ui->widgetAddColleague->hide();
     ui->widgetAddColleague->show();
@@ -204,6 +207,11 @@ void AddCollegueView::lostFocusOnLineEditEmail()
 void AddCollegueView::lostFocusOnLineEditPhone()
 {
     setLabelsPosition(ui->txtPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY); // визивати напряму в конекті
+}
+
+void AddCollegueView::lostFocusOnlineEditBirthday()
+{
+    setLabelsPosition(ui->txtBirtday, ui->lblBirthday, mlblBirthdayStartPointY, mlblBirthdayEndPointY);
 }
 
 

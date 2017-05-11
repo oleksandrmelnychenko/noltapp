@@ -217,13 +217,15 @@ bool UpdateCollegueView::isLineEditEmpty(const QLineEdit *lineEdit)
 
 void UpdateCollegueView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)
 {
-    if(isLineEditEmpty(lineEdit))
-    {
-        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsStartPointY);
-    }
-    else
-    {
-        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
-    }
+    isLineEditEmpty(lineEdit) ? mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsStartPointY)
+                            : mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
+//    if(isLineEditEmpty(lineEdit))
+//    {
+//        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsStartPointY);
+//    }
+//    else
+//    {
+//        mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
+//    }
 }
 

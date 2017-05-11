@@ -250,7 +250,7 @@ padding-left:7px;</string>
     <property name="geometry">
      <rect>
       <x>505</x>
-      <y>339</y>
+      <y>396</y>
       <width>340</width>
       <height>41</height>
      </rect>
@@ -289,7 +289,7 @@ QPushButton#btnUpdate:pressed
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>400</y>
+      <y>457</y>
       <width>81</width>
       <height>50</height>
      </rect>
@@ -308,7 +308,7 @@ QPushButton#btnUpdate:pressed
     <property name="geometry">
      <rect>
       <x>505</x>
-      <y>385</y>
+      <y>442</y>
       <width>151</width>
       <height>16</height>
      </rect>
@@ -438,6 +438,73 @@ background-color:transparent;</string>
      <string>Update Colleague</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblBirthday">
+    <property name="geometry">
+     <rect>
+      <x>512</x>
+      <y>318</y>
+      <width>47</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#909090;</string>
+    </property>
+    <property name="text">
+     <string>Birhday</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtEditBirthday">
+    <property name="geometry">
+     <rect>
+      <x>505</x>
+      <y>337</y>
+      <width>340</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblIncorrectBirthday">
+    <property name="geometry">
+     <rect>
+      <x>747</x>
+      <y>366</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255,35,6);
+opacity: 0;</string>
+    </property>
+    <property name="text">
+     <string>Birthday is incorrect</string>
+    </property>
+   </widget>
    <zorder>txtEditFirstName</zorder>
    <zorder>txtEditLastName</zorder>
    <zorder>txtEditEmail</zorder>
@@ -454,6 +521,9 @@ background-color:transparent;</string>
    <zorder>lblIncorrectEmail</zorder>
    <zorder>lblIncorrectPhone</zorder>
    <zorder>lblUpdateColleagueTitle</zorder>
+   <zorder>lblBirthday</zorder>
+   <zorder>txtEditBirthday</zorder>
+   <zorder>lblIncorrectBirthday</zorder>
   </widget>
   <zorder>widgetUpdateColleague</zorder>
   <zorder>lblColleague</zorder>
