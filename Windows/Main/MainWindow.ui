@@ -265,7 +265,7 @@ border:1px solid #00b7df;</string>
    <widget class="QPushButton" name="btnCollapse">
     <property name="geometry">
      <rect>
-      <x>1306</x>
+      <x>1301</x>
       <y>10</y>
       <width>12</width>
       <height>12</height>
