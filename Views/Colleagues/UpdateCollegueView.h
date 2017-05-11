@@ -76,10 +76,10 @@ private:
 
     long mId;
 
-    bool isFirstNameValid = false;
-    bool isLastNameValid = false;
-    bool isEmailValid = false;
-    bool isPhoneValid = false;
+    bool isFirstNameValid = true;
+    bool isLastNameValid = true;
+    bool isEmailValid = true;
+    bool isPhoneValid = true;
 
     AnimationController* mAnimationController;
     int mAnimationDuration = 250;
