@@ -545,6 +545,7 @@ opacity: 0;</string>
   <tabstop>txtEditLastName</tabstop>
   <tabstop>txtEditEmail</tabstop>
   <tabstop>txtEditPhone</tabstop>
+  <tabstop>txtEditBirthday</tabstop>
   <tabstop>btnUpdate</tabstop>
  </tabstops>
  <resources/>

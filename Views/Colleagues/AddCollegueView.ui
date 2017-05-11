@@ -575,6 +575,7 @@ opacity: 0;</string>
   <tabstop>txtLastName</tabstop>
   <tabstop>txtEmail</tabstop>
   <tabstop>txtPhone</tabstop>
+  <tabstop>txtBirtday</tabstop>
   <tabstop>btnAddCollegue</tabstop>
  </tabstops>
  <resources/>
