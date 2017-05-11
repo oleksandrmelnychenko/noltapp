@@ -9,14 +9,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1350</width>
-    <height>680</height>
+    <width>1360</width>
+    <height>690</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1350</width>
-    <height>680</height>
+    <width>1360</width>
+    <height>690</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1360</width>
+    <height>690</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -26,15 +38,32 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: white;
-color: black;</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>1360</width>
+     <height>690</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1360</width>
+     <height>690</height>
+    </size>
+   </property>
    <widget class="QLabel" name="labelLogo">
     <property name="geometry">
      <rect>
-      <x>12</x>
-      <y>10</y>
+      <x>17</x>
+      <y>15</y>
       <width>148</width>
       <height>45</height>
      </rect>
@@ -52,8 +81,8 @@ color: black;</string>
    <widget class="QPushButton" name="btnColleagues">
     <property name="geometry">
      <rect>
-      <x>1024</x>
-      <y>68</y>
+      <x>1029</x>
+      <y>73</y>
       <width>111</width>
       <height>41</height>
      </rect>
@@ -77,8 +106,8 @@ color: black;</string>
    <widget class="QPushButton" name="btnOffice">
     <property name="geometry">
      <rect>
-      <x>1245</x>
-      <y>68</y>
+      <x>1250</x>
+      <y>73</y>
       <width>61</width>
       <height>41</height>
      </rect>
@@ -102,8 +131,8 @@ color: black;</string>
    <widget class="QPushButton" name="btnSalary">
     <property name="geometry">
      <rect>
-      <x>1155</x>
-      <y>68</y>
+      <x>1160</x>
+      <y>73</y>
       <width>70</width>
       <height>41</height>
      </rect>
@@ -127,8 +156,8 @@ color: black;</string>
    <widget class="QMdiArea" name="mdiArea">
     <property name="geometry">
      <rect>
-      <x>28</x>
-      <y>110</y>
+      <x>33</x>
+      <y>115</y>
       <width>1294</width>
       <height>498</height>
      </rect>
@@ -160,8 +189,8 @@ color: black;</string>
    <widget class="QLabel" name="lblBackGroundPicture">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>5</x>
+      <y>5</y>
       <width>1350</width>
       <height>680</height>
      </rect>
@@ -188,11 +217,17 @@ color: black;</string>
    <widget class="QWidget" name="widgetFrame" native="true">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>0</y>
+      <x>175</x>
+      <y>5</y>
       <width>1111</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color:transparent;</string>
@@ -201,8 +236,8 @@ color: black;</string>
    <widget class="QPushButton" name="btnQuit">
     <property name="geometry">
      <rect>
-      <x>1328</x>
-      <y>10</y>
+      <x>1333</x>
+      <y>15</y>
       <width>12</width>
       <height>12</height>
      </rect>
@@ -248,8 +283,8 @@ background-position:top right;
    <widget class="QPushButton" name="btbReqtangle">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>115</y>
+      <x>5</x>
+      <y>120</y>
       <width>12</width>
       <height>40</height>
      </rect>
@@ -265,8 +300,8 @@ border:1px solid #00b7df;</string>
    <widget class="QPushButton" name="btnCollapse">
     <property name="geometry">
      <rect>
-      <x>1301</x>
-      <y>10</y>
+      <x>1306</x>
+      <y>15</y>
       <width>12</width>
       <height>12</height>
      </rect>

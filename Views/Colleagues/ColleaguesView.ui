@@ -70,20 +70,19 @@
 	background-color: #18181a;	
 	color: #909090;	
 	border:none;
-	gridline-color: #18181a;	
-outline:none;
+	gridline-color:#18181a;	
+	outline:none;
 }
 
 QTableWidget#tblWidgetId::item:focus
 {
-outline:none;
-	/*border:1px solid red;	*/	
+	outline:none;
 }
 
 QTableWidget#tblWidgetId::item:selected
 {
 	color:#ffffff;
-outline:none;
+	outline:none;
 }
 
 QTableWidget#tblWidgetId QHeaderView::section:horizontal
@@ -102,13 +101,15 @@ QTableWidget#tblWidgetId QHeaderView::section:horizontal
 
 QTableWidget#tblWidgetId::item
 {
-	border-left:1px solid #909090
+	border-left:1px solid #909090;	
 }
 
 QTableWidget#tblWidgetId QHeaderView::section:horizontal:first
 {
     border-left: none;	
-}</string>
+}
+
+</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>

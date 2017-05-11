@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <Windows/CustomShadoweffect.h>
 #include "Views/Colleagues/ColleaguesView.h"
 #include "Views/Colleagues/AddCollegueView.h"
 #include "Views/Colleagues/UpdateCollegueView.h"
@@ -26,6 +27,8 @@ class MainWindow : public QMainWindow
 protected:
     void SetPressButtonStyleSheet(QPushButton *pressedButton, QPushButton *secondButton, QPushButton *thirdButton);
     bool isMousePointerInFrame();
+
+    void setUpShadow();
 
     void mousePressEvent(QMouseEvent* event);
     void mouseMoveEvent(QMouseEvent* event);
@@ -53,8 +56,8 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    const int mFrameStartPointX = 170;
-    const int mFrameStartPointY = 0;
+    const int mFrameStartPointX = 175;
+    const int mFrameStartPointY = 5;
     const int mFrameWidth = 1111;
     const int mFrameHeight = 21;
 

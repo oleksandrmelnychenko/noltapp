@@ -15,6 +15,18 @@ bool MainWindow::isMousePointerInFrame()
             mMouseClickYCoordinate >= mFrameStartPointY && mMouseClickYCoordinate <= mFrameHeight);
 }
 
+void MainWindow::setUpShadow()
+{
+    setAttribute(Qt::WA_TranslucentBackground);
+
+    CustomShadowEffect  *bodyShadow = new CustomShadowEffect();
+    bodyShadow->setBlurRadius(5.0);
+    bodyShadow->setDistance(1.0);
+    bodyShadow->setColor(QColor(9,146,177));
+
+    ui->lblBackGroundPicture->setGraphicsEffect(bodyShadow);
+}
+
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     mMouseClickXCoordinate = event->x();
@@ -158,6 +170,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lblRequestStatus->setVisible(false);
 
     createColleaguesView();
+    setUpShadow();
 
     connect(ui->btnColleagues, SIGNAL(clicked()), this, SLOT(createColleaguesView()));
     connect(ui->btnSalary, SIGNAL(clicked()), this, SLOT(createSalaryView()));

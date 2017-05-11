@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QStandardItemModel>
 #include <QScrollBar>
+#include <QGridLayout>
 
 
 ColleaguesView::ColleaguesView(QWidget *parent) :
@@ -46,7 +47,7 @@ void ColleaguesView::SetTableColumnOptions()
     ui->tblWidgetId->setColumnCount(7);
     ui->tblWidgetId->setHorizontalHeaderLabels(titleId);
     ui->tblWidgetId->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-    ui->tblWidgetId->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tblWidgetId->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);  
     ui->tblWidgetId->verticalScrollBar()->setStyleSheet("QScrollBar:vertical {"
                                                         "    border: 1px solid #797979;"
                                                         "    background:#ffffff;;"
