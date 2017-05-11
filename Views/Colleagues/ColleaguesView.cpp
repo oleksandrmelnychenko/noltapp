@@ -35,16 +35,17 @@ void ColleaguesView::SetTableColumnsWidth()
    ui->tblWidgetId->setColumnWidth(1,250);
    ui->tblWidgetId->setColumnWidth(2,250);
    ui->tblWidgetId->setColumnWidth(3,280);
-   ui->tblWidgetId->setColumnWidth(4,160);
-   ui->tblWidgetId->setColumnWidth(5,145);
-   ui->tblWidgetId->setColumnWidth(6,145);
+   ui->tblWidgetId->setColumnWidth(4,130);
+   ui->tblWidgetId->setColumnWidth(5,106);
+   ui->tblWidgetId->setColumnWidth(6,106);
+   ui->tblWidgetId->setColumnWidth(7,106);
 }
 
 void ColleaguesView::SetTableColumnOptions()
 {
     QStringList titleId;
-    titleId << "ID" << "FIRST NAME" << "LAST NAME" << "EMAIL" << "PHONE" << "CREATE DATE" << "UPDATE DATE" ;
-    ui->tblWidgetId->setColumnCount(7);
+    titleId << "ID" << "FIRST NAME" << "LAST NAME" << "EMAIL" << "PHONE" << "BIRTHDAY" << "CREATE DATE" << "UPDATE DATE" ;
+    ui->tblWidgetId->setColumnCount(8);
     ui->tblWidgetId->setHorizontalHeaderLabels(titleId);
     ui->tblWidgetId->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
     ui->tblWidgetId->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);  
@@ -97,8 +98,9 @@ void ColleaguesView::ResultFromRequest(QJsonObject *result)
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 2, new QTableWidgetItem(subtree.value("mLastName").toString()));
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 3, new QTableWidgetItem(subtree.value("mEmail").toString()));
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 4, new QTableWidgetItem(subtree.value("mPhone").toString()));
-            ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 5, new QTableWidgetItem(subtree.value("mCreateDate").toString()));
-            ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 6, new QTableWidgetItem(subtree.value("mUpdateDate").toString()));
+            ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 5, new QTableWidgetItem(subtree.value("mCreateDate").toString())); // change to birthday
+            ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 6, new QTableWidgetItem(subtree.value("mCreateDate").toString()));
+            ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 7, new QTableWidgetItem(subtree.value("mUpdateDate").toString()));
         }
     }
 }

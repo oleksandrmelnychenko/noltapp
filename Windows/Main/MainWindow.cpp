@@ -170,6 +170,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lblRequestStatus->setVisible(false);
 
     createColleaguesView();
+
     setUpShadow();
 
     connect(ui->btnColleagues, SIGNAL(clicked()), this, SLOT(createColleaguesView()));
