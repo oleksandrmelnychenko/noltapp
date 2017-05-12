@@ -63,7 +63,8 @@ HEADERS  += \
     Views/Colleagues/UpdateCollegueView.h \
     WebServices/ColleagueServices.h \
     Repositories/ColleagueOperationRepository.h \
-    CommonUiControllers/RegexController.h
+    CommonUiControllers/RegexController.h \
+    CommonUiControllers/Views/Salary/SalaryLineEdit.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \

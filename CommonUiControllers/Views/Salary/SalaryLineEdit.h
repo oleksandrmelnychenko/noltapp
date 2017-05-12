@@ -1,16 +1,16 @@
-#ifndef COLLEAGUESLINEEDITD_H
-#define COLLEAGUESLINEEDITD_H
+#ifndef SALARYLINEEDIT_H
+#define SALARYLINEEDIT_H
 
 #include <QLineEdit>
 #include <QObject>
 #include <QWidget>
 #include <QMouseEvent>
 
-class ColleaguesLineEditd : public QLineEdit
+class SalaryLineEdit : public QLineEdit
 {
     Q_OBJECT
 
-protected:    
+protected:
     void focusInEvent(QFocusEvent *e)
     {
         QLineEdit::focusInEvent(e);
@@ -28,7 +28,7 @@ signals:
     void inFocus();
 
 public:
-    ColleaguesLineEditd(QWidget *parent = 0) : QLineEdit(parent){}    
+    SalaryLineEdit(QWidget *parent = 0) : QLineEdit(parent){}
 };
 
-#endif // COLLEAGUESLINEEDITD_H
+#endif // SALARYLINEEDIT_H
