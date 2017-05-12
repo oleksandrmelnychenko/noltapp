@@ -22,7 +22,22 @@ SalaryView::~SalaryView()
 
 void SalaryView::SubscribeToFormEvents()
 {
+    connect(ui->lblSalary, &SalaryLabel::pressIn, this , [this]{setFocusOnLineEdit(ui->txtSalary);});
+    connect(ui->lblToPay, &SalaryLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtPaid);});
 
+    connect(ui->txtSalary, &SalaryLineEdit::inFocus, this,
+            [this]{doLabelAnimation(ui->lblSalary, mlblSalaryEndPointY);
+            focusIn(ui->txtSalary, ui->lblIncorrectSalary);});
+    connect(ui->txtPaid, &SalaryLineEdit::inFocus, this,
+            [this]{doLabelAnimation(ui->lblToPay, mlblPaymentEndPointY);
+            focusIn(ui->txtPaid, ui->lblIncorrectPayment);});
+
+    connect(ui->txtSalary, &SalaryLineEdit::outFocus, this,
+            [this]{lostFocusOnLineEditSalary();
+            validateLineEditInput(ui->txtSalary, ui->lblIncorrectSalary, mRegSalary, &isSalaryValid);});
+    connect(ui->txtPaid, &SalaryLineEdit::outFocus, this,
+            [this]{lostFocusOnLineEditPayment();
+            validateLineEditInput(ui->txtPaid, ui->lblIncorrectPayment, mRegPayment, &isPaymentValid);});
 }
 
 QString SalaryView::getInformationFromLineEdit(QLineEdit *lineEdit)

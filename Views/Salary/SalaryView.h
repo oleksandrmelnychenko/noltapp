@@ -50,7 +50,8 @@ private:
 
     ColleagueOperationRepository *mRepository;
 
-    QString mRegSalary = ("");
+    QString mRegSalary = ("[0-9]{3,5}(\\.[0-9]{1,2})?");
+    QString mRegPayment = ("[0-9]{1,5}(\\.[0-9]{1,2})?");
 
     QString mValidateColor = ("border:none; border-bottom:1px solid #909090; color:#ffffff; padding-left:7px;");
     QString mNotValidateColor = ("border:none;border-bottom:1px solid #ff2306; color:#ffffff; padding-left:7px;");
@@ -62,9 +63,9 @@ private:
     int mAnimationDuration = 250;
 
     const int mlblSalaryStartPointY = 31;
-    const int mlblSalaryEndPointY = 52;
+    const int mlblSalaryEndPointY = 10;
     const int mlblPaymentStartPointY = 188;
-    const int mlblPaymentEndPointY = 209;
+    const int mlblPaymentEndPointY = 167;
 
 };
 
