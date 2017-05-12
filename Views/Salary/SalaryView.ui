@@ -383,7 +383,7 @@ opacity: 0;</string>
    <zorder>lblIncorrectSalary</zorder>
    <zorder>lblIncorrectPayment</zorder>
   </widget>
-  <widget class="QLabel" name="lblSalary_2">
+  <widget class="QLabel" name="lblSalaryTitle">
    <property name="geometry">
     <rect>
      <x>0</x>

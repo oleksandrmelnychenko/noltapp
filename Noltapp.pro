@@ -59,6 +59,7 @@ HEADERS  += \
     Views/Colleagues/AddCollegueView.h \
     CommonUiControllers/Views/Colleagues/ColleaguesLineEditd.h \
     CommonUiControllers/Views/Colleagues/ColleaguesLabel.h \
+    CommonUiControllers/Views/Salary/SalaryLabel.h\
     Views/Colleagues/UpdateCollegueView.h \
     WebServices/ColleagueServices.h \
     Repositories/ColleagueOperationRepository.h \

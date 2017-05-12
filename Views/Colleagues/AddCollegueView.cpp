@@ -184,7 +184,6 @@ void AddCollegueView::setFocusOnLineEdit(QLineEdit *lineEdint)
 
 void AddCollegueView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 {
-
     mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
     ui->widgetAddColleague->hide();
     ui->widgetAddColleague->show();
