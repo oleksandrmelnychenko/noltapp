@@ -96,7 +96,7 @@ QTableWidget#tblWidgetColleagues QHeaderView::section:horizontal:first
 </string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="txtSalary">
+   <widget class="SalaryLineEdit" name="txtSalary">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -120,7 +120,7 @@ padding-left:7px;
 padding-bottom:0px;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblSalary">
+   <widget class="SalaryLabel" name="lblSalary">
     <property name="geometry">
      <rect>
       <x>347</x>
@@ -181,7 +181,7 @@ QPushButton#btnUpdateSalary:pressed
      <string>Update</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblToPay">
+   <widget class="SalaryLabel" name="lblToPay">
     <property name="geometry">
      <rect>
       <x>347</x>
@@ -203,7 +203,7 @@ QPushButton#btnUpdateSalary:pressed
      <string>To pay</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="txtPaid">
+   <widget class="SalaryLineEdit" name="txtPaid">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -407,6 +407,18 @@ background-color:transparent;</string>
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SalaryLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">CommonUiControllers/Views/Salary/SalaryLabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SalaryLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header location="global">CommonUiControllers/Views/Salary/SalaryLineEdit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
