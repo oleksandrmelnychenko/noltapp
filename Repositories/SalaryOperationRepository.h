@@ -17,16 +17,20 @@ class SalaryOperationRepository : public QObject
 {
     Q_OBJECT
 public:
-    explicit SalaryOperationRepository(QObject *parent = 0);
+    explicit SalaryOperationRepository(QNetworkAccessManager *networkManager, QObject *parent = 0);
 
 signals:
-    //void getResultsFromRequest(QJsonObject*);
+    void getResultsFromRequest(QJsonObject*);
 
-public:
-
+public:    
+    void GetPaymentHistoryById(long id);
+    void PaidSalary(long id, QJsonObject pesron);
 
 public slots:
-    //void replyFinished(QNetworkReply* reply);
+    void replyFinished(QNetworkReply* reply);
+
+private:
+    QNetworkAccessManager *mNetworkManager;
 };
 
 #endif // SALARYOPERATIONREPOSITORY_H

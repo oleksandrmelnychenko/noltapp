@@ -49,6 +49,9 @@
       <pointsize>11</pointsize>
      </font>
     </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
     <property name="styleSheet">
      <string notr="true">QTableWidget#tblWidgetColleagues
 {
@@ -92,9 +95,35 @@ QTableWidget#tblWidgetColleagues::item
 QTableWidget#tblWidgetColleagues QHeaderView::section:horizontal:first
 {
     border-left: none;	
-}
-</string>
+}</string>
     </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <property name="sortingEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+    <property name="cornerButtonEnabled">
+     <bool>false</bool>
+    </property>
+    <attribute name="horizontalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
    </widget>
    <widget class="SalaryLineEdit" name="txtSalary">
     <property name="geometry">

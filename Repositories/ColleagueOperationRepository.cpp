@@ -5,8 +5,7 @@
 ColleagueOperationRepository::ColleagueOperationRepository(QNetworkAccessManager *networkManager, QObject *parent)
     : mNetworkManager(networkManager),
       QObject(parent)
-{
-    //mNetworkManager = new QNetworkAccessManager(this);
+{    
     connect(mNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
 }
 
@@ -21,7 +20,7 @@ void ColleagueOperationRepository::GetAllColleagues()
 void ColleagueOperationRepository::GetColleagueById(long id)
 {
     std::string hostAndApi = "http://noltwebapi.azurewebsites.net/api/v1/colleagues/get?id=";
-    hostAndApi += std::to_string(id);;
+    hostAndApi += std::to_string(id);
 
     QString qRequest = QString::fromStdString(hostAndApi);
 
@@ -59,9 +58,6 @@ void ColleagueOperationRepository::UpdateColleague(QJsonObject person)
     QByteArray request_body = doc.toJson();
 
     mNetworkManager->post(request,request_body);
-
-//    QNetworkReply *reply = mNetworkManager->post(request,request_body);
-//    qDebug() << reply;
 }
 
 void ColleagueOperationRepository::DeleteColleague(long id)

@@ -4,10 +4,15 @@
 #include <QWidget>
 #include <QMdiSubWindow>
 #include <QLineEdit>
+#include <QLabel>
+#include <QTableWidgetItem>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QJsonArray>
 
 #include "Entities/PersonEntity.h"
 #include "CommonUiControllers/AnimationController.h"
-#include "Repositories/ColleagueOperationRepository.h"
+#include "Services/SalaryServiece.h"
 
 namespace Ui {
     class SalaryForm;
@@ -30,10 +35,14 @@ private:
     bool isLineEditEmpty(const QLineEdit *lineEdit);
     void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
 
-public slots:
-
+protected slots:
+    void FillColleagueTable(QJsonObject *result);
 
 private slots:
+    void GetColleagueSalary(int row, int column);
+
+    void SetColleagueTableColumnOptions();
+
     void RequestStatus(QJsonObject *status);
     void focusIn(QLineEdit *lineEdit, QLabel *label);
     void validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid);
@@ -48,7 +57,7 @@ signals:
 private:
     Ui::SalaryForm *ui;
 
-    ColleagueOperationRepository *mRepository;
+    SalaryServiece *mSalaryService;
 
     QString mRegSalary = ("[0-9]{3,5}(\\.[0-9]{1,2})?");
     QString mRegPayment = ("[0-9]{1,5}(\\.[0-9]{1,2})?");
@@ -66,7 +75,6 @@ private:
     const int mlblSalaryEndPointY = 10;
     const int mlblPaymentStartPointY = 188;
     const int mlblPaymentEndPointY = 167;
-
 };
 
 #endif // SALARYFORM_H

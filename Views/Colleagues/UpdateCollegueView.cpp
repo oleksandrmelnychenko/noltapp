@@ -7,16 +7,15 @@ UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
     ui(new Ui::UpdateCollegueView),
     mId(id)
 {
-    ui->setupUi(this);
-    SetValidationLabelsVisibility();
+    ui->setupUi(this);    
 
     mColleagueService = new ColleagueService(this);
-    //mRepository = new ColleagueOperationRepository(this);
     mAnimationController = new AnimationController();
 
     mColleagueService->GetColleagueById(id);
 
     SubscribeToFormEvents();
+    SetValidationLabelsVisibility();
 }
 
 UpdateCollegueView::~UpdateCollegueView()

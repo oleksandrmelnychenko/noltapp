@@ -42,7 +42,8 @@ SOURCES += main.cpp\
     Repositories/ColleagueOperationRepository.cpp \
     CommonUiControllers/RegexController.cpp \
     Repositories/SalaryOperationRepository.cpp \
-    Services/ColleagueService.cpp
+    Services/ColleagueService.cpp \
+    Services/SalaryServiece.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -68,7 +69,8 @@ HEADERS  += \
     CommonUiControllers/RegexController.h \
     CommonUiControllers/Views/Salary/SalaryLineEdit.h \
     Repositories/SalaryOperationRepository.h \
-    Services/ColleagueService.h
+    Services/ColleagueService.h \
+    Services/SalaryServiece.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \

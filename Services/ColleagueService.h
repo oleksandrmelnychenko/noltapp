@@ -13,7 +13,6 @@ class ColleagueService : public QObject
 public:
     explicit ColleagueService(QObject *parent = 0);
 
-public:
     void GetAllColleagues();
     void GetColleagueById(long id);
     void CreateNewColleague(QJsonObject person);
