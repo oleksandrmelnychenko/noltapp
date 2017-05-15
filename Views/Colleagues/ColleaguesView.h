@@ -44,8 +44,7 @@ signals:
 private:
     Ui::ColleaguesForm *ui;
 
-    ColleagueOperationRepository *mRepository;    
-    int mCounter = 0;    
+    ColleagueOperationRepository *mRepository;
 };
 
 #endif // COLLEAGUESFORM_H

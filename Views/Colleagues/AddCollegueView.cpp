@@ -63,6 +63,8 @@ void AddCollegueView::addCollegue()
 
         mRepository->CreateNewColleague(json);
 
+        ui->btnAddCollegue->setEnabled(false);
+
         connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(RequestStatus(QJsonObject*)));
     }
     else
@@ -106,6 +108,7 @@ void AddCollegueView::focusIn(QLineEdit *lineEdit, QLabel *label)
 void AddCollegueView::RequestStatus(QJsonObject *status)
 {
     emit requestStatus(status->value("Message").toString());
+    ui->btnAddCollegue->setEnabled(true);
 }
 
 void AddCollegueView::clickColleague()

@@ -22,13 +22,14 @@ public:
 signals:
     void getResultsFromRequest(QJsonObject*);
 
-public slots:
+public:
     void GetAllColleagues();
     void GetColleagueById(long id);
     void CreateNewColleague(QJsonObject person);
     void UpdateColleague(QJsonObject person);
-    void DeleteColleague(long id);
+    void DeleteColleague(long id);    
 
+public slots:
     void replyFinished(QNetworkReply* reply);
 
 private:

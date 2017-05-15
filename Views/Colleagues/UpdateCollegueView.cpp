@@ -54,6 +54,8 @@ void UpdateCollegueView::UpdateCollegue()
 
         mRepository->UpdateColleague(mJsonObject);
 
+        ui->btnUpdate->setEnabled(false);
+
         connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(UpdateColleagueRequestStatus(QJsonObject*)));
     }
     else
@@ -65,6 +67,7 @@ void UpdateCollegueView::UpdateCollegue()
 void UpdateCollegueView::UpdateColleagueRequestStatus(QJsonObject *status)
 {
     emit updateColleagueRequestStatus(status->value("Message").toString());
+    ui->btnUpdate->setEnabled(true);
 }
 
 void UpdateCollegueView::DeleteColleagueRequestStatus(QJsonObject *status)
