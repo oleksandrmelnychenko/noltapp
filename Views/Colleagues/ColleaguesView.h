@@ -10,7 +10,7 @@
 #include <QJsonArray>
 
 #include "Entities/PersonEntity.h"
-#include "Repositories/ColleagueOperationRepository.h"
+#include "Services/ColleagueService.h"
 
 namespace Ui {
     class ColleaguesForm;
@@ -44,7 +44,7 @@ signals:
 private:
     Ui::ColleaguesForm *ui;
 
-    ColleagueOperationRepository *mRepository;
+    ColleagueService *mColleagueService;   
 };
 
 #endif // COLLEAGUESFORM_H

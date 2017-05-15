@@ -8,17 +8,13 @@ UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
     mId(id)
 {
     ui->setupUi(this);
-    ui->lblIncorrectInput->setVisible(false);
-    ui->lblIncorrectFirstName->setVisible(false);
-    ui->lblIncorrectLastName->setVisible(false);
-    ui->lblIncorrectEmail->setVisible(false);
-    ui->lblIncorrectPhone->setVisible(false);
-    ui->lblIncorrectBirthday->setVisible(false);
+    SetValidationLabelsVisibility();
 
-    mRepository = new ColleagueOperationRepository(this);
+    mColleagueService = new ColleagueService(this);
+    //mRepository = new ColleagueOperationRepository(this);
     mAnimationController = new AnimationController();
 
-    mRepository->GetColleagueById(id);
+    mColleagueService->GetColleagueById(id);
 
     SubscribeToFormEvents();
 }
@@ -52,11 +48,11 @@ void UpdateCollegueView::UpdateCollegue()
         mJsonObject.insert("mPhone",ui->txtEditPhone->text());
         mJsonObject.insert("mDateOfBirth",ui->txtEditBirthday->text());
 
-        mRepository->UpdateColleague(mJsonObject);
+        mColleagueService->UpdateColleague(mJsonObject);
 
         ui->btnUpdate->setEnabled(false);
 
-        connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(UpdateColleagueRequestStatus(QJsonObject*)));
+        connect(mColleagueService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(UpdateColleagueRequestStatus(QJsonObject*)));
     }
     else
     {
@@ -83,8 +79,8 @@ void UpdateCollegueView::clickColleague()
 
 void UpdateCollegueView::clickDelete()
 {
-    mRepository->DeleteColleague(mId);
-    connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(DeleteColleagueRequestStatus(QJsonObject*)));
+    mColleagueService->DeleteColleague(mId);
+    connect(mColleagueService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(DeleteColleagueRequestStatus(QJsonObject*)));
 }
 
 void UpdateCollegueView::validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid)
@@ -121,7 +117,7 @@ void UpdateCollegueView::focusIn(QLineEdit *lineEdit, QLabel *label)
 
 void UpdateCollegueView::SubscribeToFormEvents()
 {
-    connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
+    connect(mColleagueService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
 
     connect(ui->btnUpdate, SIGNAL(clicked(bool)), this, SLOT(UpdateCollegue()));
     connect(ui->lblDelete, &ColleaguesLabel::pressIn, this, [this]{clickDelete();});
@@ -163,7 +159,17 @@ void UpdateCollegueView::SubscribeToFormEvents()
             validateLineEditInput(ui->txtEditPhone, ui->lblIncorrectPhone, mRegPhone, &isPhoneValid);});
     connect(ui->txtEditBirthday, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnLineEditBirthday();
-            validateLineEditInput(ui->txtEditBirthday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
+        validateLineEditInput(ui->txtEditBirthday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
+}
+
+void UpdateCollegueView::SetValidationLabelsVisibility()
+{
+    ui->lblIncorrectInput->setVisible(false);
+    ui->lblIncorrectFirstName->setVisible(false);
+    ui->lblIncorrectLastName->setVisible(false);
+    ui->lblIncorrectEmail->setVisible(false);
+    ui->lblIncorrectPhone->setVisible(false);
+    ui->lblIncorrectBirthday->setVisible(false);
 }
 
 QString UpdateCollegueView::getInformationFromLineEdit(QLineEdit *lineEdit)

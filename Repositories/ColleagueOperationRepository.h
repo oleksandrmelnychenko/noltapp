@@ -17,7 +17,7 @@ class ColleagueOperationRepository : public QObject
 {
     Q_OBJECT
 public:
-    explicit ColleagueOperationRepository(QObject *parent = 0);
+    explicit ColleagueOperationRepository(QNetworkAccessManager *networkManager, QObject *parent = 0);
 
 signals:
     void getResultsFromRequest(QJsonObject*);

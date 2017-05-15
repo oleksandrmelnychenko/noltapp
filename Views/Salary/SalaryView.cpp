@@ -9,7 +9,7 @@ SalaryView::SalaryView(QWidget *parent) :
     ui->lblIncorrectSalary->setVisible(false);
     ui->lblIncorrectPayment->setVisible(false);
 
-    mRepository = new ColleagueOperationRepository(this);
+    //mRepository = new ColleagueOperationRepository(this);
     mAnimationController = new AnimationController();
 
     SubscribeToFormEvents();

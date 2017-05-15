@@ -8,7 +8,7 @@
 #include <QJsonArray>
 #include <QLineEdit>
 
-#include "Repositories/ColleagueOperationRepository.h"
+#include "Services/ColleagueService.h"
 #include "Entities/PersonEntity.h"
 #include "CommonUiControllers/AnimationController.h"
 
@@ -53,6 +53,7 @@ private slots:
 
 private:
     void SubscribeToFormEvents();
+    void SetValidationLabelsVisibility();
 
     QString getInformationFromLineEdit(QLineEdit *lineEdit);
     bool IsLineEditsEmpty();
@@ -97,6 +98,8 @@ private:
     const int mlblPhoneEndPointY = 262;
     const int mlblBirthdayStartPointY = 339;
     const int mlblBirthdatEndPointY = 318;
+
+    ColleagueService *mColleagueService;
 };
 
 #endif // UPDATECOLLEGUEVIEW_H

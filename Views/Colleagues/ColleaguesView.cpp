@@ -13,15 +13,16 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
-    mRepository = new ColleagueOperationRepository(this);  
-    mRepository->GetAllColleagues();
+
+    mColleagueService = new ColleagueService(this);
+    mColleagueService->GetAllColleagues();
 
     SetTableColumnOptions();
 
     connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(UpdateCurrentCollegues(int, int)));
     connect(ui->lblAddNew, SIGNAL(pressIn()), this, SLOT(CreateAddCollegueView()));
 
-    connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
+    connect(mColleagueService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
 }
 
 ColleaguesView::~ColleaguesView()

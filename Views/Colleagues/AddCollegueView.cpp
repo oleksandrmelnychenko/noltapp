@@ -8,14 +8,9 @@ AddCollegueView::AddCollegueView(QWidget *parent) :
     ui(new Ui::AddCollegueView)
 {
     ui->setupUi(this);    
-    ui->lblIncorrectInput->setVisible(false);
-    ui->lblIncorrectFirstName->setVisible(false);
-    ui->lblIncorrectLastName->setVisible(false);
-    ui->lblIncorrectEmail->setVisible(false);
-    ui->lblIncorrectPhone->setVisible(false);
-    ui->lblIncorrectBirthday->setVisible(false);
+    SetValidationLabelsVisibility();
 
-    mRepository = new ColleagueOperationRepository(this);
+    mColleagueService = new ColleagueService(this);
     mAnimationController = new AnimationController();
 
     SubscribeToFormEvents();
@@ -61,11 +56,11 @@ void AddCollegueView::addCollegue()
         json.insert("mPhone", ui->txtPhone->text());
         json.insert("mDateOfBirth", ui->txtBirtday->text());
 
-        mRepository->CreateNewColleague(json);
+        mColleagueService->CreateNewColleague(json);
 
         ui->btnAddCollegue->setEnabled(false);
 
-        connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(RequestStatus(QJsonObject*)));
+        connect(mColleagueService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(RequestStatus(QJsonObject*)));
     }
     else
     {
@@ -157,7 +152,17 @@ void AddCollegueView::SubscribeToFormEvents()
             validateLineEditInput(ui->txtPhone, ui->lblIncorrectPhone, mRegPhone, &isPhoneValid);});
     connect(ui->txtBirtday, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnlineEditBirthday();
-            validateLineEditInput(ui->txtBirtday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
+        validateLineEditInput(ui->txtBirtday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
+}
+
+void AddCollegueView::SetValidationLabelsVisibility()
+{
+    ui->lblIncorrectInput->setVisible(false);
+    ui->lblIncorrectFirstName->setVisible(false);
+    ui->lblIncorrectLastName->setVisible(false);
+    ui->lblIncorrectEmail->setVisible(false);
+    ui->lblIncorrectPhone->setVisible(false);
+    ui->lblIncorrectBirthday->setVisible(false);
 }
 
 bool AddCollegueView::IsLineEditsEmpty()

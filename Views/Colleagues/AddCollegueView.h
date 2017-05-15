@@ -13,7 +13,7 @@
 
 #include "Entities/PersonEntity.h"
 #include "CommonUiControllers/AnimationController.h"
-#include "Repositories/ColleagueOperationRepository.h"
+#include "Services/ColleagueService.h"
 
 namespace Ui {
     class AddCollegueView;
@@ -47,6 +47,7 @@ protected slots:
 
 private:
     void SubscribeToFormEvents();
+    void SetValidationLabelsVisibility();
 
     QString getInformationFromLineEdit(QLineEdit *lineEdit);
     bool IsLineEditsEmpty();
@@ -97,7 +98,7 @@ private:
     const int mlblBirthdayStartPointY = 339;
     const int mlblBirthdayEndPointY = 318;
 
-
+    ColleagueService *mColleagueService;
 };
 
 #endif // ADDCOLLEGUEVIEW_H

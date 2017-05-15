@@ -2,9 +2,11 @@
 #include <string>
 #include <QDebug>
 
-ColleagueOperationRepository::ColleagueOperationRepository(QObject *parent) : QObject(parent)
+ColleagueOperationRepository::ColleagueOperationRepository(QNetworkAccessManager *networkManager, QObject *parent)
+    : mNetworkManager(networkManager),
+      QObject(parent)
 {
-    mNetworkManager = new QNetworkAccessManager(this);
+    //mNetworkManager = new QNetworkAccessManager(this);
     connect(mNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
 }
 
