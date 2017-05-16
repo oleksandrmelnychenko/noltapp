@@ -40,6 +40,8 @@ protected slots:
 
 private slots:
     void GetColleagueSalary(int row, int column);
+    //void UpdateSalary();
+    void OutpuSalary(QJsonObject *result);
 
     void SetColleagueTableColumnOptions();
 

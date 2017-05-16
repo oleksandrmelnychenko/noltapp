@@ -4,6 +4,7 @@
 #include <QStandardItemModel>
 #include <QScrollBar>
 #include <QGridLayout>
+#include <QDebug>
 
 SalaryView::SalaryView(QWidget *parent) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),
@@ -75,14 +76,28 @@ void SalaryView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int
 
 void SalaryView::GetColleagueSalary(int row, int column)
 {
+    long id = ui->tblWidgetColleagues->item(row,2)->text().toLong();
 
+    mSalaryService->GetColleagueById(id);
+
+    connect(mSalaryService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(OutpuSalary(QJsonObject*)));
+}
+
+void SalaryView::OutpuSalary(QJsonObject *result)
+{
+    QJsonValue jv = result->value("Body");
+    QJsonObject subtree = jv.toObject();
+
+    ui->txtSalary->setText(QString::number(subtree.value("mSalaryAmount").toInt()));
+    ui->txtSalary->setFocus();
 }
 
 void SalaryView::SetColleagueTableColumnOptions()
 {
     QStringList titleId;
     titleId <<"FIRST NAME" << "LAST NAME";
-    ui->tblWidgetColleagues->setColumnCount(2);
+    ui->tblWidgetColleagues->setColumnCount(3);
+    ui->tblWidgetColleagues->setColumnHidden(2, true);
     ui->tblWidgetColleagues->setHorizontalHeaderLabels(titleId);
     ui->tblWidgetColleagues->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
     ui->tblWidgetColleagues->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -114,11 +129,14 @@ void SalaryView::FillColleagueTable(QJsonObject *result)
         QJsonArray ja = jv.toArray();
         for(int i = 0;  i <ja.count(); ++i)
         {
-            QJsonObject subtree = ja.at(i).toObject();            
+            QJsonObject subtree = ja.at(i).toObject();
+
+            QString currentCollegueId = QString::number(subtree.value("mId").toInt());
 
             ui->tblWidgetColleagues->insertRow(ui->tblWidgetColleagues->rowCount());
             ui->tblWidgetColleagues->setItem(ui->tblWidgetColleagues->rowCount()- 1, 0, new QTableWidgetItem(subtree.value("mFirstName").toString()));
             ui->tblWidgetColleagues->setItem(ui->tblWidgetColleagues->rowCount()- 1, 1, new QTableWidgetItem(subtree.value("mLastName").toString()));
+            ui->tblWidgetColleagues->setItem(ui->tblWidgetColleagues->rowCount()- 1, 2, new QTableWidgetItem(currentCollegueId));
         }
     }
 }
