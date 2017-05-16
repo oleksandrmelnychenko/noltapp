@@ -70,7 +70,7 @@
 	background-color: #18181a;	
 	color: #909090;	
 	border:none;
-	gridline-color: #18181a;
+	gridline-color:#18181a;
 	outline:none;
 }
 
@@ -103,7 +103,6 @@ QTableWidget#tblWidgetId::item
 {
 	border-left:1px solid #909090;	
 }
-
 
 QTableWidget#tblWidgetId QHeaderView::section:horizontal:first
 {

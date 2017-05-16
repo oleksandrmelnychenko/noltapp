@@ -152,7 +152,7 @@ void AddCollegueView::SubscribeToFormEvents()
             validateLineEditInput(ui->txtPhone, ui->lblIncorrectPhone, mRegPhone, &isPhoneValid);});
     connect(ui->txtBirtday, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnlineEditBirthday();
-        validateLineEditInput(ui->txtBirtday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
+            validateLineEditInput(ui->txtBirtday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
 }
 
 void AddCollegueView::SetValidationLabelsVisibility()

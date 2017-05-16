@@ -73,7 +73,8 @@ void MainWindow::createAddColeagueView()
 
 void MainWindow::createUpdateColleagueView(long id)
 {    
-    mCurrentMdiSubForm->close();    
+    mCurrentMdiSubForm->close();
+    mCurrentMdiSubForm = nullptr; // mb help
     mCurrentMdiSubForm = new UpdateCollegueView(ui->mdiArea,id);   
     mCurrentMdiSubForm->show();
 
@@ -87,8 +88,6 @@ void MainWindow::createUpdateColleagueView(long id)
             this, SLOT(UpdateColleagueDeleteRequestStatus(QString)));
     connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(clickDeletelbl()),
             this, SLOT(createColleaguesView()));
-
-    qDebug() << id;
 }
 
 void MainWindow::createOfficeView()
@@ -112,8 +111,7 @@ void MainWindow::deleteMdiSubForm(QMdiSubWindow *form)
     if(form != nullptr)
     {
         delete mCurrentMdiSubForm;
-        mCurrentMdiSubForm = nullptr;       
-        qDebug() << "Delete CurrentMdiSubForm";
+        mCurrentMdiSubForm = nullptr;
     }
 }
 
