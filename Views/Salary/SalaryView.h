@@ -37,16 +37,20 @@ private:
     bool isLineEditEmpty(const QLineEdit *lineEdit);
     void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
 
+    void SetColleagueTableColumnOptions();
+    void SetSalaryHistoryColumnOptions();
+
 protected slots:
     void FillColleagueTable(QJsonObject *result);
 
 private slots:
-    void GetColleagueSalary(int row, int column);
+    void GetColleagueSalaryInformation(int row, int column);
     void UpdateSalary();
+    void PaidSalary();
     void OutputSalary(QJsonObject *result);
     void OutputPaymentHistory(QJsonObject *result);
 
-    void SetColleagueTableColumnOptions();
+
 
     void RequestStatus(QJsonObject *status);
     void UpdateColleagueRequestStatus(QJsonObject* status);
@@ -65,7 +69,8 @@ signals:
 private:
     Ui::SalaryForm *ui;
 
-    QJsonObject mJsonObject;
+    QJsonObject mJsonObjectColleague;
+    QJsonObject mJsonObjectSalary;
 
     SalaryServiece *mSalaryService;
 
@@ -80,6 +85,8 @@ private:
 
     AnimationController* mAnimationController;
     int mAnimationDuration = 250;
+
+    int mCurrentColleagueId = 0;
 
     const int mlblSalaryStartPointY = 31;
     const int mlblSalaryEndPointY = 10;
