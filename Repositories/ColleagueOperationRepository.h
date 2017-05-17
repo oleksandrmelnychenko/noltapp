@@ -20,7 +20,7 @@ public:
     explicit ColleagueOperationRepository(QNetworkAccessManager *networkManager, QObject *parent = 0);
 
 signals:
-    void getResultsFromRequest(QJsonObject*);
+    void getResultsFromRequestColleague(QJsonObject*);
 
 public:
     void GetAllColleagues();

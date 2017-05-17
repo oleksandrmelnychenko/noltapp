@@ -16,14 +16,17 @@ public:
 
     void GetAllColleagues();
     void GetColleagueById(long id);
+    void UpdateColleague(QJsonObject person);
     void GetPaymentHistoryById(long id);
     void PaidSalary(long id, QJsonObject person);
 
 signals:
-    void getResultsFromRequest(QJsonObject*);
+    void getResultsFromRequestColleague(QJsonObject*);
+    void getResultsFromRequestSalary(QJsonObject*);
 
 public slots:
-    void ResultFromRequest(QJsonObject *person);
+    void ResultFromRequestColleague(QJsonObject *person);
+    void ResultFromRequestSalary(QJsonObject *salary);
 
 private:
     ColleagueOperationRepository *mColleagueRepository;

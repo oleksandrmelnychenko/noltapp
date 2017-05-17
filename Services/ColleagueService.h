@@ -20,7 +20,7 @@ public:
     void DeleteColleague(long id);
 
 signals:
-    void getResultsFromRequest(QJsonObject*);
+    void getResultsFromRequestColleague(QJsonObject*);
 
 public slots:
     void ResultFromRequest(QJsonObject *person);

@@ -5,7 +5,7 @@ ColleagueService::ColleagueService(QObject *parent) : QObject(parent)
     mNetworkManager = new QNetworkAccessManager(this);
     mRepository = new ColleagueOperationRepository(mNetworkManager, this);
 
-    connect(mRepository, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
+    connect(mRepository, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
 }
 
 void ColleagueService::GetAllColleagues()
@@ -35,6 +35,6 @@ void ColleagueService::DeleteColleague(long id)
 
 void ColleagueService::ResultFromRequest(QJsonObject *person)
 {
-    emit getResultsFromRequest(person);
+    emit getResultsFromRequestColleague(person);
 }
 

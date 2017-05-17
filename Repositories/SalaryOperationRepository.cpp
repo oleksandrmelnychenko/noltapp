@@ -47,6 +47,6 @@ void SalaryOperationRepository::replyFinished(QNetworkReply *reply)
         QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
         QJsonObject root = document.object();
 
-        emit getResultsFromRequest(&root);
+        emit getResultsFromRequestSalary(&root);
     }
 }

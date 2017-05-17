@@ -1,6 +1,5 @@
 #include "ColleagueOperationRepository.h"
 #include <string>
-#include <QDebug>
 
 ColleagueOperationRepository::ColleagueOperationRepository(QNetworkAccessManager *networkManager, QObject *parent)
     : mNetworkManager(networkManager),
@@ -80,6 +79,6 @@ void ColleagueOperationRepository::replyFinished(QNetworkReply *reply)
         QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
         QJsonObject root = document.object();
 
-        emit getResultsFromRequest(&root);
+        emit getResultsFromRequestColleague(&root);
     }
 }

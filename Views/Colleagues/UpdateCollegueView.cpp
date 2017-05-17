@@ -51,7 +51,7 @@ void UpdateCollegueView::UpdateCollegue()
 
         ui->btnUpdate->setEnabled(false);
 
-        connect(mColleagueService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(UpdateColleagueRequestStatus(QJsonObject*)));
+        connect(mColleagueService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(UpdateColleagueRequestStatus(QJsonObject*)));
     }
     else
     {
@@ -79,7 +79,7 @@ void UpdateCollegueView::clickColleague()
 void UpdateCollegueView::clickDelete()
 {
     mColleagueService->DeleteColleague(mId);
-    connect(mColleagueService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(DeleteColleagueRequestStatus(QJsonObject*)));
+    connect(mColleagueService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(DeleteColleagueRequestStatus(QJsonObject*)));
 }
 
 void UpdateCollegueView::validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid)
@@ -116,7 +116,7 @@ void UpdateCollegueView::focusIn(QLineEdit *lineEdit, QLabel *label)
 
 void UpdateCollegueView::SubscribeToFormEvents()
 {
-    connect(mColleagueService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
+    connect(mColleagueService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
 
     connect(ui->btnUpdate, SIGNAL(clicked(bool)), this, SLOT(UpdateCollegue()));
     connect(ui->lblDelete, &ColleaguesLabel::pressIn, this, [this]{clickDelete();});

@@ -29,6 +29,8 @@ public:
 private:
     void SubscribeToFormEvents();
 
+    void LoadColleaguePaymentHistory(long id);
+
     QString getInformationFromLineEdit(QLineEdit *lineEdit);
 
     void clearFocusOfLineEdits();
@@ -40,12 +42,15 @@ protected slots:
 
 private slots:
     void GetColleagueSalary(int row, int column);
-    //void UpdateSalary();
-    void OutpuSalary(QJsonObject *result);
+    void UpdateSalary();
+    void OutputSalary(QJsonObject *result);
+    void OutputPaymentHistory(QJsonObject *result);
 
     void SetColleagueTableColumnOptions();
 
     void RequestStatus(QJsonObject *status);
+    void UpdateColleagueRequestStatus(QJsonObject* status);
+
     void focusIn(QLineEdit *lineEdit, QLabel *label);
     void validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid);
     void setFocusOnLineEdit(QLineEdit *lineEdint);
@@ -55,9 +60,12 @@ private slots:
 
 signals:
     void requestStatus(const QString&);
+    void updateColleagueRequestStatus(const QString&);
 
 private:
     Ui::SalaryForm *ui;
+
+    QJsonObject mJsonObject;
 
     SalaryServiece *mSalaryService;
 

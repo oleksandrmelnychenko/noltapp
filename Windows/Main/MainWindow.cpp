@@ -154,6 +154,19 @@ void MainWindow::AddColleagueRequestStatus(const QString &status)
     QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
 }
 
+void MainWindow::UpdateSalaryStatus(const QString &status)
+{
+    ui->lblRequestStatus->setText(status);
+
+//    ui->lblRequestStatus->setGeometry(mlblRequestStatusForAddColleagueXPosition,
+//                                      mlblRequestStatusForAddColleagueYPosition,
+//                                      mlblRequestStatusForAddColleagueWidth,
+//                                      mlblRequestStatusForAddColleagueHeight);
+
+    ui->lblRequestStatus->setVisible(true);
+    QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
+}
+
 void MainWindow::setlblRequestStatusVisibleToFalse()
 {
     ui->lblRequestStatus->setVisible(false);

@@ -47,6 +47,7 @@ protected slots:
     void UpdateColleagueRequestStatus(const QString& status);
     void UpdateColleagueDeleteRequestStatus(const QString& status);
     void AddColleagueRequestStatus(const QString& status);
+    void UpdateSalaryStatus(const QString& status);
     void setlblRequestStatusVisibleToFalse();
 
 public:

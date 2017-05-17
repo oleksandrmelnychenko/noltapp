@@ -60,7 +60,7 @@ void AddCollegueView::addCollegue()
 
         ui->btnAddCollegue->setEnabled(false);
 
-        connect(mColleagueService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(RequestStatus(QJsonObject*)));
+        connect(mColleagueService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(RequestStatus(QJsonObject*)));
     }
     else
     {

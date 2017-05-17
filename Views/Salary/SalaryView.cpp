@@ -13,6 +13,10 @@ SalaryView::SalaryView(QWidget *parent) :
     ui->setupUi(this);
     ui->lblIncorrectSalary->setVisible(false);
     ui->lblIncorrectPayment->setVisible(false);
+    ui->lblIncorrectInput->setVisible(false);
+
+    ui->btnPaid->setEnabled(false);
+    ui->btnUpdateSalary->setEnabled(false);
 
     mSalaryService = new SalaryServiece(this);
     mAnimationController = new AnimationController();
@@ -22,7 +26,9 @@ SalaryView::SalaryView(QWidget *parent) :
     mSalaryService->GetAllColleagues();
 
     connect(ui->tblWidgetColleagues, SIGNAL(cellClicked(int,int)), this, SLOT(GetColleagueSalary(int,int)));
-    connect(mSalaryService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(FillColleagueTable(QJsonObject*)));
+    connect(mSalaryService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(FillColleagueTable(QJsonObject*)));
+
+    connect(ui->btnUpdateSalary, SIGNAL(clicked()), this, SLOT(UpdateSalary()));
 
     SubscribeToFormEvents();
 }
@@ -49,7 +55,13 @@ void SalaryView::SubscribeToFormEvents()
             validateLineEditInput(ui->txtSalary, ui->lblIncorrectSalary, mRegSalary, &isSalaryValid);});
     connect(ui->txtPaid, &SalaryLineEdit::outFocus, this,
             [this]{lostFocusOnLineEditPayment();
-            validateLineEditInput(ui->txtPaid, ui->lblIncorrectPayment, mRegPayment, &isPaymentValid);});
+        validateLineEditInput(ui->txtPaid, ui->lblIncorrectPayment, mRegPayment, &isPaymentValid);});
+}
+
+void SalaryView::LoadColleaguePaymentHistory(long id)
+{
+    mSalaryService->GetPaymentHistoryById(id);
+    connect(mSalaryService, SIGNAL(getResultsFromRequestSalary(QJsonObject*)), this, SLOT(OutputPaymentHistory(QJsonObject*)));
 }
 
 QString SalaryView::getInformationFromLineEdit(QLineEdit *lineEdit)
@@ -75,21 +87,57 @@ void SalaryView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int
 }
 
 void SalaryView::GetColleagueSalary(int row, int column)
-{
+{    
     long id = ui->tblWidgetColleagues->item(row,2)->text().toLong();
 
     mSalaryService->GetColleagueById(id);
-
-    connect(mSalaryService, SIGNAL(getResultsFromRequest(QJsonObject*)), this, SLOT(OutpuSalary(QJsonObject*)));
+    connect(mSalaryService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(OutputSalary(QJsonObject*)), Qt::UniqueConnection);
 }
 
-void SalaryView::OutpuSalary(QJsonObject *result)
+void SalaryView::UpdateSalary()
+{
+    if(isSalaryValid && !ui->txtSalary->text().isEmpty())
+    {
+        mJsonObject.insert("mSalaryAmount", ui->txtSalary->text());
+
+        mSalaryService->UpdateColleague(mJsonObject);
+
+        ui->btnUpdateSalary->setEnabled(false);
+
+        connect(mSalaryService, SIGNAL(getResultsFromRequestSalary(QJsonObject*)), this, SLOT(UpdateColleagueRequestStatus(QJsonObject*)));
+    }
+    else
+    {
+        ui->lblIncorrectInput->setText("Incorrect salary amount");
+        ui->lblIncorrectInput->setVisible(true);
+    }
+}
+
+void SalaryView::OutputSalary(QJsonObject *result)
 {
     QJsonValue jv = result->value("Body");
     QJsonObject subtree = jv.toObject();
 
-    ui->txtSalary->setText(QString::number(subtree.value("mSalaryAmount").toInt()));
-    ui->txtSalary->setFocus();
+    mJsonObject = subtree;
+
+    QString salary = QString::number(subtree.value("mSalaryAmount").toDouble());
+
+    ui->txtSalary->setText(salary);
+    ui->txtPaid->setText(salary);
+
+    setLabelsPosition(ui->txtSalary, ui->lblSalary, mlblSalaryStartPointY, mlblSalaryEndPointY);
+    setLabelsPosition(ui->txtPaid, ui->lblToPay, mlblPaymentStartPointY, mlblPaymentEndPointY);
+
+    ui->btnPaid->setEnabled(true);
+    ui->btnUpdateSalary->setEnabled(true);
+
+    // hide
+    // show
+}
+
+void SalaryView::OutputPaymentHistory(QJsonObject *result)
+{
+
 }
 
 void SalaryView::SetColleagueTableColumnOptions()
@@ -146,10 +194,17 @@ void SalaryView::RequestStatus(QJsonObject *status)
     emit requestStatus(status->value("Message").toString());
 }
 
+void SalaryView::UpdateColleagueRequestStatus(QJsonObject *status)
+{
+    emit updateColleagueRequestStatus(status->value("Message").toString());
+    ui->btnUpdateSalary->setEnabled(true);
+}
+
 void SalaryView::focusIn(QLineEdit *lineEdit, QLabel *label)
 {
     lineEdit->setStyleSheet(mValidateColor);
     label->setVisible(false);
+    ui->lblIncorrectInput->setVisible(false);
 }
 
 void SalaryView::validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid)

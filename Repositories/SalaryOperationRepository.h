@@ -20,7 +20,7 @@ public:
     explicit SalaryOperationRepository(QNetworkAccessManager *networkManager, QObject *parent = 0);
 
 signals:
-    void getResultsFromRequest(QJsonObject*);
+    void getResultsFromRequestSalary(QJsonObject*);
 
 public:    
     void GetPaymentHistoryById(long id);
