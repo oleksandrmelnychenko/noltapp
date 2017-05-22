@@ -109,6 +109,7 @@ void SalaryView::PaidSalary()
 
 void SalaryView::OutputPaymentHistory(QJsonObject *result)
 {
+    ui->tblWidgetSalaryHistory->clearContents();
     QJsonValue jv = result->value("Body");
 
     if(jv.isArray())
@@ -118,9 +119,11 @@ void SalaryView::OutputPaymentHistory(QJsonObject *result)
         {
             QJsonObject subtree = ja.at(i).toObject();
 
+            QString payment = QString::number(subtree.value("mPaymentAmount").toDouble());
+
             ui->tblWidgetSalaryHistory->insertRow(ui->tblWidgetSalaryHistory->rowCount());
             ui->tblWidgetSalaryHistory->setItem(ui->tblWidgetSalaryHistory->rowCount()- 1, 0, new QTableWidgetItem(subtree.value("mPaymentDate").toString()));
-            ui->tblWidgetSalaryHistory->setItem(ui->tblWidgetSalaryHistory->rowCount()- 1, 1, new QTableWidgetItem(subtree.value("mPaymentAmount").toString()));
+            ui->tblWidgetSalaryHistory->setItem(ui->tblWidgetSalaryHistory->rowCount()- 1, 1, new QTableWidgetItem(payment));
         }
     }
 }
@@ -209,6 +212,7 @@ void SalaryView::SetSalaryHistoryColumnOptions()
     ui->tblWidgetSalaryHistory->setColumnCount(3);
     ui->tblWidgetSalaryHistory->setColumnHidden(2, true);
     ui->tblWidgetSalaryHistory->setHorizontalHeaderLabels(titleId);
+    ui->tblWidgetSalaryHistory->verticalHeader()->setVisible(false);
     ui->tblWidgetSalaryHistory->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
     ui->tblWidgetSalaryHistory->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tblWidgetSalaryHistory->verticalScrollBar()->setStyleSheet("QScrollBar:vertical {"
