@@ -10,7 +10,7 @@ ColleagueOperationRepository::ColleagueOperationRepository(QNetworkAccessManager
 
 void ColleagueOperationRepository::GetAllColleagues()
 {
-    QUrl url("http://noltwebapi.azurewebsites.net/api/v1/colleagues/all");
+    QUrl url(mGetAllColleagues);
     QNetworkRequest request;
     request.setUrl(url);
     mNetworkManager->get(request);
@@ -18,7 +18,7 @@ void ColleagueOperationRepository::GetAllColleagues()
 
 void ColleagueOperationRepository::GetColleagueById(long id)
 {
-    std::string hostAndApi = "http://noltwebapi.azurewebsites.net/api/v1/colleagues/get?id=";
+    std::string hostAndApi = mGetColleagueById;
     hostAndApi += std::to_string(id);
 
     QString qRequest = QString::fromStdString(hostAndApi);
@@ -31,7 +31,7 @@ void ColleagueOperationRepository::GetColleagueById(long id)
 
 void ColleagueOperationRepository::CreateNewColleague(QJsonObject person)
 {
-    QUrl url("http://noltwebapi.azurewebsites.net/api/v1/colleagues/new");
+    QUrl url(mCreateNewColleague);
     QNetworkRequest request;
     request.setUrl(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json; charset=utf-8");
@@ -46,7 +46,7 @@ void ColleagueOperationRepository::CreateNewColleague(QJsonObject person)
 
 void ColleagueOperationRepository::UpdateColleague(QJsonObject person)
 {    
-    QUrl url("http://noltwebapi.azurewebsites.net/api/v1/colleagues/update");
+    QUrl url(mUpdateColleague);
     QNetworkRequest request;
     request.setUrl(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json; charset=utf-8");
@@ -57,11 +57,14 @@ void ColleagueOperationRepository::UpdateColleague(QJsonObject person)
     QByteArray request_body = doc.toJson();
 
     mNetworkManager->post(request,request_body);
+
+    //    QNetworkReply *reply = mNetworkManager->post(request,request_body);
+    //    qDebug() << reply;
 }
 
 void ColleagueOperationRepository::DeleteColleague(long id)
 {
-    std::string hostAndApi = "http://noltwebapi.azurewebsites.net/api/v1/colleagues/delete?id=";
+    std::string hostAndApi = mDeleteColleague;
     hostAndApi += std::to_string(id);;
 
     QString qRequest = QString::fromStdString(hostAndApi);

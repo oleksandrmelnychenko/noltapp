@@ -32,9 +32,9 @@ void SalaryServiece::GetPaymentHistoryById(long id)
     mSalaryOperationRepository->GetPaymentHistoryById(id);
 }
 
-void SalaryServiece::PaidSalary(long id, QJsonObject person)
+void SalaryServiece::PaidSalary(long id, QJsonObject salary)
 {
-    mSalaryOperationRepository->PaidSalary(id, person);
+    mSalaryOperationRepository->PaidSalary(id, salary);
 }
 
 void SalaryServiece::ResultFromRequestColleague(QJsonObject *person)

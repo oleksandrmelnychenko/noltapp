@@ -18,7 +18,7 @@ public:
     void GetColleagueById(long id);
     void UpdateColleague(QJsonObject person);
     void GetPaymentHistoryById(long id);
-    void PaidSalary(long id, QJsonObject person);
+    void PaidSalary(long id, QJsonObject salary);
 
 signals:
     void getResultsFromRequestColleague(QJsonObject*);

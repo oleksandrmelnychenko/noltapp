@@ -48,9 +48,7 @@ private slots:
     void UpdateSalary();
     void PaidSalary();
     void OutputSalary(QJsonObject *result);
-    void OutputPaymentHistory(QJsonObject *result);
-
-
+    void OutputPaymentHistory(QJsonObject *result);  
 
     void RequestStatus(QJsonObject *status);
     void UpdateColleagueRequestStatus(QJsonObject* status);

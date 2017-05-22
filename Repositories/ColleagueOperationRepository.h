@@ -34,6 +34,13 @@ public slots:
 
 private:
     QNetworkAccessManager *mNetworkManager;
+
+    const QString mGetAllColleagues = "http://noltwebapi.azurewebsites.net/api/v1/colleagues/all";
+    const QString mCreateNewColleague = "http://noltwebapi.azurewebsites.net/api/v1/colleagues/new";
+    const QString mUpdateColleague = "http://noltwebapi.azurewebsites.net/api/v1/colleagues/update";
+
+    const std::string mGetColleagueById = "http://noltwebapi.azurewebsites.net/api/v1/colleagues/get?id=";
+    const std::string mDeleteColleague = "http://noltwebapi.azurewebsites.net/api/v1/colleagues/delete?id=";
 };
 
 #endif // COLLEAGUEOPERATIONREPOSITORY_H

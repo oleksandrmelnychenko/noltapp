@@ -24,7 +24,7 @@ signals:
 
 public:    
     void GetPaymentHistoryById(long id);
-    void PaidSalary(long id, QJsonObject pesron);
+    void PaidSalary(long id, QJsonObject salary);
 
 public slots:
     void replyFinished(QNetworkReply* reply);

@@ -1,4 +1,5 @@
 #include "SalaryOperationRepository.h"
+#include <QDebug>
 
 SalaryOperationRepository::SalaryOperationRepository(QNetworkAccessManager *networkManager, QObject *parent)
     : mNetworkManager(networkManager),
@@ -20,7 +21,7 @@ void SalaryOperationRepository::GetPaymentHistoryById(long id)
     mNetworkManager->get(request);
 }
 
-void SalaryOperationRepository::PaidSalary(long id, QJsonObject pesron)
+void SalaryOperationRepository::PaidSalary(long id, QJsonObject salary)
 {
     std::string hostAndApi = "http://noltwebapi.azurewebsites.net/api/v1/salaries/new?id=";
     hostAndApi += std::to_string(id);
@@ -33,7 +34,7 @@ void SalaryOperationRepository::PaidSalary(long id, QJsonObject pesron)
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json; charset=utf-8");
 
     QJsonDocument doc;
-    doc.setObject(pesron);
+    doc.setObject(salary);
 
     QByteArray request_body = doc.toJson();
 
@@ -45,7 +46,7 @@ void SalaryOperationRepository::replyFinished(QNetworkReply *reply)
     if(!reply->error())
     {
         QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
-        QJsonObject root = document.object();
+        QJsonObject root = document.object();        
 
         emit getResultsFromRequestSalary(&root);
     }

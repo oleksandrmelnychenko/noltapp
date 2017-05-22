@@ -100,12 +100,17 @@ void SalaryView::PaidSalary()
 
     mSalaryService->PaidSalary(mCurrentColleagueId, mJsonObjectSalary);
 
+//    disconnect(mSalaryService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(FillColleagueTable(QJsonObject*)));
+
+//    mSalaryService->GetPaymentHistoryById(mCurrentColleagueId);
+
     connect(mSalaryService, SIGNAL(getResultsFromRequestSalary(QJsonObject*)), this, SLOT(OutputPaymentHistory(QJsonObject*)));
 }
 
 void SalaryView::OutputPaymentHistory(QJsonObject *result)
 {
     QJsonValue jv = result->value("Body");
+
     if(jv.isArray())
     {
         QJsonArray ja = jv.toArray();
