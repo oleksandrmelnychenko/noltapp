@@ -104,6 +104,11 @@ void MainWindow::createSalaryView()
     mCurrentMdiSubForm = new SalaryView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
     SetPressButtonStyleSheet(ui->btnSalary,ui->btnOffice,ui->btnColleagues);
+
+    connect(dynamic_cast<SalaryView*>(mCurrentMdiSubForm), SIGNAL(paidSalaryRequestStatus(QString)),
+            this, SLOT(DoPaymentStatus(QString)));
+    connect(dynamic_cast<SalaryView*>(mCurrentMdiSubForm), SIGNAL(updateColleagueSalaryRequestStatus(QString)),
+            this, SLOT(UpdateSalaryStatus(QString)));
 }
 
 void MainWindow::deleteMdiSubForm(QMdiSubWindow *form)
@@ -124,9 +129,9 @@ void MainWindow::UpdateColleagueRequestStatus(const QString &status)
 {
     ui->lblRequestStatus->setText(status);
     ui->lblRequestStatus->setGeometry(mlbRequestStatusForlUpdateColleagueXPosition,
-                                      mlbRequestStatusForlUpdateColleagueYPosition,
+                                      mlbRequestStatusYPosition,
                                       mlbRequestStatusForlUpdateColleagueWidth,
-                                      mlbRequestStatusForlUpdateColleagueHeight);
+                                      mlbRequestStatusHeight);
     ui->lblRequestStatus->setVisible(true);
     QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
 }
@@ -135,9 +140,9 @@ void MainWindow::UpdateColleagueDeleteRequestStatus(const QString &status)
 {
     ui->lblRequestStatus->setText(status);
     ui->lblRequestStatus->setGeometry(mlblRequestStatusForDeleteColleagueXPosition,
-                                      mlblRequestStatusForDeleteColleagueYPosition,
+                                      mlbRequestStatusYPosition,
                                       mlblRequestStatusForDeleteColleagueWidth,
-                                      mlblRequestStatusForDeleteColleagueHeight);
+                                      mlbRequestStatusHeight);
     ui->lblRequestStatus->setVisible(true);
     QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
 }
@@ -146,9 +151,9 @@ void MainWindow::AddColleagueRequestStatus(const QString &status)
 {
     ui->lblRequestStatus->setText(status);
     ui->lblRequestStatus->setGeometry(mlblRequestStatusForAddColleagueXPosition,
-                                      mlblRequestStatusForAddColleagueYPosition,
+                                      mlbRequestStatusYPosition,
                                       mlblRequestStatusForAddColleagueWidth,
-                                      mlblRequestStatusForAddColleagueHeight);
+                                      mlbRequestStatusHeight);
 
     ui->lblRequestStatus->setVisible(true);
     QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
@@ -158,10 +163,23 @@ void MainWindow::UpdateSalaryStatus(const QString &status)
 {
     ui->lblRequestStatus->setText(status);
 
-//    ui->lblRequestStatus->setGeometry(mlblRequestStatusForAddColleagueXPosition,
-//                                      mlblRequestStatusForAddColleagueYPosition,
-//                                      mlblRequestStatusForAddColleagueWidth,
-//                                      mlblRequestStatusForAddColleagueHeight);
+    ui->lblRequestStatus->setGeometry(mlblRequestStatusForUpdateSalaryXPosition,
+                                      mlbRequestStatusYPosition,
+                                      mlblRequestStatusForUpdateSalaryWidth,
+                                      mlbRequestStatusHeight);
+
+    ui->lblRequestStatus->setVisible(true);
+    QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
+}
+
+void MainWindow::DoPaymentStatus(const QString &status)
+{
+    ui->lblRequestStatus->setText(status);
+
+    ui->lblRequestStatus->setGeometry(mlblRequestStatusForDoPaymentXPosition,
+                                      mlbRequestStatusYPosition,
+                                      mlblRequestStatusForDoPaymentWidth,
+                                      mlbRequestStatusHeight);
 
     ui->lblRequestStatus->setVisible(true);
     QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));

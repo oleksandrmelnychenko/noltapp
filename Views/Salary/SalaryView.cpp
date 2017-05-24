@@ -80,7 +80,7 @@ void SalaryView::UpdateSalary()
         mJsonObjectColleague.insert("mSalaryAmount", ui->txtSalary->text());
         ui->txtPaid->setText(ui->txtSalary->text());
 
-        UpdateColleagueSalaryRequestStatus(mSalaryService->UpdateColleague(mJsonObjectColleague));
+        UpdateColleagueSalaryRequestStatus(mSalaryService->UpdateColleagueSalary(mJsonObjectColleague));
 
         ui->btnUpdateSalary->setEnabled(true);
     }

@@ -16,7 +16,7 @@ public:
 
     QJsonObject* GetAllColleagues();
     QJsonObject *GetColleagueById(long id);
-    QJsonObject* UpdateColleague(QJsonObject person);
+    QJsonObject* UpdateColleagueSalary(QJsonObject person);
     QJsonObject* GetPaymentHistoryById(long id);
     QJsonObject* PaidSalary(long id, QJsonObject salary);
 

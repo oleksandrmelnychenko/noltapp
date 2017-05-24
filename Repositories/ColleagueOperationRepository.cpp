@@ -73,6 +73,24 @@ QJsonObject* ColleagueOperationRepository::UpdateColleague(QJsonObject person)
     return &mResult;
 }
 
+QJsonObject *ColleagueOperationRepository::UpdateColleagueSalaty(QJsonObject salary)
+{
+    QUrl url(mUpdateColleagueSalary);
+    QNetworkRequest request;
+    request.setUrl(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json; charset=utf-8");
+
+    QJsonDocument doc;
+    doc.setObject(salary);
+
+    QByteArray request_body = doc.toJson();
+
+    QNetworkReply *reply = mNetworkManager->post(request,request_body);
+    replyFinished(reply);
+
+    return &mResult;
+}
+
 QJsonObject *ColleagueOperationRepository::DeleteColleague(long id)
 {
     std::string hostAndApi = mDeleteColleague;

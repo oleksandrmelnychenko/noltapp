@@ -48,6 +48,7 @@ protected slots:
     void UpdateColleagueDeleteRequestStatus(const QString& status);
     void AddColleagueRequestStatus(const QString& status);
     void UpdateSalaryStatus(const QString& status);
+    void DoPaymentStatus(const QString& status);
     void setlblRequestStatusVisibleToFalse();
 
 public:
@@ -67,20 +68,24 @@ private:
 
     QMdiSubWindow* mCurrentMdiSubForm = 0;
 
-    int mlbRequestStatusForlUpdateColleagueXPosition = 1061;
-    int mlbRequestStatusForlUpdateColleagueYPosition = 630;
-    int mlbRequestStatusForlUpdateColleagueWidth = 240;
-    int mlbRequestStatusForlUpdateColleagueHeight = 31;
+    // requests message geometry
+    int mlbRequestStatusYPosition = 630;
+    int mlbRequestStatusHeight = 31;
 
-    int mlblRequestStatusForAddColleagueXPosition = 1037;
-    int mlblRequestStatusForAddColleagueYPosition = 630;
-    int mlblRequestStatusForAddColleagueWidth = 265;
-    int mlblRequestStatusForAddColleagueHeight = 31;
+    int mlbRequestStatusForlUpdateColleagueXPosition = 1061;    
+    int mlbRequestStatusForlUpdateColleagueWidth = 240;    
 
-    int mlblRequestStatusForDeleteColleagueXPosition = 1065;
-    int mlblRequestStatusForDeleteColleagueYPosition = 630;
-    int mlblRequestStatusForDeleteColleagueWidth = 240;
-    int mlblRequestStatusForDeleteColleagueHeight = 31;
+    int mlblRequestStatusForAddColleagueXPosition = 1037;   
+    int mlblRequestStatusForAddColleagueWidth = 265;    
+
+    int mlblRequestStatusForDeleteColleagueXPosition = 1065;    
+    int mlblRequestStatusForDeleteColleagueWidth = 240;    
+
+    int mlblRequestStatusForUpdateSalaryXPosition = 1065;
+    int mlblRequestStatusForUpdateSalaryWidth = 240;
+
+    int mlblRequestStatusForDoPaymentXPosition = 1065;
+    int mlblRequestStatusForDoPaymentWidth = 240;
 };
 
 #endif // MAINWINDOW_H

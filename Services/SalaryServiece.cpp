@@ -17,9 +17,9 @@ QJsonObject* SalaryServiece::GetColleagueById(long id)
     return mColleagueRepository->GetColleagueById(id);
 }
 
-QJsonObject* SalaryServiece::UpdateColleague(QJsonObject person)
+QJsonObject* SalaryServiece::UpdateColleagueSalary(QJsonObject person)
 {
-    return mColleagueRepository->UpdateColleague(person);
+    return mColleagueRepository->UpdateColleagueSalaty(person);
 }
 
 QJsonObject* SalaryServiece::GetPaymentHistoryById(long id)
