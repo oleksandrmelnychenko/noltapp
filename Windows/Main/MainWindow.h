@@ -81,10 +81,10 @@ private:
     int mlblRequestStatusForDeleteColleagueXPosition = 1065;    
     int mlblRequestStatusForDeleteColleagueWidth = 240;    
 
-    int mlblRequestStatusForUpdateSalaryXPosition = 1065;
-    int mlblRequestStatusForUpdateSalaryWidth = 240;
+    int mlblRequestStatusForUpdateSalaryXPosition = 1018;
+    int mlblRequestStatusForUpdateSalaryWidth = 290;
 
-    int mlblRequestStatusForDoPaymentXPosition = 1065;
+    int mlblRequestStatusForDoPaymentXPosition = 1108;
     int mlblRequestStatusForDoPaymentWidth = 240;
 };
 
