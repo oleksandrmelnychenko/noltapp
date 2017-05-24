@@ -45,11 +45,7 @@ private slots:
     void focusIn(QLineEdit *lineEdit, QLabel *label);
     void doLabelAniamtion(QLabel *label, int labelsYCoordinate);
 
-    void lostFocusOnLineEditFirstName();
-    void lostFocusOnLineEditLastName();
-    void lostFocusOnLineEditEmail();
-    void lostFocusOnLineEditPhone();
-    void lostFocusOnLineEditBirthday();
+    void lostFocusOnLineEdit(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
 
 private:
     void SubscribeToFormEvents();

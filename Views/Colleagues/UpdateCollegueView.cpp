@@ -20,7 +20,7 @@ UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
 
     //mColleagueService->moveToThread(workerThread);
     //
-    OutputColleague(mColleagueService->GetColleagueById(id)); // change fucntion
+    OutputColleague(mColleagueService->GetColleagueById(id));
     //workerThread->start();
 
     SubscribeToFormEvents();
@@ -149,19 +149,19 @@ void UpdateCollegueView::SubscribeToFormEvents()
             focusIn(ui->txtEditBirthday, ui->lblIncorrectBirthday);});
 
     connect(ui->txtEditFirstName, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditFirstName();
+            [this]{lostFocusOnLineEdit(ui->txtEditFirstName, ui->lblFirstName, mlblFirstNameStartPointY, mlblFirstNameEndPointY);
             validateLineEditInput(ui->txtEditFirstName, ui->lblIncorrectFirstName, mRegName, &isFirstNameValid);});
     connect(ui->txtEditLastName, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditLastName();
+            [this]{lostFocusOnLineEdit(ui->txtEditLastName, ui->lblLastName, mlblLastNameStartPointY, mlblLastNameEndPointY);
             validateLineEditInput(ui->txtEditLastName, ui->lblIncorrectLastName, mRegName, &isLastNameValid);});
     connect(ui->txtEditEmail, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditEmail();
+            [this]{lostFocusOnLineEdit(ui->txtEditEmail, ui->lblEmail, mlblEmailStartPointY, mlblEmailEndPointY);
             validateLineEditInput(ui->txtEditEmail, ui->lblIncorrectEmail, mRegEmail, &isEmailValid);});
     connect(ui->txtEditPhone, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditPhone();
+            [this]{lostFocusOnLineEdit(ui->txtEditPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY);
             validateLineEditInput(ui->txtEditPhone, ui->lblIncorrectPhone, mRegPhone, &isPhoneValid);});
     connect(ui->txtEditBirthday, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditBirthday();
+            [this]{lostFocusOnLineEdit(ui->txtEditBirthday, ui->lblBirthday, mlblBirthdayStartPointY, mlblBirthdatEndPointY);
             validateLineEditInput(ui->txtEditBirthday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
 }
 
@@ -205,29 +205,9 @@ void UpdateCollegueView::doLabelAniamtion(QLabel *label, int labelsYCoordinate)
     mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
 }
 
-void UpdateCollegueView::lostFocusOnLineEditFirstName()
+void UpdateCollegueView::lostFocusOnLineEdit(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)
 {
-    setLabelsPosition(ui->txtEditFirstName, ui->lblFirstName, mlblFirstNameStartPointY, mlblFirstNameEndPointY);
-}
-
-void UpdateCollegueView::lostFocusOnLineEditLastName()
-{
-    setLabelsPosition(ui->txtEditLastName, ui->lblLastName, mlblLastNameStartPointY, mlblLastNameEndPointY);
-}
-
-void UpdateCollegueView::lostFocusOnLineEditEmail()
-{
-    setLabelsPosition(ui->txtEditEmail, ui->lblEmail, mlblEmailStartPointY, mlblEmailEndPointY);
-}
-
-void UpdateCollegueView::lostFocusOnLineEditPhone()
-{
-    setLabelsPosition(ui->txtEditPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY);
-}
-
-void UpdateCollegueView::lostFocusOnLineEditBirthday()
-{
-    setLabelsPosition(ui->txtEditBirthday, ui->lblBirthday, mlblBirthdayStartPointY, mlblBirthdatEndPointY);
+    setLabelsPosition(lineEdit, label, labelsStartPointY, labelsEndPointY);
 }
 
 void UpdateCollegueView::setFocusOnLineEdit(QLineEdit *lineEdint)
