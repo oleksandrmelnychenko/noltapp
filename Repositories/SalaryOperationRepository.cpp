@@ -4,13 +4,12 @@
 SalaryOperationRepository::SalaryOperationRepository(QNetworkAccessManager *networkManager, QObject *parent)
     : mNetworkManager(networkManager),
       QObject(parent)
-{
-    connect(mNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
+{    
 }
 
-void SalaryOperationRepository::GetPaymentHistoryById(long id)
+QJsonObject *SalaryOperationRepository::GetPaymentHistoryById(long id)
 {
-    std::string hostAndApi = "http://noltwebapi.azurewebsites.net/api/v1/salaries/all?id=";
+    std::string hostAndApi = mGetPaymentHistoryById;
     hostAndApi += std::to_string(id);
 
     QString qRequest = QString::fromStdString(hostAndApi);
@@ -18,12 +17,16 @@ void SalaryOperationRepository::GetPaymentHistoryById(long id)
     QUrl url(qRequest);
     QNetworkRequest request;
     request.setUrl(url);
-    mNetworkManager->get(request);
+
+    QNetworkReply *reply = mNetworkManager->get(request);
+    replyFinished(reply);
+
+    return &mResult;
 }
 
-void SalaryOperationRepository::PaidSalary(long id, QJsonObject salary)
+QJsonObject* SalaryOperationRepository::PaidSalary(long id, QJsonObject salary)
 {
-    std::string hostAndApi = "http://noltwebapi.azurewebsites.net/api/v1/salaries/new?id=";
+    std::string hostAndApi = mPaidSalary;
     hostAndApi += std::to_string(id);
 
     QString qRequest = QString::fromStdString(hostAndApi);
@@ -38,16 +41,21 @@ void SalaryOperationRepository::PaidSalary(long id, QJsonObject salary)
 
     QByteArray request_body = doc.toJson();
 
-    mNetworkManager->post(request,request_body);
+    QNetworkReply *reply =  mNetworkManager->post(request,request_body);
+    replyFinished(reply);
+
+    return &mResult;
 }
 
 void SalaryOperationRepository::replyFinished(QNetworkReply *reply)
 {
+    QEventLoop loop;
+    connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+    loop.exec();
+
     if(!reply->error())
     {
         QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
-        QJsonObject root = document.object();        
-
-        emit getResultsFromRequestSalary(&root);        
+        mResult = document.object();
     }
 }

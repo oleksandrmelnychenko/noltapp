@@ -56,11 +56,9 @@ void AddCollegueView::addCollegue()
         json.insert("mPhone", ui->txtPhone->text());
         json.insert("mDateOfBirth", ui->txtBirtday->text());
 
-        mColleagueService->CreateNewColleague(json);
+        RequestStatus(mColleagueService->CreateNewColleague(json));
 
-        ui->btnAddCollegue->setEnabled(false);
-
-        connect(mColleagueService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(RequestStatus(QJsonObject*)));
+        ui->btnAddCollegue->setEnabled(false);       
     }
     else
     {
@@ -192,7 +190,7 @@ void AddCollegueView::setFocusOnLineEdit(QLineEdit *lineEdint)
 
 void AddCollegueView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 {
-    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
+    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);    
     ui->widgetAddColleague->hide();
     ui->widgetAddColleague->show();
 }

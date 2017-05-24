@@ -10,6 +10,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QNetworkReply>
+#include <QEventLoop>
 
 #include <Entities/PersonEntity.h>
 
@@ -19,18 +20,17 @@ class ColleagueOperationRepository : public QObject
 public:
     explicit ColleagueOperationRepository(QNetworkAccessManager *networkManager, QObject *parent = 0);
 
-signals:
-    void getResultsFromRequestColleague(QJsonObject*);
-
 public:
-    void GetAllColleagues();
-    void GetColleagueById(long id);
-    void CreateNewColleague(QJsonObject person);
-    void UpdateColleague(QJsonObject person);
-    void DeleteColleague(long id);    
+    QJsonObject *GetAllColleagues();
+    QJsonObject *GetColleagueById(long id);
+    QJsonObject* CreateNewColleague(QJsonObject person);
+    QJsonObject *UpdateColleague(QJsonObject person);
+    QJsonObject* DeleteColleague(long id);
 
-public slots:
+protected:
     void replyFinished(QNetworkReply* reply);
+
+    QJsonObject mResult;    
 
 private:
     QNetworkAccessManager *mNetworkManager;

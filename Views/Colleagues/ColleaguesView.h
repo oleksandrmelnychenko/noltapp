@@ -28,14 +28,11 @@ private:
     void SetTableColumnsWidth();
     void SetTableColumnOptions();
 
-public slots:    
-    void CreateAddCollegueView();
-
+    void OutputColleagues(QJsonObject *result);
 
 protected slots:
+    void CreateAddCollegueView();
     void UpdateCurrentCollegues(int row, int column);
-
-    void ResultFromRequest(QJsonObject *result);
 
 signals:
     void clickedNewLabel();

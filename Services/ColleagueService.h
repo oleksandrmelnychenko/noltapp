@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QNetworkAccessManager>
+#include <QJsonObject>
 
 #include "Entities/PersonEntity.h"
 #include "Repositories/ColleagueOperationRepository.h"
@@ -13,21 +14,15 @@ class ColleagueService : public QObject
 public:
     explicit ColleagueService(QObject *parent = 0);
 
-    void GetAllColleagues();
-    void GetColleagueById(long id);
-    void CreateNewColleague(QJsonObject person);
-    void UpdateColleague(QJsonObject person);
-    void DeleteColleague(long id);
-
-signals:
-    void getResultsFromRequestColleague(QJsonObject*);
-
-public slots:
-    void ResultFromRequest(QJsonObject *person);
+    QJsonObject *GetAllColleagues();
+    QJsonObject *GetColleagueById(long id);
+    QJsonObject* CreateNewColleague(QJsonObject person);
+    QJsonObject *UpdateColleague(QJsonObject person);
+    QJsonObject* DeleteColleague(long id);
 
 private:
-    ColleagueOperationRepository *mRepository;
     QNetworkAccessManager *mNetworkManager;
+    ColleagueOperationRepository *mRepository;
 };
 
 #endif // COLLEAGUESERVICE_H

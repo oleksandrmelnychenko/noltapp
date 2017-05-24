@@ -30,19 +30,19 @@ signals:
     void clickColleaguelbl();
     void clickDeletelbl();
 
-protected slots:
-    void ResultFromRequest(QJsonObject *result);
-    void UpdateCollegue();
+private:
+    void OutputColleague(QJsonObject *result);
     void UpdateColleagueRequestStatus(QJsonObject* status);
     void DeleteColleagueRequestStatus(QJsonObject* status);
+
+protected slots:
+    void UpdateCollegue();
     void clickColleague();
     void clickDelete();
 
 private slots:    
     void validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid);
-
     void focusIn(QLineEdit *lineEdit, QLabel *label);
-
     void doLabelAniamtion(QLabel *label, int labelsYCoordinate);
 
     void lostFocusOnLineEditFirstName();

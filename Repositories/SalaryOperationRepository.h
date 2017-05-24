@@ -10,6 +10,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QNetworkReply>
+#include <QEventLoop>
 
 #include <Entities/PersonEntity.h>
 
@@ -19,18 +20,20 @@ class SalaryOperationRepository : public QObject
 public:
     explicit SalaryOperationRepository(QNetworkAccessManager *networkManager, QObject *parent = 0);
 
-signals:
-    void getResultsFromRequestSalary(QJsonObject*);
+public:
+    QJsonObject* GetPaymentHistoryById(long id);
+    QJsonObject* PaidSalary(long id, QJsonObject salary);
 
-public:    
-    void GetPaymentHistoryById(long id);
-    void PaidSalary(long id, QJsonObject salary);
-
-public slots:
+protected:
     void replyFinished(QNetworkReply* reply);
+
+    QJsonObject mResult;
 
 private:
     QNetworkAccessManager *mNetworkManager;
+
+    const std::string mGetPaymentHistoryById = "http://noltwebapi.azurewebsites.net/api/v1/salaries/all?id=";
+    const std::string mPaidSalary = "http://noltwebapi.azurewebsites.net/api/v1/salaries/new?id=    ";
 };
 
 #endif // SALARYOPERATIONREPOSITORY_H

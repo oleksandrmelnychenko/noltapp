@@ -1,22 +1,26 @@
 #include "ColleagueOperationRepository.h"
 #include <string>
+#include <QThread>
 
 ColleagueOperationRepository::ColleagueOperationRepository(QNetworkAccessManager *networkManager, QObject *parent)
     : mNetworkManager(networkManager),
       QObject(parent)
-{    
-    connect(mNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
+{  
 }
 
-void ColleagueOperationRepository::GetAllColleagues()
+QJsonObject* ColleagueOperationRepository::GetAllColleagues()
 {
     QUrl url(mGetAllColleagues);
     QNetworkRequest request;
     request.setUrl(url);
-    mNetworkManager->get(request);
+
+    QNetworkReply *reply = mNetworkManager->get(request);    
+    replyFinished(reply);
+
+    return &mResult;
 }
 
-void ColleagueOperationRepository::GetColleagueById(long id)
+QJsonObject* ColleagueOperationRepository::GetColleagueById(long id)
 {
     std::string hostAndApi = mGetColleagueById;
     hostAndApi += std::to_string(id);
@@ -26,10 +30,14 @@ void ColleagueOperationRepository::GetColleagueById(long id)
     QUrl url(qRequest);
     QNetworkRequest request;
     request.setUrl(url);
-    mNetworkManager->get(request);
+
+    QNetworkReply *reply = mNetworkManager->get(request);   
+    replyFinished(reply);
+
+    return &mResult;
 }
 
-void ColleagueOperationRepository::CreateNewColleague(QJsonObject person)
+QJsonObject *ColleagueOperationRepository::CreateNewColleague(QJsonObject person)
 {
     QUrl url(mCreateNewColleague);
     QNetworkRequest request;
@@ -39,12 +47,15 @@ void ColleagueOperationRepository::CreateNewColleague(QJsonObject person)
     QJsonDocument doc;
     doc.setObject(person);
 
-    QByteArray request_body = doc.toJson();
+    QByteArray request_body = doc.toJson();    
 
-    mNetworkManager->post(request,request_body);
+    QNetworkReply *reply = mNetworkManager->post(request,request_body);
+    replyFinished(reply);
+
+    return &mResult;
 }
 
-void ColleagueOperationRepository::UpdateColleague(QJsonObject person)
+QJsonObject* ColleagueOperationRepository::UpdateColleague(QJsonObject person)
 {    
     QUrl url(mUpdateColleague);
     QNetworkRequest request;
@@ -54,15 +65,15 @@ void ColleagueOperationRepository::UpdateColleague(QJsonObject person)
     QJsonDocument doc;
     doc.setObject(person);
 
-    QByteArray request_body = doc.toJson();
+    QByteArray request_body = doc.toJson();     
 
-    mNetworkManager->post(request,request_body);
+    QNetworkReply *reply = mNetworkManager->post(request,request_body);
+    replyFinished(reply);
 
-    //    QNetworkReply *reply = mNetworkManager->post(request,request_body);
-    //    qDebug() << reply;
+    return &mResult;
 }
 
-void ColleagueOperationRepository::DeleteColleague(long id)
+QJsonObject *ColleagueOperationRepository::DeleteColleague(long id)
 {
     std::string hostAndApi = mDeleteColleague;
     hostAndApi += std::to_string(id);;
@@ -72,16 +83,22 @@ void ColleagueOperationRepository::DeleteColleague(long id)
     QUrl url(qRequest);
     QNetworkRequest request;
     request.setUrl(url);
-    mNetworkManager->deleteResource(request);
+
+    QNetworkReply *reply = mNetworkManager->deleteResource(request);
+    replyFinished(reply);
+
+    return &mResult;
 }
 
 void ColleagueOperationRepository::replyFinished(QNetworkReply *reply)
-{
+{    
+    QEventLoop loop;
+    connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+    loop.exec();
+
     if(!reply->error())
     {
         QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
-        QJsonObject root = document.object();
-
-        emit getResultsFromRequestColleague(&root);
+        mResult = document.object(); // check if the object has old data
     }
 }

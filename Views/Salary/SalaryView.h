@@ -50,8 +50,8 @@ private slots:
     void OutputSalary(QJsonObject *result);
     void OutputPaymentHistory(QJsonObject *result);  
 
-    void RequestStatus(QJsonObject *status);
-    void UpdateColleagueRequestStatus(QJsonObject* status);
+    void PaidSalaryRequestStatus(QJsonObject *status);
+    void UpdateColleagueSalaryRequestStatus(QJsonObject* status);
 
     void focusIn(QLineEdit *lineEdit, QLabel *label);
     void validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid);
@@ -61,8 +61,8 @@ private slots:
     void lostFocusOnLineEditPayment();
 
 signals:
-    void requestStatus(const QString&);
-    void updateColleagueRequestStatus(const QString&);
+    void paidSalaryRequestStatus(const QString&);
+    void updateColleagueSalaryRequestStatus(const QString&);
 
 private:
     Ui::SalaryForm *ui;

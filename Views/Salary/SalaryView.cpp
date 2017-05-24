@@ -24,10 +24,10 @@ SalaryView::SalaryView(QWidget *parent) :
     SetColleagueTableColumnOptions();
     SetSalaryHistoryColumnOptions();
 
-    mSalaryService->GetAllColleagues();
+    FillColleagueTable(mSalaryService->GetAllColleagues());
 
     connect(ui->tblWidgetColleagues, SIGNAL(cellClicked(int,int)), this, SLOT(GetColleagueSalaryInformation(int,int)));
-    connect(mSalaryService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(FillColleagueTable(QJsonObject*)));
+    //connect(mSalaryService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(FillColleagueTable(QJsonObject*)));
 
     connect(ui->btnUpdateSalary, SIGNAL(clicked()), this, SLOT(UpdateSalary()));
     connect(ui->btnPaid, SIGNAL(clicked(bool)), this, SLOT(PaidSalary()));
@@ -46,11 +46,11 @@ void SalaryView::GetColleagueSalaryInformation(int row, int column)
 
     mCurrentColleagueId = id;
 
-    mSalaryService->GetColleagueById(id);
-    connect(mSalaryService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(OutputSalary(QJsonObject*)));
+    OutputSalary(mSalaryService->GetColleagueById(id));
+    //connect(mSalaryService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(OutputSalary(QJsonObject*)));
 
-//    mSalaryService->GetPaymentHistoryById(id);
-//    connect(mSalaryService, SIGNAL(getResultsFromRequestSalary(QJsonObject*)), this, SLOT(OutputPaymentHistory(QJsonObject*)));
+    OutputPaymentHistory(mSalaryService->GetPaymentHistoryById(id));
+    //connect(mSalaryService, SIGNAL(getResultsFromRequestSalary(QJsonObject*)), this, SLOT(OutputPaymentHistory(QJsonObject*)));
 }
 
 void SalaryView::OutputSalary(QJsonObject *result)
@@ -79,13 +79,15 @@ void SalaryView::UpdateSalary()
 {
     if(isSalaryValid && !ui->txtSalary->text().isEmpty())
     {
-        mJsonObjectColleague.insert("mSalaryAmount", ui->txtSalary->text());
-
-        mSalaryService->UpdateColleague(mJsonObjectColleague);
-
         ui->btnUpdateSalary->setEnabled(false);
 
-        connect(mSalaryService, SIGNAL(getResultsFromRequestSalary(QJsonObject*)), this, SLOT(UpdateColleagueRequestStatus(QJsonObject*)));
+        mJsonObjectColleague.insert("mSalaryAmount", ui->txtSalary->text());
+        ui->txtPaid->setText(ui->txtSalary->text());
+
+        UpdateColleagueSalaryRequestStatus(mSalaryService->UpdateColleague(mJsonObjectColleague));
+
+        ui->btnUpdateSalary->setEnabled(true);
+        //connect(mSalaryService, SIGNAL(getResultsFromRequestSalary(QJsonObject*)), this, SLOT(UpdateColleagueRequestStatus(QJsonObject*)));
     }
     else
     {
@@ -96,20 +98,24 @@ void SalaryView::UpdateSalary()
 
 void SalaryView::PaidSalary()
 {
+    ui->btnPaid->setEnabled(false);
+
     mJsonObjectSalary.insert("mPaymentAmount", ui->txtPaid->text());
 
-    mSalaryService->PaidSalary(mCurrentColleagueId, mJsonObjectSalary);
+    PaidSalaryRequestStatus(mSalaryService->PaidSalary(mCurrentColleagueId, mJsonObjectSalary));
 
-//    disconnect(mSalaryService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(FillColleagueTable(QJsonObject*)));
+    ui->btnPaid->setEnabled(true);
 
-//    mSalaryService->GetPaymentHistoryById(mCurrentColleagueId);
+    OutputPaymentHistory(mSalaryService->GetPaymentHistoryById(mCurrentColleagueId));
 
-    connect(mSalaryService, SIGNAL(getResultsFromRequestSalary(QJsonObject*)), this, SLOT(OutputPaymentHistory(QJsonObject*)));
+    //connect(mSalaryService, SIGNAL(getResultsFromRequestSalary(QJsonObject*)), this, SLOT(OutputPaymentHistory(QJsonObject*)));
 }
 
 void SalaryView::OutputPaymentHistory(QJsonObject *result)
 {
     ui->tblWidgetSalaryHistory->clearContents();
+    ui->tblWidgetSalaryHistory->setRowCount(0);
+
     QJsonValue jv = result->value("Body");
 
     if(jv.isArray())
@@ -255,15 +261,14 @@ void SalaryView::FillColleagueTable(QJsonObject *result)
     }
 }
 
-void SalaryView::RequestStatus(QJsonObject *status)
+void SalaryView::PaidSalaryRequestStatus(QJsonObject *status)
 {
-    emit requestStatus(status->value("Message").toString());
+    emit paidSalaryRequestStatus(status->value("Message").toString());
 }
 
-void SalaryView::UpdateColleagueRequestStatus(QJsonObject *status)
+void SalaryView::UpdateColleagueSalaryRequestStatus(QJsonObject *status)
 {
-    emit updateColleagueRequestStatus(status->value("Message").toString());
-    ui->btnUpdateSalary->setEnabled(true);
+    emit updateColleagueSalaryRequestStatus(status->value("Message").toString());
 }
 
 void SalaryView::focusIn(QLineEdit *lineEdit, QLabel *label)
@@ -306,8 +311,6 @@ void SalaryView::setFocusOnLineEdit(QLineEdit *lineEdint)
 void SalaryView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 {
     mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
-    ui->widget->hide();
-    ui->widget->show();
 }
 
 void SalaryView::lostFocusOnLineEditSalary()

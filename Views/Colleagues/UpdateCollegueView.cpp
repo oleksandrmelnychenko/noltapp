@@ -1,18 +1,27 @@
 #include "UpdateCollegueView.h"
 #include "ui_UpdateCollegueView.h"
 #include <QMessageBox>
+#include <QTHread>
 
 UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),    
     ui(new Ui::UpdateCollegueView),
     mId(id)
 {
-    ui->setupUi(this);    
+    ui->setupUi(this);
 
     mColleagueService = new ColleagueService(this);
     mAnimationController = new AnimationController();
 
-    mColleagueService->GetColleagueById(id);
+    //
+    //QThread *workerThread = new QThread(this);
+
+    //connect(this, &UpdateCollegueView::outputReady, workerThread, &QThread::terminate);
+
+    //mColleagueService->moveToThread(workerThread);
+    //
+    OutputColleague(mColleagueService->GetColleagueById(id)); // change fucntion
+    //workerThread->start();
 
     SubscribeToFormEvents();
     SetValidationLabelsVisibility();
@@ -23,7 +32,7 @@ UpdateCollegueView::~UpdateCollegueView()
     delete ui;
 }
 
-void UpdateCollegueView::ResultFromRequest(QJsonObject *result)
+void UpdateCollegueView::OutputColleague(QJsonObject *result)
 {
     QJsonValue jv = result->value("Body");
     QJsonObject subtree = jv.toObject();
@@ -47,11 +56,9 @@ void UpdateCollegueView::UpdateCollegue()
         mJsonObject.insert("mPhone",ui->txtEditPhone->text());
         mJsonObject.insert("mDateOfBirth",ui->txtEditBirthday->text());
 
-        mColleagueService->UpdateColleague(mJsonObject);
+        UpdateColleagueRequestStatus(mColleagueService->UpdateColleague(mJsonObject));
 
         ui->btnUpdate->setEnabled(false);
-
-        connect(mColleagueService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(UpdateColleagueRequestStatus(QJsonObject*)));
     }
     else
     {
@@ -78,8 +85,7 @@ void UpdateCollegueView::clickColleague()
 
 void UpdateCollegueView::clickDelete()
 {
-    mColleagueService->DeleteColleague(mId);
-    connect(mColleagueService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(DeleteColleagueRequestStatus(QJsonObject*)));
+    DeleteColleagueRequestStatus(mColleagueService->DeleteColleague(mId));
 }
 
 void UpdateCollegueView::validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid)
@@ -116,8 +122,6 @@ void UpdateCollegueView::focusIn(QLineEdit *lineEdit, QLabel *label)
 
 void UpdateCollegueView::SubscribeToFormEvents()
 {
-    connect(mColleagueService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
-
     connect(ui->btnUpdate, SIGNAL(clicked(bool)), this, SLOT(UpdateCollegue()));
     connect(ui->lblDelete, &ColleaguesLabel::pressIn, this, [this]{clickDelete();});
     connect(ui->lblColleague, &ColleaguesLabel::pressIn, this, [this]{clickColleague();});
@@ -158,7 +162,7 @@ void UpdateCollegueView::SubscribeToFormEvents()
             validateLineEditInput(ui->txtEditPhone, ui->lblIncorrectPhone, mRegPhone, &isPhoneValid);});
     connect(ui->txtEditBirthday, &ColleaguesLineEditd::outFocus, this,
             [this]{lostFocusOnLineEditBirthday();
-        validateLineEditInput(ui->txtEditBirthday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
+            validateLineEditInput(ui->txtEditBirthday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
 }
 
 void UpdateCollegueView::SetValidationLabelsVisibility()
@@ -199,9 +203,6 @@ bool UpdateCollegueView::IsLineEditsValid()
 void UpdateCollegueView::doLabelAniamtion(QLabel *label, int labelsYCoordinate)
 {
     mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
-
-    ui->widgetUpdateColleague->hide();
-    ui->widgetUpdateColleague->show();
 }
 
 void UpdateCollegueView::lostFocusOnLineEditFirstName()

@@ -5,6 +5,7 @@
 #include <QStandardItemModel>
 #include <QScrollBar>
 #include <QGridLayout>
+#include <QThread>
 
 
 ColleaguesView::ColleaguesView(QWidget *parent) :
@@ -13,16 +14,18 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
-
-    mColleagueService = new ColleagueService(this);
-    mColleagueService->GetAllColleagues();
-
     SetTableColumnOptions();
 
-    connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(UpdateCurrentCollegues(int, int)));
-    connect(ui->lblAddNew, SIGNAL(pressIn()), this, SLOT(CreateAddCollegueView()));
+    mColleagueService = new ColleagueService(this);
+    //
+    //QThread *workerThread = new QThread(this);
+    //mColleagueService->moveToThread(workerThread);
+    //
+    OutputColleagues(mColleagueService->GetAllColleagues()); // change fucntion
+    //workerThread->start();
 
-    connect(mColleagueService, SIGNAL(getResultsFromRequestColleague(QJsonObject*)), this, SLOT(ResultFromRequest(QJsonObject*)));
+    connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(UpdateCurrentCollegues(int, int)));
+    connect(ui->lblAddNew, SIGNAL(pressIn()), this, SLOT(CreateAddCollegueView()));    
 }
 
 ColleaguesView::~ColleaguesView()
@@ -81,7 +84,7 @@ void ColleaguesView::UpdateCurrentCollegues(int row, int column)
     emit updateCurrentCollegues(id);
 }
 
-void ColleaguesView::ResultFromRequest(QJsonObject *result)
+void ColleaguesView::OutputColleagues(QJsonObject *result)
 {
     QJsonValue jv = result->value("Body");
     if(jv.isArray())
@@ -91,7 +94,7 @@ void ColleaguesView::ResultFromRequest(QJsonObject *result)
         {
             QJsonObject subtree = ja.at(i).toObject();
 
-            QString currentCollegueId = QString::number(subtree.value("mId").toInt());
+            QString currentCollegueId = QString::number(subtree.value("mId").toInt());            
 
             ui->tblWidgetId->insertRow(ui->tblWidgetId->rowCount());
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 0, new QTableWidgetItem(currentCollegueId));
@@ -99,7 +102,7 @@ void ColleaguesView::ResultFromRequest(QJsonObject *result)
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 2, new QTableWidgetItem(subtree.value("mLastName").toString()));
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 3, new QTableWidgetItem(subtree.value("mEmail").toString()));
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 4, new QTableWidgetItem(subtree.value("mPhone").toString()));
-            ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 5, new QTableWidgetItem(subtree.value("mDateOfBirth").toString())); // change to birthday
+            ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 5, new QTableWidgetItem(subtree.value("mDateOfBirth").toString()));
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 6, new QTableWidgetItem(subtree.value("mCreateDate").toString()));
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 7, new QTableWidgetItem(subtree.value("mUpdateDate").toString()));
         }

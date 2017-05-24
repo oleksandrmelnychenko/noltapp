@@ -14,19 +14,11 @@ class SalaryServiece : public QObject
 public:
     explicit SalaryServiece(QObject *parent = 0);
 
-    void GetAllColleagues();
-    void GetColleagueById(long id);
-    void UpdateColleague(QJsonObject person);
-    void GetPaymentHistoryById(long id);
-    void PaidSalary(long id, QJsonObject salary);
-
-signals:
-    void getResultsFromRequestColleague(QJsonObject*);
-    void getResultsFromRequestSalary(QJsonObject*);
-
-public slots:
-    void ResultFromRequestColleague(QJsonObject *person);
-    void ResultFromRequestSalary(QJsonObject *salary);
+    QJsonObject* GetAllColleagues();
+    QJsonObject *GetColleagueById(long id);
+    QJsonObject* UpdateColleague(QJsonObject person);
+    QJsonObject* GetPaymentHistoryById(long id);
+    QJsonObject* PaidSalary(long id, QJsonObject salary);
 
 private:
     ColleagueOperationRepository *mColleagueRepository;

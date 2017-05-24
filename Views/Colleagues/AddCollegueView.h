@@ -39,13 +39,12 @@ private:
     void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
 
 protected slots:
-    void addCollegue();
-
-
-    void RequestStatus(QJsonObject *status);
+    void addCollegue();    
     void clickColleague();
 
 private:
+    void RequestStatus(QJsonObject *status);
+
     void SubscribeToFormEvents();
     void SetValidationLabelsVisibility();
 
