@@ -134,22 +134,22 @@ void AddCollegueView::SubscribeToFormEvents()
             focusIn(ui->txtPhone, ui->lblIncorrectPhone);});
     connect(ui->txtBirtday, &ColleaguesLineEditd::inFocus, this,
             [this]{doLabelAnimation(ui->lblBirthday, mlblBirthdayEndPointY);
-            focusIn(ui->txtPhone, ui->lblIncorrectBirthday);});
+            focusIn(ui->txtBirtday, ui->lblIncorrectBirthday);});
 
     connect(ui->txtFirstName, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditFirstName();
+            [this]{lostFocusOnLineEdit(ui->txtFirstName, ui->lblFirstName, mlblFirstNameStartPointY, mlblFirstNameEndPointY);
             validateLineEditInput(ui->txtFirstName, ui->lblIncorrectFirstName, mRegName, &isFirstNameValid);});
     connect(ui->txtLastName, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditLastName();
+            [this]{lostFocusOnLineEdit(ui->txtLastName, ui->lblLastName, mlblLastNameStartPointY, mlblLastNameEndPointY);
             validateLineEditInput(ui->txtLastName, ui->lblIncorrectLastName, mRegName, &isLastNameValid);});
     connect(ui->txtEmail, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditEmail();
+            [this]{lostFocusOnLineEdit(ui->txtEmail, ui->lblEmail, mlblEmailStartPointY, mlblEmailEndPointY);
             validateLineEditInput(ui->txtEmail, ui->lblIncorrectEmail, mRegEmail, &isEmailValid);});
     connect(ui->txtPhone, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnLineEditPhone();
+            [this]{lostFocusOnLineEdit(ui->txtPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY);
             validateLineEditInput(ui->txtPhone, ui->lblIncorrectPhone, mRegPhone, &isPhoneValid);});
     connect(ui->txtBirtday, &ColleaguesLineEditd::outFocus, this,
-            [this]{lostFocusOnlineEditBirthday();
+            [this]{lostFocusOnLineEdit(ui->txtBirtday, ui->lblBirthday, mlblBirthdayStartPointY, mlblBirthdayEndPointY);
             validateLineEditInput(ui->txtBirtday, ui->lblIncorrectBirthday, mRegBirthday, &isBirthdayValid);});
 }
 
@@ -195,29 +195,7 @@ void AddCollegueView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
     ui->widgetAddColleague->show();
 }
 
-void AddCollegueView::lostFocusOnLineEditFirstName()
+void AddCollegueView::lostFocusOnLineEdit(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)
 {
-    setLabelsPosition(ui->txtFirstName, ui->lblFirstName, mlblFirstNameStartPointY, mlblFirstNameEndPointY);    
+    setLabelsPosition(lineEdit, label, labelsStartPointY, labelsEndPointY);
 }
-
-void AddCollegueView::lostFocusOnLineEditLastName()
-{
-    setLabelsPosition(ui->txtLastName, ui->lblLastName, mlblLastNameStartPointY, mlblLastNameEndPointY);
-}
-
-void AddCollegueView::lostFocusOnLineEditEmail()
-{
-    setLabelsPosition(ui->txtEmail, ui->lblEmail, mlblEmailStartPointY, mlblEmailEndPointY);
-}
-
-void AddCollegueView::lostFocusOnLineEditPhone()
-{
-    setLabelsPosition(ui->txtPhone, ui->lblPhone, mlblPhoneStartPointY, mlblPhoneEndPointY); // визивати напряму в конекті
-}
-
-void AddCollegueView::lostFocusOnlineEditBirthday()
-{
-    setLabelsPosition(ui->txtBirtday, ui->lblBirthday, mlblBirthdayStartPointY, mlblBirthdayEndPointY);
-}
-
-

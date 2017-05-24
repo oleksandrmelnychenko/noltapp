@@ -1,35 +1,17 @@
 #include "SalaryView.h"
 #include "ui_SalaryView.h"
 
-#include <QStandardItemModel>
-#include <QScrollBar>
-#include <QGridLayout>
-#include <QDebug>
-
 SalaryView::SalaryView(QWidget *parent) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),
     ui(new Ui::SalaryForm)
 {
-    ui->setupUi(this);
-    ui->lblIncorrectSalary->setVisible(false);
-    ui->lblIncorrectPayment->setVisible(false);
-    ui->lblIncorrectInput->setVisible(false);
-
-    ui->btnPaid->setEnabled(false);
-    ui->btnUpdateSalary->setEnabled(false);
+    ui->setupUi(this);    
+    SetUiElementsOptions();
 
     mSalaryService = new SalaryServiece(this);
     mAnimationController = new AnimationController();
 
-    SetColleagueTableColumnOptions();
-    SetSalaryHistoryColumnOptions();
-
     FillColleagueTable(mSalaryService->GetAllColleagues());
-
-    connect(ui->tblWidgetColleagues, SIGNAL(cellClicked(int,int)), this, SLOT(GetColleagueSalaryInformation(int,int)));   
-
-    connect(ui->btnUpdateSalary, SIGNAL(clicked()), this, SLOT(UpdateSalary()));
-    connect(ui->btnPaid, SIGNAL(clicked(bool)), this, SLOT(PaidSalary()));
 
     SubscribeToFormEvents();
 }
@@ -37,6 +19,19 @@ SalaryView::SalaryView(QWidget *parent) :
 SalaryView::~SalaryView()
 {
     delete ui;
+}
+
+void SalaryView::SetUiElementsOptions()
+{
+    ui->lblIncorrectSalary->setVisible(false);
+    ui->lblIncorrectPayment->setVisible(false);
+    ui->lblIncorrectInput->setVisible(false);
+
+    ui->btnPaid->setEnabled(false);
+    ui->btnUpdateSalary->setEnabled(false);
+
+    SetColleagueTableColumnOptions();
+    SetSalaryHistoryColumnOptions();
 }
 
 void SalaryView::GetColleagueSalaryInformation(int row, int column)
@@ -66,9 +61,6 @@ void SalaryView::OutputSalary(QJsonObject *result)
 
     ui->btnPaid->setEnabled(true);
     ui->btnUpdateSalary->setEnabled(true);
-
-    ui->widget->hide();
-    ui->widget->show();
 }
 
 void SalaryView::UpdateSalary()
@@ -137,6 +129,11 @@ void SalaryView::OutputPaymentHistory(QJsonObject *result)
 
 void SalaryView::SubscribeToFormEvents()
 {
+    connect(ui->tblWidgetColleagues, SIGNAL(cellClicked(int,int)), this, SLOT(GetColleagueSalaryInformation(int,int)));
+
+    connect(ui->btnUpdateSalary, SIGNAL(clicked()), this, SLOT(UpdateSalary()));
+    connect(ui->btnPaid, SIGNAL(clicked(bool)), this, SLOT(PaidSalary()));
+
     connect(ui->lblSalary, &SalaryLabel::pressIn, this , [this]{setFocusOnLineEdit(ui->txtSalary);});
     connect(ui->lblToPay, &SalaryLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtPaid);});
 
@@ -148,17 +145,16 @@ void SalaryView::SubscribeToFormEvents()
             focusIn(ui->txtPaid, ui->lblIncorrectPayment);});
 
     connect(ui->txtSalary, &SalaryLineEdit::outFocus, this,
-            [this]{lostFocusOnLineEditSalary();
+            [this]{lostFocusOnLineEdit(ui->txtSalary, ui->lblSalary, mlblSalaryStartPointY, mlblSalaryEndPointY);
             validateLineEditInput(ui->txtSalary, ui->lblIncorrectSalary, mRegSalary, &isSalaryValid);});
     connect(ui->txtPaid, &SalaryLineEdit::outFocus, this,
-            [this]{lostFocusOnLineEditPayment();
-        validateLineEditInput(ui->txtPaid, ui->lblIncorrectPayment, mRegPayment, &isPaymentValid);});
+            [this]{lostFocusOnLineEdit(ui->txtPaid, ui->lblToPay, mlblPaymentStartPointY, mlblPaymentEndPointY);
+            validateLineEditInput(ui->txtPaid, ui->lblIncorrectPayment, mRegPayment, &isPaymentValid);});
 }
 
 void SalaryView::LoadColleaguePaymentHistory(long id)
 {
-    mSalaryService->GetPaymentHistoryById(id);
-    connect(mSalaryService, SIGNAL(getResultsFromRequestSalary(QJsonObject*)), this, SLOT(OutputPaymentHistory(QJsonObject*)));
+    mSalaryService->GetPaymentHistoryById(id);    
 }
 
 QString SalaryView::getInformationFromLineEdit(QLineEdit *lineEdit)
@@ -314,12 +310,7 @@ void SalaryView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
     mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
 }
 
-void SalaryView::lostFocusOnLineEditSalary()
+void SalaryView::lostFocusOnLineEdit(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)
 {
-    setLabelsPosition(ui->txtSalary, ui->lblSalary, mlblSalaryStartPointY, mlblSalaryEndPointY);
-}
-
-void SalaryView::lostFocusOnLineEditPayment()
-{
-    setLabelsPosition(ui->txtPaid, ui->lblToPay, mlblPaymentStartPointY, mlblPaymentEndPointY);
+    setLabelsPosition(lineEdit, label, labelsStartPointY, labelsEndPointY);
 }

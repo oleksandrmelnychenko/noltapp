@@ -25,9 +25,7 @@ class AddCollegueView : public QMdiSubWindow
 
 public:
     explicit AddCollegueView(QWidget *parent = 0);
-    ~AddCollegueView();    
-
-
+    ~AddCollegueView();
 
 signals:
     void requestStatus(const QString&);
@@ -57,17 +55,12 @@ private slots:
     void validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid);
     void setFocusOnLineEdit(QLineEdit *lineEdint);
     void doLabelAnimation(QLabel *label, int labelsYCoordinate);
-    void lostFocusOnLineEditFirstName();
-    void lostFocusOnLineEditLastName();
-    void lostFocusOnLineEditEmail();
-    void lostFocusOnLineEditPhone();   
-    void lostFocusOnlineEditBirthday();
+    void lostFocusOnLineEdit(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
 
 private:
     Ui::AddCollegueView *ui;
 
-    ColleagueOperationRepository *mRepository;    
-    int mCounter = 0;    
+    ColleagueService *mColleagueService;
 
     QString mRegName = ("[a-zA-Z0-9_\\-\\.]{1,30}");
     QString mRegEmail = ("([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_.-])+\\.([a-zA-Z]{2,4}|[0-9]{1,3})");
@@ -84,20 +77,22 @@ private:
     bool isBirthdayValid = false;
 
     AnimationController* mAnimationController;
-    int mAnimationDuration = 250;
+    int mAnimationDuration = 250;    
 
     const int mlblFirstNameStartPointY = 113;
     const int mlblFirstNameEndPointY = 92;
+
     const int mlblLastNameStartPointY = 170;
     const int mlblLastNameEndPointY = 149;
+
     const int mlblEmailStartPointY = 227;
     const int mlblEmailEndPointY = 206;
+
     const int mlblPhoneStartPointY = 283;
     const int mlblPhoneEndPointY = 262;
+
     const int mlblBirthdayStartPointY = 339;
     const int mlblBirthdayEndPointY = 318;
-
-    ColleagueService *mColleagueService;
 };
 
 #endif // ADDCOLLEGUEVIEW_H

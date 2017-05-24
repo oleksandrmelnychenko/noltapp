@@ -9,6 +9,9 @@
 #include <QJsonValue>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QStandardItemModel>
+#include <QScrollBar>
+#include <QGridLayout>
 
 #include "Entities/PersonEntity.h"
 #include "CommonUiControllers/AnimationController.h"
@@ -27,6 +30,7 @@ public:
     ~SalaryView();
 
 private:
+    void SetUiElementsOptions();
     void SubscribeToFormEvents();
     void FillColleagueTable(QJsonObject *result);
     void OutputSalary(QJsonObject *result);
@@ -54,8 +58,7 @@ private slots:
     void validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid);
     void setFocusOnLineEdit(QLineEdit *lineEdint);
     void doLabelAnimation(QLabel *label, int labelsYCoordinate);
-    void lostFocusOnLineEditSalary();
-    void lostFocusOnLineEditPayment();
+    void lostFocusOnLineEdit(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
 
 signals:
     void paidSalaryRequestStatus(const QString&);
