@@ -28,8 +28,13 @@ public:
 
 private:
     void SubscribeToFormEvents();
-
+    void FillColleagueTable(QJsonObject *result);
+    void OutputSalary(QJsonObject *result);
     void LoadColleaguePaymentHistory(long id);
+    void OutputPaymentHistory(QJsonObject *result);
+
+    void PaidSalaryRequestStatus(QJsonObject *status);
+    void UpdateColleagueSalaryRequestStatus(QJsonObject* status);
 
     QString getInformationFromLineEdit(QLineEdit *lineEdit);
 
@@ -40,18 +45,10 @@ private:
     void SetColleagueTableColumnOptions();
     void SetSalaryHistoryColumnOptions();
 
-protected slots:
-    void FillColleagueTable(QJsonObject *result);
-
 private slots:
     void GetColleagueSalaryInformation(int row, int column);
     void UpdateSalary();
     void PaidSalary();
-    void OutputSalary(QJsonObject *result);
-    void OutputPaymentHistory(QJsonObject *result);  
-
-    void PaidSalaryRequestStatus(QJsonObject *status);
-    void UpdateColleagueSalaryRequestStatus(QJsonObject* status);
 
     void focusIn(QLineEdit *lineEdit, QLabel *label);
     void validateLineEditInput(QLineEdit *lineEdit, QLabel *label, QString regPatern, bool *isValid);
