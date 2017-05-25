@@ -36,7 +36,7 @@ void SalaryView::SetUiElementsOptions()
 
 void SalaryView::GetColleagueSalaryInformation(int row, int column)
 {
-    long id = ui->tblWidgetColleagues->item(row,2)->text().toLong();
+    long id = ui->tblWidgetColleagues->item(row,1)->text().toLong();
 
     mCurrentColleagueId = id;
 
@@ -182,9 +182,9 @@ void SalaryView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int
 void SalaryView::SetColleagueTableColumnOptions()
 {
     QStringList titleId;
-    titleId <<"FIRST NAME" << "LAST NAME";
-    ui->tblWidgetColleagues->setColumnCount(3);
-    ui->tblWidgetColleagues->setColumnHidden(2, true);
+    titleId <<"COLLEAGUES";
+    ui->tblWidgetColleagues->setColumnCount(2);
+    ui->tblWidgetColleagues->setColumnHidden(1, true);
     ui->tblWidgetColleagues->setHorizontalHeaderLabels(titleId);
     ui->tblWidgetColleagues->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
     ui->tblWidgetColleagues->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -204,8 +204,7 @@ void SalaryView::SetColleagueTableColumnOptions()
                                                         "QScrollBar::sub-line:vertical {"
                                                         "    height: 0 px;"
                                                         "}");
-    ui->tblWidgetColleagues->setColumnWidth(0,150);
-    ui->tblWidgetColleagues->setColumnWidth(1,150);
+    ui->tblWidgetColleagues->setColumnWidth(0,300);   ;
 }
 
 void SalaryView::SetSalaryHistoryColumnOptions()
@@ -249,11 +248,11 @@ void SalaryView::FillColleagueTable(QJsonObject *result)
             QJsonObject subtree = ja.at(i).toObject();
 
             QString currentCollegueId = QString::number(subtree.value("mId").toInt());
+            QString colleague = subtree.value("mFirstName").toString()+ " " + subtree.value("mLastName").toString();
 
             ui->tblWidgetColleagues->insertRow(ui->tblWidgetColleagues->rowCount());
-            ui->tblWidgetColleagues->setItem(ui->tblWidgetColleagues->rowCount()- 1, 0, new QTableWidgetItem(subtree.value("mFirstName").toString()));
-            ui->tblWidgetColleagues->setItem(ui->tblWidgetColleagues->rowCount()- 1, 1, new QTableWidgetItem(subtree.value("mLastName").toString()));
-            ui->tblWidgetColleagues->setItem(ui->tblWidgetColleagues->rowCount()- 1, 2, new QTableWidgetItem(currentCollegueId));
+            ui->tblWidgetColleagues->setItem(ui->tblWidgetColleagues->rowCount()- 1, 0, new QTableWidgetItem(colleague));
+            ui->tblWidgetColleagues->setItem(ui->tblWidgetColleagues->rowCount()- 1, 1, new QTableWidgetItem(currentCollegueId));
         }
     }
 }

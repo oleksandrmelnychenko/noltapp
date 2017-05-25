@@ -50,6 +50,7 @@ private:
     void SetSalaryHistoryColumnOptions();
 
 private slots:
+    void LoadAllColleagues();
     void GetColleagueSalaryInformation(int row, int column);
     void UpdateSalary();
     void PaidSalary();

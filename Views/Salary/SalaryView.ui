@@ -80,7 +80,7 @@ QTableWidget#tblWidgetColleagues QHeaderView::section:horizontal
 	font: 14px Leelawadee UI Semilight, sans-serif;
 	color: #ffffff;
     border-style: none;
-    border-left: 1px solid #909090;
+   /* border-left: 1px solid #909090;*/
     border-top: none;
     border-right: none;
     border-bottom: 1px solid #909090;
