@@ -418,9 +418,9 @@ opacity: 0;</string>
    <widget class="QLabel" name="lblIncorrectPhone">
     <property name="geometry">
      <rect>
-      <x>692</x>
+      <x>757</x>
       <y>310</y>
-      <width>161</width>
+      <width>91</width>
       <height>16</height>
      </rect>
     </property>
@@ -440,7 +440,7 @@ opacity: 0;</string>
 opacity: 0;</string>
     </property>
     <property name="text">
-     <string>Phone must be (000) 000-00-00</string>
+     <string>Phone is incorrect</string>
     </property>
    </widget>
    <widget class="QLabel" name="lblAddColleagueTitle">
