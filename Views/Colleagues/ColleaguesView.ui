@@ -217,6 +217,19 @@ color:#ffffff;
     <string>+New</string>
    </property>
   </widget>
+  <widget class="QLabel" name="lblBusyIndicator">
+   <property name="geometry">
+    <rect>
+     <x>576</x>
+     <y>0</y>
+     <width>500</width>
+     <height>464</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>

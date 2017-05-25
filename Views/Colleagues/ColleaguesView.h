@@ -24,11 +24,14 @@ public:
     explicit ColleaguesView(QWidget *parent = 0);
     ~ColleaguesView();
 
-private:    
-    void SetTableColumnsWidth();
-    void SetTableColumnOptions();
-
+private slots:
+    void LoadAllColleagues();
     void OutputColleagues(QJsonObject *result);
+
+private:    
+    void SetBusyIndicator();
+    void SetTableColumnsWidth();
+    void SetTableColumnOptions();    
 
 protected slots:
     void CreateAddCollegueView();
@@ -41,6 +44,7 @@ signals:
 private:
     Ui::ColleaguesForm *ui;
 
+    QMovie *mMovie;
     ColleagueService *mColleagueService;   
 };
 

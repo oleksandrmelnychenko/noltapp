@@ -6,6 +6,7 @@
 #include <QScrollBar>
 #include <QGridLayout>
 #include <QThread>
+#include <QMovie>
 
 
 ColleaguesView::ColleaguesView(QWidget *parent) :
@@ -16,13 +17,11 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
     setAttribute(Qt::WA_DeleteOnClose);
     SetTableColumnOptions();
 
-    mColleagueService = new ColleagueService(this);
-    //
-    //QThread *workerThread = new QThread(this);
-    //mColleagueService->moveToThread(workerThread);
-    //
-    OutputColleagues(mColleagueService->GetAllColleagues()); // change fucntion
-    //workerThread->start();
+    mColleagueService = new ColleagueService(this);    
+
+    SetBusyIndicator();
+
+    LoadAllColleagues();
 
     connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(UpdateCurrentCollegues(int, int)));
     connect(ui->lblAddNew, SIGNAL(pressIn()), this, SLOT(CreateAddCollegueView()));    
@@ -31,6 +30,18 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
 ColleaguesView::~ColleaguesView()
 {
     delete ui;
+}
+
+void ColleaguesView::LoadAllColleagues()
+{
+    QThread *workerThread = new QThread;
+    mColleagueService->moveToThread(workerThread);
+
+    connect(workerThread, SIGNAL(started()), mColleagueService, SLOT(GetAllColleagues()));
+    connect(mColleagueService, SIGNAL(getAllColleaguesFinished()), workerThread, SLOT(quit()));
+    connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
+    connect(mColleagueService, SIGNAL(getAllColleagues(QJsonObject*)), this, SLOT(OutputColleagues(QJsonObject*)));
+    workerThread->start();
 }
 
 void ColleaguesView::SetTableColumnsWidth()
@@ -86,6 +97,8 @@ void ColleaguesView::UpdateCurrentCollegues(int row, int column)
 
 void ColleaguesView::OutputColleagues(QJsonObject *result)
 {
+    mMovie->stop();
+    ui->lblBusyIndicator->hide();
     QJsonValue jv = result->value("Body");
     if(jv.isArray())
     {
@@ -107,4 +120,14 @@ void ColleaguesView::OutputColleagues(QJsonObject *result)
             ui->tblWidgetId->setItem(ui->tblWidgetId->rowCount()- 1, 7, new QTableWidgetItem(subtree.value("mUpdateDate").toString()));
         }
     }
+}
+
+void ColleaguesView::SetBusyIndicator()
+{
+    mMovie = new QMovie(":/Windows/Login/Images/loading.gif");
+    const QSize busySize(142,142);
+    mMovie->setScaledSize(busySize);
+    ui->lblBusyIndicator->setMovie(mMovie);
+    ui->lblBusyIndicator->show();
+    mMovie->start();
 }

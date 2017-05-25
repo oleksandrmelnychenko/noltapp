@@ -5,5 +5,6 @@
         <file>Images/loginFormCat.png</file>
         <file>Images/appBackGround.png</file>
         <file>Images/collapseIcon.png</file>
+        <file>Images/loading.gif</file>
     </qresource>
 </RCC>

@@ -6,13 +6,15 @@ ColleagueService::ColleagueService(QObject *parent) : QObject(parent)
     mRepository = new ColleagueOperationRepository(mNetworkManager, this);
 }
 
-QJsonObject* ColleagueService::GetAllColleagues()
+void ColleagueService::GetAllColleagues()
 {
-    return mRepository->GetAllColleagues();
+    emit getAllColleagues(mRepository->GetAllColleagues());
+    emit getAllColleaguesFinished();
 }
 
 QJsonObject* ColleagueService::GetColleagueById(long id)
 {
+    //emit getColleagueByIdFinished(mRepository->GetColleagueById(id));
     return mRepository->GetColleagueById(id);
 }
 

@@ -14,10 +14,18 @@ class ColleagueService : public QObject
 public:
     explicit ColleagueService(QObject *parent = 0);
 
-    QJsonObject *GetAllColleagues();
+signals:
+    void getAllColleaguesFinished();
+    void getAllColleagues(QJsonObject*);
+    void getColleagueByIdFinished();
+
+public slots:
+    void GetAllColleagues();
+
+public:
     QJsonObject *GetColleagueById(long id);
     QJsonObject* CreateNewColleague(QJsonObject person);
-    QJsonObject *UpdateColleague(QJsonObject person);
+    QJsonObject* UpdateColleague(QJsonObject person);
     QJsonObject* DeleteColleague(long id);
 
 private:
