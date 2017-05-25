@@ -16,8 +16,7 @@ public:
 
 signals:
     void getAllColleaguesFinished();
-    void getAllColleagues(QJsonObject*);
-    void getColleagueByIdFinished();
+    void getAllColleagues(QJsonObject*);   
 
 public slots:
     void GetAllColleagues();

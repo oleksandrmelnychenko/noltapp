@@ -49,8 +49,7 @@ private:
     void SetColleagueTableColumnOptions();
     void SetSalaryHistoryColumnOptions();
 
-private slots:
-    void LoadAllColleagues();
+private slots:    
     void GetColleagueSalaryInformation(int row, int column);
     void UpdateSalary();
     void PaidSalary();

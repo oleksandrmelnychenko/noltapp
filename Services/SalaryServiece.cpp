@@ -8,7 +8,7 @@ SalaryServiece::SalaryServiece(QObject *parent) : QObject(parent)
 }
 
 QJsonObject* SalaryServiece::GetAllColleagues()
-{
+{    
     return mColleagueRepository->GetAllColleagues();
 }
 

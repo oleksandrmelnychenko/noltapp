@@ -13,8 +13,7 @@ void ColleagueService::GetAllColleagues()
 }
 
 QJsonObject* ColleagueService::GetColleagueById(long id)
-{
-    //emit getColleagueByIdFinished(mRepository->GetColleagueById(id));
+{    
     return mRepository->GetColleagueById(id);
 }
 
