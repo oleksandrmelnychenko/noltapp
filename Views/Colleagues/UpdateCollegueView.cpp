@@ -13,15 +13,7 @@ UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
     mColleagueService = new ColleagueService(this);
     mAnimationController = new AnimationController();
 
-    //
-    //QThread *workerThread = new QThread(this);
-
-    //connect(this, &UpdateCollegueView::outputReady, workerThread, &QThread::terminate);
-
-    //mColleagueService->moveToThread(workerThread);
-    //
-    OutputColleague(mColleagueService->GetColleagueById(id));
-    //workerThread->start();
+    OutputColleague(mColleagueService->GetColleagueById(id));    
 
     SubscribeToFormEvents();
     SetValidationLabelsVisibility();
@@ -58,7 +50,7 @@ void UpdateCollegueView::UpdateCollegue()
 
         UpdateColleagueRequestStatus(mColleagueService->UpdateColleague(mJsonObject));
 
-        ui->btnUpdate->setEnabled(false);
+        //ui->btnUpdate->setEnabled(false);
     }
     else
     {
@@ -69,7 +61,8 @@ void UpdateCollegueView::UpdateCollegue()
 void UpdateCollegueView::UpdateColleagueRequestStatus(QJsonObject *status)
 {
     emit updateColleagueRequestStatus(status->value("Message").toString());
-    ui->btnUpdate->setEnabled(true);
+    //ui->btnUpdate->setEnabled(true);
+    emit clickUpdatelbl();
 }
 
 void UpdateCollegueView::DeleteColleagueRequestStatus(QJsonObject *status)

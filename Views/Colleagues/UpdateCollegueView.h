@@ -28,6 +28,7 @@ signals:
     void updateColleagueRequestStatus(const QString&);
     void deleteColleagueRequestStatus(const QString&);
     void clickColleaguelbl();
+    void clickUpdatelbl();
     void clickDeletelbl();
 
 private:

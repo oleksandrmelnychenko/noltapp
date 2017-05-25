@@ -80,6 +80,8 @@ void MainWindow::createUpdateColleagueView(long id)
 
     connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(updateColleagueRequestStatus(QString)),
             this, SLOT(UpdateColleagueRequestStatus(QString)));
+    connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(clickUpdatelbl()),
+            this, SLOT(createColleaguesView()));
 
     connect(dynamic_cast<UpdateCollegueView*>(mCurrentMdiSubForm), SIGNAL(clickColleaguelbl()),
             this, SLOT(createColleaguesView()));
