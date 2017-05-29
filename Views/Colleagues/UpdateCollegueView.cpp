@@ -9,6 +9,8 @@ UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
     mId(id)
 {
     ui->setupUi(this);
+    setAttribute(Qt::WA_DeleteOnClose);
+    SetValidationLabelsVisibility();
 
     mColleagueService = new ColleagueService(this);
     mAnimationController = new AnimationController();
@@ -16,7 +18,6 @@ UpdateCollegueView::UpdateCollegueView(QWidget *parent,long id) :
     OutputColleague(mColleagueService->GetColleagueById(id));    
 
     SubscribeToFormEvents();
-    SetValidationLabelsVisibility();
 }
 
 UpdateCollegueView::~UpdateCollegueView()

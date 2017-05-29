@@ -5,7 +5,8 @@ SalaryView::SalaryView(QWidget *parent) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),
     ui(new Ui::SalaryForm)
 {
-    ui->setupUi(this);    
+    ui->setupUi(this);
+    setAttribute(Qt::WA_DeleteOnClose);
     SetUiElementsOptions();
 
     mSalaryService = new SalaryServiece(this);

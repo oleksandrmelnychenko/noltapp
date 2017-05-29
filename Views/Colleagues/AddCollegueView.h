@@ -29,7 +29,7 @@ public:
 
 signals:
     void requestStatus(const QString&);
-    void clickColleaguelbl();
+    void createColleagueSignal();
 
 private:
     void clearFocusOfLineEdits();

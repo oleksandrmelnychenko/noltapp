@@ -16,10 +16,9 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
     ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
     SetTableColumnOptions();
-
-    mColleagueService = new ColleagueService(this);    
-
     SetBusyIndicator();
+
+    mColleagueService = new ColleagueService(this);
 
     LoadAllColleagues();
 

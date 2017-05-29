@@ -8,6 +8,7 @@ AddCollegueView::AddCollegueView(QWidget *parent) :
     ui(new Ui::AddCollegueView)
 {
     ui->setupUi(this);    
+    setAttribute(Qt::WA_DeleteOnClose);
     SetValidationLabelsVisibility();
 
     mColleagueService = new ColleagueService(this);
@@ -101,12 +102,12 @@ void AddCollegueView::focusIn(QLineEdit *lineEdit, QLabel *label)
 void AddCollegueView::RequestStatus(QJsonObject *status)
 {
     emit requestStatus(status->value("Message").toString());
-    ui->btnAddCollegue->setEnabled(true);
+    emit createColleagueSignal();
 }
 
 void AddCollegueView::clickColleague()
 {
-    emit clickColleaguelbl();
+    emit createColleagueSignal();
 }
 
 void AddCollegueView::SubscribeToFormEvents()

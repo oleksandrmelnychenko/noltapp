@@ -50,31 +50,31 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 void MainWindow::createColleaguesView()
 {
     deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new ColleaguesView(ui->mdiArea);    
+    mCurrentMdiSubForm = new ColleaguesView(ui->mdiArea);
     mCurrentMdiSubForm->show();
+    SetPressButtonStyleSheet(ui->btnColleagues,ui->btnOffice,ui->btnSalary);
+
     connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedNewLabel()),
             this, SLOT(createAddColeagueView()));
     connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(updateCurrentCollegues(long)),
             this, SLOT(createUpdateColleagueView(long)));
-    SetPressButtonStyleSheet(ui->btnColleagues,ui->btnOffice,ui->btnSalary);
 }
 
 void MainWindow::createAddColeagueView()
-{
+{    
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new AddCollegueView(ui->mdiArea);
     mCurrentMdiSubForm->show();
 
     connect(dynamic_cast<AddCollegueView*>(mCurrentMdiSubForm), SIGNAL(requestStatus(QString)),
             this, SLOT(AddColleagueRequestStatus(QString)));
-    connect(dynamic_cast<AddCollegueView*>(mCurrentMdiSubForm), SIGNAL(clickColleaguelbl()),
+    connect(dynamic_cast<AddCollegueView*>(mCurrentMdiSubForm), SIGNAL(createColleagueSignal()),
             this, SLOT(createColleaguesView()));
 }
 
 void MainWindow::createUpdateColleagueView(long id)
-{    
-    mCurrentMdiSubForm->close();
-    mCurrentMdiSubForm = nullptr; // mb help
+{
+    deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new UpdateCollegueView(ui->mdiArea,id);   
     mCurrentMdiSubForm->show();
 
@@ -117,7 +117,7 @@ void MainWindow::deleteMdiSubForm(QMdiSubWindow *form)
 {
     if(form != nullptr)
     {
-        delete mCurrentMdiSubForm;
+        mCurrentMdiSubForm->close();
         mCurrentMdiSubForm = nullptr;
     }
 }
