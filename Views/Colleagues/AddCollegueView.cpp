@@ -27,14 +27,6 @@ QString AddCollegueView::getInformationFromLineEdit(QLineEdit *lineEdit)
     return lineEdit->text();
 }
 
-void AddCollegueView::clearFocusOfLineEdits()
-{
-    ui->txtFirstName->clearFocus();
-    ui->txtLastName->clearFocus();
-    ui->txtEmail->clearFocus();
-    ui->txtPhone->clearFocus();   
-}
-
 bool AddCollegueView::isLineEditEmpty(const QLineEdit *lineEdit)
 {
     return (QString(lineEdit->text()).isEmpty());

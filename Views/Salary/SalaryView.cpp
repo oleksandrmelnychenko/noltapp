@@ -171,12 +171,6 @@ QString SalaryView::getInformationFromLineEdit(QLineEdit *lineEdit)
     return lineEdit->text();
 }
 
-void SalaryView::clearFocusOfLineEdits()
-{
-    ui->txtSalary->clearFocus();
-    ui->txtPaid->clearFocus();
-}
-
 bool SalaryView::isLineEditEmpty(const QLineEdit *lineEdit)
 {
     return (QString(lineEdit->text()).isEmpty());

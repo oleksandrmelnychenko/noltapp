@@ -44,7 +44,7 @@
      <string>To pay</string>
     </property>
    </widget>
-   <widget class="OfficeLineEdit" name="lineEdit">
+   <widget class="OfficeLineEdit" name="txtToPay">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -68,7 +68,7 @@ padding-left:7px;
 padding-bottom:0px;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="lblIncorrectInput">
     <property name="geometry">
      <rect>
       <x>251</x>
@@ -184,9 +184,9 @@ QTableWidget#tblWidgetSalaryHistory QHeaderView::section:horizontal:first
 }</string>
     </property>
    </widget>
-   <zorder>lineEdit</zorder>
+   <zorder>txtToPay</zorder>
    <zorder>lblToPay</zorder>
-   <zorder>label_3</zorder>
+   <zorder>lblIncorrectInput</zorder>
    <zorder>btnPaid</zorder>
    <zorder>tblWidgetSalaryHistory</zorder>
   </widget>
