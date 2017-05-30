@@ -6,21 +6,208 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
-    <height>640</height>
+    <width>1294</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>137</x>
+     <y>85</y>
+     <width>1020</width>
+     <height>433</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="lblToPay">
+    <property name="geometry">
+     <rect>
+      <x>17</x>
+      <y>31</y>
+      <width>47</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#909090;</string>
+    </property>
+    <property name="text">
+     <string>To pay</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>29</y>
+      <width>340</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;
+padding-bottom:0px;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>251</x>
+      <y>58</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255,35,6);
+opacity: 0;</string>
+    </property>
+    <property name="text">
+     <string>Payment is incorrect</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnPaid">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>88</y>
+      <width>340</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btnPaid
+{	
+ 	border:1px solid #ffffff;
+	color:white;
+	background-color:transparent;
+ }
+
+QPushButton#btnPaid:hover
+{
+ 	color:#0992b1;
+ } 
+
+QPushButton#btnPaid:pressed
+{
+ 	color:#0992b1;
+	border: 1px solid #0992b1; 
+	outline:none;
+} </string>
+    </property>
+    <property name="text">
+     <string>Paid</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tblWidgetSalaryHistory">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>10</y>
+      <width>630</width>
+      <height>413</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTableWidget#tblWidgetSalaryHistory
+{
+	background-color: #18181a;	
+	color: #909090;	
+	border:none;
+	gridline-color:#18181a;	
+	outline:none;
+}
+
+QTableWidget#tblWidgetSalaryHistory::item:focus
+{
+	outline:none;
+}
+
+QTableWidget#tblWidgetSalaryHistory::item:selected
+{
+	color:#ffffff;
+	outline:none;
+}
+
+QTableWidget#tblWidgetSalaryHistory QHeaderView::section:horizontal
+{
+	padding:7px 5px 0px 5px;	
+    height:24px;
+	font: 14px Leelawadee UI Semilight, sans-serif;
+	color: #ffffff;
+    border-style: none;
+    border-left: 1px solid #909090;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid #909090;
+    background-color: transparent;	
+ }
+
+QTableWidget#tblWidgetSalaryHistory::item
+{
+	border-left:1px solid #909090;	
+}
+
+QTableWidget#tblWidgetSalaryHistory QHeaderView::section:horizontal:first
+{
+    border-left: none;	
+}</string>
+    </property>
+   </widget>
+   <zorder>lineEdit</zorder>
+   <zorder>lblToPay</zorder>
+   <zorder>label_3</zorder>
+   <zorder>btnPaid</zorder>
+   <zorder>tblWidgetSalaryHistory</zorder>
+  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>200</y>
-     <width>47</width>
-     <height>13</height>
+     <x>0</x>
+     <y>0</y>
+     <width>100</width>
+     <height>50</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Leelawadee UI Semilight</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;
+background-color:transparent;</string>
    </property>
    <property name="text">
     <string>Office</string>
