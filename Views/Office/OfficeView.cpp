@@ -45,9 +45,9 @@ void OfficeView::SubscribeToFormEvents()
 void OfficeView::SetPaymentHistoryColumnOptions()
 {
     QStringList titleId;
-    titleId <<"PAYMENT DATE" << "PAYMENT";
-    ui->tblWidgetSalaryHistory->setColumnCount(3);
-    ui->tblWidgetSalaryHistory->setColumnHidden(2, true);
+    titleId << "PAYMENT DATE" << "DESCRIPTION" << "PAYMENT";
+    ui->tblWidgetSalaryHistory->setColumnCount(4);
+    ui->tblWidgetSalaryHistory->setColumnHidden(3, true);
     ui->tblWidgetSalaryHistory->setHorizontalHeaderLabels(titleId);
     ui->tblWidgetSalaryHistory->verticalHeader()->setVisible(false);
     ui->tblWidgetSalaryHistory->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
@@ -68,8 +68,10 @@ void OfficeView::SetPaymentHistoryColumnOptions()
                                                         "QScrollBar::sub-line:vertical {"
                                                         "    height: 0 px;"
                                                         "}");
-    ui->tblWidgetSalaryHistory->setColumnWidth(0,170);
-    ui->tblWidgetSalaryHistory->setColumnWidth(1,130);
+    ui->tblWidgetSalaryHistory->setColumnWidth(0,130);
+    ui->tblWidgetSalaryHistory->setColumnWidth(1,200);
+    ui->tblWidgetSalaryHistory->setColumnWidth(2,120);
+
 }
 
 bool OfficeView::isLineEditEmpty(const QLineEdit *lineEdit)
@@ -96,9 +98,7 @@ void OfficeView::setFocusOnLineEdit(QLineEdit *lineEdint)
 void OfficeView::focusIn(QLineEdit *lineEdit, QLabel *label)
 {
     lineEdit->setStyleSheet(mValidateColor);
-    label->setVisible(false);
-    ui->lblIncorrectPayment->setVisible(false);
-    ui->lblIncorrectDescription->setVisible(false);
+    label->setVisible(false);    
 }
 
 void OfficeView::doLabelAnimation(QLabel *label, int labelsYCoordinate)

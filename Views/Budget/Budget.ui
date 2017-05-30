@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Budget</class>
+ <widget class="QWidget" name="Budget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1294</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="lblBudget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>100</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Leelawadee UI Semilight</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+   </property>
+   <property name="text">
+    <string>Budget</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>302</x>
+     <y>85</y>
+     <width>690</width>
+     <height>433</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="lblBudget_2">
+    <property name="geometry">
+     <rect>
+      <x>17</x>
+      <y>31</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#909090;</string>
+    </property>
+    <property name="text">
+     <string>Budget</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblIncorrectBudget">
+    <property name="geometry">
+     <rect>
+      <x>259</x>
+      <y>58</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255,35,6);
+opacity: 0;</string>
+    </property>
+    <property name="text">
+     <string>Budget is incorrect</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtBudget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>29</y>
+      <width>340</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;
+padding-bottom:0px;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSetBudget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>88</y>
+      <width>340</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btnSetBudget
+{	
+ 	border:1px solid #ffffff;
+	color:white;
+	background-color:transparent;
+ }
+
+QPushButton#btnSetBudget:hover
+{
+ 	color:#0992b1;
+ } 
+
+QPushButton#btnSetBudget:pressed
+{
+ 	color:#0992b1;
+	border: 1px solid #0992b1; 
+	outline:none;
+} </string>
+    </property>
+    <property name="text">
+     <string>Set Budget</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tblBudgetHistory">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>10</y>
+      <width>300</width>
+      <height>413</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTableWidget#tblBudgetHistory
+{
+	background-color: #18181a;	
+	color: #909090;	
+	border:none;
+	gridline-color:#18181a;	
+	outline:none;
+}
+
+QTableWidget#tblBudgetHistory::item:focus
+{
+	outline:none;
+}
+
+QTableWidget#tblBudgetHistory::item:selected
+{
+	color:#ffffff;
+	outline:none;
+}
+
+QTableWidget#tblBudgetHistory QHeaderView::section:horizontal
+{
+	padding:7px 5px 0px 5px;	
+    height:24px;
+	font: 14px Leelawadee UI Semilight, sans-serif;
+	color: #ffffff;
+    border-style: none;
+    border-left: 1px solid #909090;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid #909090;
+    background-color: transparent;	
+ }
+
+QTableWidget#tblBudgetHistory::item
+{
+	border-left:1px solid #909090;	
+}
+
+QTableWidget#tblBudgetHistory QHeaderView::section:horizontal:first
+{
+    border-left: none;	
+}</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

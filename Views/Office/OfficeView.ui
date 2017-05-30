@@ -138,6 +138,12 @@ QPushButton#btnPaid:pressed
       <height>413</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">QTableWidget#tblWidgetSalaryHistory
 {
@@ -215,6 +221,12 @@ QTableWidget#tblWidgetSalaryHistory QHeaderView::section:horizontal:first
       <height>25</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">color:#ffffff;
 border:none;
@@ -255,7 +267,7 @@ opacity: 0;</string>
    <zorder>lblDescription</zorder>
    <zorder>lblIncorrectDescription</zorder>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="lblOffice">
    <property name="geometry">
     <rect>
      <x>0</x>

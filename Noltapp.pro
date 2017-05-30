@@ -43,7 +43,8 @@ SOURCES += main.cpp\
     CommonUiControllers/RegexController.cpp \
     Repositories/SalaryOperationRepository.cpp \
     Services/ColleagueService.cpp \
-    Services/SalaryServiece.cpp
+    Services/SalaryServiece.cpp \
+    Views/Budget/Budgetdget.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -72,7 +73,8 @@ HEADERS  += \
     Services/ColleagueService.h \
     Services/SalaryServiece.h \
     CommonUiControllers/Views/Office/OfficeLineEdit.h \
-    CommonUiControllers/Views/Office/OfficeLabel.h
+    CommonUiControllers/Views/Office/OfficeLabel.h \
+    Views/Budget/Budget.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \
@@ -81,7 +83,8 @@ FORMS    += \
     Windows\Login\LoginWindow.ui \
     Windows\Main\MainWindow.ui \
     Views/Colleagues/AddCollegueView.ui \
-    Views/Colleagues/UpdateCollegueView.ui
+    Views/Colleagues/UpdateCollegueView.ui \
+    Views/Budget/Budget.ui
 
 RESOURCES += \
     images.qrc
