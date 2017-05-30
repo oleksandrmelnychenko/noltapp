@@ -45,20 +45,23 @@ private slots:
 private:
     Ui::OfficeForm *ui;
 
-    QString mRegPayment = ("[0-9]{1,5}(\\.[0-9]{1,2})?");
+    QString mRegDescription = ("[a-zA-Z0-9_\\-\\.]{1,50}");
+    QString mRegPayment = ("[0-9]{1,5}(\\.[0-9]{1,2})?");    
 
     QString mValidateColor = ("border:none; border-bottom:1px solid #909090; color:#ffffff; padding-left:7px;");
     QString mNotValidateColor = ("border:none;border-bottom:1px solid #ff2306; color:#ffffff; padding-left:7px;");
 
+    bool isDescriptionValid = false;
     bool isPaymentValid = false;
 
     AnimationController* mAnimationController;
     int mAnimationDuration = 250;
 
-    int mCurrentColleagueId = 0;
+    const int mlblDescriptionStartPointY = 31;
+    const int mlblDescriptionEndPointY = 10;
 
-    const int mlblPaymentStartPointY = 31;
-    const int mlblPaymentEndPointY = 10;
+    const int mlblPaymentStartPointY = 88;
+    const int mlblPaymentEndPointY = 67;
 
 };
 

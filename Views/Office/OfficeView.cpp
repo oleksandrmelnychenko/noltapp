@@ -9,7 +9,8 @@ OfficeView::OfficeView(QWidget *parent) :
     setAttribute(Qt::WA_DeleteOnClose);
     SetPaymentHistoryColumnOptions();
 
-    ui->lblIncorrectInput->setVisible(false);
+    ui->lblIncorrectPayment->setVisible(false);
+    ui->lblIncorrectDescription->setVisible(false);
 
     SubscribeToFormEvents();
 }
@@ -20,17 +21,25 @@ OfficeView::~OfficeView()
 }
 
 void OfficeView::SubscribeToFormEvents()
-{
+{    
     connect(ui->btnPaid, SIGNAL(clicked(bool)), this, SLOT(PaidSalary()));
 
     connect(ui->lblToPay, &OfficeLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtToPay);});
+    connect(ui->lblDescription, &OfficeLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtDescription);});
 
     connect(ui->txtToPay, &OfficeLineEdit::inFocus, this,
             [this]{doLabelAnimation(ui->lblToPay, mlblPaymentEndPointY);
-            focusIn(ui->txtToPay, ui->lblIncorrectInput);});
+            focusIn(ui->txtToPay, ui->lblIncorrectPayment);});
+    connect(ui->txtDescription, &OfficeLineEdit::inFocus, this,
+            [this]{doLabelAnimation(ui->lblDescription, mlblDescriptionEndPointY);
+            focusIn(ui->txtDescription, ui->lblIncorrectDescription);});
+
     connect(ui->txtToPay, &OfficeLineEdit::outFocus, this,
             [this]{lostFocusOnLineEdit(ui->txtToPay, ui->lblToPay, mlblPaymentStartPointY, mlblPaymentEndPointY);
-        validateLineEditInput(ui->txtToPay, ui->lblIncorrectInput, mRegPayment, &isPaymentValid);});
+            validateLineEditInput(ui->txtToPay, ui->lblIncorrectPayment, mRegPayment, &isPaymentValid);});
+    connect(ui->txtDescription, &OfficeLineEdit::outFocus, this,
+            [this]{lostFocusOnLineEdit(ui->txtDescription, ui->lblDescription, mlblDescriptionStartPointY, mlblDescriptionEndPointY);
+            validateLineEditInput(ui->txtDescription, ui->lblIncorrectDescription, mRegDescription, &isDescriptionValid);});
 }
 
 void OfficeView::SetPaymentHistoryColumnOptions()
@@ -88,6 +97,8 @@ void OfficeView::focusIn(QLineEdit *lineEdit, QLabel *label)
 {
     lineEdit->setStyleSheet(mValidateColor);
     label->setVisible(false);
+    ui->lblIncorrectPayment->setVisible(false);
+    ui->lblIncorrectDescription->setVisible(false);
 }
 
 void OfficeView::doLabelAnimation(QLabel *label, int labelsYCoordinate)

@@ -16,9 +16,9 @@
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>137</x>
+     <x>227</x>
      <y>85</y>
-     <width>1020</width>
+     <width>840</width>
      <height>433</height>
     </rect>
    </property>
@@ -26,7 +26,7 @@
     <property name="geometry">
      <rect>
       <x>17</x>
-      <y>31</y>
+      <y>88</y>
       <width>47</width>
       <height>16</height>
      </rect>
@@ -48,7 +48,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>29</y>
+      <y>86</y>
       <width>340</width>
       <height>25</height>
      </rect>
@@ -68,11 +68,11 @@ padding-left:7px;
 padding-bottom:0px;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblIncorrectInput">
+   <widget class="QLabel" name="lblIncorrectPayment">
     <property name="geometry">
      <rect>
       <x>251</x>
-      <y>58</y>
+      <y>115</y>
       <width>111</width>
       <height>16</height>
      </rect>
@@ -94,7 +94,7 @@ opacity: 0;</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>88</y>
+      <y>145</y>
       <width>340</width>
       <height>41</height>
      </rect>
@@ -134,7 +134,7 @@ QPushButton#btnPaid:pressed
      <rect>
       <x>380</x>
       <y>10</y>
-      <width>630</width>
+      <width>450</width>
       <height>413</height>
      </rect>
     </property>
@@ -184,11 +184,76 @@ QTableWidget#tblWidgetSalaryHistory QHeaderView::section:horizontal:first
 }</string>
     </property>
    </widget>
+   <widget class="OfficeLabel" name="lblDescription">
+    <property name="geometry">
+     <rect>
+      <x>17</x>
+      <y>31</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#909090;</string>
+    </property>
+    <property name="text">
+     <string>Description</string>
+    </property>
+   </widget>
+   <widget class="OfficeLineEdit" name="txtDescription">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>29</y>
+      <width>340</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;
+padding-bottom:0px;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblIncorrectDescription">
+    <property name="geometry">
+     <rect>
+      <x>238</x>
+      <y>58</y>
+      <width>115</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255,35,6);
+opacity: 0;</string>
+    </property>
+    <property name="text">
+     <string>Description is incorrect</string>
+    </property>
+   </widget>
+   <zorder>txtDescription</zorder>
    <zorder>txtToPay</zorder>
    <zorder>lblToPay</zorder>
-   <zorder>lblIncorrectInput</zorder>
+   <zorder>lblIncorrectPayment</zorder>
    <zorder>btnPaid</zorder>
    <zorder>tblWidgetSalaryHistory</zorder>
+   <zorder>lblDescription</zorder>
+   <zorder>lblIncorrectDescription</zorder>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
