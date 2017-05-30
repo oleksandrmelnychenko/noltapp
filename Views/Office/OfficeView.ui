@@ -22,7 +22,7 @@
      <height>433</height>
     </rect>
    </property>
-   <widget class="QLabel" name="lblToPay">
+   <widget class="OfficeLabel" name="lblToPay">
     <property name="geometry">
      <rect>
       <x>17</x>
@@ -44,7 +44,7 @@
      <string>To pay</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="OfficeLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -214,6 +214,18 @@ background-color:transparent;</string>
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>OfficeLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">CommonUiControllers/Views/Office/OfficeLabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>OfficeLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header location="global">CommonUiControllers/Views/Office/OfficeLineEdit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

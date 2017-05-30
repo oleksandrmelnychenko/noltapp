@@ -70,7 +70,9 @@ HEADERS  += \
     CommonUiControllers/Views/Salary/SalaryLineEdit.h \
     Repositories/SalaryOperationRepository.h \
     Services/ColleagueService.h \
-    Services/SalaryServiece.h
+    Services/SalaryServiece.h \
+    CommonUiControllers/Views/Office/OfficeLineEdit.h \
+    CommonUiControllers/Views/Office/OfficeLabel.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \
