@@ -79,7 +79,7 @@ private:
     QString mNotValidateColor = ("border:none;border-bottom:1px solid #ff2306; color:#ffffff; padding-left:7px;");
 
     bool isSalaryValid = true;
-    bool isPaymentValid = false;
+    bool isPaymentValid = true;
 
     AnimationController* mAnimationController;
     int mAnimationDuration = 250;

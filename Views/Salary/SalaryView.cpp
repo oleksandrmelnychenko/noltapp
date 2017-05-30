@@ -37,6 +37,12 @@ void SalaryView::SetUiElementsOptions()
 
 void SalaryView::GetColleagueSalaryInformation(int row, int column)
 {
+    ui->lblIncorrectSalary->setVisible(false);
+    ui->lblIncorrectPayment->setVisible(false);
+    ui->lblIncorrectInput->setVisible(false); // do method
+    ui->txtPaid->setStyleSheet(mValidateColor);
+    ui->txtSalary->setStyleSheet(mValidateColor);
+
     long id = ui->tblWidgetColleagues->item(row,1)->text().toLong();
 
     mCurrentColleagueId = id;
@@ -54,14 +60,16 @@ void SalaryView::OutputSalary(QJsonObject *result)
 
     QString salary = QString::number(subtree.value("mSalaryAmount").toDouble());
 
-    ui->txtSalary->setText(salary);
     ui->txtPaid->setText(salary);
+    ui->txtSalary->setText(salary);
+
 
     setLabelsPosition(ui->txtSalary, ui->lblSalary, mlblSalaryStartPointY, mlblSalaryEndPointY);
     setLabelsPosition(ui->txtPaid, ui->lblToPay, mlblPaymentStartPointY, mlblPaymentEndPointY);
 
-    ui->btnPaid->setEnabled(true);
     ui->btnUpdateSalary->setEnabled(true);
+    ui->btnPaid->setEnabled(true);
+
 }
 
 void SalaryView::UpdateSalary()
