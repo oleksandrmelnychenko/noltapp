@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Budget</class>
- <widget class="QWidget" name="Budget">
+ <class>BudgetView</class>
+ <widget class="QWidget" name="BudgetView">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="lblBudget">
+  <widget class="QLabel" name="lblBudgetTitle">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -45,7 +45,7 @@ background-color:transparent;</string>
      <height>433</height>
     </rect>
    </property>
-   <widget class="QLabel" name="lblBudget_2">
+   <widget class="BudgetLabel" name="lblBudget">
     <property name="geometry">
      <rect>
       <x>17</x>
@@ -87,69 +87,6 @@ opacity: 0;</string>
     </property>
     <property name="text">
      <string>Budget is incorrect</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="txtBudget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>29</y>
-      <width>340</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:#ffffff;
-border:none;
-border-bottom:1px solid #909090;
-background-color:transparent;
-padding-left:7px;
-padding-bottom:0px;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnSetBudget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>88</y>
-      <width>340</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Leelawadee UI</family>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton#btnSetBudget
-{	
- 	border:1px solid #ffffff;
-	color:white;
-	background-color:transparent;
- }
-
-QPushButton#btnSetBudget:hover
-{
- 	color:#0992b1;
- } 
-
-QPushButton#btnSetBudget:pressed
-{
- 	color:#0992b1;
-	border: 1px solid #0992b1; 
-	outline:none;
-} </string>
-    </property>
-    <property name="text">
-     <string>Set Budget</string>
     </property>
    </widget>
    <widget class="QTableWidget" name="tblBudgetHistory">
@@ -213,8 +150,88 @@ QTableWidget#tblBudgetHistory QHeaderView::section:horizontal:first
 }</string>
     </property>
    </widget>
+   <widget class="BudgetLineEdit" name="txtBudget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>29</y>
+      <width>340</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#ffffff;
+border:none;
+border-bottom:1px solid #909090;
+background-color:transparent;
+padding-left:7px;
+padding-bottom:0px;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSetBudget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>88</y>
+      <width>340</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btnSetBudget
+{	
+ 	border:1px solid #ffffff;
+	color:white;
+	background-color:transparent;
+ }
+
+QPushButton#btnSetBudget:hover
+{
+ 	color:#0992b1;
+ } 
+
+QPushButton#btnSetBudget:pressed
+{
+ 	color:#0992b1;
+	border: 1px solid #0992b1; 
+	outline:none;
+} </string>
+    </property>
+    <property name="text">
+     <string>Set Budget</string>
+    </property>
+   </widget>
+   <zorder>txtBudget</zorder>
+   <zorder>lblBudget</zorder>
+   <zorder>lblIncorrectBudget</zorder>
+   <zorder>tblBudgetHistory</zorder>
+   <zorder>btnSetBudget</zorder>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BudgetLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">CommonUiControllers/Views/Budget/BudgetLabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BudgetLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header location="global">CommonUiControllers/Views/Budget/BudgetLineEdit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

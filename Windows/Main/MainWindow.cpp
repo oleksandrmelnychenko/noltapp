@@ -2,11 +2,13 @@
 #include "ui_mainwindow.h"
 
 
-void MainWindow::SetPressButtonStyleSheet(QPushButton *pressedButton, QPushButton *secondButton, QPushButton *thirdButton)
+void MainWindow::SetPressButtonStyleSheet(QPushButton *pressedButton, QPushButton *secondButton,
+                                          QPushButton *thirdButton, QPushButton *fourthButton)
 {
     pressedButton->setStyleSheet("color:#ffffff; background-color:transparent; border : none;");
     secondButton->setStyleSheet("color:#909090; background-color:transparent; border : none;");
     thirdButton->setStyleSheet("color:#909090; background-color:transparent; border : none;");
+    fourthButton->setStyleSheet("color:#909090; background-color:transparent; border : none;");
 }
 
 bool MainWindow::isMousePointerInFrame()
@@ -52,7 +54,7 @@ void MainWindow::createColleaguesView()
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new ColleaguesView(ui->mdiArea);
     mCurrentMdiSubForm->show();
-    SetPressButtonStyleSheet(ui->btnColleagues,ui->btnOffice,ui->btnSalary);
+    SetPressButtonStyleSheet(ui->btnColleagues, ui->btnOffice, ui->btnSalary, ui->btnBudget);
 
     connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedNewLabel()),
             this, SLOT(createAddColeagueView()));
@@ -97,7 +99,7 @@ void MainWindow::createOfficeView()
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new OfficeView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
-    SetPressButtonStyleSheet(ui->btnOffice,ui->btnColleagues,ui->btnSalary);
+    SetPressButtonStyleSheet(ui->btnOffice, ui->btnColleagues, ui->btnSalary, ui->btnBudget);
 }
 
 void MainWindow::createSalaryView()
@@ -105,12 +107,20 @@ void MainWindow::createSalaryView()
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new SalaryView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
-    SetPressButtonStyleSheet(ui->btnSalary,ui->btnOffice,ui->btnColleagues);
+    SetPressButtonStyleSheet(ui->btnSalary, ui->btnOffice, ui->btnColleagues, ui->btnBudget);
 
     connect(dynamic_cast<SalaryView*>(mCurrentMdiSubForm), SIGNAL(paidSalaryRequestStatus(QString)),
             this, SLOT(DoPaymentStatus(QString)));
     connect(dynamic_cast<SalaryView*>(mCurrentMdiSubForm), SIGNAL(updateColleagueSalaryRequestStatus(QString)),
             this, SLOT(UpdateSalaryStatus(QString)));
+}
+
+void MainWindow::createBudgetView()
+{
+    deleteMdiSubForm(mCurrentMdiSubForm);
+    mCurrentMdiSubForm = new BudgetView(ui->mdiArea);
+    mCurrentMdiSubForm->show();
+    SetPressButtonStyleSheet(ui->btnBudget, ui->btnSalary, ui->btnOffice, ui->btnColleagues);
 }
 
 void MainWindow::deleteMdiSubForm(QMdiSubWindow *form)
@@ -207,6 +217,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btnColleagues, SIGNAL(clicked()), this, SLOT(createColleaguesView()));
     connect(ui->btnSalary, SIGNAL(clicked()), this, SLOT(createSalaryView()));
     connect(ui->btnOffice, SIGNAL(clicked()), this, SLOT(createOfficeView()));
+    connect(ui->btnBudget, SIGNAL(clicked()), this, SLOT(createBudgetView()));
     connect(ui->btnQuit, SIGNAL(clicked(bool)), this, SLOT(close()));
     connect(ui->btnCollapse, SIGNAL(clicked(bool)), this, SLOT(collapseMainWindow()));
 }

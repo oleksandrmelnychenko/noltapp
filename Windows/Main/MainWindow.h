@@ -6,6 +6,7 @@
 #include "Views/Colleagues/ColleaguesView.h"
 #include "Views/Colleagues/AddCollegueView.h"
 #include "Views/Colleagues/UpdateCollegueView.h"
+#include "Views/Budget/BudgetView.h"
 #include "Views/Office/OfficeView.h"
 #include "Views/Salary/SalaryView.h"
 #include <QDebug>
@@ -25,7 +26,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 protected:
-    void SetPressButtonStyleSheet(QPushButton *pressedButton, QPushButton *secondButton, QPushButton *thirdButton);
+    void SetPressButtonStyleSheet(QPushButton *pressedButton, QPushButton *secondButton,
+                                  QPushButton *thirdButton, QPushButton *fourthButton);
     bool isMousePointerInFrame();
 
     void setUpShadow();
@@ -41,6 +43,7 @@ protected slots:
 
     void createOfficeView();
     void createSalaryView();
+    void createBudgetView();
     void deleteMdiSubForm(QMdiSubWindow *form);
     void collapseMainWindow();
 
