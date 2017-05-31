@@ -46,7 +46,9 @@ SOURCES += main.cpp\
     Services/SalaryServiece.cpp \
     Views/Budget/BudgetView.cpp \
     Repositories/OfficeOpearationRepository.cpp \
-    Repositories/BudgetOperationRepository.cpp
+    Repositories/BudgetOperationRepository.cpp \
+    Services/OfficeService.cpp \
+    Services/BudgetService.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -80,7 +82,9 @@ HEADERS  += \
     Views/Budget/BudgetView.h \
     CommonUiControllers/Views/Budget/BudgetLineEdit.h \
     Repositories/OfficeOpearationRepository.h \
-    Repositories/BudgetOperationRepository.h
+    Repositories/BudgetOperationRepository.h \
+    Services/OfficeService.h \
+    Services/BudgetService.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \

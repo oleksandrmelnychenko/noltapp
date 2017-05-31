@@ -15,7 +15,7 @@ public:
     explicit SalaryServiece(QObject *parent = 0);
 
     QJsonObject* GetAllColleagues();
-    QJsonObject *GetColleagueById(long id);
+    QJsonObject* GetColleagueById(long id);
     QJsonObject* UpdateColleagueSalary(QJsonObject person);
     QJsonObject* GetPaymentHistoryById(long id);
     QJsonObject* PaidSalary(long id, QJsonObject salary);
