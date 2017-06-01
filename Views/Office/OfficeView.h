@@ -54,7 +54,7 @@ private:
     OfficeService *mOfficeService;
     QJsonObject mJsonObjectOffice;
 
-    QString mRegDescription = ("[a-zA-Z0-9_\\-\\.]{1,50}");
+    QString mRegDescription = ("[a-zA-Z0-9\\s]{1,50}");
     QString mRegPayment = ("[0-9]{1,5}(\\.[0-9]{1,2})?");    
 
     QString mValidateColor = ("border:none; border-bottom:1px solid #909090; color:#ffffff; padding-left:7px;");
