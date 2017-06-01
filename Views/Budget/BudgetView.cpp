@@ -92,6 +92,11 @@ void BudgetView::FillBudgetTable(QJsonObject *result)
     }
 }
 
+void BudgetView::SetBudgetStatus(QJsonObject *status)
+{
+    emit setBudgetRequestStatus(status->value("Message").toString());
+}
+
 bool BudgetView::isLineEditEmpty(const QLineEdit *lineEdit)
 {
     return (QString(lineEdit->text()).isEmpty());
@@ -111,9 +116,7 @@ void BudgetView::AddBudget()
 
         mJsonObjectBudget.insert("mPaymentAmount", ui->txtBudget->text());
 
-        //PaidSalaryRequestStatus(mBudgetService->CreateNewBudget(mJsonObjectBudget););
-
-        mBudgetService->CreateNewBudget(mJsonObjectBudget);
+        SetBudgetStatus(mBudgetService->CreateNewBudget(mJsonObjectBudget));
 
         ui->btnSetBudget->setEnabled(true);
 

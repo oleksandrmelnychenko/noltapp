@@ -100,6 +100,9 @@ void MainWindow::createOfficeView()
     mCurrentMdiSubForm = new OfficeView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
     SetPressButtonStyleSheet(ui->btnOffice, ui->btnColleagues, ui->btnSalary, ui->btnBudget);
+
+    connect(dynamic_cast<OfficeView*>(mCurrentMdiSubForm), SIGNAL(paidForExpanseRequestStatus(QString)),
+            this, SLOT(DoOfficeExpansesStatus(QString)));
 }
 
 void MainWindow::createSalaryView()
@@ -121,6 +124,9 @@ void MainWindow::createBudgetView()
     mCurrentMdiSubForm = new BudgetView(ui->mdiArea);
     mCurrentMdiSubForm->show();
     SetPressButtonStyleSheet(ui->btnBudget, ui->btnSalary, ui->btnOffice, ui->btnColleagues);
+
+    connect(dynamic_cast<BudgetView*>(mCurrentMdiSubForm), SIGNAL(setBudgetRequestStatus(QString)),
+            this, SLOT(SetBudgetStatus(QString)));
 }
 
 void MainWindow::deleteMdiSubForm(QMdiSubWindow *form)
@@ -191,6 +197,32 @@ void MainWindow::DoPaymentStatus(const QString &status)
     ui->lblRequestStatus->setGeometry(mlblRequestStatusForDoPaymentXPosition,
                                       mlbRequestStatusYPosition,
                                       mlblRequestStatusForDoPaymentWidth,
+                                      mlbRequestStatusHeight);
+
+    ui->lblRequestStatus->setVisible(true);
+    QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
+}
+
+void MainWindow::SetBudgetStatus(const QString &status)
+{
+    ui->lblRequestStatus->setText(status);
+
+    ui->lblRequestStatus->setGeometry(mlblRequestStatusSetBudgetXPosition,
+                                      mlbRequestStatusYPosition,
+                                      mlblRequestStatusSetBudgetWidth,
+                                      mlbRequestStatusHeight);
+
+    ui->lblRequestStatus->setVisible(true);
+    QTimer::singleShot(1500,this,SLOT(setlblRequestStatusVisibleToFalse()));
+}
+
+void MainWindow::DoOfficeExpansesStatus(const QString &status)
+{
+    ui->lblRequestStatus->setText(status);
+
+    ui->lblRequestStatus->setGeometry(mlblRequestStatusDoOfficeExpansesStatusXPosition,
+                                      mlbRequestStatusYPosition,
+                                      mlblRequestStatusDoOfficeExpansesStatusWidth,
                                       mlbRequestStatusHeight);
 
     ui->lblRequestStatus->setVisible(true);

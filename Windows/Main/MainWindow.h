@@ -52,6 +52,8 @@ protected slots:
     void AddColleagueRequestStatus(const QString& status);
     void UpdateSalaryStatus(const QString& status);
     void DoPaymentStatus(const QString& status);
+    void SetBudgetStatus(const QString& status);
+    void DoOfficeExpansesStatus(const QString& status);
     void setlblRequestStatusVisibleToFalse();
 
 public:
@@ -89,6 +91,14 @@ private:
 
     int mlblRequestStatusForDoPaymentXPosition = 1108;
     int mlblRequestStatusForDoPaymentWidth = 240;
+
+    int mlblRequestStatusSetBudgetXPosition = 1059;
+    int mlblRequestStatusSetBudgetWidth = 260;
+
+    int mlblRequestStatusDoOfficeExpansesStatusXPosition = 1009;
+    int mlblRequestStatusDoOfficeExpansesStatusWidth = 300;
+
+
 };
 
 #endif // MAINWINDOW_H

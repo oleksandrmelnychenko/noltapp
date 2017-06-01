@@ -30,17 +30,22 @@ public:
     explicit OfficeView(QWidget *parent = 0);
     ~OfficeView();
 
+signals:
+    void paidForExpanseRequestStatus(const QString&);
+
 private:
     void SubscribeToFormEvents();
 
     void FillOfficeTable(QJsonObject *result);
     void SetPaymentHistoryColumnOptions();
 
+    void PaidForExpansesStatus(QJsonObject *status);
+
     bool isLineEditEmpty(const QLineEdit *lineEdit);
     void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
 
 private slots:
-    void PaidSalary();
+    void PaidForExpanse();
 
     void setFocusOnLineEdit(QLineEdit *lineEdint);
     void focusIn(QLineEdit *lineEdit, QLabel *label);

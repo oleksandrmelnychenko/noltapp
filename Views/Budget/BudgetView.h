@@ -31,11 +31,16 @@ public:
     explicit BudgetView(QWidget *parent = 0);
     ~BudgetView();
 
+signals:
+    void setBudgetRequestStatus(const QString&);
+
 private:
     void SubscribeToFormEvents();
 
     void SetBudgetHistoryColumnOptions();
     void FillBudgetTable(QJsonObject *result);
+
+    void SetBudgetStatus(QJsonObject *status);
 
     bool isLineEditEmpty(const QLineEdit *lineEdit);
     void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);

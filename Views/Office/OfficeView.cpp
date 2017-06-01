@@ -27,7 +27,7 @@ OfficeView::~OfficeView()
 
 void OfficeView::SubscribeToFormEvents()
 {    
-    connect(ui->btnPaid, SIGNAL(clicked(bool)), this, SLOT(PaidSalary()));
+    connect(ui->btnPaid, SIGNAL(clicked(bool)), this, SLOT(PaidForExpanse()));
 
     connect(ui->lblToPay, &OfficeLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtToPay);});
     connect(ui->lblDescription, &OfficeLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtDescription);});
@@ -104,6 +104,11 @@ void OfficeView::SetPaymentHistoryColumnOptions()
 
 }
 
+void OfficeView::PaidForExpansesStatus(QJsonObject *status)
+{
+    emit paidForExpanseRequestStatus(status->value("Message").toString());
+}
+
 bool OfficeView::isLineEditEmpty(const QLineEdit *lineEdit)
 {
     return (QString(lineEdit->text()).isEmpty());
@@ -115,7 +120,7 @@ void OfficeView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int
                               : mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
 }
 
-void OfficeView::PaidSalary()
+void OfficeView::PaidForExpanse()
 {
     if(isDescriptionValid && isPaymentValid && !ui->txtDescription->text().isEmpty() && !ui->txtToPay->text().isEmpty())
     {
@@ -124,9 +129,7 @@ void OfficeView::PaidSalary()
         mJsonObjectOffice.insert("mPaymentAmount", ui->txtToPay->text());
         mJsonObjectOffice.insert("mDescription", ui->txtDescription->text());
 
-        //PaidSalaryRequestStatus(mBudgetService->CreateNewBudget(mJsonObjectBudget););
-
-        mOfficeService->CreateNewOfficePayment(mJsonObjectOffice);
+        PaidForExpansesStatus(mOfficeService->CreateNewOfficePayment(mJsonObjectOffice));
 
         ui->btnPaid->setEnabled(true);
 
