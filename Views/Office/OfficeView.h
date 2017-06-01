@@ -9,9 +9,14 @@
 #include <QStandardItemModel>
 #include <QScrollBar>
 #include <QGridLayout>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QLineEdit>
 
 #include "Entities/PersonEntity.h"
 #include "CommonUiControllers/AnimationController.h"
+#include "Services/OfficeService.h"
 
 namespace Ui {
     class OfficeForm;
@@ -28,6 +33,7 @@ public:
 private:
     void SubscribeToFormEvents();
 
+    void FillOfficeTable(QJsonObject *result);
     void SetPaymentHistoryColumnOptions();
 
     bool isLineEditEmpty(const QLineEdit *lineEdit);
@@ -44,6 +50,9 @@ private slots:
 
 private:
     Ui::OfficeForm *ui;
+
+    OfficeService *mOfficeService;
+    QJsonObject mJsonObjectOffice;
 
     QString mRegDescription = ("[a-zA-Z0-9_\\-\\.]{1,50}");
     QString mRegPayment = ("[0-9]{1,5}(\\.[0-9]{1,2})?");    

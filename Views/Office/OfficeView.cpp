@@ -11,6 +11,11 @@ OfficeView::OfficeView(QWidget *parent) :
 
     ui->lblIncorrectPayment->setVisible(false);
     ui->lblIncorrectDescription->setVisible(false);
+    ui->lblIncorrectInput->setVisible(false);
+
+    mOfficeService = new OfficeService(this);
+
+    FillOfficeTable(mOfficeService->GetOfficePaymentHistory());
 
     SubscribeToFormEvents();
 }
@@ -39,7 +44,32 @@ void OfficeView::SubscribeToFormEvents()
             validateLineEditInput(ui->txtToPay, ui->lblIncorrectPayment, mRegPayment, &isPaymentValid);});
     connect(ui->txtDescription, &OfficeLineEdit::outFocus, this,
             [this]{lostFocusOnLineEdit(ui->txtDescription, ui->lblDescription, mlblDescriptionStartPointY, mlblDescriptionEndPointY);
-            validateLineEditInput(ui->txtDescription, ui->lblIncorrectDescription, mRegDescription, &isDescriptionValid);});
+        validateLineEditInput(ui->txtDescription, ui->lblIncorrectDescription, mRegDescription, &isDescriptionValid);});
+}
+
+void OfficeView::FillOfficeTable(QJsonObject *result)
+{
+    ui->tblWidgetSalaryHistory->clearContents();
+    ui->tblWidgetSalaryHistory->setRowCount(0);
+
+    QJsonValue jv = result->value("Body");
+    if(jv.isArray())
+    {
+        QJsonArray ja = jv.toArray();
+        for(int i = 0;  i <ja.count(); ++i)
+        {
+            QJsonObject subtree = ja.at(i).toObject();
+
+            QString currentOfficeExpanseId = QString::number(subtree.value("mId").toInt());
+            QString currentOfficeExpanseAmount = QString::number(subtree.value("mPaymentAmount").toDouble());
+
+            ui->tblWidgetSalaryHistory->insertRow(ui->tblWidgetSalaryHistory->rowCount());
+            ui->tblWidgetSalaryHistory->setItem(ui->tblWidgetSalaryHistory->rowCount()- 1, 0, new QTableWidgetItem(subtree.value("mPaymentDate").toString()));
+            ui->tblWidgetSalaryHistory->setItem(ui->tblWidgetSalaryHistory->rowCount()- 1, 1, new QTableWidgetItem(subtree.value("mDescription").toString()));
+            ui->tblWidgetSalaryHistory->setItem(ui->tblWidgetSalaryHistory->rowCount()- 1, 2, new QTableWidgetItem(currentOfficeExpanseAmount));
+            ui->tblWidgetSalaryHistory->setItem(ui->tblWidgetSalaryHistory->rowCount()- 1, 3, new QTableWidgetItem(currentOfficeExpanseId));
+        }
+    }
 }
 
 void OfficeView::SetPaymentHistoryColumnOptions()
@@ -87,7 +117,25 @@ void OfficeView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int
 
 void OfficeView::PaidSalary()
 {
+    if(isDescriptionValid && isPaymentValid && !ui->txtDescription->text().isEmpty() && !ui->txtToPay->text().isEmpty())
+    {
+        ui->btnPaid->setEnabled(false);
 
+        mJsonObjectOffice.insert("mPaymentAmount", ui->txtToPay->text());
+        mJsonObjectOffice.insert("mDescription", ui->txtDescription->text());
+
+        //PaidSalaryRequestStatus(mBudgetService->CreateNewBudget(mJsonObjectBudget););
+
+        mOfficeService->CreateNewOfficePayment(mJsonObjectOffice);
+
+        ui->btnPaid->setEnabled(true);
+
+        FillOfficeTable(mOfficeService->GetOfficePaymentHistory());
+    }
+    else
+    {
+        ui->lblIncorrectInput->setVisible(true);
+    }
 }
 
 void OfficeView::setFocusOnLineEdit(QLineEdit *lineEdint)
@@ -99,13 +147,12 @@ void OfficeView::focusIn(QLineEdit *lineEdit, QLabel *label)
 {
     lineEdit->setStyleSheet(mValidateColor);
     label->setVisible(false);    
+    ui->lblIncorrectInput->setVisible(false);
 }
 
 void OfficeView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 {
-    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
-    ui->widget->hide();
-    ui->widget->show();
+    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);    
 }
 
 void OfficeView::lostFocusOnLineEdit(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)
