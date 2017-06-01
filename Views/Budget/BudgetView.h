@@ -10,9 +10,14 @@
 #include <QScrollBar>
 #include <QGridLayout>
 #include <QLabel>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QLineEdit>
 
 #include "Entities/PersonEntity.h"
 #include "CommonUiControllers/AnimationController.h"
+#include "Services/BudgetService.h"
 
 namespace Ui {
     class BudgetView;
@@ -30,6 +35,7 @@ private:
     void SubscribeToFormEvents();
 
     void SetBudgetHistoryColumnOptions();
+    void FillBudgetTable(QJsonObject *result);
 
     bool isLineEditEmpty(const QLineEdit *lineEdit);
     void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
@@ -45,6 +51,9 @@ private slots:
 
 private:
     Ui::BudgetView *ui;
+
+    BudgetService *mBudgetService;
+    QJsonObject mJsonObjectBudget;
 
     QString mRegBudget = ("[0-9]{1,5}(\\.[0-9]{1,2})?");
 

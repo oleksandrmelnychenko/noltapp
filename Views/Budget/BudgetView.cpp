@@ -7,9 +7,13 @@ BudgetView::BudgetView(QWidget *parent) :
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
+    SetBudgetHistoryColumnOptions();
     ui->lblIncorrectBudget->setVisible(false);
+    ui->lblIncorrectInput->setVisible(false);
 
+    mBudgetService = new BudgetService(this);
 
+    FillBudgetTable(mBudgetService->GetBudgetHistory());
 
     SubscribeToFormEvents();
 }
@@ -60,8 +64,32 @@ void BudgetView::SetBudgetHistoryColumnOptions()
                                                         "QScrollBar::sub-line:vertical {"
                                                         "    height: 0 px;"
                                                         "}");
-    ui->tblBudgetHistory->setColumnWidth(0,130);
-    ui->tblBudgetHistory->setColumnWidth(1,170);
+    ui->tblBudgetHistory->setColumnWidth(0,150);
+    ui->tblBudgetHistory->setColumnWidth(1,150);
+}
+
+void BudgetView::FillBudgetTable(QJsonObject *result)
+{
+    ui->tblBudgetHistory->clearContents();
+    ui->tblBudgetHistory->setRowCount(0);
+
+    QJsonValue jv = result->value("Body");
+    if(jv.isArray())
+    {
+        QJsonArray ja = jv.toArray();
+        for(int i = 0;  i <ja.count(); ++i)
+        {
+            QJsonObject subtree = ja.at(i).toObject();
+
+            QString currentBudgetId = QString::number(subtree.value("mId").toInt());
+            QString currentBudgetAmount = QString::number(subtree.value("mPaymentAmount").toDouble());
+
+            ui->tblBudgetHistory->insertRow(ui->tblBudgetHistory->rowCount());
+            ui->tblBudgetHistory->setItem(ui->tblBudgetHistory->rowCount()- 1, 0, new QTableWidgetItem(subtree.value("mPaymentDate").toString()));
+            ui->tblBudgetHistory->setItem(ui->tblBudgetHistory->rowCount()- 1, 1, new QTableWidgetItem(currentBudgetAmount));
+            ui->tblBudgetHistory->setItem(ui->tblBudgetHistory->rowCount()- 1, 2, new QTableWidgetItem(currentBudgetId));
+        }
+    }
 }
 
 bool BudgetView::isLineEditEmpty(const QLineEdit *lineEdit)
@@ -77,7 +105,24 @@ void BudgetView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int
 
 void BudgetView::AddBudget()
 {
+    if(isBudgetnValid && !ui->txtBudget->text().isEmpty())
+    {
+        ui->btnSetBudget->setEnabled(false);
 
+        mJsonObjectBudget.insert("mPaymentAmount", ui->txtBudget->text());
+
+        //PaidSalaryRequestStatus(mBudgetService->CreateNewBudget(mJsonObjectBudget););
+
+        mBudgetService->CreateNewBudget(mJsonObjectBudget);
+
+        ui->btnSetBudget->setEnabled(true);
+
+        FillBudgetTable(mBudgetService->GetBudgetHistory());
+    }
+    else
+    {
+        ui->lblIncorrectInput->setVisible(true);
+    }
 }
 
 void BudgetView::setFocusOnLineEdit(QLineEdit *lineEdint)
@@ -89,13 +134,12 @@ void BudgetView::focusIn(QLineEdit *lineEdit, QLabel *label)
 {
     lineEdit->setStyleSheet(mValidateColor);
     label->setVisible(false);
+    ui->lblIncorrectInput->setVisible(false);
 }
 
 void BudgetView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 {
-    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
-    ui->widget->hide();
-    ui->widget->show();
+    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);    
 }
 
 void BudgetView::lostFocusOnLineEdit(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)

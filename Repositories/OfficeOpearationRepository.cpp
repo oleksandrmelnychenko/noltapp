@@ -27,7 +27,7 @@ QJsonObject *OfficeOpearationRepository::CreateNewOfficePayment(QJsonObject paym
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json; charset=utf-8");
 
     QJsonDocument doc;
-    doc.setObject(person);
+    doc.setObject(payment);
 
     QByteArray request_body = doc.toJson();
 

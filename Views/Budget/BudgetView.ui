@@ -213,11 +213,35 @@ QPushButton#btnSetBudget:pressed
      <string>Set Budget</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblIncorrectInput">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>134</y>
+      <width>141</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:red;
+ opacity: 0;</string>
+    </property>
+    <property name="text">
+     <string>Incorrect budget amount</string>
+    </property>
+   </widget>
    <zorder>txtBudget</zorder>
    <zorder>lblBudget</zorder>
    <zorder>lblIncorrectBudget</zorder>
    <zorder>tblBudgetHistory</zorder>
    <zorder>btnSetBudget</zorder>
+   <zorder>lblIncorrectInput</zorder>
   </widget>
  </widget>
  <customwidgets>

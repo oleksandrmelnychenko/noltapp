@@ -258,6 +258,29 @@ opacity: 0;</string>
      <string>Description is incorrect</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblIncorrectInput">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>191</y>
+      <width>151</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:red;
+ opacity: 0;</string>
+    </property>
+    <property name="text">
+     <string>Input correct all filesds</string>
+    </property>
+   </widget>
    <zorder>txtDescription</zorder>
    <zorder>txtToPay</zorder>
    <zorder>lblToPay</zorder>
@@ -266,6 +289,7 @@ opacity: 0;</string>
    <zorder>tblWidgetSalaryHistory</zorder>
    <zorder>lblDescription</zorder>
    <zorder>lblIncorrectDescription</zorder>
+   <zorder>lblIncorrectInput</zorder>
   </widget>
   <widget class="QLabel" name="lblOffice">
    <property name="geometry">

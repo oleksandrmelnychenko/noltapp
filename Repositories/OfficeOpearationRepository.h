@@ -30,8 +30,8 @@ protected:
 private:
     QNetworkAccessManager *mNetworkManager;
 
-    const QString mGetOfficePaymentHistory = "";
-    const QString mCreateNewOfficePayment = "";
+    const QString mGetOfficePaymentHistory = "http://noltwebapi.azurewebsites.net/api/v1/otherexpenses/all";
+    const QString mCreateNewOfficePayment = "http://noltwebapi.azurewebsites.net/api/v1/otherexpenses/new";
 };
 
 #endif // OFFICEOPEARATIONREPOSITORY_H

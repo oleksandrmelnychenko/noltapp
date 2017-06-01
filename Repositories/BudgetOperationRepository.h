@@ -30,8 +30,8 @@ protected:
 private:
     QNetworkAccessManager *mNetworkManager;
 
-    const QString mGetBudgetHistory = "";
-    const QString mCreateNewBudget = "";
+    const QString mGetBudgetHistory = "http://noltwebapi.azurewebsites.net/api/v1/budget/all";
+    const QString mCreateNewBudget = "http://noltwebapi.azurewebsites.net/api/v1/budget/new";
 };
 
 #endif // BUDGETOPERATIONREPOSITORY_H
