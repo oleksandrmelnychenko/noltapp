@@ -11,6 +11,11 @@ QJsonObject* BudgetService::GetBudgetHistory()
     return mBudgetRepository->GetBudgetHistory();
 }
 
+QJsonObject *BudgetService::GetBudgetById(long id)
+{
+    return mBudgetRepository->GetBudgetById(id);
+}
+
 QJsonObject* BudgetService::CreateNewBudget(QJsonObject payment)
 {
     return mBudgetRepository->CreateNewBudget(payment);

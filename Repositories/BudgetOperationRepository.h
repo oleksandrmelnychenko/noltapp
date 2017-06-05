@@ -20,6 +20,7 @@ public:
 
 public:
     QJsonObject* GetBudgetHistory();
+    QJsonObject* GetBudgetById(long id);
     QJsonObject* CreateNewBudget(QJsonObject payment);
 
 protected:
@@ -32,6 +33,8 @@ private:
 
     const QString mGetBudgetHistory = "http://noltwebapi.azurewebsites.net/api/v1/budget/all";
     const QString mCreateNewBudget = "http://noltwebapi.azurewebsites.net/api/v1/budget/new";
+
+    const std::string mGetBudgetById = "http://noltwebapi.azurewebsites.net/api/v1/budget/get?id=";
 };
 
 #endif // BUDGETOPERATIONREPOSITORY_H

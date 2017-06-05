@@ -19,6 +19,23 @@ QJsonObject *BudgetOperationRepository::GetBudgetHistory()
     return &mResult;
 }
 
+QJsonObject *BudgetOperationRepository::GetBudgetById(long id)
+{
+    std::string hostAndApi = mGetBudgetById;
+    hostAndApi += std::to_string(id);
+
+    QString qRequest = QString::fromStdString(hostAndApi);
+
+    QUrl url(qRequest);
+    QNetworkRequest request;
+    request.setUrl(url);
+
+    QNetworkReply *reply = mNetworkManager->get(request);
+    replyFinished(reply);
+
+    return &mResult;
+}
+
 QJsonObject *BudgetOperationRepository::CreateNewBudget(QJsonObject payment)
 {
     QUrl url(mCreateNewBudget);

@@ -15,6 +15,7 @@ public:
     explicit BudgetService(QObject *parent = 0);
 
     QJsonObject* GetBudgetHistory();
+    QJsonObject *GetBudgetById(long id);
     QJsonObject* CreateNewBudget(QJsonObject payment);
 
 private:

@@ -7,6 +7,9 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QLineEdit>
+#include <QScrollBar>
+
+#include <Services/BudgetService.h>
 
 namespace Ui {
     class CurrentBudgetInformationView;
@@ -21,9 +24,14 @@ public:
     ~CurrentBudgetInformationView();
 
 private:
+    void SetTableColumnOptions();
+    void FillCurrentBudgetTable(QJsonObject *result);
+
+private:
     Ui::CurrentBudgetInformationView *ui;
 
     QJsonObject mJsonObject;
+    BudgetService *mBudgetService;
 
     long mId;
 };
