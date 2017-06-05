@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CurrentBudgetInformationView</class>
+ <widget class="QWidget" name="CurrentBudgetInformationView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1294</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="lblBudgetTitle">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>100</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Leelawadee UI Semilight</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+   </property>
+   <property name="text">
+    <string>Budget</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>412</x>
+     <y>85</y>
+     <width>470</width>
+     <height>433</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="lblTotalBudget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>340</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+    </property>
+    <property name="text">
+     <string>Total budget :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblCurrentBudget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>393</y>
+      <width>340</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+    </property>
+    <property name="text">
+     <string>Current budget : </string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tblCurrentBudgetHistory">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>450</width>
+      <height>333</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTableWidget#tblCurrentBudgetHistory
+{
+	background-color: #18181a;	
+	color: #909090;	
+	border:none;
+	gridline-color:#18181a;	
+	outline:none;
+}
+
+QTableWidget#tblCurrentBudgetHistory::item:focus
+{
+	outline:none;
+}
+
+QTableWidget#tblCurrentBudgetHistory::item:selected
+{
+	color:#ffffff;
+	outline:none;
+}
+
+QTableWidget#tblCurrentBudgetHistory QHeaderView::section:horizontal
+{
+	padding:7px 5px 0px 5px;	
+    height:24px;
+	font: 14px Leelawadee UI Semilight, sans-serif;
+	color: #ffffff;
+    border-style: none;
+    border-left: 1px solid #909090;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid #909090;
+    background-color: transparent;	
+ }
+
+QTableWidget#tblCurrentBudgetHistory::item
+{
+	border-left:1px solid #909090;	
+}
+
+QTableWidget#tblCurrentBudgetHistory QHeaderView::section:horizontal:first
+{
+    border-left: none;	
+}</string>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

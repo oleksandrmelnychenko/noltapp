@@ -48,7 +48,8 @@ SOURCES += main.cpp\
     Repositories/OfficeOpearationRepository.cpp \
     Repositories/BudgetOperationRepository.cpp \
     Services/OfficeService.cpp \
-    Services/BudgetService.cpp
+    Services/BudgetService.cpp \
+    Views/Budget/CurrentBudgetInformationView.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -84,7 +85,8 @@ HEADERS  += \
     Repositories/OfficeOpearationRepository.h \
     Repositories/BudgetOperationRepository.h \
     Services/OfficeService.h \
-    Services/BudgetService.h
+    Services/BudgetService.h \
+    Views/Budget/CurrentBudgetInformationView.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \
@@ -94,7 +96,8 @@ FORMS    += \
     Windows\Main\MainWindow.ui \
     Views/Colleagues/AddCollegueView.ui \
     Views/Colleagues/UpdateCollegueView.ui \
-    Views/Budget/BudgetView.ui
+    Views/Budget/BudgetView.ui \
+    Views/Budget/CurrentBudgetInformationView.ui
 
 RESOURCES += \
     images.qrc

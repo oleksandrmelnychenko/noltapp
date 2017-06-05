@@ -29,6 +29,16 @@ void MainWindow::setUpShadow()
     ui->lblBackGroundPicture->setGraphicsEffect(bodyShadow);
 }
 
+void MainWindow::SubscribeToFormEvents()
+{
+    connect(ui->btnColleagues, SIGNAL(clicked()), this, SLOT(createColleaguesView()));
+    connect(ui->btnSalary, SIGNAL(clicked()), this, SLOT(createSalaryView()));
+    connect(ui->btnOffice, SIGNAL(clicked()), this, SLOT(createOfficeView()));
+    connect(ui->btnBudget, SIGNAL(clicked()), this, SLOT(createBudgetView()));
+    connect(ui->btnQuit, SIGNAL(clicked(bool)), this, SLOT(close()));
+    connect(ui->btnCollapse, SIGNAL(clicked(bool)), this, SLOT(collapseMainWindow()));
+}
+
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     mMouseClickXCoordinate = event->x();
@@ -246,12 +256,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setUpShadow();
 
-    connect(ui->btnColleagues, SIGNAL(clicked()), this, SLOT(createColleaguesView()));
-    connect(ui->btnSalary, SIGNAL(clicked()), this, SLOT(createSalaryView()));
-    connect(ui->btnOffice, SIGNAL(clicked()), this, SLOT(createOfficeView()));
-    connect(ui->btnBudget, SIGNAL(clicked()), this, SLOT(createBudgetView()));
-    connect(ui->btnQuit, SIGNAL(clicked(bool)), this, SLOT(close()));
-    connect(ui->btnCollapse, SIGNAL(clicked(bool)), this, SLOT(collapseMainWindow()));
+    SubscribeToFormEvents();
 }
 
 MainWindow::~MainWindow()

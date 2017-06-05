@@ -149,6 +149,18 @@ QTableWidget#tblBudgetHistory QHeaderView::section:horizontal:first
     border-left: none;	
 }</string>
     </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
    </widget>
    <widget class="BudgetLineEdit" name="txtBudget">
     <property name="geometry">
