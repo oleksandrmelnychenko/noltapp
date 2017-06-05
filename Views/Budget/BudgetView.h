@@ -33,6 +33,7 @@ public:
 
 signals:
     void setBudgetRequestStatus(const QString&);
+    void watchCurrentBudgetInformation(long id);
 
 private:
     void SubscribeToFormEvents();
@@ -47,6 +48,7 @@ private:
 
 private slots:
     void AddBudget();
+    void WatchCurrentBudgetInformation(int row, int column);
 
     void setFocusOnLineEdit(QLineEdit *lineEdint);
     void focusIn(QLineEdit *lineEdit, QLabel *label);

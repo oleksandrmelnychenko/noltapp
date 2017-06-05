@@ -7,6 +7,7 @@
 #include "Views/Colleagues/AddCollegueView.h"
 #include "Views/Colleagues/UpdateCollegueView.h"
 #include "Views/Budget/BudgetView.h"
+#include "Views/Budget/CurrentBudgetInformationView.h"
 #include "Views/Office/OfficeView.h"
 #include "Views/Salary/SalaryView.h"
 #include <QDebug>
@@ -45,7 +46,9 @@ protected slots:
 
     void createOfficeView();
     void createSalaryView();
+
     void createBudgetView();
+    void createCurrentBudgetInformationView(long id);
     void deleteMdiSubForm(QMdiSubWindow *form);
     void collapseMainWindow();
 

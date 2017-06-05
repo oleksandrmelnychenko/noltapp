@@ -25,6 +25,8 @@ BudgetView::~BudgetView()
 
 void BudgetView::SubscribeToFormEvents()
 {
+    connect(ui->tblBudgetHistory, SIGNAL(cellClicked(int,int)), this, SLOT(WatchCurrentBudgetInformation(int,int)));
+
     connect(ui->btnSetBudget, SIGNAL(clicked()), this, SLOT(AddBudget()));
 
     connect(ui->lblBudget, &BudgetLabel::pressIn, this, [this]{setFocusOnLineEdit(ui->txtBudget);});
@@ -126,6 +128,12 @@ void BudgetView::AddBudget()
     {
         ui->lblIncorrectInput->setVisible(true);
     }
+}
+
+void BudgetView::WatchCurrentBudgetInformation(int row, int column)
+{
+    long id = ui->tblBudgetHistory->item(row,0)->text().toLong();
+    emit watchCurrentBudgetInformation(id);
 }
 
 void BudgetView::setFocusOnLineEdit(QLineEdit *lineEdint)
