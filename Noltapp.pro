@@ -86,7 +86,8 @@ HEADERS  += \
     Repositories/BudgetOperationRepository.h \
     Services/OfficeService.h \
     Services/BudgetService.h \
-    Views/Budget/CurrentBudgetInformationView.h
+    Views/Budget/CurrentBudgetInformationView.h \
+    CommonUiControllers/Views/Budget/BudgetType.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \

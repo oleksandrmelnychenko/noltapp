@@ -45,12 +45,12 @@ background-color:transparent;</string>
      <height>433</height>
     </rect>
    </property>
-   <widget class="QLabel" name="lblTotalBudget">
+   <widget class="QLabel" name="lblTotalBudgetTitle">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>340</width>
+      <width>141</width>
       <height>30</height>
      </rect>
     </property>
@@ -68,12 +68,12 @@ background-color:transparent;</string>
      <string>Total budget :</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblCurrentBudget">
+   <widget class="QLabel" name="lblCurrentBudgetTitle">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>383</y>
-      <width>340</width>
+      <width>167</width>
       <height>30</height>
      </rect>
     </property>
@@ -163,6 +163,52 @@ QTableWidget#tblCurrentBudgetHistory QHeaderView::section:horizontal:first
     <attribute name="verticalHeaderHighlightSections">
      <bool>false</bool>
     </attribute>
+   </widget>
+   <widget class="QLabel" name="lblTotalBudget">
+    <property name="geometry">
+     <rect>
+      <x>155</x>
+      <y>10</y>
+      <width>121</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblCurrentBudget">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>383</y>
+      <width>111</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
  </widget>

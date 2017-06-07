@@ -49,15 +49,53 @@ void CurrentBudgetInformationView::SetTableColumnOptions()
     ui->tblCurrentBudgetHistory->setColumnWidth(2,100);
 }
 
+void CurrentBudgetInformationView::FillCurrentRow(QJsonObject *subtree, BudgetType budgetType)
+{
+    QJsonValue jvSalary = subtree->value("ColleagueSalary");
+    QJsonObject currentSalaryObject = jvSalary.toObject();
+    QJsonValue jvSalaySubtree = currentSalaryObject.value("mColleague");
+    QJsonObject currentColleagueSalaryObject = jvSalaySubtree.toObject();
+
+    QJsonValue jvExpenses = subtree->value("OtherExpenses");
+    QJsonObject currentExpansesObject = jvExpenses.toObject();
+
+    QString description;
+    QString payment = QString::number(subtree->value("mPaymentAmount").toDouble());
+
+    switch (budgetType) {
+    case BudgetType::Budget:
+        description = "Budget income";
+        break;
+
+    case BudgetType::Salary:
+        description = "Salary: " + currentColleagueSalaryObject.value("mFirstName").toString()
+                + " " + currentColleagueSalaryObject.value("mLastName").toString();
+        break;
+
+    case BudgetType::OtherExpense:
+        description = "Office: " + currentExpansesObject.value("mDescription").toString();
+        break;
+
+    default:
+        description = "##########";
+        break;
+    }
+
+    ui->tblCurrentBudgetHistory->setItem(ui->tblCurrentBudgetHistory->rowCount()- 1, 0, new QTableWidgetItem(subtree->value("mPaymentDate").toString()));
+    ui->tblCurrentBudgetHistory->setItem(ui->tblCurrentBudgetHistory->rowCount()- 1, 1, new QTableWidgetItem(description));
+    ui->tblCurrentBudgetHistory->setItem(ui->tblCurrentBudgetHistory->rowCount()- 1, 2, new QTableWidgetItem(payment));
+}
+
 void CurrentBudgetInformationView::FillCurrentBudgetTable(QJsonObject *result)
 {
 
     QJsonValue jv = result->value("Body");
     QJsonObject subtree = jv.toObject();
 
-    QString totalBudget = QString::number(subtree.value("mPaymentAmount").toDouble());
-    ui->lblTotalBudget->setText(totalBudget);
+    double totalBudget =0;
 
+    QString currentBudget = QString::number(subtree.value("mPaymentAmount").toDouble());
+    ui->lblCurrentBudget->setText(currentBudget);
 
     QJsonValue jvBudgetHistory = subtree.value("BudgetHistory");
     if(jvBudgetHistory.isArray())
@@ -67,13 +105,22 @@ void CurrentBudgetInformationView::FillCurrentBudgetTable(QJsonObject *result)
         {
             QJsonObject subtree = ja.at(i).toObject();
 
-            //QString currentCollegueId = QString::number(subtree.value("mId").toInt());
-
-            QString payment = QString::number(subtree.value("mPaymentAmount").toDouble());
-
             ui->tblCurrentBudgetHistory->insertRow(ui->tblCurrentBudgetHistory->rowCount());
-            ui->tblCurrentBudgetHistory->setItem(ui->tblCurrentBudgetHistory->rowCount()- 1, 0, new QTableWidgetItem(subtree.value("mPaymentDate").toString()));
-            ui->tblCurrentBudgetHistory->setItem(ui->tblCurrentBudgetHistory->rowCount()- 1, 2, new QTableWidgetItem(payment));
+
+            if(!subtree.value("Budget").isNull())
+            {
+                totalBudget += subtree.value("mPaymentAmount").toDouble();
+                FillCurrentRow(&subtree, BudgetType::Budget);
+            }
+            if(!subtree.value("ColleagueSalary").isNull())
+            {
+                FillCurrentRow(&subtree, BudgetType::Salary);
+            }
+            if(!subtree.value("OtherExpenses").isNull())            {
+
+                FillCurrentRow(&subtree, BudgetType::OtherExpense);
+            }
         }
     }
+    ui->lblTotalBudget->setText(QString::number(totalBudget));
 }

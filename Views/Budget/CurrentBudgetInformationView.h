@@ -10,6 +10,7 @@
 #include <QScrollBar>
 
 #include <Services/BudgetService.h>
+#include "CommonUiControllers/Views/Budget/budgettype.h"
 
 namespace Ui {
     class CurrentBudgetInformationView;
@@ -25,6 +26,7 @@ public:
 
 private:
     void SetTableColumnOptions();
+    void FillCurrentRow(QJsonObject *subtree, BudgetType budgetType);
     void FillCurrentBudgetTable(QJsonObject *result);
 
 private:
