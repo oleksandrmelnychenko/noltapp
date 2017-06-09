@@ -57,7 +57,7 @@ QJsonObject *BudgetOperationRepository::CreateNewBudget(QJsonObject payment)
 void BudgetOperationRepository::replyFinished(QNetworkReply *reply)
 {
     QEventLoop loop;
-    connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+    connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));    
     loop.exec();
 
     if(!reply->error())

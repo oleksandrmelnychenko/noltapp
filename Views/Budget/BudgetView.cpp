@@ -43,7 +43,7 @@ void BudgetView::SubscribeToFormEvents()
 void BudgetView::SetBudgetHistoryColumnOptions()
 {
     QStringList titleId;
-    titleId << "BUDGET DATE" << "BUDGET";
+    titleId << "BUDGET DATE" << "TOTAL BUDGET";
     ui->tblBudgetHistory->setColumnCount(3);
     ui->tblBudgetHistory->setColumnHidden(2, true);
     ui->tblBudgetHistory->setHorizontalHeaderLabels(titleId);
@@ -73,7 +73,7 @@ void BudgetView::SetBudgetHistoryColumnOptions()
 void BudgetView::FillBudgetTable(QJsonObject *result)
 {
     ui->tblBudgetHistory->clearContents();
-    ui->tblBudgetHistory->setRowCount(0);
+    ui->tblBudgetHistory->setRowCount(0);    
 
     QJsonValue jv = result->value("Body");
     if(jv.isArray())
