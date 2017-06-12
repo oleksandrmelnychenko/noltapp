@@ -14,7 +14,14 @@ class OfficeService : public QObject
 public:
     explicit OfficeService(QObject *parent = 0);
 
-    QJsonObject* GetOfficePaymentHistory();
+signals:
+    void getOfficePaymentHistoryFinished();
+    void getOfficePaymentHistory(QJsonObject*);
+
+public slots:
+    void GetOfficePaymentHistory();
+
+public:
     QJsonObject* CreateNewOfficePayment(QJsonObject payment);
 
 private:

@@ -6,9 +6,10 @@ OfficeService::OfficeService(QObject *parent) : QObject(parent)
     mOfficOperationRepository = new OfficeOpearationRepository(mNetworkManager, this);
 }
 
-QJsonObject* OfficeService::GetOfficePaymentHistory()
+void OfficeService::GetOfficePaymentHistory()
 {
-    return mOfficOperationRepository->GetOfficePaymentHistory();
+    emit getOfficePaymentHistory(mOfficOperationRepository->GetOfficePaymentHistory());
+    emit getOfficePaymentHistoryFinished();
 }
 
 QJsonObject* OfficeService::CreateNewOfficePayment(QJsonObject payment)

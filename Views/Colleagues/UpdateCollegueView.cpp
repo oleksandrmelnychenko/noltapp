@@ -49,9 +49,7 @@ void UpdateCollegueView::UpdateCollegue()
         mJsonObject.insert("mPhone",ui->txtEditPhone->text());
         mJsonObject.insert("mDateOfBirth",ui->txtEditBirthday->text());
 
-        UpdateColleagueRequestStatus(mColleagueService->UpdateColleague(mJsonObject));
-
-        //ui->btnUpdate->setEnabled(false);
+        UpdateColleagueRequestStatus(mColleagueService->UpdateColleague(mJsonObject));        
     }
     else
     {
@@ -61,8 +59,7 @@ void UpdateCollegueView::UpdateCollegue()
 
 void UpdateCollegueView::UpdateColleagueRequestStatus(QJsonObject *status)
 {
-    emit updateColleagueRequestStatus(status->value("Message").toString());
-    //ui->btnUpdate->setEnabled(true);
+    emit updateColleagueRequestStatus(status->value("Message").toString());    
     emit clickUpdatelbl();
 }
 

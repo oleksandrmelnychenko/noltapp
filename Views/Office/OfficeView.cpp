@@ -15,7 +15,7 @@ OfficeView::OfficeView(QWidget *parent) :
 
     mOfficeService = new OfficeService(this);
 
-    FillOfficeTable(mOfficeService->GetOfficePaymentHistory());
+    LoadPaymentHistory();
 
     SubscribeToFormEvents();
 }
@@ -44,7 +44,7 @@ void OfficeView::SubscribeToFormEvents()
             validateLineEditInput(ui->txtToPay, ui->lblIncorrectPayment, mRegPayment, &isPaymentValid);});
     connect(ui->txtDescription, &OfficeLineEdit::outFocus, this,
             [this]{lostFocusOnLineEdit(ui->txtDescription, ui->lblDescription, mlblDescriptionStartPointY, mlblDescriptionEndPointY);
-        validateLineEditInput(ui->txtDescription, ui->lblIncorrectDescription, mRegDescription, &isDescriptionValid);});
+            validateLineEditInput(ui->txtDescription, ui->lblIncorrectDescription, mRegDescription, &isDescriptionValid);});
 }
 
 void OfficeView::FillOfficeTable(QJsonObject *result)
@@ -120,6 +120,18 @@ void OfficeView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int
                               : mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
 }
 
+void OfficeView::LoadPaymentHistory()
+{
+    QThread *workerThread = new QThread;
+    mOfficeService->moveToThread(workerThread);
+
+    connect(workerThread, SIGNAL(started()), mOfficeService, SLOT(GetOfficePaymentHistory()));
+    connect(mOfficeService, SIGNAL(getOfficePaymentHistoryFinished()), workerThread, SLOT(quit()));
+    connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
+    connect(mOfficeService, SIGNAL(getOfficePaymentHistory(QJsonObject*)), this, SLOT(FillOfficeTable(QJsonObject*)));
+    workerThread->start();
+}
+
 void OfficeView::PaidForExpanse()
 {
     if(isDescriptionValid && isPaymentValid && !ui->txtDescription->text().isEmpty() && !ui->txtToPay->text().isEmpty())
@@ -133,7 +145,7 @@ void OfficeView::PaidForExpanse()
 
         ui->btnPaid->setEnabled(true);
 
-        FillOfficeTable(mOfficeService->GetOfficePaymentHistory());
+        LoadPaymentHistory();
     }
     else
     {
@@ -155,7 +167,9 @@ void OfficeView::focusIn(QLineEdit *lineEdit, QLabel *label)
 
 void OfficeView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 {
-    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);    
+    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
+    ui->widget->hide();
+    ui->widget->show();
 }
 
 void OfficeView::lostFocusOnLineEdit(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)

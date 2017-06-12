@@ -144,6 +144,9 @@ QPushButton#btnPaid:pressed
       <pointsize>11</pointsize>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">QTableWidget#tblWidgetSalaryHistory
 {
@@ -357,6 +360,12 @@ background-color:transparent;</string>
    <header location="global">CommonUiControllers/Views/Office/OfficeLineEdit.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>txtDescription</tabstop>
+  <tabstop>txtToPay</tabstop>
+  <tabstop>btnPaid</tabstop>
+  <tabstop>tblWidgetSalaryHistory</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

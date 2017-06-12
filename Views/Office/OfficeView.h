@@ -13,6 +13,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QLineEdit>
+#include <QThread>
 
 #include "Entities/PersonEntity.h"
 #include "CommonUiControllers/AnimationController.h"
@@ -36,7 +37,6 @@ signals:
 private:
     void SubscribeToFormEvents();
 
-    void FillOfficeTable(QJsonObject *result);
     void SetPaymentHistoryColumnOptions();
 
     void PaidForExpansesStatus(QJsonObject *status);
@@ -45,6 +45,8 @@ private:
     void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
 
 private slots:
+    void LoadPaymentHistory();
+    void FillOfficeTable(QJsonObject *result);
     void PaidForExpanse();
 
     void setFocusOnLineEdit(QLineEdit *lineEdint);
