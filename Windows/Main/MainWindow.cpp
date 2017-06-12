@@ -61,19 +61,22 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 
 void MainWindow::createColleaguesView()
 {
-    deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new ColleaguesView(ui->mdiArea);
-    mCurrentMdiSubForm->show();
-    SetPressButtonStyleSheet(ui->btnColleagues, ui->btnOffice, ui->btnSalary, ui->btnBudget);
+    if(!dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm) || mCurrentMdiSubForm == nullptr)
+    {
+        deleteMdiSubForm(mCurrentMdiSubForm);
+        mCurrentMdiSubForm = new ColleaguesView(ui->mdiArea);
+        mCurrentMdiSubForm->show();
+        SetPressButtonStyleSheet(ui->btnColleagues, ui->btnOffice, ui->btnSalary, ui->btnBudget);
 
-    connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedNewLabel()),
-            this, SLOT(createAddColeagueView()));
-    connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(updateCurrentCollegues(long)),
-            this, SLOT(createUpdateColleagueView(long)));
+        connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(clickedNewLabel()),
+                this, SLOT(createAddColeagueView()));
+        connect(dynamic_cast<ColleaguesView*>(mCurrentMdiSubForm), SIGNAL(updateCurrentCollegues(long)),
+                this, SLOT(createUpdateColleagueView(long)));
+    }
 }
 
 void MainWindow::createAddColeagueView()
-{    
+{
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new AddCollegueView(ui->mdiArea);
     mCurrentMdiSubForm->show();
@@ -81,7 +84,7 @@ void MainWindow::createAddColeagueView()
     connect(dynamic_cast<AddCollegueView*>(mCurrentMdiSubForm), SIGNAL(requestStatus(QString)),
             this, SLOT(AddColleagueRequestStatus(QString)));
     connect(dynamic_cast<AddCollegueView*>(mCurrentMdiSubForm), SIGNAL(createColleagueSignal()),
-            this, SLOT(createColleaguesView()));
+            this, SLOT(createColleaguesView()));    
 }
 
 void MainWindow::createUpdateColleagueView(long id)
@@ -106,17 +109,22 @@ void MainWindow::createUpdateColleagueView(long id)
 
 void MainWindow::createOfficeView()
 {
-    deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new OfficeView(ui->mdiArea);    
-    mCurrentMdiSubForm->show();
-    SetPressButtonStyleSheet(ui->btnOffice, ui->btnColleagues, ui->btnSalary, ui->btnBudget);
+    if(!dynamic_cast<OfficeView*>(mCurrentMdiSubForm) || mCurrentMdiSubForm == nullptr)
+    {
+        deleteMdiSubForm(mCurrentMdiSubForm);
+        mCurrentMdiSubForm = new OfficeView(ui->mdiArea);
+        mCurrentMdiSubForm->show();
+        SetPressButtonStyleSheet(ui->btnOffice, ui->btnColleagues, ui->btnSalary, ui->btnBudget);
 
-    connect(dynamic_cast<OfficeView*>(mCurrentMdiSubForm), SIGNAL(paidForExpanseRequestStatus(QString)),
-            this, SLOT(DoOfficeExpansesStatus(QString)));
+        connect(dynamic_cast<OfficeView*>(mCurrentMdiSubForm), SIGNAL(paidForExpanseRequestStatus(QString)),
+                this, SLOT(DoOfficeExpansesStatus(QString)));
+    }
 }
 
 void MainWindow::createSalaryView()
 {
+    if(!dynamic_cast<SalaryView*>(mCurrentMdiSubForm) || mCurrentMdiSubForm == nullptr)
+    {
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new SalaryView(ui->mdiArea);    
     mCurrentMdiSubForm->show();
@@ -126,19 +134,23 @@ void MainWindow::createSalaryView()
             this, SLOT(DoPaymentStatus(QString)));
     connect(dynamic_cast<SalaryView*>(mCurrentMdiSubForm), SIGNAL(updateColleagueSalaryRequestStatus(QString)),
             this, SLOT(UpdateSalaryStatus(QString)));
+    }
 }
 
 void MainWindow::createBudgetView()
 {
-    deleteMdiSubForm(mCurrentMdiSubForm);
-    mCurrentMdiSubForm = new BudgetView(ui->mdiArea);
-    mCurrentMdiSubForm->show();
-    SetPressButtonStyleSheet(ui->btnBudget, ui->btnSalary, ui->btnOffice, ui->btnColleagues);
+    if(!dynamic_cast<BudgetView*>(mCurrentMdiSubForm) || mCurrentMdiSubForm == nullptr)
+    {
+        deleteMdiSubForm(mCurrentMdiSubForm);
+        mCurrentMdiSubForm = new BudgetView(ui->mdiArea);
+        mCurrentMdiSubForm->show();
+        SetPressButtonStyleSheet(ui->btnBudget, ui->btnSalary, ui->btnOffice, ui->btnColleagues);
 
-    connect(dynamic_cast<BudgetView*>(mCurrentMdiSubForm), SIGNAL(setBudgetRequestStatus(QString)),
-            this, SLOT(SetBudgetStatus(QString)));
-    connect(dynamic_cast<BudgetView*>(mCurrentMdiSubForm), SIGNAL(watchCurrentBudgetInformation(long)),
-            this, SLOT(createCurrentBudgetInformationView(long)));
+        connect(dynamic_cast<BudgetView*>(mCurrentMdiSubForm), SIGNAL(setBudgetRequestStatus(QString)),
+                this, SLOT(SetBudgetStatus(QString)));
+        connect(dynamic_cast<BudgetView*>(mCurrentMdiSubForm), SIGNAL(watchCurrentBudgetInformation(long)),
+                this, SLOT(createCurrentBudgetInformationView(long)));
+    }
 }
 
 void MainWindow::createCurrentBudgetInformationView(long id)
@@ -149,11 +161,11 @@ void MainWindow::createCurrentBudgetInformationView(long id)
 }
 
 void MainWindow::deleteMdiSubForm(QMdiSubWindow *form)
-{
+{    
     if(form != nullptr)
     {
         mCurrentMdiSubForm->close();
-        mCurrentMdiSubForm = nullptr;
+        mCurrentMdiSubForm = nullptr;        
     }
 }
 
