@@ -49,6 +49,9 @@
       <pointsize>11</pointsize>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="autoFillBackground">
      <bool>true</bool>
     </property>
@@ -310,6 +313,9 @@ QPushButton#btnPaid:pressed
       <pointsize>11</pointsize>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">QTableWidget#tblWidgetSalaryHistory
 {
@@ -496,6 +502,12 @@ background-color:transparent;</string>
    <header location="global">CommonUiControllers/Views/Salary/SalaryLineEdit.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>txtSalary</tabstop>
+  <tabstop>btnUpdateSalary</tabstop>
+  <tabstop>txtPaid</tabstop>
+  <tabstop>btnPaid</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

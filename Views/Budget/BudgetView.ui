@@ -104,6 +104,9 @@ opacity: 0;</string>
       <pointsize>11</pointsize>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">QTableWidget#tblBudgetHistory
 {
@@ -286,6 +289,10 @@ QPushButton#btnSetBudget:pressed
    <header location="global">CommonUiControllers/Views/Budget/BudgetLineEdit.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>txtBudget</tabstop>
+  <tabstop>btnSetBudget</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

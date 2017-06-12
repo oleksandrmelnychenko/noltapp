@@ -364,7 +364,6 @@ background-color:transparent;</string>
   <tabstop>txtDescription</tabstop>
   <tabstop>txtToPay</tabstop>
   <tabstop>btnPaid</tabstop>
-  <tabstop>tblWidgetSalaryHistory</tabstop>
  </tabstops>
  <resources/>
  <connections/>

@@ -62,7 +62,7 @@ private:
     BudgetService *mBudgetService;
     QJsonObject mJsonObjectBudget;
 
-    QString mRegBudget = ("[0-9]{1,5}(\\.[0-9]{1,2})?");
+    QString mRegBudget = ("[0-9]{1,7}(\\.[0-9]{1,2})?");
 
     QString mValidateColor = ("border:none; border-bottom:1px solid #909090; color:#ffffff; padding-left:7px;");
     QString mNotValidateColor = ("border:none;border-bottom:1px solid #ff2306; color:#ffffff; padding-left:7px;");
