@@ -70,8 +70,8 @@ void SalaryView::OutputSalary(QJsonObject *result)
     ui->btnUpdateSalary->setEnabled(true);
     ui->btnPaid->setEnabled(true);
 
-//    ui->widget->hide();
-//    ui->widget->show();
+    ui->widget->hide();
+    ui->widget->show();
 
 }
 
