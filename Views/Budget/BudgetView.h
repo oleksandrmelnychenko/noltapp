@@ -61,7 +61,6 @@ private slots:
 private:
     Ui::BudgetView *ui;
 
-    BudgetService *mBudgetService;
     QJsonObject mJsonObjectBudget;
 
     QString mRegBudget = ("[0-9]{1,7}(\\.[0-9]{1,2})?");

@@ -14,7 +14,14 @@ class SalaryServiece : public QObject
 public:
     explicit SalaryServiece(QObject *parent = 0);
 
-    QJsonObject* GetAllColleagues();
+signals:
+    void getAllColleaguesFinished();
+    void getAllColleagues(QJsonObject*);
+
+public slots:
+    void GetAllColleagues();
+
+public:
     QJsonObject* GetColleagueById(long id);
     QJsonObject* UpdateColleagueSalary(QJsonObject person);
     QJsonObject* GetPaymentHistoryById(long id);

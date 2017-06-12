@@ -9,10 +9,9 @@ SalaryView::SalaryView(QWidget *parent) :
     setAttribute(Qt::WA_DeleteOnClose);
     SetUiElementsOptions();
 
-    mSalaryService = new SalaryServiece(this);
     mAnimationController = new AnimationController();
 
-    FillColleagueTable(mSalaryService->GetAllColleagues());
+    LoadAllColleagues();
 
     SubscribeToFormEvents();
 }
@@ -37,6 +36,8 @@ void SalaryView::SetUiElementsOptions()
 
 void SalaryView::GetColleagueSalaryInformation(int row, int column)
 {
+    SalaryServiece salaryService;
+
     ui->lblIncorrectSalary->setVisible(false);
     ui->lblIncorrectPayment->setVisible(false);
     ui->lblIncorrectInput->setVisible(false); // do method
@@ -47,8 +48,8 @@ void SalaryView::GetColleagueSalaryInformation(int row, int column)
 
     mCurrentColleagueId = id;
 
-    OutputSalary(mSalaryService->GetColleagueById(id));
-    OutputPaymentHistory(mSalaryService->GetPaymentHistoryById(id));
+    OutputSalary(salaryService.GetColleagueById(id));
+    OutputPaymentHistory(salaryService.GetPaymentHistoryById(id));
 }
 
 void SalaryView::OutputSalary(QJsonObject *result)
@@ -63,12 +64,14 @@ void SalaryView::OutputSalary(QJsonObject *result)
     ui->txtPaid->setText(salary);
     ui->txtSalary->setText(salary);
 
-
     setLabelsPosition(ui->txtSalary, ui->lblSalary, mlblSalaryStartPointY, mlblSalaryEndPointY);
     setLabelsPosition(ui->txtPaid, ui->lblToPay, mlblPaymentStartPointY, mlblPaymentEndPointY);
 
     ui->btnUpdateSalary->setEnabled(true);
     ui->btnPaid->setEnabled(true);
+
+//    ui->widget->hide();
+//    ui->widget->show();
 
 }
 
@@ -81,7 +84,8 @@ void SalaryView::UpdateSalary()
         mJsonObjectColleague.insert("mSalaryAmount", ui->txtSalary->text());
         ui->txtPaid->setText(ui->txtSalary->text());
 
-        UpdateColleagueSalaryRequestStatus(mSalaryService->UpdateColleagueSalary(mJsonObjectColleague));
+        SalaryServiece salaryService;
+        UpdateColleagueSalaryRequestStatus(salaryService.UpdateColleagueSalary(mJsonObjectColleague));
 
         ui->btnUpdateSalary->setEnabled(true);
     }
@@ -100,11 +104,12 @@ void SalaryView::PaidSalary()
 
         mJsonObjectSalary.insert("mPaymentAmount", ui->txtPaid->text());
 
-        PaidSalaryRequestStatus(mSalaryService->PaidSalary(mCurrentColleagueId, mJsonObjectSalary));
+        SalaryServiece salaryService;
+        PaidSalaryRequestStatus(salaryService.PaidSalary(mCurrentColleagueId, mJsonObjectSalary));
 
         ui->btnPaid->setEnabled(true);
 
-        OutputPaymentHistory(mSalaryService->GetPaymentHistoryById(mCurrentColleagueId));
+        OutputPaymentHistory(salaryService.GetPaymentHistoryById(mCurrentColleagueId));
     }
     else
     {
@@ -159,11 +164,6 @@ void SalaryView::SubscribeToFormEvents()
     connect(ui->txtPaid, &SalaryLineEdit::outFocus, this,
             [this]{lostFocusOnLineEdit(ui->txtPaid, ui->lblToPay, mlblPaymentStartPointY, mlblPaymentEndPointY);
             validateLineEditInput(ui->txtPaid, ui->lblIncorrectPayment, mRegPayment, &isPaymentValid);});
-}
-
-void SalaryView::LoadColleaguePaymentHistory(long id)
-{
-    mSalaryService->GetPaymentHistoryById(id);    
 }
 
 QString SalaryView::getInformationFromLineEdit(QLineEdit *lineEdit)
@@ -240,6 +240,20 @@ void SalaryView::SetSalaryHistoryColumnOptions()
     ui->tblWidgetSalaryHistory->setColumnWidth(1,130);
 }
 
+void SalaryView::LoadAllColleagues()
+{
+    SalaryServiece *salaryService = new SalaryServiece();
+    QThread *workerThread = new QThread;
+    salaryService->moveToThread(workerThread);
+
+    connect(workerThread, SIGNAL(started()), salaryService, SLOT(GetAllColleagues()));
+    connect(salaryService, SIGNAL(getAllColleaguesFinished()), workerThread, SLOT(quit()));
+    connect(workerThread, SIGNAL(finished()), salaryService, SLOT(deleteLater()));
+    connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
+    connect(salaryService, SIGNAL(getAllColleagues(QJsonObject*)), this, SLOT(FillColleagueTable(QJsonObject*)));
+    workerThread->start();
+}
+
 void SalaryView::FillColleagueTable(QJsonObject *result)
 {
     QJsonValue jv = result->value("Body");
@@ -310,6 +324,8 @@ void SalaryView::setFocusOnLineEdit(QLineEdit *lineEdint)
 void SalaryView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 {
     mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
+    ui->widget->hide();
+    ui->widget->show();
 }
 
 void SalaryView::lostFocusOnLineEdit(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)

@@ -12,6 +12,7 @@
 #include <QStandardItemModel>
 #include <QScrollBar>
 #include <QGridLayout>
+#include <QThread>
 
 #include "Entities/PersonEntity.h"
 #include "CommonUiControllers/AnimationController.h"
@@ -32,9 +33,7 @@ public:
 private:
     void SetUiElementsOptions();
     void SubscribeToFormEvents();
-    void FillColleagueTable(QJsonObject *result);
-    void OutputSalary(QJsonObject *result);
-    void LoadColleaguePaymentHistory(long id);
+    void OutputSalary(QJsonObject *result);   
     void OutputPaymentHistory(QJsonObject *result);
 
     void PaidSalaryRequestStatus(QJsonObject *status);
@@ -49,6 +48,8 @@ private:
     void SetSalaryHistoryColumnOptions();
 
 private slots:    
+    void LoadAllColleagues();
+    void FillColleagueTable(QJsonObject *result);
     void GetColleagueSalaryInformation(int row, int column);
     void UpdateSalary();
     void PaidSalary();
@@ -68,8 +69,6 @@ private:
 
     QJsonObject mJsonObjectColleague;
     QJsonObject mJsonObjectSalary;
-
-    SalaryServiece *mSalaryService;
 
     QString mRegSalary = ("[0-9]{3,5}(\\.[0-9]{1,2})?");
     QString mRegPayment = ("[0-9]{1,5}(\\.[0-9]{1,2})?");

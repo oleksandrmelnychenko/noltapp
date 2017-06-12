@@ -13,8 +13,6 @@ OfficeView::OfficeView(QWidget *parent) :
     ui->lblIncorrectDescription->setVisible(false);
     ui->lblIncorrectInput->setVisible(false);
 
-    mOfficeService = new OfficeService(this);
-
     LoadPaymentHistory();
 
     SubscribeToFormEvents();
@@ -122,13 +120,15 @@ void OfficeView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int
 
 void OfficeView::LoadPaymentHistory()
 {
+    OfficeService *officeService = new OfficeService();
     QThread *workerThread = new QThread;
-    mOfficeService->moveToThread(workerThread);
+    officeService->moveToThread(workerThread);
 
-    connect(workerThread, SIGNAL(started()), mOfficeService, SLOT(GetOfficePaymentHistory()));
-    connect(mOfficeService, SIGNAL(getOfficePaymentHistoryFinished()), workerThread, SLOT(quit()));
+    connect(workerThread, SIGNAL(started()), officeService, SLOT(GetOfficePaymentHistory()));
+    connect(officeService, SIGNAL(getOfficePaymentHistoryFinished()), workerThread, SLOT(quit()));
+    connect(workerThread, SIGNAL(finished()), officeService, SLOT(deleteLater()));
     connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
-    connect(mOfficeService, SIGNAL(getOfficePaymentHistory(QJsonObject*)), this, SLOT(FillOfficeTable(QJsonObject*)));
+    connect(officeService, SIGNAL(getOfficePaymentHistory(QJsonObject*)), this, SLOT(FillOfficeTable(QJsonObject*)));
     workerThread->start();
 }
 
@@ -141,7 +141,8 @@ void OfficeView::PaidForExpanse()
         mJsonObjectOffice.insert("mPaymentAmount", ui->txtToPay->text());
         mJsonObjectOffice.insert("mDescription", ui->txtDescription->text());
 
-        PaidForExpansesStatus(mOfficeService->CreateNewOfficePayment(mJsonObjectOffice));
+        OfficeService officeService;
+        PaidForExpansesStatus(officeService.CreateNewOfficePayment(mJsonObjectOffice));
 
         ui->btnPaid->setEnabled(true);
 

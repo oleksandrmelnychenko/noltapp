@@ -18,8 +18,6 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
     SetTableColumnOptions();
     SetBusyIndicator();
 
-    mColleagueService = new ColleagueService(this);
-
     LoadAllColleagues();
 
     connect(ui->tblWidgetId,  SIGNAL(cellClicked(int,int)), this, SLOT(UpdateCurrentCollegues(int, int)));
@@ -28,19 +26,21 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
 
 ColleaguesView::~ColleaguesView()
 {
-    delete ui;
+    delete ui;    
 }
 
 void ColleaguesView::LoadAllColleagues()
 {
+    ColleagueService *mColleagueService = new ColleagueService();
     QThread *workerThread = new QThread;
     mColleagueService->moveToThread(workerThread);
 
     connect(workerThread, SIGNAL(started()), mColleagueService, SLOT(GetAllColleagues()));
     connect(mColleagueService, SIGNAL(getAllColleaguesFinished()), workerThread, SLOT(quit()));
-    connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
+    connect(workerThread, SIGNAL(finished()), mColleagueService, SLOT(deleteLater()));
+    connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));    
     connect(mColleagueService, SIGNAL(getAllColleagues(QJsonObject*)), this, SLOT(OutputColleagues(QJsonObject*)));
-    workerThread->start();
+    workerThread->start();    
 }
 
 void ColleaguesView::SetTableColumnsWidth()

@@ -58,7 +58,6 @@ private slots:
 private:
     Ui::OfficeForm *ui;
 
-    OfficeService *mOfficeService;
     QJsonObject mJsonObjectOffice;
 
     QString mRegDescription = ("[a-zA-Z0-9\\s]{1,50}");

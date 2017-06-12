@@ -44,8 +44,7 @@ signals:
 private:
     Ui::ColleaguesForm *ui;
 
-    QMovie *mMovie;
-    ColleagueService *mColleagueService;   
+    QMovie *mMovie;    
 };
 
 #endif // COLLEAGUESFORM_H

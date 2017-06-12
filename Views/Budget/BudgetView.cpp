@@ -11,8 +11,6 @@ BudgetView::BudgetView(QWidget *parent) :
     ui->lblIncorrectBudget->setVisible(false);
     ui->lblIncorrectInput->setVisible(false);
 
-    mBudgetService = new BudgetService(this);
-
     LoadBudget();
 
     SubscribeToFormEvents();
@@ -112,13 +110,15 @@ void BudgetView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int
 
 void BudgetView::LoadBudget()
 {
+    BudgetService *budgetService = new BudgetService();
     QThread *workerThread = new QThread;
-    mBudgetService->moveToThread(workerThread);
+    budgetService->moveToThread(workerThread);
 
-    connect(workerThread, SIGNAL(started()), mBudgetService, SLOT(GetBudgetHistory()));
-    connect(mBudgetService, SIGNAL(getBudgetHistoryFinished()), workerThread, SLOT(quit()));
+    connect(workerThread, SIGNAL(started()), budgetService, SLOT(GetBudgetHistory()));
+    connect(budgetService, SIGNAL(getBudgetHistoryFinished()), workerThread, SLOT(quit()));
+    connect(workerThread, SIGNAL(finished()), budgetService, SLOT(deleteLater()));
     connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
-    connect(mBudgetService, SIGNAL(getBudgetHistory(QJsonObject*)), this, SLOT(FillBudgetTable(QJsonObject*)));
+    connect(budgetService, SIGNAL(getBudgetHistory(QJsonObject*)), this, SLOT(FillBudgetTable(QJsonObject*)));
     workerThread->start();
 }
 
@@ -130,7 +130,8 @@ void BudgetView::AddBudget()
 
         mJsonObjectBudget.insert("mPaymentAmount", ui->txtBudget->text());
 
-        SetBudgetStatus(mBudgetService->CreateNewBudget(mJsonObjectBudget));
+        BudgetService budgetService;
+        SetBudgetStatus(budgetService.CreateNewBudget(mJsonObjectBudget));
 
         ui->btnSetBudget->setEnabled(true);
 

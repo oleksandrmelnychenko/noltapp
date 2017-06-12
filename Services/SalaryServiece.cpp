@@ -7,9 +7,10 @@ SalaryServiece::SalaryServiece(QObject *parent) : QObject(parent)
     mSalaryOperationRepository = new SalaryOperationRepository(mNetworkManager, this);
 }
 
-QJsonObject* SalaryServiece::GetAllColleagues()
+void SalaryServiece::GetAllColleagues()
 {    
-    return mColleagueRepository->GetAllColleagues();
+    emit getAllColleagues(mColleagueRepository->GetAllColleagues());
+    emit getAllColleaguesFinished();
 }
 
 QJsonObject* SalaryServiece::GetColleagueById(long id)
