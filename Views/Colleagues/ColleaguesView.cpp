@@ -26,7 +26,8 @@ ColleaguesView::ColleaguesView(QWidget *parent) :
 
 ColleaguesView::~ColleaguesView()
 {
-    delete ui;    
+    delete mMovie;
+    delete ui;
 }
 
 void ColleaguesView::LoadAllColleagues()

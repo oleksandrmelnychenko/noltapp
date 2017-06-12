@@ -72,7 +72,6 @@ void SalaryView::OutputSalary(QJsonObject *result)
 
     ui->widget->hide();
     ui->widget->show();
-
 }
 
 void SalaryView::UpdateSalary()
