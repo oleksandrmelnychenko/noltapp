@@ -14,6 +14,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QLineEdit>
+#include <QThread>
 
 #include "Entities/PersonEntity.h"
 #include "CommonUiControllers/AnimationController.h"
@@ -39,7 +40,6 @@ private:
     void SubscribeToFormEvents();
 
     void SetBudgetHistoryColumnOptions();
-    void FillBudgetTable(QJsonObject *result);
 
     void SetBudgetStatus(QJsonObject *status);
 
@@ -47,7 +47,9 @@ private:
     void setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY);
 
 private slots:
+    void LoadBudget();
     void AddBudget();
+    void FillBudgetTable(QJsonObject *result);
     void WatchCurrentBudgetInformation(int row, int column);
 
     void setFocusOnLineEdit(QLineEdit *lineEdint);

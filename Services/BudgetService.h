@@ -14,7 +14,14 @@ class BudgetService : public QObject
 public:
     explicit BudgetService(QObject *parent = 0);
 
-    QJsonObject* GetBudgetHistory();
+signals:
+    void getBudgetHistoryFinished();
+    void getBudgetHistory(QJsonObject*);
+
+public slots:
+    void GetBudgetHistory();
+
+public:
     QJsonObject *GetBudgetById(long id);
     QJsonObject* CreateNewBudget(QJsonObject payment);
 

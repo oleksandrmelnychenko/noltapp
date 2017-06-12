@@ -13,7 +13,7 @@ BudgetView::BudgetView(QWidget *parent) :
 
     mBudgetService = new BudgetService(this);
 
-    FillBudgetTable(mBudgetService->GetBudgetHistory());
+    LoadBudget();
 
     SubscribeToFormEvents();
 }
@@ -110,6 +110,18 @@ void BudgetView::setLabelsPosition(const QLineEdit *lineEdit, QLabel *label, int
                               : mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsEndPointY);
 }
 
+void BudgetView::LoadBudget()
+{
+    QThread *workerThread = new QThread;
+    mBudgetService->moveToThread(workerThread);
+
+    connect(workerThread, SIGNAL(started()), mBudgetService, SLOT(GetBudgetHistory()));
+    connect(mBudgetService, SIGNAL(getBudgetHistoryFinished()), workerThread, SLOT(quit()));
+    connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
+    connect(mBudgetService, SIGNAL(getBudgetHistory(QJsonObject*)), this, SLOT(FillBudgetTable(QJsonObject*)));
+    workerThread->start();
+}
+
 void BudgetView::AddBudget()
 {
     if(isBudgetnValid && !ui->txtBudget->text().isEmpty())
@@ -122,7 +134,7 @@ void BudgetView::AddBudget()
 
         ui->btnSetBudget->setEnabled(true);
 
-        FillBudgetTable(mBudgetService->GetBudgetHistory());
+        LoadBudget();
     }
     else
     {
@@ -150,7 +162,9 @@ void BudgetView::focusIn(QLineEdit *lineEdit, QLabel *label)
 
 void BudgetView::doLabelAnimation(QLabel *label, int labelsYCoordinate)
 {
-    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);    
+    mAnimationController->labelAnimationByY(label, mAnimationDuration, labelsYCoordinate);
+    ui->widget->hide();
+    ui->widget->show();
 }
 
 void BudgetView::lostFocusOnLineEdit(const QLineEdit *lineEdit, QLabel *label, int labelsStartPointY, int labelsEndPointY)

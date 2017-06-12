@@ -6,9 +6,10 @@ BudgetService::BudgetService(QObject *parent) : QObject(parent)
     mBudgetRepository = new BudgetOperationRepository(mNetworkManager, this);
 }
 
-QJsonObject* BudgetService::GetBudgetHistory()
+void BudgetService::GetBudgetHistory()
 {
-    return mBudgetRepository->GetBudgetHistory();
+    emit getBudgetHistory(mBudgetRepository->GetBudgetHistory());
+    emit getBudgetHistoryFinished();
 }
 
 QJsonObject *BudgetService::GetBudgetById(long id)
