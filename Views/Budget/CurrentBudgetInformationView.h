@@ -24,10 +24,16 @@ public:
     explicit CurrentBudgetInformationView(QWidget *parent = 0, long id = 0);
     ~CurrentBudgetInformationView();
 
+signals:
+    void createBudgetSignal();
+
 private:
     void SetTableColumnOptions();
     void FillCurrentRow(QJsonObject *subtree, BudgetType budgetType);
     void FillCurrentBudgetTable(QJsonObject *result);
+
+protected slots:
+    void clickBudget();
 
 private:
     Ui::CurrentBudgetInformationView *ui;

@@ -22,7 +22,7 @@ BudgetView::~BudgetView()
 }
 
 void BudgetView::SubscribeToFormEvents()
-{
+{    
     connect(ui->tblBudgetHistory, SIGNAL(cellClicked(int,int)), this, SLOT(WatchCurrentBudgetInformation(int,int)));
 
     connect(ui->btnSetBudget, SIGNAL(clicked()), this, SLOT(AddBudget()));

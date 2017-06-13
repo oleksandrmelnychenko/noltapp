@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="lblBudgetTitle">
+  <widget class="BudgetLabel" name="lblBudgetTitle">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -227,6 +227,13 @@ background-color:transparent;</string>
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BudgetLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">CommonUiControllers/Views/Budget/BudgetLabel.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

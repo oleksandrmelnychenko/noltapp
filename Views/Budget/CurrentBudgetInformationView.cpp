@@ -13,6 +13,8 @@ CurrentBudgetInformationView::CurrentBudgetInformationView(QWidget *parent, long
     mBudgetService = new BudgetService(this);
 
     FillCurrentBudgetTable(mBudgetService->GetBudgetById(mId));
+
+    connect(ui->lblBudgetTitle, &BudgetLabel::pressIn, this, [this]{clickBudget();});
 }
 
 CurrentBudgetInformationView::~CurrentBudgetInformationView()
@@ -125,4 +127,9 @@ void CurrentBudgetInformationView::FillCurrentBudgetTable(QJsonObject *result)
         }
     }
     ui->lblCurrentBudget->setText(QString::number(currentBudget));
+}
+
+void CurrentBudgetInformationView::clickBudget()
+{
+    emit createBudgetSignal();
 }

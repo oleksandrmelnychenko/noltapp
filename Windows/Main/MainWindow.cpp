@@ -158,6 +158,9 @@ void MainWindow::createCurrentBudgetInformationView(long id)
     deleteMdiSubForm(mCurrentMdiSubForm);
     mCurrentMdiSubForm = new CurrentBudgetInformationView(ui->mdiArea,id);
     mCurrentMdiSubForm->show();
+
+    connect(dynamic_cast<CurrentBudgetInformationView*>(mCurrentMdiSubForm), SIGNAL(createBudgetSignal()),
+            this, SLOT(createBudgetView()));
 }
 
 void MainWindow::deleteMdiSubForm(QMdiSubWindow *form)
