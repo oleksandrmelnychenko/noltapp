@@ -50,6 +50,8 @@ void SalaryView::GetColleagueSalaryInformation(int row, int column)
 
     OutputSalary(salaryService.GetColleagueById(id));
     OutputPaymentHistory(salaryService.GetPaymentHistoryById(id));
+    isSalaryValid = true;
+    isPaymentValid = true;
 }
 
 void SalaryView::OutputSalary(QJsonObject *result)

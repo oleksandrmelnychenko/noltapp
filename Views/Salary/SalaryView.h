@@ -76,8 +76,8 @@ private:
     QString mValidateColor = ("border:none; border-bottom:1px solid #909090; color:#ffffff; padding-left:7px;");
     QString mNotValidateColor = ("border:none;border-bottom:1px solid #ff2306; color:#ffffff; padding-left:7px;");
 
-    bool isSalaryValid = true;
-    bool isPaymentValid = true;
+    bool isSalaryValid = false;
+    bool isPaymentValid = false;
 
     AnimationController* mAnimationController;
     int mAnimationDuration = 250;
