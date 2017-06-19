@@ -25,6 +25,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
@@ -302,9 +305,9 @@ QPushButton#btnPaid:pressed
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>10</y>
+      <y>50</y>
       <width>300</width>
-      <height>413</height>
+      <height>323</height>
      </rect>
     </property>
     <property name="font">
@@ -454,6 +457,98 @@ opacity: 0;</string>
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="lblTitleAllTimePayment">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>383</y>
+      <width>174</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+    </property>
+    <property name="text">
+     <string>All time payment:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblTitleCurrentMonthPayment">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>10</y>
+      <width>166</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+    </property>
+    <property name="text">
+     <string>Month payment:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblAllTimePayment">
+    <property name="geometry">
+     <rect>
+      <x>888</x>
+      <y>383</y>
+      <width>121</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblCurrentMonthPayment">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>10</y>
+      <width>121</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Leelawadee UI Semilight</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff;
+background-color:transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>txtPaid</zorder>
    <zorder>tblWidgetColleagues</zorder>
    <zorder>txtSalary</zorder>
@@ -465,6 +560,10 @@ opacity: 0;</string>
    <zorder>lblIncorrectSalary</zorder>
    <zorder>lblIncorrectPayment</zorder>
    <zorder>lblIncorrectInput</zorder>
+   <zorder>lblTitleAllTimePayment</zorder>
+   <zorder>lblTitleCurrentMonthPayment</zorder>
+   <zorder>lblAllTimePayment</zorder>
+   <zorder>lblCurrentMonthPayment</zorder>
   </widget>
   <widget class="QLabel" name="lblSalaryTitle">
    <property name="geometry">

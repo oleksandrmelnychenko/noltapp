@@ -1,6 +1,9 @@
 #include "SalaryView.h"
 #include "ui_SalaryView.h"
 
+#include "time.h"
+#include <QDate>
+
 SalaryView::SalaryView(QWidget *parent) :
     QMdiSubWindow(parent, Qt::FramelessWindowHint | Qt::Window),
     ui(new Ui::SalaryForm)
@@ -124,6 +127,15 @@ void SalaryView::OutputPaymentHistory(QJsonObject *result)
     ui->tblWidgetSalaryHistory->clearContents();
     ui->tblWidgetSalaryHistory->setRowCount(0);
 
+    time_t theTime = time(nullptr);
+    struct tm *aTime = localtime(&theTime);
+
+    int currentMonth = aTime->tm_mon + 1;
+    int currentYear = aTime->tm_year + 1900;
+
+    double allTimePayment = 0;
+    double currentMonthPayment = 0;
+
     QJsonValue jv = result->value("Body");
 
     if(jv.isArray())
@@ -134,11 +146,24 @@ void SalaryView::OutputPaymentHistory(QJsonObject *result)
             QJsonObject subtree = ja.at(i).toObject();
 
             QString payment = QString::number(subtree.value("mPaymentAmount").toDouble());
+            allTimePayment += subtree.value("mPaymentAmount").toDouble();
+
+            QDate currentDate = QDate::fromString(subtree.value("mPaymentDate").toString(),"d.M.yyyy");
+            int month = currentDate.month();
+            int year = currentDate.year();
+
+            if(currentMonth == month && currentYear == year)
+            {
+                currentMonthPayment += subtree.value("mPaymentAmount").toDouble();
+            }
 
             ui->tblWidgetSalaryHistory->insertRow(ui->tblWidgetSalaryHistory->rowCount());
             ui->tblWidgetSalaryHistory->setItem(ui->tblWidgetSalaryHistory->rowCount()- 1, 0, new QTableWidgetItem(subtree.value("mPaymentDate").toString()));
             ui->tblWidgetSalaryHistory->setItem(ui->tblWidgetSalaryHistory->rowCount()- 1, 1, new QTableWidgetItem(payment));
         }
+
+        ui->lblAllTimePayment->setText(QString::number(allTimePayment));
+        ui->lblCurrentMonthPayment->setText(QString::number(currentMonthPayment));
     }
 }
 
