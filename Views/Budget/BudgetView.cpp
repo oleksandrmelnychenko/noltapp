@@ -41,9 +41,9 @@ void BudgetView::SubscribeToFormEvents()
 void BudgetView::SetBudgetHistoryColumnOptions()
 {
     QStringList titleId;
-    titleId << "BUDGET DATE" << "TOTAL BUDGET";
-    ui->tblBudgetHistory->setColumnCount(3);
-    ui->tblBudgetHistory->setColumnHidden(2, true);
+    titleId << "BUDGET DATE" << "TOTAL BUDGET" << "CURRENT BUDGET" << "MONTH";
+    ui->tblBudgetHistory->setColumnCount(5);
+    ui->tblBudgetHistory->setColumnHidden(4, true);
     ui->tblBudgetHistory->setHorizontalHeaderLabels(titleId);
     ui->tblBudgetHistory->verticalHeader()->setVisible(false);
     ui->tblBudgetHistory->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
@@ -66,6 +66,8 @@ void BudgetView::SetBudgetHistoryColumnOptions()
                                                         "}");
     ui->tblBudgetHistory->setColumnWidth(0,150);
     ui->tblBudgetHistory->setColumnWidth(1,150);
+    ui->tblBudgetHistory->setColumnWidth(2,150);
+    ui->tblBudgetHistory->setColumnWidth(3,150);
 }
 
 void BudgetView::FillBudgetTable(QJsonObject *result)
@@ -82,12 +84,15 @@ void BudgetView::FillBudgetTable(QJsonObject *result)
             QJsonObject subtree = ja.at(i).toObject();
 
             QString currentBudgetId = QString::number(subtree.value("mId").toInt());
-            QString currentBudgetAmount = QString::number(subtree.value("mPaymentAmount").toDouble());
+            QString currentBudgetAmount = QString::number(subtree.value("mCurrentAmount").toDouble());
+            QString totalBudgetAmount = QString::number(subtree.value("mPaymentAmount").toDouble());
 
             ui->tblBudgetHistory->insertRow(ui->tblBudgetHistory->rowCount());
             ui->tblBudgetHistory->setItem(ui->tblBudgetHistory->rowCount()- 1, 0, new QTableWidgetItem(subtree.value("mPaymentDate").toString()));
-            ui->tblBudgetHistory->setItem(ui->tblBudgetHistory->rowCount()- 1, 1, new QTableWidgetItem(currentBudgetAmount));
-            ui->tblBudgetHistory->setItem(ui->tblBudgetHistory->rowCount()- 1, 2, new QTableWidgetItem(currentBudgetId));
+            ui->tblBudgetHistory->setItem(ui->tblBudgetHistory->rowCount()- 1, 1, new QTableWidgetItem(totalBudgetAmount));
+            ui->tblBudgetHistory->setItem(ui->tblBudgetHistory->rowCount()- 1, 2, new QTableWidgetItem(currentBudgetAmount));
+            ui->tblBudgetHistory->setItem(ui->tblBudgetHistory->rowCount()- 1, 3, new QTableWidgetItem(subtree.value("mPaymentMonth").toString()));
+            ui->tblBudgetHistory->setItem(ui->tblBudgetHistory->rowCount()- 1, 4, new QTableWidgetItem(currentBudgetId));
         }
     }
 }
@@ -145,7 +150,7 @@ void BudgetView::AddBudget()
 
 void BudgetView::WatchCurrentBudgetInformation(int row, int column)
 {
-    long id = ui->tblBudgetHistory->item(row,2)->text().toLong();
+    long id = ui->tblBudgetHistory->item(row,4)->text().toLong();
     emit watchCurrentBudgetInformation(id);
 }
 

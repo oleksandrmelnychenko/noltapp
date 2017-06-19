@@ -90,11 +90,11 @@ void CurrentBudgetInformationView::FillCurrentRow(QJsonObject *subtree, BudgetTy
 
 void CurrentBudgetInformationView::FillCurrentBudgetTable(QJsonObject *result)
 {
-
     QJsonValue jv = result->value("Body");
     QJsonObject subtree = jv.toObject();
 
-    double currentBudget = subtree.value("mPaymentAmount").toDouble();
+    QString currentBudget = QString::number(subtree.value("mCurrentAmount").toDouble());
+    ui->lblCurrentBudget->setText(currentBudget);
 
     QString totalBudget = QString::number(subtree.value("mPaymentAmount").toDouble());
     ui->lblTotalBudget->setText(totalBudget);
@@ -116,17 +116,16 @@ void CurrentBudgetInformationView::FillCurrentBudgetTable(QJsonObject *result)
             }
             if(!subtree.value("ColleagueSalary").isNull())
             {
-                currentBudget -= subtree.value("mPaymentAmount").toDouble();
+                //currentBudget -= subtree.value("mPaymentAmount").toDouble();
                 FillCurrentRow(&subtree, BudgetType::Salary);
             }
             if(!subtree.value("OtherExpenses").isNull())
             {
-                currentBudget -= subtree.value("mPaymentAmount").toDouble();
+                //currentBudget -= subtree.value("mPaymentAmount").toDouble();
                 FillCurrentRow(&subtree, BudgetType::OtherExpense);
             }
         }
     }
-    ui->lblCurrentBudget->setText(QString::number(currentBudget));
 }
 
 void CurrentBudgetInformationView::clickBudget()

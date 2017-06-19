@@ -33,6 +33,7 @@ SOURCES += main.cpp\
     Views\Office\OfficeView.cpp \
     Views\Salary\SalaryView.cpp \
     CommonUiControllers/Login/LoginController.cpp \
+    CommonUiControllers/Views/History/qcustomplot.cpp \
     CommonUiControllers/WindowController.cpp \
     Entities/BaseEntity.cpp \
     Entities/PersonEntity.cpp \
@@ -49,7 +50,8 @@ SOURCES += main.cpp\
     Repositories/BudgetOperationRepository.cpp \
     Services/OfficeService.cpp \
     Services/BudgetService.cpp \
-    Views/Budget/CurrentBudgetInformationView.cpp
+    Views/Budget/CurrentBudgetInformationView.cpp \
+    Views/History/HistoryView.cpp
 
 HEADERS  += \
     Views\Colleagues\ColleaguesView.h \
@@ -69,6 +71,7 @@ HEADERS  += \
     CommonUiControllers/Views/Colleagues/ColleaguesLineEditd.h \
     CommonUiControllers/Views/Colleagues/ColleaguesLabel.h \
     CommonUiControllers/Views/Salary/SalaryLabel.h\
+    CommonUiControllers/Views/History/qcustomplot.h \
     Views/Colleagues/UpdateCollegueView.h \
     WebServices/ColleagueServices.h \
     Repositories/ColleagueOperationRepository.h \
@@ -87,7 +90,8 @@ HEADERS  += \
     Services/OfficeService.h \
     Services/BudgetService.h \
     Views/Budget/CurrentBudgetInformationView.h \
-    CommonUiControllers/Views/Budget/BudgetType.h
+    CommonUiControllers/Views/Budget/BudgetType.h \
+    Views/History/HistoryView.h
 
 FORMS    += \
     Views\Colleagues\ColleaguesView.ui \
@@ -98,7 +102,8 @@ FORMS    += \
     Views/Colleagues/AddCollegueView.ui \
     Views/Colleagues/UpdateCollegueView.ui \
     Views/Budget/BudgetView.ui \
-    Views/Budget/CurrentBudgetInformationView.ui
+    Views/Budget/CurrentBudgetInformationView.ui \
+    Views/History/HistoryView.ui
 
 RESOURCES += \
     images.qrc
