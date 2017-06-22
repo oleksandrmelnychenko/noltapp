@@ -50,7 +50,7 @@ private slots:
     void LoadBudget();
     void AddBudget();
     void FillBudgetTable(QJsonObject *result);
-    void WatchCurrentBudgetInformation(int row, int column);
+    void WatchCurrentBudgetInformation(int row, int);
 
     void setFocusOnLineEdit(QLineEdit *lineEdint);
     void focusIn(QLineEdit *lineEdit, QLabel *label);

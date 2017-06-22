@@ -147,7 +147,7 @@ void LoginWindow::mouseMoveEvent(QMouseEvent *event)
     }
 }
 
-void LoginWindow::mouseReleaseEvent(QMouseEvent *event)
+void LoginWindow::mouseReleaseEvent(QMouseEvent*)
 {
    mMouseClickXCoordinate = 0;
    mMouseClickYCoordinate = 0;

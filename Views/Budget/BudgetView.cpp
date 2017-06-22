@@ -148,7 +148,7 @@ void BudgetView::AddBudget()
     }
 }
 
-void BudgetView::WatchCurrentBudgetInformation(int row, int column)
+void BudgetView::WatchCurrentBudgetInformation(int row, int)
 {
     long id = ui->tblBudgetHistory->item(row,4)->text().toLong();
     emit watchCurrentBudgetInformation(id);

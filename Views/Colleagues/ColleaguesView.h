@@ -35,7 +35,7 @@ private:
 
 protected slots:
     void CreateAddCollegueView();
-    void UpdateCurrentCollegues(int row, int column);
+    void UpdateCurrentCollegues(int row, int);
 
 signals:
     void clickedNewLabel();

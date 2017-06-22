@@ -89,7 +89,7 @@ void ColleaguesView::CreateAddCollegueView()
     emit clickedNewLabel();
 }
 
-void ColleaguesView::UpdateCurrentCollegues(int row, int column)
+void ColleaguesView::UpdateCurrentCollegues(int row, int)
 {
     long id = ui->tblWidgetId->item(row,0)->text().toLong();
     emit updateCurrentCollegues(id);

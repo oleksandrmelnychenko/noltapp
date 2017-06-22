@@ -53,7 +53,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     }
 }
 
-void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+void MainWindow::mouseReleaseEvent(QMouseEvent*)
 {
     mMouseClickXCoordinate = 0;
     mMouseClickYCoordinate = 0;

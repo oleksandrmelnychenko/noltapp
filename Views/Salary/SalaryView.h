@@ -50,7 +50,7 @@ private:
 private slots:    
     void LoadAllColleagues();
     void FillColleagueTable(QJsonObject *result);
-    void GetColleagueSalaryInformation(int row, int column);
+    void GetColleagueSalaryInformation(int row, int);
     void UpdateSalary();
     void PaidSalary();
 

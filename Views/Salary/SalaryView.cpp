@@ -37,7 +37,7 @@ void SalaryView::SetUiElementsOptions()
     SetSalaryHistoryColumnOptions();
 }
 
-void SalaryView::GetColleagueSalaryInformation(int row, int column)
+void SalaryView::GetColleagueSalaryInformation(int row, int)
 {
     SalaryServiece salaryService;
 
